@@ -1,0 +1,16 @@
+X:\NCCU\Windows Programming on C#\Side-scrolling Tower Defense\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe.config
+X:\NCCU\Windows Programming on C#\Side-scrolling Tower Defense\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe
+X:\NCCU\Windows Programming on C#\Side-scrolling Tower Defense\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.pdb
+X:\NCCU\Windows Programming on C#\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csprojResolveAssemblyReference.cache
+X:\NCCU\Windows Programming on C#\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\MainWindow.baml
+X:\NCCU\Windows Programming on C#\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\MainWindow.g.cs
+X:\NCCU\Windows Programming on C#\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\App.g.cs
+X:\NCCU\Windows Programming on C#\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense_MarkupCompile.cache
+X:\NCCU\Windows Programming on C#\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.g.resources
+X:\NCCU\Windows Programming on C#\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\Side_scrolling_Tower_Defense.Properties.Resources.resources
+X:\NCCU\Windows Programming on C#\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csproj.GenerateResource.Cache
+X:\NCCU\Windows Programming on C#\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe
+X:\NCCU\Windows Programming on C#\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.pdb
+P:\Programming Source\Side-scrolling Tower Defense\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe.config
+P:\Programming Source\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe
+P:\Programming Source\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.pdb
