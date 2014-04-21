@@ -14,6 +14,3 @@ X:\NCCU\Windows Programming on C#\Side-scrolling Tower Defense\Side-scrolling To
 P:\Programming Source\Side-scrolling Tower Defense\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe.config
 P:\Programming Source\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe
 P:\Programming Source\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.pdb
-P:\Programming Source\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe.config
-P:\Programming Source\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe
-P:\Programming Source\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.pdb
