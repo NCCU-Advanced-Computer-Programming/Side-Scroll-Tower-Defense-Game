@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tower
+namespace Side_scrolling_Tower_Defense
 {
     class Tower
     {

@@ -8,6 +8,7 @@ namespace Side_scrolling_Tower_Defense
 {
     class Soldier
     {
+        
         //Property
         private int _hp;
         private int _atk;
@@ -84,7 +85,8 @@ namespace Side_scrolling_Tower_Defense
         //攻擊敵方塔
         public void Attack(Tower Enemy)
         {
-            
+            if (1000 - this.POSITION <= this.RANGE)
+                Enemy.GetHurt(ATK);
         }
 
 
