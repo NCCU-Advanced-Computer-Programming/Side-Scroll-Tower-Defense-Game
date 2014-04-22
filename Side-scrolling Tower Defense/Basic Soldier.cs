@@ -15,7 +15,7 @@ namespace Side_scrolling_Tower_Defense
         private int _range;
         private int _speed;
         private int _axis;
-        public bool _enemy = false;
+        public bool isEnemy = false;
 
         public int HP { get; set; }
 
@@ -27,10 +27,7 @@ namespace Side_scrolling_Tower_Defense
 
         public int POSITION { get; set; }
 
-        public bool isEnemy 
-        {
-            get { return _enemy; } 
-        }
+
 
 
         //Constructor
@@ -43,42 +40,52 @@ namespace Side_scrolling_Tower_Defense
             POSITION = 0;
         }
 
-        /*public Soldier(int hp, int atk)
-        {
-
-        }
-
-        public Soldier(int hp, int atk, int range)
-        {
-
-        }
-
-        public Soldier(int hp, int atk, int range, int speed)
-        {
-
-        }*/
-
         public Soldier(int hp, int atk, int range, int speed, bool enemy)
         {
             HP = hp;
             ATK = atk;
             RANGE = range;
             SPEED = speed;
-            _enemy = enemy;
+            isEnemy = enemy;
 
-            POSITION = 0;
+            if (isEnemy)
+                POSITION = 1000;
+            else
+                POSITION = 0;
+
         }
 
         //Method
         public void Attack(Soldier Enemy)
         {
-            if(isEnemy)
+            if (Enemy.isEnemy && (Enemy.POSITION - this.POSITION) <= this.RANGE)
                 Enemy.HP -= ATK;
+        }
+
+        public void Attack(Soldier[] Enemy)
+        {
+            int target = Int32.MaxValue;
+            int nearest = Int32.MaxValue;
+            for (int i = 0 ; i < Enemy.Length; i++)
+            {
+                int distance = Enemy[i].POSITION - this.POSITION;
+                if (nearest > distance && distance >= 0)
+                {
+                    nearest = distance;
+                    target = i;
+                }
+            }
+
+            if (nearest <= this.RANGE)
+                Enemy[target].HP -= this.ATK;
         }
 
         public void Move()
         {
-            POSITION += SPEED;
+            if (isEnemy)
+                POSITION -= SPEED;
+            else
+                POSITION += SPEED;
         }
 
         public Soldier Die()
@@ -90,9 +97,10 @@ namespace Side_scrolling_Tower_Defense
                 return this;
         }
 
-        virtual private void Levelup();
-        virtual private void Buff();
-        virtual private void Nerf();
-        virtual public void Skill();
+        private virtual void Skill();
+        private virtual void Levelup();
+        private virtual void Buff();
+        private virtual void Nerf();
+
     }
 }

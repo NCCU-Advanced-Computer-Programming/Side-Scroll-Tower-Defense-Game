@@ -57,8 +57,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Basic Soldier.cs" />
     <Compile Include="Dervied Solider.cs" />
-    <Compile Include="Soldier.cs" />
     <Compile Include="Ultimate Solider.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

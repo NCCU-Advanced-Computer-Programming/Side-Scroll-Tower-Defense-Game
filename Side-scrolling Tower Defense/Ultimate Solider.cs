@@ -13,19 +13,40 @@ namespace Side_scrolling_Tower_Defense
 
         //hp=? , atk=? , range = ? , speed =? 
         public HERO()
-            :base()
+            : base(500,15,1,1,false)
+        {
+            //依玩家選取英雄類型，調整屬性數值
+        }
+
+        public new void Attack(Soldier Enemy)
+        {
+
+            if (Enemy.isEnemy && (Enemy.POSITION - this.POSITION) <= this.RANGE)
+                Enemy.HP -= this.ATK;
+
+            if (Enemy.HP <= 0)
+            {
+                if (Enemy.GetType() == typeof(Saber)) { EXP += 1; }
+                else if (Enemy.GetType() == typeof(Saber)) { EXP += 1; }
+                else if (Enemy.GetType() == typeof(Archer)) { EXP += 1; }
+                else if (Enemy.GetType() == typeof(Caster)) { EXP += 1; }
+                else if (Enemy.GetType() == typeof(Berserker)) { EXP += 1; }
+                else if (Enemy.GetType() == typeof(Rider)) { EXP += 1; }
+                else if (Enemy.GetType() == typeof(Lancer)) { EXP += 1; }
+                else if (Enemy.GetType() == typeof(Assassin)) { EXP += 1; }
+                else if (Enemy.GetType() == typeof(HERO)) { EXP += 1; }
+                else if (Enemy.GetType() == typeof(BOSS)) { EXP += 1; }
+            }
+        }
+
+        private override void Levelup()
         {
 
         }
 
-        private void Levelup()
+        private new void Skill()
         {
 
-        }
-
-        private void Skill() 
-        {
-        
         }
 
     }
@@ -35,12 +56,12 @@ namespace Side_scrolling_Tower_Defense
 
         //hp=? , atk=? , range = ? , speed =? 
         public BOSS()
-            :base()
+            : base(500, 15, 1, 1, true)
         {
-
+            
         }
 
-        private void Skill
+        private new void Skill
         {
 
         }
