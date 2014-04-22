@@ -58,7 +58,7 @@ namespace Side_scrolling_Tower_Defense
         public BOSS()
             : base(500, 15, 1, 1, true)
         {
-            
+            //依關卡難度改變
         }
 
         private new void Skill

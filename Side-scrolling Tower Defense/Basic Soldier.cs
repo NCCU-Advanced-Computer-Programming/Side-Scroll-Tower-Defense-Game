@@ -27,12 +27,10 @@ namespace Side_scrolling_Tower_Defense
 
         public int POSITION { get; set; }
 
-
-
-
         //Constructor
         public Soldier()
         {
+            //hp=? , atk=? , range = ? , speed =? 
             HP = 100;
             ATK = 1;
             RANGE = 1;
@@ -56,17 +54,20 @@ namespace Side_scrolling_Tower_Defense
         }
 
         //Method
+
+        //單體攻擊敵方士兵_1
         public void Attack(Soldier Enemy)
         {
             if (Enemy.isEnemy && (Enemy.POSITION - this.POSITION) <= this.RANGE)
                 Enemy.HP -= ATK;
         }
 
+        //單體攻擊敵方士兵_2
         public void Attack(Soldier[] Enemy)
         {
             int target = Int32.MaxValue;
             int nearest = Int32.MaxValue;
-            for (int i = 0 ; i < Enemy.Length; i++)
+            for (int i = 0; i < Enemy.Length; i++)
             {
                 int distance = Enemy[i].POSITION - this.POSITION;
                 if (nearest > distance && distance >= 0)
@@ -80,6 +81,13 @@ namespace Side_scrolling_Tower_Defense
                 Enemy[target].HP -= this.ATK;
         }
 
+        //攻擊敵方塔
+        public void Attack(Tower Enemy)
+        {
+            
+        }
+
+
         public void Move()
         {
             if (isEnemy)
@@ -88,7 +96,8 @@ namespace Side_scrolling_Tower_Defense
                 POSITION += SPEED;
         }
 
-        public Soldier Die()
+        //Die()
+        public Soldier LifeCheck()
         {
             //C#使用記憶體自動回收
             if (HP <= 0)
