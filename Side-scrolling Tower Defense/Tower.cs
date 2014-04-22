@@ -25,8 +25,10 @@ namespace Tower
         public void Attack()
         {
             int i = 0;
-            while (enemySolider[i] == null)
+            while (enemySoldier[i] == null)
                 i++;
+
+            //soldier
 
         }
         public void GetHurt(int quaintity)
