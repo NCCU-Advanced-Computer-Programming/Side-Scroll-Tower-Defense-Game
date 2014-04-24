@@ -108,10 +108,22 @@ namespace Side_scrolling_Tower_Defense
                 return this;
         }
 
-        private virtual void Skill();
-        private virtual void Levelup();
-        private virtual void Buff();
-        private virtual void Nerf();
+        public virtual void Skill()
+        {
+
+        }
+        public virtual void Levelup()
+        {
+
+        }
+        public virtual void Buff()
+        {
+
+        }
+        public virtual void Nerf()
+        {
+
+        }
 
     }
 }

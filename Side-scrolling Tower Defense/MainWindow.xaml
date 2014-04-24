@@ -2,9 +2,14 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="919.608">
-    <Grid>
-        <Label x:Name="lbMyTower" Content="我的塔" HorizontalAlignment="Left" Margin="775,90,0,0" VerticalAlignment="Top" Height="193" Width="93" Background="#FF697AEA"/>
-        <Label x:Name="lbEenemyTower" Content="壞蛋的塔" HorizontalAlignment="Left" Margin="41,90,0,0" VerticalAlignment="Top" Height="193" Width="93" Background="#FFEA2915"/>
+    <Grid x:Name="grid1" AllowDrop="True">
+        <Label x:Name="lbMyTower" Content="我的塔" HorizontalAlignment="Left" Margin="798,72,0,0" VerticalAlignment="Top" Height="150" Width="72" Background="#FF697AEA"/>
+        <Label x:Name="lbEenemyTower" Content="壞蛋的塔" HorizontalAlignment="Left" Margin="41,72,0,0" VerticalAlignment="Top" Height="150" Width="64" Background="#FFEA2915"/>
+        <Button x:Name="btnSoldier1" Content="兵1" Height="76" Margin="310,234,505,0" VerticalAlignment="Top" Click="btnSoldier1_Click"/>
+        <Button x:Name="btnSoldier2" Content="兵2" Height="76" Margin="407,234,408,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnSoldier3" Content="兵3" Height="76" Margin="504,234,311,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnSoldier4" Content="兵4" Height="76" Margin="601,234,214,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnUpgradeTower" Content="升級塔" HorizontalAlignment="Left" Height="76" Margin="754,234,0,0" VerticalAlignment="Top" Width="115"/>
 
     </Grid>
 </Window>

@@ -39,7 +39,7 @@ namespace Side_scrolling_Tower_Defense
             }
         }
 
-        private override void Levelup()
+        public override void Levelup()
         {
 
         }
@@ -61,7 +61,7 @@ namespace Side_scrolling_Tower_Defense
             //依關卡難度改變
         }
 
-        private new void Skill
+        private new void Skill()
         {
 
         }

@@ -25,7 +25,7 @@ namespace Side_scrolling_Tower_Defense
         public void Attack()
         {
             int i = 0;
-            while (enemySoldier[i] == null)
+ //           while (enemySoldier[i] == null)
                 i++;
 
             //soldier
@@ -51,7 +51,9 @@ namespace Side_scrolling_Tower_Defense
             else if (item == 't')
                 towerLevel += quantity;
         }
-        public void Skill();
+        public void Skill()
+        {
+        }
 
 
     }

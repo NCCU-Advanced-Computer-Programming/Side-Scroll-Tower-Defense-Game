@@ -15,7 +15,14 @@ namespace Side_scrolling_Tower_Defense
 		private int _towerUpgradePrice;
         private int _towerLevel;
 		//int unlockSoliderPrice;
-    
+
+        public Player()
+        {
+            _money = 1000;   // 初始資金
+            _towerLevel = 1; // 初始塔等級
+            _towerUpgradePrice = 100; //塔升級費用
+            _myTower = new Tower(100, 10, 10, _towerLevel);
+        }
         public void GenerateSolider(){
             // new Soldier?
         }
