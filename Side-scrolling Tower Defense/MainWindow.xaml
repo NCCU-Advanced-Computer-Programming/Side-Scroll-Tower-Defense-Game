@@ -1,8 +1,10 @@
 ﻿<Window x:Class="Side_scrolling_Tower_Defense.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="919.608">
     <Grid>
-        
+        <Label x:Name="lbMyTower" Content="我的塔" HorizontalAlignment="Left" Margin="775,90,0,0" VerticalAlignment="Top" Height="193" Width="93" Background="#FF697AEA"/>
+        <Label x:Name="lbEenemyTower" Content="壞蛋的塔" HorizontalAlignment="Left" Margin="41,90,0,0" VerticalAlignment="Top" Height="193" Width="93" Background="#FFEA2915"/>
+
     </Grid>
 </Window>
