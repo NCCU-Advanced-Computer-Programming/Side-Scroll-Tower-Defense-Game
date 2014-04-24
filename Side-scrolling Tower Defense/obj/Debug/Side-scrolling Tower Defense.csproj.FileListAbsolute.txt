@@ -15,3 +15,4 @@ P:\Programming Source\Side-scrolling Tower Defense\Side-scrolling Tower Defense\
 P:\Programming Source\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe
 P:\Programming Source\Side-scrolling Tower Defense\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.pdb
 C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe.config
+P:\Programming Source\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe.config
