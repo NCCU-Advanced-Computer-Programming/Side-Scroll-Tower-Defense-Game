@@ -30,7 +30,7 @@ namespace Side_scrolling_Tower_Defense
         {
             InitializeComponent();
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Tick += timer_Tick;
             timer.Start();
 
@@ -41,32 +41,28 @@ namespace Side_scrolling_Tower_Defense
         {
             player.MONEY += 1;
             lbMoney.Content ="$ "+ player.MONEY.ToString();
-            /*for each soldier 
-             * if(範圍內無敵人)   MOVE
-             * else    ATTACK
-             */
 
             //以下測試
-            /*
-            _timeCount++;
-            lbTime.Content = _timeCount.ToString();
-              for (int i = 0; i < _soliderOnField; i++)
-            {
-                soldier[i].Margin=new Thickness(800-i*100,85,i*100,0);// = new Thickness(800-soldier[i]);
-               // soldier[i].Margin -= 10;
-            }*/
-            
-            
+            player.MaintainSolidersPosition();
+            lbMyTower.Margin = new Thickness(lbMyTower.Margin.Left - 0.3, lbMyTower.Margin.Top, lbMyTower.Margin.Right + 0.3, lbMyTower.Margin.Bottom);
         }
 
         private void btnSoldier1_Click(object sender, RoutedEventArgs e)
         {
-            player.GenerateSolider(grid1);
+            if (player.MONEY > 50)   //錢夠才能產兵
+            {
+                player.GenerateSolider(grid1);
+                player.MONEY -= 50;//第一種兵 $50
+                lbMoney.Content = "$ " + player.MONEY.ToString();
+            }
         }
 
         private void btnUpgradeTower_Click(object sender, RoutedEventArgs e)
         {
-            player.UpgradeTower(lbTowerProperty);
+            if (player.MONEY > player.UPGRADEPRICE)
+            {
+                player.UpgradeTower(lbTowerProperty);
+            }
         }
     }
 }

@@ -43,3 +43,16 @@ C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\D
 P:\Programming Source\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe.config
 P:\Programming Source\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe
 P:\Programming Source\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.pdb
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe.config
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.pdb
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.pdb
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\MainWindow.baml
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\MainWindow.g.cs
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\App.g.cs
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense_MarkupCompile.cache
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.g.resources
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side_scrolling_Tower_Defense.Properties.Resources.resources
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csproj.GenerateResource.Cache

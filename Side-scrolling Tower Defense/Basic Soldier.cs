@@ -156,7 +156,6 @@ namespace Side_scrolling_Tower_Defense
         {
 
         }
-
         public virtual void Buff()
         {
 

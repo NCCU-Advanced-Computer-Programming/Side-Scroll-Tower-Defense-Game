@@ -31,7 +31,7 @@ namespace Side_scrolling_Tower_Defense
         public int TowerLevel
         {
             get { return hp; }
-            set { towerLevel = value; }
+       //     set { towerLevel = value; }
         }
 
         /*method*/
@@ -63,13 +63,13 @@ namespace Side_scrolling_Tower_Defense
         public void Upgrade(char item, int quantity)
         {
             if (item == 'h')
-                hp += quantity;
-            else if (item == 'a')
-                atk += quantity;
-            else if (item == 'r')
-                range += quantity;
-            else if (item == 't')
-                towerLevel += quantity;
+                hp = quantity;
+            if (item == 'a')
+                atk = quantity;
+            if (item == 'r')
+                range = quantity;
+            //if (item == 't')
+            towerLevel++;
         }
         public void Skill()
         {
