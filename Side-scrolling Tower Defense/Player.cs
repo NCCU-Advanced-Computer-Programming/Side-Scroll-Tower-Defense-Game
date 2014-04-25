@@ -20,6 +20,10 @@ namespace Side_scrolling_Tower_Defense
         Label[] soldier = new Label[1000]; //場上最多只能有1000我方士兵
         int _soliderOnField = 0;           //場上的我方士兵數(?)
 
+        public int MONEY{
+            get { return _money; }
+            set { _money = value; }
+        }
 		//int unlockSoliderPrice;
 
         public Player()
@@ -39,9 +43,10 @@ namespace Side_scrolling_Tower_Defense
             soldier[_soliderOnField].Background = System.Windows.Media.Brushes.Green;
             _soliderOnField++;
         }
-		public void EarnMoney(int moneyAdd){
+		public void EarnMoney(int moneyAdd, Label lbMoney){
             //殺敵 +金錢
             _money += moneyAdd;
+            lbMoney.Content = _money.ToString();
         }
 		public void UpgradeTower(Label lb){
             //玩家花錢升級塔，塔等級提升，下級所需金費增加

@@ -39,6 +39,8 @@ namespace Side_scrolling_Tower_Defense
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            player.MONEY += 1;
+            lbMoney.Content = "$ "+player.MONEY.ToString();
             /*for each soldier 
              * if(範圍內無敵人)   MOVE
              * else    ATTACK
