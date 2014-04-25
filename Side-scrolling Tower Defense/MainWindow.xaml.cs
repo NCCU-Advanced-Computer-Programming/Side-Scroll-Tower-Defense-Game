@@ -44,7 +44,9 @@ namespace Side_scrolling_Tower_Defense
 
             //以下測試
             player.MaintainSolidersPosition();
+
             lbMyTower.Margin = new Thickness(lbMyTower.Margin.Left - 0.3, lbMyTower.Margin.Top, lbMyTower.Margin.Right + 0.3, lbMyTower.Margin.Bottom);
+
         }
 
         private void btnSoldier1_Click(object sender, RoutedEventArgs e)
