@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//using System.Windows.Forms;
+using System.Windows.Controls;
 
 namespace Side_scrolling_Tower_Defense
 {
@@ -16,17 +18,45 @@ namespace Side_scrolling_Tower_Defense
         private int _range;
         private int _speed;
         private int _axis;
+        private double _attackspeed;
         public bool isEnemy = false;
+        public Label Image;
 
-        public int HP { get; set; }
+        public int HP
+        {
+            get { return _hp; }
+            set { _hp = value; }
+        }
+        public int ATK
+        {
+            get { return _atk; }
+            set { _atk = value; }
+        }
 
-        public int ATK { get; set; }
+        public int RANGE
+        {
+            get { return _range; }
+            set { _range = value; }
+        }
 
-        public int RANGE { get; set; }
+        public int SPEED
+        {
+            get { return _speed; }
+            set { _speed = value; }
+        }
 
-        public int SPEED { get; set; }
+        public double AS
+        {
+            get { return _attackspeed; }
+            set { _attackspeed = value; }
+        }
 
-        public int POSITION { get; set; }
+        public int POSITION
+        {
+            get { return _axis; }
+            set { _axis = value; }
+        }
+
 
         //Constructor
         public Soldier()
@@ -36,7 +66,9 @@ namespace Side_scrolling_Tower_Defense
             ATK = 1;
             RANGE = 1;
             SPEED = 1;
+            AS = 1.0;
             POSITION = 0;
+            Image = new Label();
         }
 
         public Soldier(int hp, int atk, int range, int speed, bool enemy)
@@ -46,6 +78,8 @@ namespace Side_scrolling_Tower_Defense
             RANGE = range;
             SPEED = speed;
             isEnemy = enemy;
+            AS = 1.0;
+            Image = new Label();
 
             if (isEnemy)
                 POSITION = 1000;
@@ -55,6 +89,16 @@ namespace Side_scrolling_Tower_Defense
         }
 
         //Method
+
+        public Label Show() 
+        {
+            Image.Margin = new System.Windows.Thickness(800,85,0,0);
+            Image.Height = 50;
+            Image.Width = 50;
+            Image.Background = System.Windows.Media.Brushes.Gold;
+
+            return Image;
+        }
 
         //單體攻擊敵方士兵_1
         public void Attack(Soldier Enemy)
@@ -112,10 +156,7 @@ namespace Side_scrolling_Tower_Defense
         {
 
         }
-        public virtual void Levelup()
-        {
 
-        }
         public virtual void Buff()
         {
 

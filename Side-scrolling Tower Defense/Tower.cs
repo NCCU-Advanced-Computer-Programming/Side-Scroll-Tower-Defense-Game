@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Side_scrolling_Tower_Defense
 {
     class Tower
@@ -14,10 +13,26 @@ namespace Side_scrolling_Tower_Defense
         private int range;
         private int towerLevel;
 
-        public int HP { get; set; }
-        public int ATK { get; set; }
-        public int RANGE { get; set; }
-        public int TowerLevel { get; set; }
+        public int HP 
+        {
+            get { return hp; }
+            set { hp = value; }
+        }
+        public int ATK
+        {
+            get { return hp; }
+            set { atk = value; }
+        }
+        public int RANGE
+        {
+            get { return hp; }
+            set { range = value; }
+        }
+        public int TowerLevel
+        {
+            get { return hp; }
+            set { towerLevel = value; }
+        }
 
         /*method*/
         public Tower(int _hp, int _atk, int _range, int _towerLevel)

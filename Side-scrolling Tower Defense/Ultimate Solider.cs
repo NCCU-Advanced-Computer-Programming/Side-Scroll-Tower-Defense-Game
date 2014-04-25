@@ -9,7 +9,19 @@ namespace Side_scrolling_Tower_Defense
     class HERO : Soldier
     {
         private int _experience;
-        private int EXP { get; set; }
+        private int _level;
+
+        private int EXP 
+        {
+            get { return _experience; }
+            set { _experience = value; }
+        }
+
+        public int LEVEL
+        {
+            get { return _level; }
+            set { _level = value; }
+        }
 
         //hp=? , atk=? , range = ? , speed =? 
         public HERO()
@@ -39,9 +51,9 @@ namespace Side_scrolling_Tower_Defense
             }
         }
 
-        public override void Levelup()
+        private void Levelup()
         {
-
+            //每級所需經驗值公式
         }
 
         private new void Skill()
