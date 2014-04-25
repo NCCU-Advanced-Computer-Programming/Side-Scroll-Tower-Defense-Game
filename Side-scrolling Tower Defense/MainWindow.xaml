@@ -10,6 +10,7 @@
         <Button x:Name="btnSoldier3" Content="兵3" Height="76" Margin="504,234,311,0" VerticalAlignment="Top"/>
         <Button x:Name="btnSoldier4" Content="兵4" Height="76" Margin="601,234,214,0" VerticalAlignment="Top"/>
         <Button x:Name="btnUpgradeTower" Content="升級塔" HorizontalAlignment="Left" Height="76" Margin="754,234,0,0" VerticalAlignment="Top" Width="115"/>
+        <Label x:Name="lbTime" Content="Label" HorizontalAlignment="Left" Height="49" Margin="545,44,0,0" VerticalAlignment="Top" Width="104"/>
 
     </Grid>
 </Window>

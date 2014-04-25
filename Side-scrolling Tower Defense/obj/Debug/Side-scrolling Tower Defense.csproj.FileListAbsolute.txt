@@ -28,3 +28,15 @@ C:\Users\R5\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\Si
 C:\Users\R5\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.pdb
 C:\Users\R5\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe
 C:\Users\R5\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.pdb
+C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe
+C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.pdb
+C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe
+C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.pdb
+C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csprojResolveAssemblyReference.cache
+C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\MainWindow.baml
+C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\MainWindow.g.cs
+C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\App.g.cs
+C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense_MarkupCompile.cache
+C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.g.resources
+C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side_scrolling_Tower_Defense.Properties.Resources.resources
+C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csproj.GenerateResource.Cache

@@ -25,14 +25,12 @@ namespace Side_scrolling_Tower_Defense
         DispatcherTimer timer;
         int _timeCount = 0;
         Player player = new Player();
-        Label[] soldier = new Label[1000];
-        int _soliderOnField = 0;    //場上的我方士兵數
-
+ 
         public MainWindow()
         {
             InitializeComponent();
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Interval = TimeSpan.FromMilliseconds(100);
             timer.Tick += timer_Tick;
             timer.Start();
 
@@ -47,24 +45,21 @@ namespace Side_scrolling_Tower_Defense
              */
 
             //以下測試
-            /*   for (int i = 0; i < _soliderOnField; i++)
+            /*
+            _timeCount++;
+            lbTime.Content = _timeCount.ToString();
+              for (int i = 0; i < _soliderOnField; i++)
             {
-                soldier[i].Margin=new Thickness(800-i*10,85,0,0);// = new Thickness(800-soldier[i]);
+                soldier[i].Margin=new Thickness(800-i*100,85,i*100,0);// = new Thickness(800-soldier[i]);
                // soldier[i].Margin -= 10;
-            }
+            }*/
             
-            */
+            
         }
 
         private void btnSoldier1_Click(object sender, RoutedEventArgs e)
         {
-            soldier[_soliderOnField] = new Label();
-            grid1.Children.Add(soldier[_soliderOnField]);
-            soldier[_soliderOnField].Margin = new Thickness(800, 85, 0, 0);
-            soldier[_soliderOnField].Height = 50;
-            soldier[_soliderOnField].Width = 50;
-            soldier[_soliderOnField].Background = System.Windows.Media.Brushes.Green;
-            _soliderOnField++;
+            player.GenerateSolider(grid1);
         }
     }
 }

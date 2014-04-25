@@ -14,6 +14,11 @@ namespace Side_scrolling_Tower_Defense
         private int range;
         private int towerLevel;
 
+        public int HP { get; set; }
+        public int ATK { get; set; }
+        public int RANGE { get; set; }
+        public int TowerLevel { get; set; }
+
         /*method*/
         public Tower(int _hp, int _atk, int _range, int _towerLevel)
         {
