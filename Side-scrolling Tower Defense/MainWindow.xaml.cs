@@ -61,5 +61,11 @@ namespace Side_scrolling_Tower_Defense
         {
             player.GenerateSolider(grid1);
         }
+
+        private void btnUpgradeTower_Click(object sender, RoutedEventArgs e)
+        {
+           player.UpgradeTower(lbmyTproperty);
+            
+        }
     }
 }
