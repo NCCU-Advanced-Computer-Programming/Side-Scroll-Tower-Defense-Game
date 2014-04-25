@@ -24,7 +24,7 @@ namespace Side_scrolling_Tower_Defense
 
         public Player()
         {
-            _money = 1000;   // 初始資金
+            _money = 1000;      // 初始資金
             myTower.TowerLevel = 1; // 初始塔等級
             _towerUpgradePrice = 100; //塔升級費用
             myTower = new Tower(100, 10, 10, myTower.TowerLevel);

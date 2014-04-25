@@ -14,10 +14,25 @@ namespace Side_scrolling_Tower_Defense
         private int range;
         private int towerLevel;
 
-        public int HP { get; set; }
-        public int ATK { get; set; }
-        public int RANGE { get; set; }
-        public int TowerLevel { get; set; }
+        public int HP
+        {
+            get { return hp; }
+            set { hp = value; }
+        }
+        public int ATK
+        {
+            get { return atk; }
+            set { atk = value; }
+        }
+        public int RANGE
+        {
+            get { return range;}
+            set { range = value; }
+        }
+        public int TowerLevel {
+            get { return towerLevel; }
+            set { towerLevel = value; }
+        }
 
         /*method*/
         public Tower(int _hp, int _atk, int _range, int _towerLevel)
@@ -30,8 +45,8 @@ namespace Side_scrolling_Tower_Defense
         public void Attack()
         {
             int i = 0;
- //           while (enemySoldier[i] == null)
-                i++;
+            //           while (enemySoldier[i] == null)
+            i++;
 
             //soldier
 
@@ -59,7 +74,7 @@ namespace Side_scrolling_Tower_Defense
         public void Skill()
         {
         }
-
+        //public Label  
 
     }
 }

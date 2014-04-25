@@ -23,7 +23,7 @@ namespace Side_scrolling_Tower_Defense
     public partial class MainWindow : Window
     {
         DispatcherTimer timer;
-        int _timeCount = 0;
+        //int _timeCount = 0;
         Player player = new Player();
  
         public MainWindow()
