@@ -25,6 +25,9 @@ namespace Side_scrolling_Tower_Defense
             get { return _money; }
             set { _money = value; }
         }
+        public int UPGRADEPRICE{
+            get { return _towerUpgradePrice; }
+        }
 		//int unlockSoliderPrice;
 
         public Player()
@@ -32,7 +35,7 @@ namespace Side_scrolling_Tower_Defense
             _money = 1000;      // 初始資金
             _towerUpgradePrice = 100; //塔升級費用
             myTower = new Tower(100, 10, 10, 1);
-            myTower.TowerLevel = 1; // 初始塔等級
+          //  myTower.TowerLevel = 1; // 初始塔等級
         }
         public void GenerateSolider(Panel grid1){
             // new Soldier?
@@ -60,10 +63,10 @@ namespace Side_scrolling_Tower_Defense
 
             //所有數值暫時都*2
             _towerUpgradePrice = _towerUpgradePrice * 2;
-            myTower.Upgrade('t', myTower.TowerLevel * 2);
-            myTower.Upgrade('h', myTower.HP * 2);
-            myTower.Upgrade('a', myTower.ATK * 2);
-            myTower.Upgrade('r', myTower.RANGE * 2);
+           // myTower.Upgrade('t', ++myTower.TowerLevel);
+            myTower.Upgrade('h', myTower.HP +1);
+            myTower.Upgrade('a', myTower.ATK + 2);
+            myTower.Upgrade('r', myTower.RANGE+ 3);
             
             //顯示
             lb.Content = "level:" + myTower.TowerLevel.ToString() + '\n' + "hp:" + myTower.HP.ToString() + '\n' + "range:" + myTower.RANGE.ToString() + '\n' + "atk:" + myTower.ATK.ToString();
@@ -71,6 +74,13 @@ namespace Side_scrolling_Tower_Defense
         public void UnlockSolider()
         {
 
+        }
+        public void MaintainSolidersPosition()
+        {
+            for (int i = 0; i < _soliderOnField; i++)
+            {
+                // 每個士兵該往前的往前，該打的打
+            }
         }
 	}
 }
