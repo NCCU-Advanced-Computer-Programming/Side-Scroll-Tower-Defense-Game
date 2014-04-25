@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Side_scrolling_Tower_Defense
 {
@@ -74,7 +75,10 @@ namespace Side_scrolling_Tower_Defense
         public void Skill()
         {
         }
-        //public Label  
+        public Label TowerImage()//目前先產生有顏色的label，以後再弄圖片 
+        {
+            return null;
+        } 
 
     }
 }
