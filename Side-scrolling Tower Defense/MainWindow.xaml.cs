@@ -39,6 +39,8 @@ namespace Side_scrolling_Tower_Defense
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            player.MONEY += 1;
+            lbMoney.Content ="$ "+ player.MONEY.ToString();
             /*for each soldier 
              * if(範圍內無敵人)   MOVE
              * else    ATTACK
@@ -60,6 +62,11 @@ namespace Side_scrolling_Tower_Defense
         private void btnSoldier1_Click(object sender, RoutedEventArgs e)
         {
             player.GenerateSolider(grid1);
+        }
+
+        private void btnUpgradeTower_Click(object sender, RoutedEventArgs e)
+        {
+            player.UpgradeTower(lbTowerProperty);
         }
     }
 }
