@@ -20,18 +20,18 @@ namespace Side_scrolling_Tower_Defense
         }
         public int ATK
         {
-            get { return hp; }
+            get { return atk; }
             set { atk = value; }
         }
         public int RANGE
         {
-            get { return hp; }
+            get { return range; }
             set { range = value; }
         }
         public int TowerLevel
         {
-            get { return hp; }
-       //     set { towerLevel = value; }
+            get { return towerLevel; }
+            set { towerLevel = value; }
         }
 
         /*method*/
@@ -44,11 +44,14 @@ namespace Side_scrolling_Tower_Defense
         }
         public void Attack()
         {
+            Soldier TARGET;
             int i = 0;
- //           while (enemySoldier[i] == null)
-                i++;
-
-            //soldier
+            while (enemySoldier[i] != NULL)/*find the nearest Soldier*/
+            {
+                if (enemySoldier[i].POSITION <= TARGET.POSITION)
+                    TARGET = enemySoldier[i];
+            }
+            TARGET.HP -= this.atk;/*attack the nearst one*/
 
         }
         public void GetHurt(int quaintity)
@@ -73,6 +76,18 @@ namespace Side_scrolling_Tower_Defense
         }
         public void Skill()
         {
+            int i = 0;
+            while (enemySoldier[i] != NULL)
+            {
+                if(enemySoldier[i].POSITION <= this.range)
+                    enemySoldier[i].HP -= this.ATK; // or die?
+            }
+        }
+
+        public Lable ReturnLable()
+        {
+            lable = new Lable();
+            return lable;
         }
 
 
