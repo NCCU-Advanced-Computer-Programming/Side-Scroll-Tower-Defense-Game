@@ -80,6 +80,7 @@ namespace Side_scrolling_Tower_Defense
             for (int i = 0; i < _soliderOnField; i++)
             {
                 // 每個士兵該往前的往前，該打的打
+                soldier[i].Move();
             }
         }
 	}

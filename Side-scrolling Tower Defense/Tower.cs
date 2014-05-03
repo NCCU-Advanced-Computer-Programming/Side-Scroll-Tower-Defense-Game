@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 namespace Side_scrolling_Tower_Defense
 {
     class Tower
@@ -46,12 +47,14 @@ namespace Side_scrolling_Tower_Defense
         {
             Soldier TARGET;
             int i = 0;
-            while (enemySoldier[i] != NULL)/*find the nearest Soldier*/
-            {
-                if (enemySoldier[i].POSITION <= TARGET.POSITION)
-                    TARGET = enemySoldier[i];
-            }
-            TARGET.HP -= this.atk;/*attack the nearst one*/
+            
+          //  while (enemySoldier[i] != NULL)/*find the nearest Soldier*/
+          //  {
+          //     if (enemySoldier[i].POSITION <= TARGET.POSITION)
+           //         TARGET = enemySoldier[i];
+          //  }
+            
+            //TARGET.HP -= this.atk;/*attack the nearst one*/
 
         }
         public void GetHurt(int quaintity)
@@ -77,17 +80,17 @@ namespace Side_scrolling_Tower_Defense
         public void Skill()
         {
             int i = 0;
-            while (enemySoldier[i] != NULL)
-            {
-                if(enemySoldier[i].POSITION <= this.range)
-                    enemySoldier[i].HP -= this.ATK; // or die?
-            }
+      //      while (enemySoldier[i] != NULL)
+       //     {
+        //        if(enemySoldier[i].POSITION <= this.range)
+       //             enemySoldier[i].HP -= this.ATK; // or die?
+       //     }
         }
 
-        public Lable ReturnLable()
+        public Label ReturnLable()
         {
-            lable = new Lable();
-            return lable;
+            Label ImageTower = new Label();
+            return ImageTower;
         }
 
 

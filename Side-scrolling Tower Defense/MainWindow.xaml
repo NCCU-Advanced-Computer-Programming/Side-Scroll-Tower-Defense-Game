@@ -11,7 +11,7 @@
         <Button x:Name="btnSoldier4" Content="兵4&#xD;&#xA;$500" Height="76" Margin="601,234,214,0" VerticalAlignment="Top"/>
         <Button x:Name="btnUpgradeTower" Content="升級塔" HorizontalAlignment="Left" Height="76" Margin="754,234,0,0" VerticalAlignment="Top" Width="115" Click="btnUpgradeTower_Click"/>
         <Label x:Name="lbMoney" Content="Label" HorizontalAlignment="Left" Height="49" Margin="766,18,0,0" VerticalAlignment="Top" Width="104"/>
-        <Label x:Name="lbTowerProperty" Content="Label" HorizontalAlignment="Left" Height="102" Margin="637,72,0,0" VerticalAlignment="Top" Width="147"/>
+        <Label x:Name="lbTowerProperty" Content="Label" HorizontalAlignment="Left" Height="102" Margin="637,72,0,0" VerticalAlignment="Top" Width="147" BorderBrush="#FF270B0B"/>
 
     </Grid>
 </Window>

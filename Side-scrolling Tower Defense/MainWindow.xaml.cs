@@ -42,10 +42,10 @@ namespace Side_scrolling_Tower_Defense
             player.MONEY += 1;
             lbMoney.Content ="$ "+ player.MONEY.ToString();
 
-            //以下測試
+            //移動Player的兵
             player.MaintainSolidersPosition();
 
-            lbMyTower.Margin = new Thickness(lbMyTower.Margin.Left - 0.3, lbMyTower.Margin.Top, lbMyTower.Margin.Right + 0.3, lbMyTower.Margin.Bottom);
+            //lbMyTower.Margin = new Thickness(lbMyTower.Margin.Left - 0.3, lbMyTower.Margin.Top, lbMyTower.Margin.Right + 0.3, lbMyTower.Margin.Bottom);
 
         }
 

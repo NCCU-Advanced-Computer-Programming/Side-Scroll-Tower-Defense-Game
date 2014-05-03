@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 //using System.Windows.Forms;
 using System.Windows.Controls;
 
@@ -90,12 +91,14 @@ namespace Side_scrolling_Tower_Defense
 
         //Method
 
-        public Label Show() 
+        public Label Show() /*--暫且用Label代替圖片，本區塊設定label樣式--*/
         {
-            Image.Margin = new System.Windows.Thickness(800,85,0,0);
+            Image.Margin = new System.Windows.Thickness(800,85,0,0); //Player士兵出生位置
             Image.Height = 50;
             Image.Width = 50;
             Image.Background = System.Windows.Media.Brushes.Gold;
+            Image.BorderBrush = System.Windows.Media.Brushes.Black;
+            Image.BorderThickness = new Thickness(1, 1, 1, 1);
 
             return Image;
         }
@@ -137,9 +140,15 @@ namespace Side_scrolling_Tower_Defense
         public void Move()
         {
             if (isEnemy)
+            {
                 POSITION -= SPEED;
+                Image.Margin = new Thickness(Image.Margin.Left + 0.3, Image.Margin.Top, Image.Margin.Right - 0.3, Image.Margin.Bottom);
+            }
             else
+            {
                 POSITION += SPEED;
+                Image.Margin = new Thickness(Image.Margin.Left - 0.3, Image.Margin.Top, Image.Margin.Right + 0.3, Image.Margin.Bottom);
+            }
         }
 
         //Die()
