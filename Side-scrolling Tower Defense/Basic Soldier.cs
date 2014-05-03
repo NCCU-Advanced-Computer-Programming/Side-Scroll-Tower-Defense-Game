@@ -15,10 +15,9 @@ namespace Side_scrolling_Tower_Defense
         //Property
         private int _hp;
         private int _atk;
-        //private int _defense;
         private int _range;
-        private int _speed;
-        private int _axis;
+        private double _speed;
+        private double _axis;
         private double _attackspeed;
         public bool isEnemy = false;
         public Label Image;
@@ -33,26 +32,22 @@ namespace Side_scrolling_Tower_Defense
             get { return _atk; }
             set { _atk = value; }
         }
-
         public int RANGE
         {
             get { return _range; }
             set { _range = value; }
         }
-
-        public int SPEED
+        public double SPEED
         {
             get { return _speed; }
             set { _speed = value; }
         }
-
         public double AS
         {
             get { return _attackspeed; }
             set { _attackspeed = value; }
         }
-
-        public int POSITION
+        public double POSITION
         {
             get { return _axis; }
             set { _axis = value; }
@@ -71,8 +66,7 @@ namespace Side_scrolling_Tower_Defense
             POSITION = 0;
             Image = new Label();
         }
-
-        public Soldier(int hp, int atk, int range, int speed, bool enemy)
+        public Soldier(int hp, int atk, int range, double speed, bool enemy)
         {
             HP = hp;
             ATK = atk;
@@ -117,17 +111,16 @@ namespace Side_scrolling_Tower_Defense
         public void Attack(Soldier[] Enemy)
         {
             int target = Int32.MaxValue;
-            int nearest = Int32.MaxValue;
+            double nearest = double.MaxValue;
             for (int i = 0; i < Enemy.Length; i++)
             {
-                int distance = Enemy[i].POSITION - this.POSITION;
+                double distance = Enemy[i].POSITION - this.POSITION;
                 if (nearest > distance && distance >= 0)
                 {
                     nearest = distance;
                     target = i;
                 }
             }
-
             if (nearest <= this.RANGE)
                 Enemy[target].HP -= this.ATK;
         }
@@ -142,17 +135,19 @@ namespace Side_scrolling_Tower_Defense
 
         public void Move()
         {
+
             if (isEnemy)
             {
                 POSITION -= SPEED;
-                Image.Content = HP.ToString();
-                Image.Margin = new Thickness(Image.Margin.Left + 0.3, Image.Margin.Top, Image.Margin.Right - 0.3, Image.Margin.Bottom);
+                Image.Content = Image.Margin.Right.ToString();
+                Image.Margin = new Thickness(Image.Margin.Left + SPEED, Image.Margin.Top, Image.Margin.Right - SPEED, Image.Margin.Bottom);
             }
             else
             {
                 POSITION += SPEED;
-                Image.Content = HP.ToString();
-                Image.Margin = new Thickness(Image.Margin.Left - 0.3, Image.Margin.Top, Image.Margin.Right + 0.3, Image.Margin.Bottom);
+                Image.Content = Image.Margin.Left.ToString();
+                //Image.Content = HP.ToString();
+                Image.Margin = new Thickness(Image.Margin.Left - SPEED, Image.Margin.Top, Image.Margin.Right + SPEED, Image.Margin.Bottom);
             }
         }
 
