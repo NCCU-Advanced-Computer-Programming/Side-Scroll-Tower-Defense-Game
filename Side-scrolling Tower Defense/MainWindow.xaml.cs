@@ -23,8 +23,9 @@ namespace Side_scrolling_Tower_Defense
     public partial class MainWindow : Window
     {
         DispatcherTimer timer;
-        int _timeCount = 0;
+ //       int _timeCount = 0;
         Player player = new Player();
+        AI ai = new AI();
  
         public MainWindow()
         {
@@ -35,6 +36,7 @@ namespace Side_scrolling_Tower_Defense
             timer.Start();
 
           //  reset();
+            ai.GenerateSolider(grid1);
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -44,11 +46,19 @@ namespace Side_scrolling_Tower_Defense
 
             //移動Player的兵
             player.MaintainSolidersPosition();
-
+            ai.MaintainSolidersPosition();
             //lbMyTower.Margin = new Thickness(lbMyTower.Margin.Left - 0.3, lbMyTower.Margin.Top, lbMyTower.Margin.Right + 0.3, lbMyTower.Margin.Bottom);
 
+        } 
+        
+        private void btnUpgradeTower_Click(object sender, RoutedEventArgs e)
+        {
+            if (player.MONEY > player.UPGRADEPRICE)
+            {
+                player.UpgradeTower(lbTowerProperty);
+            }
         }
-
+        #region 產兵的buttonClick function
         private void btnSoldier1_Click(object sender, RoutedEventArgs e)
         {
             if (player.MONEY > 50)   //錢夠才能產兵
@@ -58,13 +68,39 @@ namespace Side_scrolling_Tower_Defense
                 lbMoney.Content = "$ " + player.MONEY.ToString();
             }
         }
+        #endregion
 
-        private void btnUpgradeTower_Click(object sender, RoutedEventArgs e)
+        #region 解鎖士兵的click function
+        private void btnUnlock1_Click(object sender, RoutedEventArgs e)
         {
-            if (player.MONEY > player.UPGRADEPRICE)
+            if (player.MONEY >= 1000)
             {
-                player.UpgradeTower(lbTowerProperty);
+                player.MONEY -= 1000;
+                btnSoldier2.IsEnabled = true;
+                btnUnlock1.Visibility = Visibility.Hidden;
+                
             }
         }
+
+        private void btnUnlock2_Click(object sender, RoutedEventArgs e)
+        {
+            if (player.MONEY >= 2000)
+            {
+                player.MONEY -= 2000;
+                btnSoldier3.IsEnabled = true;
+                btnUnlock2.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void btnUnlock3_Click(object sender, RoutedEventArgs e)
+        {
+            if (player.MONEY >= 3000)
+            {
+                player.MONEY -= 3000;
+                btnSoldier4.IsEnabled = true;
+                btnUnlock3.Visibility = Visibility.Hidden;
+            }
+        }
+        #endregion
     }
 }

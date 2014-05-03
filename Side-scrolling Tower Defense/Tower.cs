@@ -74,8 +74,8 @@ namespace Side_scrolling_Tower_Defense
                 atk = quantity;
             if (item == 'r')
                 range = quantity;
-            //if (item == 't')
-            towerLevel++;
+            if (item == 't')
+                towerLevel++;
         }
         public void Skill()
         {

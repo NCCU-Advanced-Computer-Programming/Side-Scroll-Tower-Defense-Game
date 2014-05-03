@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AI.cs" />
     <Compile Include="Basic Soldier.cs" />
     <Compile Include="Dervied Solider.cs" />
     <Compile Include="Player.cs" />

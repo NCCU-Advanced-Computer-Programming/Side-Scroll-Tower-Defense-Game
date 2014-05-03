@@ -12,14 +12,12 @@ namespace Side_scrolling_Tower_Defense
     {
     
 		private Tower myTower= new Tower(100,10,10,1);
-		//mySolider[1000]
 		private int _money;
 		private int _towerUpgradePrice;
-        //private int _towerLevel;
 
-        //Label[] soldier = new Label[1000]; //場上最多只能有1000我方士兵
-        Soldier[] soldier = new Soldier[1000];
-        int _soliderOnField = 0;           //場上的我方士兵數(?)
+        //Label[] soldier = new Label[1000]; 
+        Soldier[] soldier = new Soldier[1000];   //場上最多只能有1000士兵
+        int _soliderOnField = 0;                 //場上的我方士兵數(?) <--怪怪
 
         public int MONEY{
             get { return _money; }
@@ -39,15 +37,7 @@ namespace Side_scrolling_Tower_Defense
         }
         public void GenerateSolider(Panel grid1){
             // new Soldier?
-            /*
-            soldier[_soliderOnField] = new Label();
-            grid1.Children.Add(soldier[_soliderOnField]);
-            soldier[_soliderOnField].Margin = new Thickness(800, 85, 0, 0);
-            soldier[_soliderOnField].Height = 50;
-            soldier[_soliderOnField].Width = 50;
-            soldier[_soliderOnField].Background = System.Windows.Media.Brushes.Green;
-            */
-            soldier[_soliderOnField] = new Soldier();
+            soldier[_soliderOnField] = new Soldier(100,10,1,1,false); //血 攻 距 速 敵
             grid1.Children.Add(soldier[_soliderOnField].Show());
             _soliderOnField++;
         }
@@ -63,17 +53,13 @@ namespace Side_scrolling_Tower_Defense
 
             //所有數值暫時都*2
             _towerUpgradePrice = _towerUpgradePrice * 2;
-           // myTower.Upgrade('t', ++myTower.TowerLevel);
+            myTower.Upgrade('t', myTower.TowerLevel);
             myTower.Upgrade('h', myTower.HP +1);
             myTower.Upgrade('a', myTower.ATK + 2);
             myTower.Upgrade('r', myTower.RANGE+ 3);
             
             //顯示
             lb.Content = "level:" + myTower.TowerLevel.ToString() + '\n' + "hp:" + myTower.HP.ToString() + '\n' + "range:" + myTower.RANGE.ToString() + '\n' + "atk:" + myTower.ATK.ToString();
-        }
-        public void UnlockSolider()
-        {
-
         }
         public void MaintainSolidersPosition()
         {

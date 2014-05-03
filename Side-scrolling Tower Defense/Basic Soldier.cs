@@ -93,7 +93,10 @@ namespace Side_scrolling_Tower_Defense
 
         public Label Show() /*--暫且用Label代替圖片，本區塊設定label樣式--*/
         {
-            Image.Margin = new System.Windows.Thickness(800,85,0,0); //Player士兵出生位置
+            if(isEnemy)
+                Image.Margin = new System.Windows.Thickness(0,85,800,0); //AI士兵出生位置
+            else
+                Image.Margin = new System.Windows.Thickness(800,85,0,0); //Player士兵出生位置
             Image.Height = 50;
             Image.Width = 50;
             Image.Background = System.Windows.Media.Brushes.Gold;
@@ -142,11 +145,13 @@ namespace Side_scrolling_Tower_Defense
             if (isEnemy)
             {
                 POSITION -= SPEED;
+                Image.Content = HP.ToString();
                 Image.Margin = new Thickness(Image.Margin.Left + 0.3, Image.Margin.Top, Image.Margin.Right - 0.3, Image.Margin.Bottom);
             }
             else
             {
                 POSITION += SPEED;
+                Image.Content = HP.ToString();
                 Image.Margin = new Thickness(Image.Margin.Left - 0.3, Image.Margin.Top, Image.Margin.Right + 0.3, Image.Margin.Bottom);
             }
         }
