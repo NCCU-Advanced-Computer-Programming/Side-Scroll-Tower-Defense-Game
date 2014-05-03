@@ -14,7 +14,7 @@ namespace Side_scrolling_Tower_Defense
 //		private int _towerUpgradePrice;
 
         //Label[] soldier = new Label[1000]; 
-        Soldier[] soldier = new Soldier[1000];   //場上最多只能有1000士兵
+        public Soldier[] soldier = new Soldier[1000];   //場上最多只能有1000士兵
         int _soliderOnField = 0;                 //場上的我方士兵數(?) <--怪怪
 
 
@@ -24,7 +24,7 @@ namespace Side_scrolling_Tower_Defense
         }
         public void GenerateSolider(Panel grid1){
             // new Soldier?
-            soldier[_soliderOnField] = new Soldier(100,10,1,1,true);
+            soldier[_soliderOnField] = new Soldier(100,10,1, 0.3,true);
             grid1.Children.Add(soldier[_soliderOnField].Show());
             _soliderOnField++;
         }

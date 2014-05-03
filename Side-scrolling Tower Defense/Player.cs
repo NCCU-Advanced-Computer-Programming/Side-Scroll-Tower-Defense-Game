@@ -10,13 +10,12 @@ namespace Side_scrolling_Tower_Defense
 {
     class Player
     {
-    
 		private Tower myTower= new Tower(100,10,10,1);
 		private int _money;
 		private int _towerUpgradePrice;
 
         //Label[] soldier = new Label[1000]; 
-        Soldier[] soldier = new Soldier[1000];   //場上最多只能有1000士兵
+        public Soldier[] soldier = new Soldier[1000];   //場上最多只能有1000士兵
         int _soliderOnField = 0;                 //場上的我方士兵數(?) <--怪怪
 
         public int MONEY{
@@ -37,7 +36,7 @@ namespace Side_scrolling_Tower_Defense
         }
         public void GenerateSolider(Panel grid1){
             // new Soldier?
-            soldier[_soliderOnField] = new Soldier(100,10,1,1,false); //血 攻 距 速 敵
+            soldier[_soliderOnField] = new Soldier(100,10,1,0.3,false); //血 攻 距 速 敵
             grid1.Children.Add(soldier[_soliderOnField].Show());
             _soliderOnField++;
         }

@@ -51,10 +51,10 @@ namespace Side_scrolling_Tower_Defense
           //  while (enemySoldier[i] != NULL)/*find the nearest Soldier*/
           //  {
           //     if (enemySoldier[i].POSITION <= TARGET.POSITION)
-           //         TARGET = enemySoldier[i];
+          //         TARGET = enemySoldier[i];
           //  }
             
-            //TARGET.HP -= this.atk;/*attack the nearst one*/
+          //  TARGET.HP -= this.atk;/*attack the nearst one*/
 
         }
         public void GetHurt(int quaintity)
