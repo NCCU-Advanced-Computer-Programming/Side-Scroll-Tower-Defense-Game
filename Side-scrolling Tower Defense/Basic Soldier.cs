@@ -129,6 +129,7 @@ namespace Side_scrolling_Tower_Defense
             if (nearest <= this.RANGE)
             {
                 Enemy[target].HP -= this.ATK;
+                Enemy[target].LifeCheck();
                 return true;
             }
             return false;
@@ -141,7 +142,6 @@ namespace Side_scrolling_Tower_Defense
                 Enemy.GetHurt(ATK);
         }
 
-
         public void Move(List<Soldier> enemyS)
         {
             if (!Attack(enemyS))
@@ -151,7 +151,6 @@ namespace Side_scrolling_Tower_Defense
                     Image.Margin = new Thickness(Image.Margin.Left + SPEED, Image.Margin.Top, Image.Margin.Right - SPEED, Image.Margin.Bottom);
                     POSITION = Image.Margin.Right + Image.Width / 2; //POSITION = 方塊中點位置(右邊緣 + 寬度的一半)
                    // Image.Content = POSITION.ToString();
-
                 }
                 else
                 {
@@ -161,7 +160,6 @@ namespace Side_scrolling_Tower_Defense
                 }
             }
             Image.Content = HP.ToString();//顯示血量
-
         }
 
         //Die()
@@ -169,9 +167,14 @@ namespace Side_scrolling_Tower_Defense
         {
             //C#使用記憶體自動回收
             if (HP <= 0)
+            {
+                Image.Visibility = Visibility.Hidden;
                 return null;
+            }
             else
+            {
                 return this;
+            }       
         }
 
         public virtual void Skill()
