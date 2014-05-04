@@ -15,7 +15,9 @@ namespace Side_scrolling_Tower_Defense
 		private int _towerUpgradePrice;
 
         //Label[] soldier = new Label[1000]; 
-        public Soldier[] soldier = new Soldier[1000];   //場上最多只能有1000士兵
+        //       public Soldier[] soldier = new Soldier[1000];   //場上最多只能有1000士兵
+
+        public List<Soldier> soldier = new List<Soldier>();   
         int _soliderOnField = 0;                 //場上的我方士兵數(?) <--怪怪
 
         public int MONEY{
@@ -36,7 +38,7 @@ namespace Side_scrolling_Tower_Defense
         }
         public void GenerateSolider(Panel grid1){
             // new Soldier?
-            soldier[_soliderOnField] = new Soldier(100,10,1,0.3,false); //血 攻 距 速 敵
+            soldier.Add(new Soldier(100, 8, 50,0.3, false));
             grid1.Children.Add(soldier[_soliderOnField].Show());
             _soliderOnField++;
         }
@@ -60,12 +62,18 @@ namespace Side_scrolling_Tower_Defense
             //顯示
             lb.Content = "level:" + myTower.TowerLevel.ToString() + '\n' + "hp:" + myTower.HP.ToString() + '\n' + "range:" + myTower.RANGE.ToString() + '\n' + "atk:" + myTower.ATK.ToString();
         }
-        public void MaintainSolidersPosition()
+        public void MaintainSolidersPosition(List<Soldier> enemyS)
         {
             for (int i = 0; i < _soliderOnField; i++)
             {
                 // 每個士兵該往前的往前，該打的打
-                soldier[i].Move();
+                soldier[i].Move(enemyS);
+                //Checking life
+                if (soldier[i].HP <= 0)
+                {
+                    soldier.RemoveAt(i);
+                    _soliderOnField--;
+                }
             }
         }
 	}

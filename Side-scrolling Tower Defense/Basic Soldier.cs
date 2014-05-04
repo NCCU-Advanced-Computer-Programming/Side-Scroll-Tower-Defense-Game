@@ -101,18 +101,22 @@ namespace Side_scrolling_Tower_Defense
         }
 
         //單體攻擊敵方士兵_1
-        public void Attack(Soldier Enemy)
+        public bool Attack(Soldier Enemy)
         {
             if (Enemy.isEnemy && (Enemy.POSITION - this.POSITION) <= this.RANGE)
+            {
                 Enemy.HP -= ATK;
+                return true;
+            }
+            return false;
         }
 
         //單體攻擊敵方士兵_2
-        public void Attack(Soldier[] Enemy)
+        public bool Attack(List<Soldier> Enemy)
         {
             int target = Int32.MaxValue;
             double nearest = double.MaxValue;
-            for (int i = 0; i < Enemy.Length; i++)
+            for (int i = 0; i < Enemy.Count; i++)
             {
                 double distance = Enemy[i].POSITION - this.POSITION;
                 if (nearest > distance && distance >= 0)
@@ -122,32 +126,40 @@ namespace Side_scrolling_Tower_Defense
                 }
             }
             if (nearest <= this.RANGE)
+            {
                 Enemy[target].HP -= this.ATK;
+           //     Enemy[target].LifeCheck();
+                return true;
+            }
+            return false;
         }
 
         //攻擊敵方塔
         public void Attack(Tower Enemy)
         {
-            if (1000 - this.POSITION <= this.RANGE)
+            if (800 - this.POSITION <= this.RANGE)
                 Enemy.GetHurt(ATK);
         }
 
 
-        public void Move()
+        public void Move(List<Soldier> enemyS)
         {
-
-            if (isEnemy)
+            if (!Attack(enemyS))
             {
-                POSITION -= SPEED;
-                Image.Content = Image.Margin.Right.ToString();
-                Image.Margin = new Thickness(Image.Margin.Left + SPEED, Image.Margin.Top, Image.Margin.Right - SPEED, Image.Margin.Bottom);
-            }
-            else
-            {
-                POSITION += SPEED;
-                Image.Content = Image.Margin.Left.ToString();
-                //Image.Content = HP.ToString();
-                Image.Margin = new Thickness(Image.Margin.Left - SPEED, Image.Margin.Top, Image.Margin.Right + SPEED, Image.Margin.Bottom);
+                if (isEnemy)
+                {
+              //      Image.Content = Image.Margin.Right.ToString();
+                    Image.Content = HP.ToString();
+                    Image.Margin = new Thickness(Image.Margin.Left + SPEED, Image.Margin.Top, Image.Margin.Right - SPEED, Image.Margin.Bottom);
+                    POSITION = (Image.Margin.Left-Image.Margin.Right)/2;
+                }
+                else
+                {
+                    //Image.Content = Image.Margin.Right.ToString();
+                    Image.Content = HP.ToString();
+                    Image.Margin = new Thickness(Image.Margin.Left - SPEED, Image.Margin.Top, Image.Margin.Right + SPEED, Image.Margin.Bottom);
+                    POSITION = (Image.Margin.Left - Image.Margin.Right) / 2;
+                }
             }
         }
 
