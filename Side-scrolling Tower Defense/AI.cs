@@ -24,20 +24,26 @@ namespace Side_scrolling_Tower_Defense
         {
            aiTower = new Tower(100, 10, 10, 1);
         }
+        public void Intelligence(List<Soldier> enemyS, Grid grid1, Label lb){ //智慧產兵 XDDD 目前只會rand產兵
+            Random rand = new Random();
+            if (rand.Next(1000) <= 10) //千分之一產兵機率
+            {
+                GenerateSolider(grid1);
+            }
+            if (rand.Next(1000) <= 5)
+            {
+                UpgradeTower(lb);
+            }
+            MaintainSolidersPosition(enemyS);
+        }
         public void GenerateSolider(Panel grid1){
             // new Soldier?
-            soldier.Add( new Soldier(100,10,50,0.3,true));
+            soldier.Add( new Soldier(100,1,50,0.3,true));
             grid1.Children.Add(soldier[_soliderOnField].Show());
             _soliderOnField++;
         }
 
 		public void UpgradeTower(Label lb){
-            //玩家花錢升級塔，塔等級提升，下級所需金費增加
- //           _money -= _towerUpgradePrice;
-            //myTower.TowerLevel++;
-
-            //所有數值暫時都*2
- //           _towerUpgradePrice = _towerUpgradePrice * 2;
            aiTower.Upgrade('t',aiTower.TowerLevel);
            aiTower.Upgrade('h',aiTower.HP +1);
            aiTower.Upgrade('a',aiTower.ATK + 2);

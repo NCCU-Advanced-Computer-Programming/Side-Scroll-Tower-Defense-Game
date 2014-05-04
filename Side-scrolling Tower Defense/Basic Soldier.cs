@@ -103,7 +103,8 @@ namespace Side_scrolling_Tower_Defense
         //單體攻擊敵方士兵_1
         public bool Attack(Soldier Enemy)
         {
-            if (Enemy.isEnemy && (Enemy.POSITION - this.POSITION) <= this.RANGE)
+            //兩個兵陣營不相同 && 兩兵間距離小於攻擊範圍
+            if ((Enemy.isEnemy!=this.isEnemy) && Math.Abs(Enemy.POSITION - this.POSITION) <= this.RANGE)
             {
                 Enemy.HP -= ATK;
                 return true;
@@ -118,7 +119,7 @@ namespace Side_scrolling_Tower_Defense
             double nearest = double.MaxValue;
             for (int i = 0; i < Enemy.Count; i++)
             {
-                double distance = Enemy[i].POSITION - this.POSITION;
+                double distance = Math.Abs(Enemy[i].POSITION - this.POSITION);
                 if (nearest > distance && distance >= 0)
                 {
                     nearest = distance;
@@ -128,7 +129,6 @@ namespace Side_scrolling_Tower_Defense
             if (nearest <= this.RANGE)
             {
                 Enemy[target].HP -= this.ATK;
-           //     Enemy[target].LifeCheck();
                 return true;
             }
             return false;
@@ -148,19 +148,20 @@ namespace Side_scrolling_Tower_Defense
             {
                 if (isEnemy)
                 {
-              //      Image.Content = Image.Margin.Right.ToString();
-                    Image.Content = HP.ToString();
                     Image.Margin = new Thickness(Image.Margin.Left + SPEED, Image.Margin.Top, Image.Margin.Right - SPEED, Image.Margin.Bottom);
-                    POSITION = (Image.Margin.Left-Image.Margin.Right)/2;
+                    POSITION = Image.Margin.Right + Image.Width / 2; //POSITION = 方塊中點位置(右邊緣 + 寬度的一半)
+                   // Image.Content = POSITION.ToString();
+
                 }
                 else
                 {
-                    //Image.Content = Image.Margin.Right.ToString();
-                    Image.Content = HP.ToString();
                     Image.Margin = new Thickness(Image.Margin.Left - SPEED, Image.Margin.Top, Image.Margin.Right + SPEED, Image.Margin.Bottom);
-                    POSITION = (Image.Margin.Left - Image.Margin.Right) / 2;
+                    POSITION = Image.Margin.Right + Image.Width / 2; //POSITION = 方塊中點位置(右邊緣 + 寬度的一半)
+              //      Image.Content = POSITION.ToString();
                 }
             }
+            Image.Content = HP.ToString();//顯示血量
+
         }
 
         //Die()

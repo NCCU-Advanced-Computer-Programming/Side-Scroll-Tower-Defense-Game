@@ -36,7 +36,7 @@ namespace Side_scrolling_Tower_Defense
             timer.Start();
 
           //  reset();
-            ai.GenerateSolider(grid1);
+     //       ai.GenerateSolider(grid1);
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -46,7 +46,8 @@ namespace Side_scrolling_Tower_Defense
 
             //移動Player的兵
             player.MaintainSolidersPosition(ai.soldier);
-            ai.MaintainSolidersPosition(player.soldier);
+            ai.Intelligence(player.soldier, grid1, lbEenemyTower);
+            //ai.MaintainSolidersPosition(player.soldier);
             //lbMyTower.Margin = new Thickness(lbMyTower.Margin.Left - 0.3, lbMyTower.Margin.Top, lbMyTower.Margin.Right + 0.3, lbMyTower.Margin.Bottom);
 
         } 
@@ -55,7 +56,7 @@ namespace Side_scrolling_Tower_Defense
         {
             if (player.MONEY > player.UPGRADEPRICE)
             {
-                player.UpgradeTower(lbTowerProperty);
+                player.UpgradeTower(lbMyTower);
             }
         }
         #region 產兵的buttonClick function

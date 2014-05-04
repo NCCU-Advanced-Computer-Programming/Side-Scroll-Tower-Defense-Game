@@ -11,11 +11,9 @@
         <Button x:Name="btnSoldier4" Content="兵4&#xD;&#xA;$500" Height="44" Margin="626,234,209,0" VerticalAlignment="Top" IsEnabled="False"/>
         <Button x:Name="btnUpgradeTower" Content="升級塔" HorizontalAlignment="Left" Height="44" Margin="798,234,0,0" VerticalAlignment="Top" Width="71" Click="btnUpgradeTower_Click"/>
         <Label x:Name="lbMoney" Content="Label" HorizontalAlignment="Left" Height="49" Margin="766,18,0,0" VerticalAlignment="Top" Width="104"/>
-        <Label x:Name="lbTowerProperty" Content="Label" HorizontalAlignment="Left" Height="102" Margin="637,72,0,0" VerticalAlignment="Top" Width="147" BorderBrush="#FF270B0B"/>
         <Button x:Name="btnUnlock1" Content="$1000" HorizontalAlignment="Left" Height="19" Margin="467,283,0,0" VerticalAlignment="Top" Click="btnUnlock1_Click" Width="80"/>
         <Button x:Name="btnUnlock3" Content="$3000" HorizontalAlignment="Left" Height="19" Margin="626,283,0,0" VerticalAlignment="Top" Width="79" Click="btnUnlock3_Click"/>
         <Button x:Name="btnUnlock2" Content="$2000" HorizontalAlignment="Left" Height="19" Margin="547,283,0,0" VerticalAlignment="Top" Width="79" Click="btnUnlock2_Click"/>
-        <Label x:Name="lbTowerProperty_Copy" Content="Label" HorizontalAlignment="Left" Height="102" Margin="110,72,0,0" VerticalAlignment="Top" Width="147" BorderBrush="#FF270B0B"/>
 
     </Grid>
 </Window>

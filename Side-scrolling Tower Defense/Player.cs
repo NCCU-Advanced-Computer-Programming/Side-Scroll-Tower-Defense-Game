@@ -38,7 +38,7 @@ namespace Side_scrolling_Tower_Defense
         }
         public void GenerateSolider(Panel grid1){
             // new Soldier?
-            soldier.Add(new Soldier(100, 8, 50,0.3, false));
+            soldier.Add(new Soldier(100, 1, 50,0.3, false));
             grid1.Children.Add(soldier[_soliderOnField].Show());
             _soliderOnField++;
         }
