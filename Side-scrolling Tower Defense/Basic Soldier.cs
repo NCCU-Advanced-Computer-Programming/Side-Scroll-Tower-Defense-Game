@@ -19,6 +19,7 @@ namespace Side_scrolling_Tower_Defense
         private double _speed;
         private double _axis;
         private int _attackspeed;
+        private int _price;
         public bool isEnemy = false;
         public Label Image;
 
@@ -55,6 +56,11 @@ namespace Side_scrolling_Tower_Defense
             get { return _axis; }
             set { _axis = value; }
         }
+        public int PRICE
+        {
+            get { return _price; }
+            set { _price = value; }
+        }
         #endregion
 
         //Constructor
@@ -67,9 +73,10 @@ namespace Side_scrolling_Tower_Defense
             SPEED = 1;
             AS = 100;
             POSITION = 0;
+            PRICE = 0;
             Image = new Label();
         }
-        public Soldier(int hp, int atk, int range, double speed, bool enemy)
+        public Soldier(int hp, int atk, int range, double speed, bool enemy, int price)
         {
             HP = hp;
             ATK = atk;
@@ -77,6 +84,7 @@ namespace Side_scrolling_Tower_Defense
             SPEED = speed;
             isEnemy = enemy;
             AS = 100;
+            _price = price;
             Image = new Label();
 
             if (isEnemy)
@@ -88,15 +96,18 @@ namespace Side_scrolling_Tower_Defense
 
         //Method
 
-        public Label Show() /*--暫且用Label代替圖片，本區塊設定label樣式--*/
+        /*--暫且用Label代替圖片，本區塊設定label樣式--*/
+        public Label Show(int height, int width, System.Windows.Media.SolidColorBrush Color)
         {
             if(isEnemy)
-                Image.Margin = new System.Windows.Thickness(0,85,800,0); //AI士兵出生位置
+                Image.Margin = new System.Windows.Thickness(0,0,800,15); //AI士兵出生位置
             else
-                Image.Margin = new System.Windows.Thickness(800,85,0,0); //Player士兵出生位置
-            Image.Height = 50;
-            Image.Width = 50;
-            Image.Background = System.Windows.Media.Brushes.Gold;
+                Image.Margin = new System.Windows.Thickness(800,0,0,15); //Player士兵出生位置
+            Image.Height = height;
+            Image.Width = width;
+            Image.Background = Color;
+            Image.VerticalAlignment = VerticalAlignment.Bottom;
+ //           Image.Opacity = 0.7;
             Image.BorderBrush = System.Windows.Media.Brushes.Black;
             Image.BorderThickness = new Thickness(1, 1, 1, 1);
 
@@ -179,6 +190,7 @@ namespace Side_scrolling_Tower_Defense
             //C#使用記憶體自動回收
             if (HP <= 0)
             {
+               //player
                 Image.Visibility = Visibility.Hidden;
                 return null;
             }

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows.Controls;
 namespace Side_scrolling_Tower_Defense
 {
     class Tower
     {
         /*attr*/
+        private int maxHP; // 定值，不會因受攻而減少
         private int hp;
         private int atk;
         private int range;
@@ -16,6 +17,8 @@ namespace Side_scrolling_Tower_Defense
         private double _axis;
         private int _attackspeed;
         private int counter=0;
+        private bool isCrash = false;
+        Label lbTowerHP;
         
         
         #region get & set
@@ -24,10 +27,15 @@ namespace Side_scrolling_Tower_Defense
             get { return _axis; }
             set { _axis = value; }
         }
-        public int HP 
+        public int HP
         {
             get { return hp; }
             set { hp = value; }
+        }
+        public int MAXHP
+        {
+            get { return maxHP; }
+            set { maxHP = value; }
         }
         public int ATK
         {
@@ -44,21 +52,30 @@ namespace Side_scrolling_Tower_Defense
             get { return towerLevel; }
             set { towerLevel = value; }
         }
+        public bool CRASHED
+        {
+            get { return isCrash; }
+            set { isCrash = value; }
+        }
         #endregion
 
         /*method*/
-        public Tower(int _hp, int _atk, int _range, int _towerLevel, bool isPlayer)
+        public Tower(int _hp, int _atk, int _range, int _towerLevel, bool isPlayer, Label _lbHP)
         {
+            maxHP = _hp;
             hp = _hp;
             atk = _atk;
             range = _range;
             towerLevel = _towerLevel;
             _attackspeed = 100;//單位是10毫秒
+            lbTowerHP = _lbHP;
+
             if (isPlayer)
                 _axis = 40;
             else
                 _axis = 800;
 
+            lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
         }
         public void Attack(List<Soldier> enemyS)
         {
@@ -81,17 +98,18 @@ namespace Side_scrolling_Tower_Defense
                     enemyS[target].HP -= this.ATK;
                     enemyS[target].LifeCheck();
                 }
-             //   return true;
             }
         }
         public void GetHurt(int quaintity)
         {
             hp -= quaintity;
+            lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
             if (hp <= 0)
                 Crash();
         }
         public void Crash()
         {
+            CRASHED = true;
            // MessageBox.Show("end game!");
             
             // display the animation of crashing
@@ -100,7 +118,11 @@ namespace Side_scrolling_Tower_Defense
         public void Upgrade(char item, int quantity)
         {
             if (item == 'h')
+            {
+                maxHP = quantity;
                 hp = quantity;
+                lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
+            }
             if (item == 'a')
                 atk = quantity;
             if (item == 'r')
@@ -118,12 +140,13 @@ namespace Side_scrolling_Tower_Defense
        //     }
         }
 
+        /*
         public Label ReturnLable()
         {
             Label ImageTower = new Label();
             return ImageTower;
         }
-
+        */
 
     }
 }

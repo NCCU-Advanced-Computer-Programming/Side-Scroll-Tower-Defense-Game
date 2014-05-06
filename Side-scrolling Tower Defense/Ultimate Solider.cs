@@ -25,7 +25,7 @@ namespace Side_scrolling_Tower_Defense
 
         //hp=? , atk=? , range = ? , speed =? 
         public HERO()
-            : base(500,15,1,1,false)
+            : base(500,15,1,1,false, 0)
         {
             //依玩家選取英雄類型，調整屬性數值
         }
@@ -68,7 +68,7 @@ namespace Side_scrolling_Tower_Defense
 
         //hp=? , atk=? , range = ? , speed =? 
         public BOSS()
-            : base(500, 15, 1, 1, true)
+            : base(500, 15, 1, 1, true, 0)
         {
             //依關卡難度改變
         }

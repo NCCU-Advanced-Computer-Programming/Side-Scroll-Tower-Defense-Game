@@ -10,7 +10,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Saber(bool isEnemy)
-            : base(100, 10, 1, 5, isEnemy)
+            : base(100, 10, 1, 5, isEnemy, 0)
         {
 
         }
@@ -35,7 +35,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Archer(bool isEnemy)
-            : base(60, 6, 20, 3, isEnemy)
+            : base(60, 6, 20, 3, isEnemy, 0)
         {
 
         }
@@ -51,7 +51,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Caster(bool isEnemy)
-            : base(40, 15, 10, 4, isEnemy)
+            : base(40, 15, 10, 4, isEnemy, 0)
         {
 
         }
@@ -67,7 +67,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Berserker(bool isEnemy)
-            : base(200, 20, 1, 1, isEnemy)
+            : base(200, 20, 1, 1, isEnemy, 0)
         {
 
         }
@@ -83,7 +83,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Rider(bool isEnemy)
-            : base(100, 7, 2, 10, isEnemy)
+            : base(100, 7, 2, 10, isEnemy, 0)
         {
 
         }
@@ -100,7 +100,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Lancer(bool isEnemy)
-            : base(120, 8, 5, 5, isEnemy)
+            : base(120, 8, 5, 5, isEnemy,0)
         {
 
         }
@@ -115,7 +115,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Assassin(bool isEnemy)
-            : base(30, 40, 1, 10, isEnemy)
+            : base(30, 40, 1, 10, isEnemy,0)
         {
 
         }

@@ -23,34 +23,43 @@ namespace Side_scrolling_Tower_Defense
     public partial class MainWindow : Window
     {
         DispatcherTimer timer;
- //       int _timeCount = 0;
-        Player player = new Player();
-        AI ai = new AI();
+        Player player ;
+        AI ai ;
  
         public MainWindow()
         {
             InitializeComponent();
+            player = new Player(lbMoney, lbMyTower_hp);
+            ai = new AI(lbEnemyTower_hp);
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Tick += timer_Tick;
             timer.Start();
 
           //  reset();
-     //       ai.GenerateSolider(grid1);
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            player.MONEY += 1;
+            player.MoneyGain();
             lbMoney.Content ="$ "+ player.MONEY.ToString();
 
-            //移動Player的兵
-            player.MaintainSolidersPosition(ai.soldier, ai.aiTower);
-            ai.Intelligence(player.soldier, grid1, lbEenemyTower, player.myTower);
-            ai.aiTower.Attack(player.soldier);
-            player.myTower.Attack(ai.soldier);
-            //ai.MaintainSolidersPosition(player.soldier);
-            //lbMyTower.Margin = new Thickness(lbMyTower.Margin.Left - 0.3, lbMyTower.Margin.Top, lbMyTower.Margin.Right + 0.3, lbMyTower.Margin.Bottom);
+            player.MaintainSolidersPosition(ai.soldier, ai.aiTower);//移動Player的兵
+            ai.Intelligence(player.soldier, grid1, lbEenemyTower, player.myTower);//AI智慧操作
+            
+            ai.aiTower.Attack(player.soldier);//塔要隨時判斷是否有攻擊對象，
+            player.myTower.Attack(ai.soldier);//有就攻擊
+
+            if (player.myTower.CRASHED)
+            {
+                MessageBox.Show("YOU LOSE !!!!!!");
+                timer.Stop();
+            }
+            if (ai.aiTower.CRASHED)
+            {
+                MessageBox.Show("YOU WIN !!!!!!");
+                timer.Stop();
+            }
 
         } 
         
@@ -61,13 +70,43 @@ namespace Side_scrolling_Tower_Defense
                 player.UpgradeTower(lbMyTower);
             }
         }
+
         #region 產兵的buttonClick function
         private void btnSoldier1_Click(object sender, RoutedEventArgs e)
         {
             if (player.MONEY > 50)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1);
+                player.GenerateSolider(grid1, 1, 50);
                 player.MONEY -= 50;//第一種兵 $50
+                lbMoney.Content = "$ " + player.MONEY.ToString();
+            }
+        }
+        private void btnSoldier2_Click(object sender, RoutedEventArgs e)
+        {
+            if (player.MONEY > 100)   //錢夠才能產兵
+            {
+                player.GenerateSolider(grid1, 2, 100);
+                player.MONEY -= 100;
+                lbMoney.Content = "$ " + player.MONEY.ToString();
+            }
+        }
+
+        private void btnSoldier3_Click(object sender, RoutedEventArgs e)
+        {
+            if (player.MONEY > 300)   //錢夠才能產兵
+            {
+                player.GenerateSolider(grid1, 3, 300);
+                player.MONEY -= 300;
+                lbMoney.Content = "$ " + player.MONEY.ToString();
+            }
+        }
+
+        private void btnSoldier4_Click(object sender, RoutedEventArgs e)
+        {
+            if (player.MONEY > 500)   //錢夠才能產兵
+            {
+                player.GenerateSolider(grid1, 4, 500);
+                player.MONEY -= 500;
                 lbMoney.Content = "$ " + player.MONEY.ToString();
             }
         }
