@@ -46,7 +46,7 @@ namespace Side_scrolling_Tower_Defense
             get { return _speed; }
             set { _speed = value; }
         }
-        public int AS
+        public int APS // attack per second
         {
             get { return _attackspeed; }
             set { _attackspeed = value; }
@@ -71,11 +71,12 @@ namespace Side_scrolling_Tower_Defense
             ATK = 1;
             RANGE = 1;
             SPEED = 1;
-            AS = 100;
+            APS = 100;
             POSITION = 0;
             PRICE = 0;
             Image = new Label();
         }
+
         public Soldier(int hp, int atk, int range, double speed, bool enemy, int price)
         {
             HP = hp;
@@ -83,15 +84,14 @@ namespace Side_scrolling_Tower_Defense
             RANGE = range;
             SPEED = speed;
             isEnemy = enemy;
-            AS = 100;
-            _price = price;
+            APS = 100;
+            PRICE = price;
             Image = new Label();
 
             if (isEnemy)
                 POSITION = 1000;
             else
                 POSITION = 0;
-
         }
 
         //Method
@@ -121,6 +121,7 @@ namespace Side_scrolling_Tower_Defense
             if ((Enemy.isEnemy!=this.isEnemy) && Math.Abs(Enemy.POSITION - this.POSITION) <= this.RANGE)
             {
                 Enemy.HP -= ATK;
+                Enemy.LifeCheck();
                 return true;
             }
             return false;
@@ -131,10 +132,11 @@ namespace Side_scrolling_Tower_Defense
         {
             int target = Int32.MaxValue;
             double nearest = double.MaxValue;
+
             for (int i = 0; i < Enemy.Count; i++)
             {
                 double distance = Math.Abs(Enemy[i].POSITION - this.POSITION);
-                if (nearest > distance && distance >= 0)
+                if (nearest > distance)
                 {
                     nearest = distance;
                     target = i;
@@ -142,7 +144,7 @@ namespace Side_scrolling_Tower_Defense
             }
             if (nearest <= this.RANGE )
             {
-                if ((++counter % _attackspeed) == 0)
+                if ((++counter % APS) == 0)
                 {
                     counter = 0;
                     Enemy[target].HP -= this.ATK;
@@ -182,6 +184,7 @@ namespace Side_scrolling_Tower_Defense
                 }
             }
             Image.Content = HP.ToString();//顯示血量
+            //Image.Content = POSITION + " \n" + HP;
         }
 
         //Die()

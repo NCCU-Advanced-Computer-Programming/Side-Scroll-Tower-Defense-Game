@@ -56,3 +56,13 @@ C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\o
 C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.g.resources
 C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side_scrolling_Tower_Defense.Properties.Resources.resources
 C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csproj.GenerateResource.Cache
+P:\Programming Source\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe
+P:\Programming Source\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.pdb
+P:\Programming Source\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csprojResolveAssemblyReference.cache
+P:\Programming Source\Project_1\Side-scrolling Tower Defense\obj\Debug\MainWindow.baml
+P:\Programming Source\Project_1\Side-scrolling Tower Defense\obj\Debug\MainWindow.g.cs
+P:\Programming Source\Project_1\Side-scrolling Tower Defense\obj\Debug\App.g.cs
+P:\Programming Source\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense_MarkupCompile.cache
+P:\Programming Source\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.g.resources
+P:\Programming Source\Project_1\Side-scrolling Tower Defense\obj\Debug\Side_scrolling_Tower_Defense.Properties.Resources.resources
+P:\Programming Source\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csproj.GenerateResource.Cache
