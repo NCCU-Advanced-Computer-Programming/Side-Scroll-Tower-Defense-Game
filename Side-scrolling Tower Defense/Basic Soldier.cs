@@ -89,7 +89,7 @@ namespace Side_scrolling_Tower_Defense
             Image = new Label();
 
             if (isEnemy)
-                POSITION = 0;
+                POSITION = 1000;
             else
                 POSITION = 0;
         }
