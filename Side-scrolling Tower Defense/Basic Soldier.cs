@@ -89,9 +89,9 @@ namespace Side_scrolling_Tower_Defense
             Image = new Label();
 
             if (isEnemy)
-                POSITION = 1000;
-            else
                 POSITION = 0;
+            else
+                POSITION = 1000;
         }
 
         //Method
@@ -173,13 +173,13 @@ namespace Side_scrolling_Tower_Defense
                 if (isEnemy)
                 {
                     Image.Margin = new Thickness(Image.Margin.Left + SPEED, Image.Margin.Top, Image.Margin.Right - SPEED, Image.Margin.Bottom);
-                    POSITION = Image.Margin.Right + Image.Width / 2; //POSITION = 方塊中點位置(右邊緣 + 寬度的一半)
+                    POSITION = Image.Margin.Left + Image.Width / 2; //POSITION = 方塊中點位置(右邊緣 + 寬度的一半)
                    // Image.Content = POSITION.ToString();
                 }
                 else
                 {
                     Image.Margin = new Thickness(Image.Margin.Left - SPEED, Image.Margin.Top, Image.Margin.Right + SPEED, Image.Margin.Bottom);
-                    POSITION = Image.Margin.Right + Image.Width / 2; //POSITION = 方塊中點位置(右邊緣 + 寬度的一半)
+                    POSITION = Image.Margin.Left + Image.Width / 2; //POSITION = 方塊中點位置(右邊緣 + 寬度的一半)
               //      Image.Content = POSITION.ToString();
                 }
             }
