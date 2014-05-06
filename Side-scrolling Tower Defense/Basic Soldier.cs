@@ -18,10 +18,13 @@ namespace Side_scrolling_Tower_Defense
         private int _range;
         private double _speed;
         private double _axis;
-        private double _attackspeed;
+        private int _attackspeed;
         public bool isEnemy = false;
         public Label Image;
 
+        private int counter = 0;//控制是否攻擊，每呼叫一次counter++  counter % AS==0 就攻擊
+
+        #region get & set
         public int HP
         {
             get { return _hp; }
@@ -42,7 +45,7 @@ namespace Side_scrolling_Tower_Defense
             get { return _speed; }
             set { _speed = value; }
         }
-        public double AS
+        public int AS
         {
             get { return _attackspeed; }
             set { _attackspeed = value; }
@@ -52,7 +55,7 @@ namespace Side_scrolling_Tower_Defense
             get { return _axis; }
             set { _axis = value; }
         }
-
+        #endregion
 
         //Constructor
         public Soldier()
@@ -62,7 +65,7 @@ namespace Side_scrolling_Tower_Defense
             ATK = 1;
             RANGE = 1;
             SPEED = 1;
-            AS = 1.0;
+            AS = 100;
             POSITION = 0;
             Image = new Label();
         }
@@ -73,7 +76,7 @@ namespace Side_scrolling_Tower_Defense
             RANGE = range;
             SPEED = speed;
             isEnemy = enemy;
-            AS = 1.0;
+            AS = 100;
             Image = new Label();
 
             if (isEnemy)
@@ -126,25 +129,33 @@ namespace Side_scrolling_Tower_Defense
                     target = i;
                 }
             }
-            if (nearest <= this.RANGE)
+            if (nearest <= this.RANGE )
             {
-                Enemy[target].HP -= this.ATK;
-                Enemy[target].LifeCheck();
+                if ((++counter % _attackspeed) == 0)
+                {
+                    counter = 0;
+                    Enemy[target].HP -= this.ATK;
+                    Enemy[target].LifeCheck();
+                }
+                return true;
+            }
+            return false;
+        }
+ 
+        //攻擊敵方塔
+        public bool Attack(Tower Enemy)
+        {
+            if (Math.Abs(Enemy.POSITION - this.POSITION) <= this.RANGE)
+            {
+                Enemy.GetHurt(ATK);
                 return true;
             }
             return false;
         }
 
-        //攻擊敵方塔
-        public void Attack(Tower Enemy)
+        public void Move(List<Soldier> enemyS, Tower enemyTower)
         {
-            if (800 - this.POSITION <= this.RANGE)
-                Enemy.GetHurt(ATK);
-        }
-
-        public void Move(List<Soldier> enemyS)
-        {
-            if (!Attack(enemyS))
+            if (!Attack(enemyS) && !Attack(enemyTower))
             {
                 if (isEnemy)
                 {

@@ -10,16 +10,16 @@ namespace Side_scrolling_Tower_Defense
 {
     class Player
     {
-		private Tower myTower= new Tower(100,10,10,1);
 		private int _money;
 		private int _towerUpgradePrice;
 
         //Label[] soldier = new Label[1000]; 
         //       public Soldier[] soldier = new Soldier[1000];   //場上最多只能有1000士兵
 
+        public Tower myTower = new Tower(100, 50, 250, 1, true);
         public List<Soldier> soldier = new List<Soldier>();   
         int _soliderOnField = 0;                 //場上的我方士兵數(?) <--怪怪
-
+        #region get & set
         public int MONEY{
             get { return _money; }
             set { _money = value; }
@@ -27,18 +27,19 @@ namespace Side_scrolling_Tower_Defense
         public int UPGRADEPRICE{
             get { return _towerUpgradePrice; }
         }
-		//int unlockSoliderPrice;
+        #endregion
+        //int unlockSoliderPrice;
 
         public Player()
         {
             _money = 1000;      // 初始資金
             _towerUpgradePrice = 100; //塔升級費用
-            myTower = new Tower(100, 10, 10, 1);
+  //          myTower = new Tower(100, 10, 10, 1);
           //  myTower.TowerLevel = 1; // 初始塔等級
         }
         public void GenerateSolider(Panel grid1){
             // new Soldier?
-            soldier.Add(new Soldier(100, 1, 50,0.3, false));
+            soldier.Add(new Soldier(100, 15, 50,0.3, false));
             grid1.Children.Add(soldier[_soliderOnField].Show());
             _soliderOnField++;
         }
@@ -62,12 +63,12 @@ namespace Side_scrolling_Tower_Defense
             //顯示
             lb.Content = "level:" + myTower.TowerLevel.ToString() + '\n' + "hp:" + myTower.HP.ToString() + '\n' + "range:" + myTower.RANGE.ToString() + '\n' + "atk:" + myTower.ATK.ToString();
         }
-        public void MaintainSolidersPosition(List<Soldier> enemyS)
+        public void MaintainSolidersPosition(List<Soldier> enemyS, Tower enemyTower)
         {
             for (int i = 0; i < _soliderOnField; i++)
             {
                 // 每個士兵該往前的往前，該打的打
-                soldier[i].Move(enemyS);
+                soldier[i].Move(enemyS, enemyTower);
                 //Checking life
                 if (soldier[i].HP <= 0)
                 {

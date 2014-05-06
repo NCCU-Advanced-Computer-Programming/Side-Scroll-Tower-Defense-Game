@@ -13,7 +13,17 @@ namespace Side_scrolling_Tower_Defense
         private int atk;
         private int range;
         private int towerLevel;
-
+        private double _axis;
+        private int _attackspeed;
+        private int counter=0;
+        
+        
+        #region get & set
+        public double POSITION
+        {
+            get { return _axis; }
+            set { _axis = value; }
+        }
         public int HP 
         {
             get { return hp; }
@@ -34,35 +44,56 @@ namespace Side_scrolling_Tower_Defense
             get { return towerLevel; }
             set { towerLevel = value; }
         }
+        #endregion
 
         /*method*/
-        public Tower(int _hp, int _atk, int _range, int _towerLevel)
+        public Tower(int _hp, int _atk, int _range, int _towerLevel, bool isPlayer)
         {
             hp = _hp;
             atk = _atk;
             range = _range;
             towerLevel = _towerLevel;
-        }
-        public void Attack()
-        {
-            Soldier TARGET;
-            int i = 0;
-            
-          //  while (enemySoldier[i] != NULL)/*find the nearest Soldier*/
-          //  {
-          //     if (enemySoldier[i].POSITION <= TARGET.POSITION)
-          //         TARGET = enemySoldier[i];
-          //  }
-            
-          //  TARGET.HP -= this.atk;/*attack the nearst one*/
+            _attackspeed = 100;//單位是10毫秒
+            if (isPlayer)
+                _axis = 40;
+            else
+                _axis = 800;
 
+        }
+        public void Attack(List<Soldier> enemyS)
+        {
+            int target = Int32.MaxValue;
+            double nearest = double.MaxValue;
+            for (int i = 0; i < enemyS.Count; i++)
+            {
+                double distance = Math.Abs(enemyS[i].POSITION - this.POSITION);
+                if (nearest > distance && distance >= 0)
+                {
+                    nearest = distance;
+                    target = i;
+                }
+            }
+            if (nearest <= range)
+            {
+                if ((++counter % _attackspeed) == 0)
+                {
+                    counter = 0;
+                    enemyS[target].HP -= this.ATK;
+                    enemyS[target].LifeCheck();
+                }
+             //   return true;
+            }
         }
         public void GetHurt(int quaintity)
         {
             hp -= quaintity;
+            if (hp <= 0)
+                Crash();
         }
         public void Crash()
         {
+           // MessageBox.Show("end game!");
+            
             // display the animation of crashing
             // call game.Game_over();
         }
