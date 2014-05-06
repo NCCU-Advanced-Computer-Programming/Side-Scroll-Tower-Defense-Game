@@ -184,7 +184,6 @@ namespace Side_scrolling_Tower_Defense
                 }
             }
             Image.Content = HP.ToString();//顯示血量
-            //Image.Content = POSITION + " \n" + HP;
         }
 
         //Die()
