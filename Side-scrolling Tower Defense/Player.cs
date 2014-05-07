@@ -32,11 +32,11 @@ namespace Side_scrolling_Tower_Defense
 
         public Player(Label _lbmoney, Label _lbTowerHP)
         {
-            _money = 1000;      // 初始資金
+            _money = 10000;      // 初始資金
             _towerUpgradePrice = 100; //塔升級費用
             moneyGainSpeed = 10;
             lbMoney = _lbmoney;
-            myTower = new Tower(1000, 50, 250, 1, true, _lbTowerHP);
+            myTower = new Tower(10000, 50, 250, 1, true, _lbTowerHP);
         }
         public void MoneyGain()
         {
@@ -46,7 +46,7 @@ namespace Side_scrolling_Tower_Defense
         public void GenerateSolider(Panel grid1, int type, int cost){
             if(type == 1)//一般兵種
             {
-                soldier.Add(new Soldier(100, 15, 50, 0.3, false, cost));
+                soldier.Add(new Soldier(100, 15, 50, 0.5, false, cost));
                 grid1.Children.Add(soldier[_soliderOnField].Show(50, 50, System.Windows.Media.Brushes.Gold));
             }
             else if(type==2)//高攻 血少 慢

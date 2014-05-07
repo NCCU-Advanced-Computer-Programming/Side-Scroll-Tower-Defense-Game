@@ -71,9 +71,9 @@ namespace Side_scrolling_Tower_Defense
             lbTowerHP = _lbHP;
 
             if (isPlayer)
-                _axis = 93;
+                _axis = 75;
             else
-                _axis = 923;
+                _axis = 887;
 
             lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
         }
@@ -110,8 +110,7 @@ namespace Side_scrolling_Tower_Defense
         public void Crash()
         {
             CRASHED = true;
-           // MessageBox.Show("end game!");
-            
+
             // display the animation of crashing
             // call game.Game_over();
         }
@@ -132,7 +131,7 @@ namespace Side_scrolling_Tower_Defense
         }
         public void Skill()
         {
-            int i = 0;
+//            int i = 0;
       //      while (enemySoldier[i] != NULL)
        //     {
         //        if(enemySoldier[i].POSITION <= this.range)

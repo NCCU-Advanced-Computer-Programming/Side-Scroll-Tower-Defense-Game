@@ -22,8 +22,8 @@
                 <Button x:Name="btnUnlock2" Content="$2000" HorizontalAlignment="Left" Height="19" Margin="541,36,0,0" VerticalAlignment="Top" Width="79" Click="btnUnlock2_Click"/>
                 <Button x:Name="btnSpeedUp" Content="&gt;" HorizontalAlignment="Left" Margin="188,21,0,0" VerticalAlignment="Top" Width="38" FontWeight="Bold" FontSize="16" Click="btnSpeedUp_Click"/>
             </Grid>
-            <Label x:Name="lbMyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="871,42,0,0" VerticalAlignment="Top" Width="72"/>
-            <Label x:Name="lbEnemyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="41,41,0,0" VerticalAlignment="Top" Width="72"/>
+            <Label x:Name="lbMyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="848,42,0,0" VerticalAlignment="Top" Width="95"/>
+            <Label x:Name="lbEnemyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="41,41,0,0" VerticalAlignment="Top" Width="95"/>
 
         </Grid>
     </Grid>

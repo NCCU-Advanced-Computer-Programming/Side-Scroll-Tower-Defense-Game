@@ -9,46 +9,56 @@ namespace Side_scrolling_Tower_Defense
 {
     class AI
     {
-//		private int _money;
-//		private int _towerUpgradePrice;
-
-        //Label[] soldier = new Label[1000]; 
- //       public Soldier[] soldier = new Soldier[1000];   //場上最多只能有1000士兵
         public Tower aiTower;
-        public List<Soldier> soldier = new List<Soldier>();   
-
-        int _soliderOnField = 0;                 //場上的我方士兵數(?) <--怪怪
+        public List<Soldier> soldier = new List<Soldier>();
+        int _soliderOnField = 0;
 
 
         public AI(Label _lbTowerHp)
         {
-            aiTower = new Tower(1000, 50, 250, 1, false, _lbTowerHp);
+            aiTower = new Tower(10000, 50, 250, 1, false, _lbTowerHp);
         }
-        public void Intelligence(List<Soldier> enemyS, Grid grid1, Label lb, Tower enemyTower){ //智慧產兵 XDDD 目前只會rand產兵
+        public void Intelligence(List<Soldier> enemyS, Grid grid1, Label lb, Tower enemyTower)
+        { //智慧產兵 XDDD 目前只會rand產兵
             Random rand = new Random();
             int playerTotalPower = enemyS.Sum(s => s.ATK); //取得玩家總戰力
-            if (rand.Next(50000) <= playerTotalPower) //五萬分之敵軍戰力產兵機率
+            int aiTotalPower = soldier.Sum(s => s.ATK);;
+            if (aiTower.HP <= aiTower.MAXHP / 2 && aiTotalPower <= playerTotalPower)
             {
-                int tmp = rand.Next(11);
-                if(tmp <= 6)
+                int tmp = rand.Next(10);
+                if (tmp <= 5)
                     GenerateSolider(grid1, 1, 50);  // 60% 產第1種
-                else if(tmp > 6 && tmp <=8 )
+                else if (tmp > 5 && tmp <= 7)
                     GenerateSolider(grid1, 2, 100); // 20% 產第2種
-                else if(tmp == 9)
+                else if (tmp == 8)
                     GenerateSolider(grid1, 3, 300); // 10% 產第3種
-                else if (tmp == 10)
+                else
                     GenerateSolider(grid1, 4, 500); // 10% 產第4種
-
             }
-
-            //aiTower等級不能比玩家高多於3等
-            if (rand.Next(1000) <= 2 && aiTower.TowerLevel <= enemyTower.TowerLevel+3)
+            else if (rand.Next(50000) <= playerTotalPower + 100) //五萬分之敵軍戰力產兵機率
             {
-                UpgradeTower(lb);
+                int tmp = rand.Next(10);
+                if (tmp <= 5)
+                    GenerateSolider(grid1, 1, 50);  // 60% 產第1種
+                else if (tmp > 5 && tmp <= 7)
+                    GenerateSolider(grid1, 2, 100); // 20% 產第2種
+                else if (tmp == 8)
+                    GenerateSolider(grid1, 3, 300); // 10% 產第3種
+                else if (tmp == 9)
+                    GenerateSolider(grid1, 4, 500); // 10% 產第4種
+            }
+            else
+            {
+               //aiTower等級不能比玩家高多於3等
+                if (rand.Next(1000) <= 2 && aiTower.TowerLevel <= enemyTower.TowerLevel + 3)
+                {
+                    UpgradeTower(lb);
+                }
             }
             MaintainSolidersPosition(enemyS, enemyTower);
         }
-        public void GenerateSolider(Panel grid1, int type, int cost){
+        public void GenerateSolider(Panel grid1, int type, int cost)
+        {
             if (type == 1)//一般兵種
             {
                 soldier.Add(new Soldier(100, 15, 50, 0.3, true, cost));
@@ -77,14 +87,15 @@ namespace Side_scrolling_Tower_Defense
             _soliderOnField++;
         }
 
-		public void UpgradeTower(Label lb){
-           aiTower.Upgrade('t',aiTower.TowerLevel);
-           aiTower.Upgrade('h',aiTower.HP +1);
-           aiTower.Upgrade('a',aiTower.ATK + 2);
-           aiTower.Upgrade('r',aiTower.RANGE+ 3);
-            
+        public void UpgradeTower(Label lb)
+        {
+            aiTower.Upgrade('t', aiTower.TowerLevel);
+            aiTower.Upgrade('h', aiTower.MAXHP + 1);
+            aiTower.Upgrade('a', aiTower.ATK + 2);
+            aiTower.Upgrade('r', aiTower.RANGE + 3);
+
             //顯示
-            lb.Content = "level:" +aiTower.TowerLevel.ToString() + '\n' + "hp:" +aiTower.HP.ToString() + '\n' + "range:" +aiTower.RANGE.ToString() + '\n' + "atk:" +aiTower.ATK.ToString();
+            lb.Content = "level:" + aiTower.TowerLevel.ToString() + '\n' + "hp:" + aiTower.HP.ToString() + '\n' + "range:" + aiTower.RANGE.ToString() + '\n' + "atk:" + aiTower.ATK.ToString();
         }
         public void MaintainSolidersPosition(List<Soldier> enemyS, Tower enemyTower)
         {
@@ -96,7 +107,7 @@ namespace Side_scrolling_Tower_Defense
                 {
                     soldier.RemoveAt(i);
                     _soliderOnField--;
-                    
+
                 }
             }
         }
