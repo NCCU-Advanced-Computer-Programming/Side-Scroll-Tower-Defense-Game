@@ -27,7 +27,7 @@ namespace Side_scrolling_Tower_Defense
         public void Intelligence(List<Soldier> enemyS, Grid grid1, Label lb, Tower enemyTower){ //智慧產兵 XDDD 目前只會rand產兵
             Random rand = new Random();
             int playerTotalPower = enemyS.Sum(s => s.ATK); //取得玩家總戰力
-            if (rand.Next(10000) <= playerTotalPower) //千分之敵軍數產兵機率
+            if (rand.Next(50000) <= playerTotalPower) //五萬分之敵軍戰力產兵機率
             {
                 int tmp = rand.Next(11);
                 if(tmp <= 6)

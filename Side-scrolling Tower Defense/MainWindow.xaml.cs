@@ -23,8 +23,10 @@ namespace Side_scrolling_Tower_Defense
     public partial class MainWindow : Window
     {
         DispatcherTimer timer;
+        int _timeInterval = 20;
         Player player ;
         AI ai ;
+
  
         public MainWindow()
         {
@@ -32,7 +34,7 @@ namespace Side_scrolling_Tower_Defense
             player = new Player(lbMoney, lbMyTower_hp);
             ai = new AI(lbEnemyTower_hp);
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(10);
+            timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
             timer.Tick += timer_Tick;
             timer.Start();
 
@@ -144,5 +146,28 @@ namespace Side_scrolling_Tower_Defense
             }
         }
         #endregion
+
+        private void btnSpeedUp_Click(object sender, RoutedEventArgs e)
+        {
+            if (btnSpeedUp.Content.ToString() == ">")
+            {
+             //   timer.Stop(); 
+                _timeInterval = 1;
+                btnSpeedUp.Content = ">>";
+                timer.Start();
+            }
+            else if(btnSpeedUp.Content.ToString() == ">>")
+            {
+                timer.Stop();
+                btnSpeedUp.Content = "||";
+            }
+            else
+            {
+                _timeInterval = 20;
+                btnSpeedUp.Content = ">";
+                timer.Start();
+            }
+            timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
+        }
     }
 }

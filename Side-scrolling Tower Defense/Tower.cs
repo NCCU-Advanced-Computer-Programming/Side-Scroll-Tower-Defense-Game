@@ -71,9 +71,9 @@ namespace Side_scrolling_Tower_Defense
             lbTowerHP = _lbHP;
 
             if (isPlayer)
-                _axis = 40;
+                _axis = 93;
             else
-                _axis = 800;
+                _axis = 923;
 
             lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
         }

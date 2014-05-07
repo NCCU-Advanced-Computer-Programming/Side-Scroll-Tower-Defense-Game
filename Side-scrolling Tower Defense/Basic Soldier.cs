@@ -100,9 +100,9 @@ namespace Side_scrolling_Tower_Defense
         public Label Show(int height, int width, System.Windows.Media.SolidColorBrush Color)
         {
             if(isEnemy)
-                Image.Margin = new System.Windows.Thickness(0,0,800,15); //AI士兵出生位置
+                Image.Margin = new System.Windows.Thickness(0,0,850,15); //AI士兵出生位置
             else
-                Image.Margin = new System.Windows.Thickness(800,0,0,15); //Player士兵出生位置
+                Image.Margin = new System.Windows.Thickness(850,0,0,15); //Player士兵出生位置
             Image.Height = height;
             Image.Width = width;
             Image.Background = Color;
