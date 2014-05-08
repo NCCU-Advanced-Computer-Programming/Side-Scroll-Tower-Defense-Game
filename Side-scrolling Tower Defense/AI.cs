@@ -11,7 +11,6 @@ namespace Side_scrolling_Tower_Defense
     {
         public Tower aiTower;
         public List<Soldier> soldier = new List<Soldier>();
-        private int _soliderOnField = 0;
         private bool counterAttcak_flag = false;
 
 
@@ -71,31 +70,29 @@ namespace Side_scrolling_Tower_Defense
             if (type == 1)//一般兵種
             {
                 soldier.Add(new Soldier(100, 15, 50, 0.3, true, cost));
-                grid1.Children.Add(soldier[_soliderOnField].Show(50, 50, System.Windows.Media.Brushes.Gold));
+                grid1.Children.Add(soldier[soldier.Count-1].Show(50, 50, System.Windows.Media.Brushes.Gold));
             }
             else if (type == 2)//高攻 血少 慢
             {
                 soldier.Add(new Soldier(70, 30, 50, 0.2, true, cost));
-                grid1.Children.Add(soldier[_soliderOnField].Show(60, 50, System.Windows.Media.Brushes.Red));
+                grid1.Children.Add(soldier[soldier.Count-1].Show(60, 50, System.Windows.Media.Brushes.Red));
             }
             else if (type == 3)//血厚 攻低 慢
             {
                 soldier.Add(new Soldier(200, 10, 50, 0.2, true, cost));
-                grid1.Children.Add(soldier[_soliderOnField].Show(80, 50, System.Windows.Media.Brushes.PaleGreen));
+                grid1.Children.Add(soldier[soldier.Count-1].Show(80, 50, System.Windows.Media.Brushes.PaleGreen));
             }
             else if (type == 4) //高攻 血厚 速普通
             {
                 soldier.Add(new Soldier(200, 25, 50, 0.2, true, cost));
-                grid1.Children.Add(soldier[_soliderOnField].Show(40, 50, System.Windows.Media.Brushes.Navy));
+                grid1.Children.Add(soldier[soldier.Count-1].Show(40, 50, System.Windows.Media.Brushes.Navy));
             }
             else
             {
                 System.Windows.MessageBox.Show("Error, GenerateSolider calling error type of soldier");
             }
 
-            _soliderOnField++;
         }
-
         public void UpgradeTower(Label lb)
         {
             aiTower.Upgrade('t', aiTower.TowerLevel);
@@ -108,14 +105,13 @@ namespace Side_scrolling_Tower_Defense
         }
         public void MaintainSolidersPosition(List<Soldier> enemyS, Tower enemyTower)
         {
-            for (int i = 0; i < _soliderOnField; i++)
+            for (int i = 0; i <soldier.Count; i++)
             {
                 // 每個士兵該往前的往前，該打的打
                 soldier[i].Move(enemyS, enemyTower);
                 if (soldier[i].HP <= 0)
                 {
                     soldier.RemoveAt(i);
-                    _soliderOnField--;
 
                 }
             }

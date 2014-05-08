@@ -148,7 +148,9 @@ namespace Side_scrolling_Tower_Defense
                 {
                     counter = 0;
                     Enemy[target].HP -= this.ATK;
-                    Enemy[target].LifeCheck();
+                    Enemy[target].Image.Content = Enemy[target].HP.ToString();
+                    if(Enemy[target].LifeCheck()==null)
+                        Enemy.RemoveAt(target);
                 }
                 return true;
             }
@@ -197,7 +199,6 @@ namespace Side_scrolling_Tower_Defense
             //C#使用記憶體自動回收
             if (HP <= 0)
             {
-               //player
                 Image.Visibility = Visibility.Hidden;
                 return null;
             }

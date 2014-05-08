@@ -27,6 +27,7 @@
             </Grid>
             <Label x:Name="lbMyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="871,42,0,0" VerticalAlignment="Top" Width="72"/>
             <Label x:Name="lbEnemyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="41,41,0,0" VerticalAlignment="Top" Width="95"/>
+            <Label x:Name="tmp" Content="Label" HorizontalAlignment="Left" Margin="461,10,0,0" VerticalAlignment="Top"/>
 
         </Grid>
     </Grid>

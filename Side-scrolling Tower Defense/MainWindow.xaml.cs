@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-//using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -43,17 +42,22 @@ namespace Side_scrolling_Tower_Defense
         private const int skill1_price = 3000;
         private const int skill2_price = 3000;
         private const int skill3_price = 3000;
+        private int overPower = 1;       //技能3--狂戰士倍率
         /*-----------------Price--------------------*/
         /*-----------------Flag--------------------*/
-        private bool skill1_isEnable = false;
-        private bool skill2_isEnable = false;
-        private bool skill3_isEnable = false;
+        private bool skill1_isEnable = false;// 敵方暫停 10秒
+        private bool skill2_isEnable = false;// 我方塔攻擊距離無限 10秒
+        private bool skill3_isEnable = false;// 我方兵 血、攻、移動速度 提升2倍 10秒
         /*-----------------Flag--------------------*/
         /*-----------------Counter--------------------*/
-        private int skill1CountDown = 10;
-        private int skill2CountDown = 10;
-        private int skill3CountDown = 10;
-        private int skillCounter = 0;
+        private int buff1CountDown = 10;
+        private int buff2CountDown = 10;
+        private int buff3CountDown = 10;
+        private int skillCounter1 = 0;
+        private int skillCounter2 = 0;
+        private int skillCounter3 = 0;
+        private int skillCounter4 = 0;
+     
         /*-----------------Counter--------------------*/
 
        
@@ -82,22 +86,7 @@ namespace Side_scrolling_Tower_Defense
             
             player.MaintainSolidersPosition(ai.soldier, ai.aiTower);//移動Player的兵
             player.myTower.Attack(ai.soldier);//塔要隨時判斷是否有攻擊對象
-
-            if (skill1_isEnable) //判斷技能1
-            {
-                if ((++skillCounter % kSECOND) == 0)
-                {
-                    skill1CountDown--;
-                    skillCounter = 0;
-                    if (skill1CountDown <= 0 )
-                        skill1_isEnable = false;
-                }
-            }
-            else
-            {
-                ai.Intelligence(player.soldier, grid1, lbEenemyTower, player.myTower);//AI智慧操作
-                ai.aiTower.Attack(player.soldier);//塔要隨時判斷是否有攻擊對象
-            }
+            checkSkill();
 
             if (player.myTower.CRASHED)
             {
@@ -199,12 +188,68 @@ namespace Side_scrolling_Tower_Defense
 
         }
 
+        private void checkSkill()
+        {
+            if (skill1_isEnable) //判斷技能--時間暫停
+            {
+                if ((++skillCounter1 % kSECOND) == 0)
+                {
+                    buff1CountDown--;
+                    skillCounter1 = 0;
+                    tmp.Content = buff1CountDown.ToString();
+                    if (buff1CountDown <= 0)
+                        skill1_isEnable = false;
+                }
+            }
+            else
+            {
+                ai.Intelligence(player.soldier, grid1, lbEenemyTower, player.myTower);//AI智慧操作
+                ai.aiTower.Attack(player.soldier);//塔要隨時判斷是否有攻擊對象
+            }
+
+            if (skill2_isEnable) //判斷技能--無限射程
+            {
+                if ((++skillCounter2 % kSECOND) == 0)
+                {
+                    buff2CountDown--;
+                    skillCounter2 = 0;
+                    tmp.Content = buff2CountDown.ToString();
+                    if (buff2CountDown <= 0)
+                    {
+                        skill2_isEnable = false;
+                        player.myTower.RANGE -= 1500;
+                    }
+                }
+            }
+
+            if (skill3_isEnable) //判斷技能--狂戰士
+            {
+                if ((++skillCounter3 % kSECOND) == 0)
+                {
+                    buff3CountDown--;
+                    skillCounter3 = 0;
+                    tmp.Content = buff3CountDown.ToString();
+                    if (buff3CountDown <= 0)
+                    {
+                        skill3_isEnable = false;
+                        overPower = 1;
+                        foreach (Soldier s in player.soldier)
+                        {
+                            s.ATK /= 2;
+                            s.SPEED /= 2;
+                            s.HP /= 2;
+                        }
+                    }
+                }
+            }
+        }
+
         #region 產兵的 btnClick function
         private void btnSoldier1_Click(object sender, RoutedEventArgs e)
         {
             if (player.MONEY > s1_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 1, s1_price);
+                player.GenerateSolider(grid1, 1, overPower, s1_price);
                 player.MONEY -= s1_price;//第一種兵 $50
                 lbMoney.Content = "$ " + player.MONEY.ToString();
             }
@@ -214,7 +259,7 @@ namespace Side_scrolling_Tower_Defense
         {
             if (player.MONEY > s2_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 2, s2_price);
+                player.GenerateSolider(grid1, 2, overPower, s2_price);
                 player.MONEY -= s2_price;
                 lbMoney.Content = "$ " + player.MONEY.ToString();
             }
@@ -225,7 +270,7 @@ namespace Side_scrolling_Tower_Defense
         {
             if (player.MONEY > s3_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 3, s3_price);
+                player.GenerateSolider(grid1, 3, overPower, s3_price);
                 player.MONEY -= s3_price;
                 lbMoney.Content = "$ " + player.MONEY.ToString();
             }
@@ -236,7 +281,7 @@ namespace Side_scrolling_Tower_Defense
         {
             if (player.MONEY > s4_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 4, s4_price);
+                player.GenerateSolider(grid1, 4, overPower, s4_price);
                 player.MONEY -= s4_price;
                 lbMoney.Content = "$ " + player.MONEY.ToString();
             }
@@ -285,21 +330,32 @@ namespace Side_scrolling_Tower_Defense
         {// 敵方暫停 10秒
             player.EarnMoney(-skill1_price); //扣錢
             skill1_isEnable = true;
-            skill1CountDown = 10;
+            buff1CountDown = 10;
+            LabelBlocking(skill1, 60);
         }
 
         private void skill2_Click(object sender, RoutedEventArgs e)
-        {// 我方兵素質提升2倍 10秒
+        {// 塔攻擊距離無限 10秒
             player.EarnMoney(-skill2_price); //扣錢
             skill2_isEnable = true;
-            skill2CountDown = 10;
+            buff2CountDown = 10;
+            LabelBlocking(skill2, 70);
+            player.myTower.RANGE += 1500;
         }
 
         private void skill3_Click(object sender, RoutedEventArgs e)
-        {// 塔攻擊距離無限 10秒
+        {// 我方兵 血、攻、移動速度 提升2倍 10秒
             player.EarnMoney(-skill3_price); //扣錢
             skill3_isEnable = true;
-            skill3CountDown = 10;
+            buff3CountDown = 10;
+            LabelBlocking(skill3, 80);
+            overPower = 2;
+            foreach (Soldier s in player.soldier)
+            {
+                s.ATK *= 2;
+                s.SPEED *= 2;
+                s.HP *= 2;
+            }
         }
         #endregion
 

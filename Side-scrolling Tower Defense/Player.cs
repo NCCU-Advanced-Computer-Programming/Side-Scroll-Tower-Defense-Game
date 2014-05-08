@@ -18,7 +18,6 @@ namespace Side_scrolling_Tower_Defense
         public Label lbMoney;
         public Tower myTower;
         public List<Soldier> soldier = new List<Soldier>();   
-        int _soliderOnField = 0;                 //場上的我方士兵數
 
         #region get & set
         public int MONEY{
@@ -46,33 +45,31 @@ namespace Side_scrolling_Tower_Defense
                 moneyGainCounter = 0;        
             }
         }
-        public void GenerateSolider(Panel grid1, int type, int cost){
+        public void GenerateSolider(Panel grid1, int type, int overPower, int cost){
             if(type == 1)//一般兵種
             {
-                soldier.Add(new Soldier(100, 15, 50, 1, false, cost));
-                grid1.Children.Add(soldier[_soliderOnField].Show(50, 50, System.Windows.Media.Brushes.Gold));
+                soldier.Add(new Soldier(100 * overPower, 15 * overPower, 50, 0.7 * overPower, false, cost));
+                grid1.Children.Add(soldier[soldier.Count-1].Show(50, 50, System.Windows.Media.Brushes.Gold));
             }
             else if(type==2)//高攻 血少 慢
             {
-                soldier.Add(new Soldier(70, 30, 50, 0.2, false, cost));
-                grid1.Children.Add(soldier[_soliderOnField].Show(60, 50, System.Windows.Media.Brushes.Red));
+                soldier.Add(new Soldier(70 * overPower, 30 * overPower, 50, 0.4 * overPower, false, cost));
+                grid1.Children.Add(soldier[soldier.Count-1].Show(60, 50, System.Windows.Media.Brushes.Red));
             }
             else if (type == 3)//血厚 攻低 慢
             {
-                soldier.Add(new Soldier(200, 10, 50, 0.2, false, cost));
-                grid1.Children.Add(soldier[_soliderOnField].Show(80, 50, System.Windows.Media.Brushes.PaleGreen));
+                soldier.Add(new Soldier(200 * overPower, 10 * overPower, 50, 0.2 * overPower, false, cost));
+                grid1.Children.Add(soldier[soldier.Count-1].Show(80, 50, System.Windows.Media.Brushes.PaleGreen));
             }
             else if (type == 4) //高攻 血厚 速普通
             {
-                soldier.Add(new Soldier(200, 25, 50, 0.2, false, cost));
-                grid1.Children.Add(soldier[_soliderOnField].Show(40, 50, System.Windows.Media.Brushes.Navy));
+                soldier.Add(new Soldier(200 * overPower, 25 * overPower, 50, 0.5 * overPower, false, cost));
+                grid1.Children.Add(soldier[soldier.Count-1].Show(40, 50, System.Windows.Media.Brushes.Navy));
             }
             else
             {
                 MessageBox.Show("Error, GenerateSolider calling error type of soldier");
             }
-
-            _soliderOnField++;
         }
 		public void EarnMoney(int moneyAdd){
             //殺敵 +金錢
@@ -95,7 +92,7 @@ namespace Side_scrolling_Tower_Defense
         }
         public void MaintainSolidersPosition(List<Soldier> enemyS, Tower enemyTower)
         {
-            for (int i = 0; i < _soliderOnField; i++)
+            for (int i = 0; i <soldier.Count; i++)
             {
                 // 每個士兵該往前的往前，該打的打
                 soldier[i].Move(enemyS, enemyTower);
@@ -103,13 +100,14 @@ namespace Side_scrolling_Tower_Defense
                 if (soldier[i].HP <= 0)
                 {
                     soldier.RemoveAt(i);
-                    _soliderOnField--;
                 }
             }
             foreach (Soldier s in enemyS)//敵人如果有死就加錢
             {
                 if (s.HP <= 0)
+                {
                     EarnMoney(s.PRICE);
+                }
             }
         }
 	}
