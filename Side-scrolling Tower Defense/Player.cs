@@ -36,7 +36,7 @@ namespace Side_scrolling_Tower_Defense
             _towerUpgradePrice = 100; //塔升級費用
             moneyGainSpeed = 10;
             lbMoney = _lbmoney;
-            myTower = new Tower(10000, 50, 250, 1, true, _lbTowerHP);
+            myTower = new Tower(1000, 50, 250, 1, true, _lbTowerHP);
         }
         public void MoneyGain()
         {

@@ -160,7 +160,10 @@ namespace Side_scrolling_Tower_Defense
         {
             if (Math.Abs(Enemy.POSITION - this.POSITION) <= this.RANGE)
             {
-                Enemy.GetHurt(ATK);
+                if ((++counter % APS) == 0)
+                {
+                    Enemy.GetHurt(ATK);
+                }
                 return true;
             }
             return false;
