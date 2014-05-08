@@ -190,15 +190,21 @@ namespace Side_scrolling_Tower_Defense
 
         private void checkSkill()
         {
+            dock1.Children.Clear();
             if (skill1_isEnable) //判斷技能--時間暫停
             {
+                AddImage(dock1, "Images/skill1.PNG");
                 if ((++skillCounter1 % kSECOND) == 0)
                 {
                     buff1CountDown--;
                     skillCounter1 = 0;
-                    tmp.Content = buff1CountDown.ToString();
+                   //tmp.Content = buff1CountDown.ToString();
                     if (buff1CountDown <= 0)
+                    {
                         skill1_isEnable = false;
+                       // Label name = (Label)this.dock1.FindName("image1");
+                       // this.dock1.Children.Remove((Label)this.FindName("image1");
+                    }
                 }
             }
             else
@@ -209,11 +215,12 @@ namespace Side_scrolling_Tower_Defense
 
             if (skill2_isEnable) //判斷技能--無限射程
             {
+                AddImage(dock1, "Images/skill2.PNG");
                 if ((++skillCounter2 % kSECOND) == 0)
                 {
                     buff2CountDown--;
                     skillCounter2 = 0;
-                    tmp.Content = buff2CountDown.ToString();
+            //        tmp.Content = buff2CountDown.ToString();
                     if (buff2CountDown <= 0)
                     {
                         skill2_isEnable = false;
@@ -224,11 +231,12 @@ namespace Side_scrolling_Tower_Defense
 
             if (skill3_isEnable) //判斷技能--狂戰士
             {
+                AddImage(dock1, "Images/skill3.PNG");
                 if ((++skillCounter3 % kSECOND) == 0)
                 {
                     buff3CountDown--;
                     skillCounter3 = 0;
-                    tmp.Content = buff3CountDown.ToString();
+                //    tmp.Content = buff3CountDown.ToString();
                     if (buff3CountDown <= 0)
                     {
                         skill3_isEnable = false;
@@ -332,6 +340,8 @@ namespace Side_scrolling_Tower_Defense
             skill1_isEnable = true;
             buff1CountDown = 10;
             LabelBlocking(skill1, 60);
+
+    
         }
 
         private void skill2_Click(object sender, RoutedEventArgs e)
@@ -341,6 +351,7 @@ namespace Side_scrolling_Tower_Defense
             buff2CountDown = 10;
             LabelBlocking(skill2, 70);
             player.myTower.RANGE += 1500;
+         
         }
 
         private void skill3_Click(object sender, RoutedEventArgs e)
@@ -356,8 +367,19 @@ namespace Side_scrolling_Tower_Defense
                 s.SPEED *= 2;
                 s.HP *= 2;
             }
+
         }
         #endregion
+        private void AddImage(DockPanel parent, string imageSource)
+        {
+            Label image = new Label();
+            image.Content = new Image
+            {
+                Source = new BitmapImage(new Uri(imageSource, UriKind.Relative)),
+                VerticalAlignment = VerticalAlignment.Center
+            };
+            parent.Children.Add(image);
+        }
 
         private void btnUpgradeTower_Click(object sender, RoutedEventArgs e)
         {
