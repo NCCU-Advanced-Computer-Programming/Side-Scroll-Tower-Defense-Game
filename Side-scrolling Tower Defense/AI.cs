@@ -11,31 +11,40 @@ namespace Side_scrolling_Tower_Defense
     {
         public Tower aiTower;
         public List<Soldier> soldier = new List<Soldier>();
-        int _soliderOnField = 0;
+        private int _soliderOnField = 0;
+        private bool counterAttcak_flag = false;
 
 
         public AI(Label _lbTowerHp)
         {
-            aiTower = new Tower(10000, 50, 250, 1, false, _lbTowerHp);
+            aiTower = new Tower(100000, 50, 250, 1, false, _lbTowerHp);
         }
         public void Intelligence(List<Soldier> enemyS, Grid grid1, Label lb, Tower enemyTower)
         { //智慧產兵 XDDD 目前只會rand產兵
             Random rand = new Random();
             int playerTotalPower = enemyS.Sum(s => s.ATK); //取得玩家總戰力
-            int aiTotalPower = soldier.Sum(s => s.ATK);;
-            if (aiTower.HP <= aiTower.MAXHP / 2 && aiTotalPower <= playerTotalPower)
+            int aiTotalPower = soldier.Sum(s => s.ATK);
+
+            if (aiTower.HP <= aiTower.MAXHP / 2 && aiTotalPower <= playerTotalPower && !counterAttcak_flag) //AI快掛時會暴走
             {
-                int tmp = rand.Next(10);
-                if (tmp <= 5)
-                    GenerateSolider(grid1, 1, 50);  // 60% 產第1種
-                else if (tmp > 5 && tmp <= 7)
-                    GenerateSolider(grid1, 2, 100); // 20% 產第2種
-                else if (tmp == 8)
-                    GenerateSolider(grid1, 3, 300); // 10% 產第3種
-                else
-                    GenerateSolider(grid1, 4, 500); // 10% 產第4種
+                if (rand.Next(10) < 3)
+                {
+                    int tmp = rand.Next(10);
+                    if (tmp <= 5)
+                        GenerateSolider(grid1, 1, 50);  // 60% 產第1種
+                    else if (tmp > 5 && tmp <= 7)
+                        GenerateSolider(grid1, 2, 100); // 20% 產第2種
+                    else if (tmp == 8)
+                        GenerateSolider(grid1, 3, 300); // 10% 產第3種
+                    else
+                        GenerateSolider(grid1, 4, 500); // 10% 產第4種
+                }
+                if (aiTotalPower > playerTotalPower)
+                {
+                    counterAttcak_flag = true;
+                }
             }
-            else if (rand.Next(50000) <= playerTotalPower + 100) //五萬分之敵軍戰力產兵機率
+            else if (rand.Next(50000) <= playerTotalPower + 10) //五萬分之敵軍戰力產兵機率
             {
                 int tmp = rand.Next(10);
                 if (tmp <= 5)
@@ -49,7 +58,7 @@ namespace Side_scrolling_Tower_Defense
             }
             else
             {
-               //aiTower等級不能比玩家高多於3等
+                //aiTower等級不能比玩家高多於3等
                 if (rand.Next(1000) <= 2 && aiTower.TowerLevel <= enemyTower.TowerLevel + 3)
                 {
                     UpgradeTower(lb);

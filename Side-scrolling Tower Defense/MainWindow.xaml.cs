@@ -27,14 +27,32 @@ namespace Side_scrolling_Tower_Defense
         Player player ;
         AI ai ;
 
- 
+        List<Label> lbCD = new List<Label>();
+        int kSECOND;
+        int cdCounter = 0;
+
+        #region 設定參數區
+        private const int s1_price = 50;
+        private const int s2_price = 100;
+        private const int s3_price = 300;
+        private const int s4_price = 500;
+        private const int unlock_s2_price = 1000;
+        private const int unlock_s3_price = 2000;
+        private const int unlock_s4_price = 3000;
+
+       
+        #endregion
+
         public MainWindow()
         {
             InitializeComponent();
             player = new Player(lbMoney, lbMyTower_hp);
             ai = new AI(lbEnemyTower_hp);
+            btnUpgradeTower.Content = "升級塔\n$" + player.UPGRADEPRICE.ToString();
+
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
+            kSECOND = 1000 / _timeInterval;
             timer.Tick += timer_Tick;
             timer.Start();
 
@@ -62,96 +80,180 @@ namespace Side_scrolling_Tower_Defense
                 MessageBox.Show("YOU WIN !!!!!!");
                 timer.Stop();
             }
-
+            if ((++cdCounter % kSECOND) == 0)
+                checkCD();
+            else
+                checkPrice();
         } 
-        
-        private void btnUpgradeTower_Click(object sender, RoutedEventArgs e)
+        private void LabelBlocking(Button btn, int CDtime) //即時產生擋住 btn 的label
         {
-            if (player.MONEY > player.UPGRADEPRICE)
+
+            Label tmp = new Label();
+            tmp.Height = btn.Height;
+            tmp.Width = btn.Width;
+            tmp.Margin = new Thickness(btn.Margin.Left, btn.Margin.Top, btn.Margin.Right, btn.Margin.Bottom);
+            tmp.Background = System.Windows.Media.Brushes.Black;
+            tmp.Foreground = System.Windows.Media.Brushes.White;
+            tmp.VerticalAlignment = VerticalAlignment.Top;
+            tmp.HorizontalAlignment = HorizontalAlignment.Left;
+            tmp.Opacity = 0.7;
+            tmp.Visibility = Visibility.Visible;
+
+            if (CDtime != 0)
+                tmp.Content = CDtime.ToString();
+            else
+                tmp.Content = "";
+
+            bool isBlocked = false;     //判斷這個按鈕是否已被擋住(無論是因CD或是因錢不夠)
+            foreach (Label l in lbCD)
+                if (l.Margin == tmp.Margin)
+                    isBlocked = true;
+            if (!isBlocked)
             {
-                player.UpgradeTower(lbMyTower);
+                gridControlBar.Children.Add(tmp);
+                lbCD.Add(tmp);
             }
+        }
+        private void checkCD()
+        {
+            for (int i = 0; i < lbCD.Count; i++ )
+            {
+                if (lbCD[i] != null && lbCD[i].Content.ToString() != "")
+                {
+                    int res;
+                    Int32.TryParse(lbCD[i].Content.ToString(), out res);
+                    if (res > 1)
+                    {
+                        lbCD[i].Content = (res - 1).ToString();
+                    }
+                    else
+                    {
+                        lbCD[i].Visibility = Visibility.Hidden;
+                        gridControlBar.Children.Remove(lbCD[i]);
+                        lbCD.RemoveAt(i);
+                    }
+                }
+            }
+        }
+        private void checkPrice()
+        {
+            for (int i = 0; i < lbCD.Count; i++)  //先把所有因為錢不夠而禁案的鈕解開，重新判斷
+            {
+                if (lbCD[i].Content.ToString() == "")
+                {
+                    gridControlBar.Children.Remove(lbCD[i]);
+                    lbCD.RemoveAt(i);
+                }
+            }
+            if (player.MONEY < s1_price && btnSoldier1.IsEnabled)
+                LabelBlocking(btnSoldier1, 0);
+            if (player.MONEY < s2_price && btnSoldier2.IsEnabled)
+                LabelBlocking(btnSoldier2, 0);
+            if (player.MONEY < s3_price && btnSoldier3.IsEnabled)
+                LabelBlocking(btnSoldier3, 0);
+            if (player.MONEY < s4_price && btnSoldier4.IsEnabled)
+                LabelBlocking(btnSoldier4, 0);
+            if (player.MONEY < unlock_s2_price && btnUnlock1.IsEnabled)
+                LabelBlocking(btnUnlock1, 0);
+            if (player.MONEY < unlock_s3_price && btnUnlock2.IsEnabled)
+                LabelBlocking(btnUnlock2, 0);
+            if (player.MONEY < unlock_s4_price && btnUnlock3.IsEnabled)
+                LabelBlocking(btnUnlock3, 0);
         }
 
         #region 產兵的buttonClick function
         private void btnSoldier1_Click(object sender, RoutedEventArgs e)
         {
-            if (player.MONEY > 50)   //錢夠才能產兵
+            if (player.MONEY > s1_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 1, 50);
-                player.MONEY -= 50;//第一種兵 $50
+                player.GenerateSolider(grid1, 1, s1_price);
+                player.MONEY -= s1_price;//第一種兵 $50
                 lbMoney.Content = "$ " + player.MONEY.ToString();
             }
+            LabelBlocking(btnSoldier1, 2);
         }
         private void btnSoldier2_Click(object sender, RoutedEventArgs e)
         {
-            if (player.MONEY > 100)   //錢夠才能產兵
+            if (player.MONEY > s2_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 2, 100);
-                player.MONEY -= 100;
+                player.GenerateSolider(grid1, 2, s2_price);
+                player.MONEY -= s2_price;
                 lbMoney.Content = "$ " + player.MONEY.ToString();
             }
+            LabelBlocking(btnSoldier2, 5);
         }
 
         private void btnSoldier3_Click(object sender, RoutedEventArgs e)
         {
-            if (player.MONEY > 300)   //錢夠才能產兵
+            if (player.MONEY > s3_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 3, 300);
-                player.MONEY -= 300;
+                player.GenerateSolider(grid1, 3, s3_price);
+                player.MONEY -= s3_price;
                 lbMoney.Content = "$ " + player.MONEY.ToString();
             }
+            LabelBlocking(btnSoldier3, 12);
         }
 
         private void btnSoldier4_Click(object sender, RoutedEventArgs e)
         {
-            if (player.MONEY > 500)   //錢夠才能產兵
+            if (player.MONEY > s4_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 4, 500);
-                player.MONEY -= 500;
+                player.GenerateSolider(grid1, 4, s4_price);
+                player.MONEY -= s4_price;
                 lbMoney.Content = "$ " + player.MONEY.ToString();
             }
+            LabelBlocking(btnSoldier4, 12);
         }
         #endregion
 
         #region 解鎖士兵的click function
         private void btnUnlock1_Click(object sender, RoutedEventArgs e)
         {
-            if (player.MONEY >= 1000)
+            if (player.MONEY >= unlock_s2_price)
             {
-                player.MONEY -= 1000;
+                player.MONEY -= unlock_s2_price;
                 btnSoldier2.IsEnabled = true;
-                btnUnlock1.Visibility = Visibility.Hidden;
-                
+              //  btnUnlock1.Visibility = Visibility.Hidden;
+                btnUnlock1.IsEnabled = false;
+                gridControlBar.Children.Remove(btnUnlock1);
             }
         }
 
         private void btnUnlock2_Click(object sender, RoutedEventArgs e)
         {
-            if (player.MONEY >= 2000)
+            if (player.MONEY >= unlock_s3_price)
             {
-                player.MONEY -= 2000;
+                player.MONEY -= unlock_s3_price;
                 btnSoldier3.IsEnabled = true;
-                btnUnlock2.Visibility = Visibility.Hidden;
+                btnUnlock2.IsEnabled = false;
+                gridControlBar.Children.Remove(btnUnlock2);
             }
         }
 
         private void btnUnlock3_Click(object sender, RoutedEventArgs e)
         {
-            if (player.MONEY >= 3000)
+            if (player.MONEY >= unlock_s4_price)
             {
-                player.MONEY -= 3000;
+                player.MONEY -= unlock_s4_price;
                 btnSoldier4.IsEnabled = true;
-                btnUnlock3.Visibility = Visibility.Hidden;
+                btnUnlock3.IsEnabled = false;
+                gridControlBar.Children.Remove(btnUnlock3);
             }
         }
         #endregion
 
+        private void btnUpgradeTower_Click(object sender, RoutedEventArgs e)
+        {
+            if (player.MONEY > player.UPGRADEPRICE)
+            {
+                player.UpgradeTower(lbMyTower);
+                btnUpgradeTower.Content = "升級塔\n$" + player.UPGRADEPRICE.ToString();
+            }
+        }
         private void btnSpeedUp_Click(object sender, RoutedEventArgs e)
         {
             if (btnSpeedUp.Content.ToString() == ">")
             {
-             //   timer.Stop(); 
                 _timeInterval = 1;
                 btnSpeedUp.Content = ">>";
                 timer.Start();
