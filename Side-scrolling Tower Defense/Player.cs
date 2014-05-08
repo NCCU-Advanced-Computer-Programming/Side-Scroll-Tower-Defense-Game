@@ -34,19 +34,22 @@ namespace Side_scrolling_Tower_Defense
         {
             _money = 10000;      // 初始資金
             _towerUpgradePrice = 100; //塔升級費用
-            moneyGainSpeed = 10;
+            moneyGainSpeed = 1;
             lbMoney = _lbmoney;
             myTower = new Tower(1000, 50, 250, 1, true, _lbTowerHP);
         }
         public void MoneyGain()
         {
             if ((++moneyGainCounter % moneyGainSpeed) == 0)
+            {
                 _money++;
+                moneyGainCounter = 0;        
+            }
         }
         public void GenerateSolider(Panel grid1, int type, int cost){
             if(type == 1)//一般兵種
             {
-                soldier.Add(new Soldier(100, 15, 50, 0.5, false, cost));
+                soldier.Add(new Soldier(100, 15, 50, 1, false, cost));
                 grid1.Children.Add(soldier[_soliderOnField].Show(50, 50, System.Windows.Media.Brushes.Gold));
             }
             else if(type==2)//高攻 血少 慢
@@ -74,7 +77,7 @@ namespace Side_scrolling_Tower_Defense
 		public void EarnMoney(int moneyAdd){
             //殺敵 +金錢
             _money += moneyAdd;
-            lbMoney.Content = _money.ToString();
+            lbMoney.Content = "$"+_money.ToString();
         }
 		public void UpgradeTower(Label lb){
             //玩家花錢升級塔，塔等級提升，下級所需金費增加(2倍)

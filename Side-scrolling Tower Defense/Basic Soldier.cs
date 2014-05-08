@@ -163,6 +163,7 @@ namespace Side_scrolling_Tower_Defense
                 if ((++counter % APS) == 0)
                 {
                     Enemy.GetHurt(ATK);
+                    counter = 0;
                 }
                 return true;
             }
