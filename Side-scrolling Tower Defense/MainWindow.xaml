@@ -3,38 +3,50 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="371.799" Width="1000" ResizeMode="NoResize">
     <Grid>
-        <Grid x:Name="grid1" AllowDrop="True">
+        <Grid x:Name="grid1" AllowDrop="True" VerticalAlignment="Top" Height="247">
+            <Grid.Background>
+                <ImageBrush ImageSource="Images/bg.png" Stretch="None">
+                    <ImageBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="2" ScaleY="1.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ImageBrush.RelativeTransform>
+                </ImageBrush>
+            </Grid.Background>
             <Grid.RowDefinitions>
-                <RowDefinition Height="114*"/>
-                <RowDefinition Height="45*"/>
+                <RowDefinition/>
+                <RowDefinition Height="0*"/>
             </Grid.RowDefinitions>
             <Label x:Name="lbMyTower" Content="我的塔" HorizontalAlignment="Left" Margin="871,72,0,0" VerticalAlignment="Top" Height="150" Width="72" Background="#FF697AEA" FontSize="10"/>
             <Label x:Name="lbEenemyTower" Content="壞蛋的塔" HorizontalAlignment="Left" Margin="41,72,0,0" VerticalAlignment="Top" Height="150" Width="72" Background="#FFEA2915" FontSize="10"/>
             <Label x:Name="lbMoney" Content="Label" HorizontalAlignment="Left" Height="36" Margin="740,16,0,0" VerticalAlignment="Top" Width="126"/>
-            <Grid x:Name="gridControlBar" Grid.Row="1" Background="#FFC3C3C3">
-                <Button x:Name="btnSoldier1" Content="普通兵&#xA;$50" Height="54" Margin="437,21,0,0" VerticalAlignment="Top" Click="btnSoldier1_Click" HorizontalAlignment="Left" Width="81" Focusable="False"/>
-                <Button x:Name="btnSoldier2" Content="高攻血少&#xA;$100" Height="54" Margin="523,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="81" Click="btnSoldier2_Click" Focusable="False"/>
-                <Button x:Name="btnSoldier3" Content="血多攻低&#xA;$300" Height="54" Margin="609,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="78" Click="btnSoldier3_Click" Focusable="False"/>
-                <Button x:Name="btnSoldier4" Content="高攻血厚&#xA;$500" Height="54" Margin="692,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="79" Click="btnSoldier4_Click" Focusable="False"/>
-                <Button x:Name="btnUpgradeTower" Content="升級塔" HorizontalAlignment="Left" Height="54" Margin="869,21,0,0" VerticalAlignment="Top" Width="80" Click="btnUpgradeTower_Click" Focusable="False"/>
-                <Button x:Name="btnUnlock1" Content="$1000" HorizontalAlignment="Left" Height="19" Margin="523,52,0,0" VerticalAlignment="Top" Click="btnUnlock1_Click" Width="80" Focusable="False"/>
-                <Button x:Name="btnUnlock3" Content="$3000" HorizontalAlignment="Left" Height="19" Margin="692,52,0,0" VerticalAlignment="Top" Width="79" Click="btnUnlock3_Click" Focusable="False"/>
-                <Button x:Name="btnUnlock2" Content="$2000" HorizontalAlignment="Left" Height="19" Margin="608,52,0,0" VerticalAlignment="Top" Width="79" Click="btnUnlock2_Click" Focusable="False"/>
-                <Button x:Name="btnSpeedUp" Content="&gt;" HorizontalAlignment="Left" Margin="19,48,0,0" VerticalAlignment="Top" Width="38" FontWeight="Bold" FontSize="16" Click="btnSpeedUp_Click"/>
-                <Button x:Name="skill1" HorizontalAlignment="Left" Margin="218,21,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Stop enemy for 10s&#xA;$3000" Click="skill1_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <Image Source="Images/skill1.PNG" Stretch="Fill"/>
-                </Button>
-                <Button x:Name="skill2"  HorizontalAlignment="Left" Margin="267,21,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Tower range unlimit for 10s&#xA;$3000" Click="skill2_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <Image Source="Images/skill2.PNG" Stretch="Fill"/>
-                </Button>
-                <Button x:Name="skill3"  HorizontalAlignment="Left" Margin="316,21,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Enhance soldier for 10s&#xA;$3000" Click="skill3_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <Image Source="Images/skill3.PNG" Stretch="Fill"/>
-                </Button>
-            </Grid>
-            <Label x:Name="lbMyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="871,42,0,0" VerticalAlignment="Top" Width="72"/>
-            <Label x:Name="lbEnemyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="41,41,0,0" VerticalAlignment="Top" Width="95"/>
-            <DockPanel x:Name="dock1" HorizontalAlignment="Left" Height="38" LastChildFill="False" Margin="453,16,0,0" VerticalAlignment="Top" Width="142"/>
+            <Label x:Name="lbMyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="871,42,0,0" VerticalAlignment="Top" Width="72" Height="26"/>
+            <Label x:Name="lbEnemyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="41,41,0,0" VerticalAlignment="Top" Width="95" Height="26"/>
+            <DockPanel x:Name="dock1" HorizontalAlignment="Left" Height="38" LastChildFill="False" Margin="522,16,0,0" VerticalAlignment="Top" Width="142" Background="#FFE2DBDB"/>
 
+        </Grid>
+        <Grid x:Name="gridControlBar" Background="#FFC3C3C3" Margin="0,247,0,0">
+            <Button x:Name="btnSoldier1" Content="普通兵&#xA;$50" Height="54" Margin="437,21,0,0" VerticalAlignment="Top" Click="btnSoldier1_Click" HorizontalAlignment="Left" Width="81" Focusable="False"/>
+            <Button x:Name="btnSoldier2" Content="高攻血少&#xA;$100" Height="54" Margin="523,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="81" Click="btnSoldier2_Click" Focusable="False"/>
+            <Button x:Name="btnSoldier3" Content="血多攻低&#xA;$300" Height="54" Margin="609,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="78" Click="btnSoldier3_Click" Focusable="False"/>
+            <Button x:Name="btnSoldier4" Content="高攻血厚&#xA;$500" Height="54" Margin="692,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="79" Click="btnSoldier4_Click" Focusable="False"/>
+            <Button x:Name="btnUpgradeTower" Content="升級塔" HorizontalAlignment="Left" Height="54" Margin="869,21,0,0" VerticalAlignment="Top" Width="80" Click="btnUpgradeTower_Click" Focusable="False"/>
+            <Button x:Name="btnUnlock1" Content="$1000" HorizontalAlignment="Left" Height="19" Margin="523,52,0,0" VerticalAlignment="Top" Click="btnUnlock1_Click" Width="80" Focusable="False"/>
+            <Button x:Name="btnUnlock3" Content="$3000" HorizontalAlignment="Left" Height="19" Margin="692,52,0,0" VerticalAlignment="Top" Width="79" Click="btnUnlock3_Click" Focusable="False"/>
+            <Button x:Name="btnUnlock2" Content="$2000" HorizontalAlignment="Left" Height="19" Margin="608,52,0,0" VerticalAlignment="Top" Width="79" Click="btnUnlock2_Click" Focusable="False"/>
+            <Button x:Name="btnSpeedUp" Content="&gt;" HorizontalAlignment="Left" Margin="19,48,0,0" VerticalAlignment="Top" Width="38" FontWeight="Bold" FontSize="16" Click="btnSpeedUp_Click"/>
+            <Button x:Name="skill1" HorizontalAlignment="Left" Margin="218,21,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Stop enemy for 10s&#xA;$3000" Click="skill1_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
+                <Image Source="Images/skill1.PNG" Stretch="Fill"/>
+            </Button>
+            <Button x:Name="skill2"  HorizontalAlignment="Left" Margin="267,21,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Tower range unlimit for 10s&#xA;$3000" Click="skill2_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
+                <Image Source="Images/skill2.PNG" Stretch="Fill"/>
+            </Button>
+            <Button x:Name="skill3"  HorizontalAlignment="Left" Margin="316,21,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Enhance soldier for 10s&#xA;$3000" Click="skill3_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
+                <Image Source="Images/skill3.PNG" Stretch="Fill"/>
+            </Button>
         </Grid>
     </Grid>
 </Window>
