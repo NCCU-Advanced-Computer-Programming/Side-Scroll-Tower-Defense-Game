@@ -66,17 +66,19 @@ namespace Side_scrolling_Tower_Defense
         public MainWindow()
         {
             InitializeComponent();
+            
+
+        }
+        private void Reset()
+        {
             player = new Player(lbMoney, lbMyTower_hp);
             ai = new AI(lbEnemyTower_hp);
             btnUpgradeTower.Content = "升級塔\n$" + player.UPGRADEPRICE.ToString();
 
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
-           // kSECOND = 1000 / _timeInterval;
             timer.Tick += timer_Tick;
             timer.Start();
-
-          //  reset();
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -409,6 +411,18 @@ namespace Side_scrolling_Tower_Defense
                 timer.Start();
             }
             timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
+        }
+
+        private void startGame_Click(object sender, RoutedEventArgs e)
+        {
+            Reset();
+            gridBG.Visibility = Visibility.Hidden;
+        }
+
+        private void about_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 about = new Window1();
+            about.Show();
         }
 
 

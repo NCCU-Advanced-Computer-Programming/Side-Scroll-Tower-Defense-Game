@@ -1,0 +1,25 @@
+﻿<Window x:Class="Side_scrolling_Tower_Defense.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window1" Height="319.723" Width="492.041">
+    <Grid>
+        <TabControl>
+            <TabItem Header="關於遊戲">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="許書軒">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="陳品嘉" Margin="-2,-2,-2,-1">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="白紋愷" Margin="-2,-2,-2,-1">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="蘇宗彥" Margin="-2,-2,-2,-1">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

@@ -1,6 +1,7 @@
-﻿<Window x:Class="Side_scrolling_Tower_Defense.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Side_scrolling_Tower_Defense.MainWindow"
         Title="MainWindow" Height="371.799" Width="1000" ResizeMode="NoResize">
     <Grid>
         <Grid x:Name="grid1" AllowDrop="True" VerticalAlignment="Top" Height="247">
@@ -47,6 +48,13 @@
             <Button x:Name="skill3"  HorizontalAlignment="Left" Margin="316,21,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Enhance soldier for 10s&#xA;$3000" Click="skill3_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
                 <Image Source="Images/skill3.PNG" Stretch="Fill"/>
             </Button>
+        </Grid>
+        <Grid x:Name="gridBG" Background="White">
+            <StackPanel x:Name="stackMenu" HorizontalAlignment="Left" Height="125" Margin="59,107,0,0" VerticalAlignment="Top" Width="204">
+                <Button x:Name="startGame" Content="Start New Game" Height="35" Click="startGame_Click"/>
+                <Button x:Name="howTo" Content="How to Play" Height="35"/>
+                <Button x:Name="about" Content="About " Height="35" Click="about_Click"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>
