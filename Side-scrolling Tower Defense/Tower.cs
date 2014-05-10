@@ -108,40 +108,25 @@ namespace Side_scrolling_Tower_Defense
             {
                 if (startTime == 0)
                 {
-                    startTime = (int)((nearest) / movePerStepX) + 3 ;
-                    //if (startTime == 0)
-                    //{
-                    //    startTime = _attackspeed - (int)(nearest / 3 + 5);
-                    //    movePerStepX = 5;
-                    //}
-                    //else
-                    //{
-                    startTime = _attackspeed - startTime;
-                    //movePerStepX = 20;
-                    //}
-
+                    startTime = _attackspeed -(int)(((nearest) / movePerStepX) + 3) ;
                     movePerStepY = (lbTower.Height - (enemyS[target].Image.Height / 2)) / (_attackspeed - startTime);
                 }
 
-                bool isShooted = false;
+                bool isShooted = false; //如果已開槍，則在未打到目標前 isShooted == true
                 if (bullet == null && counter == startTime)
                 {
                     grid.Children.Add(BulletShow()); //把子彈放進Grid
                     angle = Math.Atan2((lbTower.Height - enemyS[target].Image.Height / 2), nearest + 40) * 57; //設定角度
-
                     RotateTransform transform = transform = new RotateTransform(angle); ;
                     if (!isEnemy)
                         transform = new RotateTransform(-angle);
                     else
                         transform = new RotateTransform(angle);
-
                     bullet.RenderTransform = transform;
                 }
                 if (counter > startTime)
-                {
                     isShooted = true;
-                }
-
+                
                 if ((++counter % _attackspeed) == 0) //控制攻速
                 {
                     counter = 0;
@@ -156,9 +141,25 @@ namespace Side_scrolling_Tower_Defense
                     if (bullet != null && isShooted)
                     {
                         if (isEnemy)
-                            bullet.Margin = new System.Windows.Thickness(0, 0,bullet.Margin.Right - movePerStepX,  bullet.Margin.Bottom - movePerStepY);
+                        {
+                            bullet.Margin = new System.Windows.Thickness(0, 0, bullet.Margin.Right - movePerStepX, bullet.Margin.Bottom - movePerStepY);
+                            if (bullet.Margin.Right + movePerStepX < enemyS[target].POSITION)
+                            {
+                                grid.Children.Remove(bullet);
+                                bullet = null;
+                                counter = _attackspeed - 1; //摸到就直接等同攻擊到
+                            }
+                        }
                         else
+                        {
                             bullet.Margin = new System.Windows.Thickness(0, 0, bullet.Margin.Right + movePerStepX, bullet.Margin.Bottom - movePerStepY);
+                            if (bullet.Margin.Right - movePerStepX > enemyS[target].POSITION)
+                            {
+                                grid.Children.Remove(bullet);
+                                bullet = null;
+                                counter = _attackspeed - 1;
+                            }
+                        }
                     }
                 }
             }
@@ -221,11 +222,9 @@ namespace Side_scrolling_Tower_Defense
 
             bullet.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             bullet.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
-            bullet.Background = System.Windows.Media.Brushes.Gold;
+            bullet.Background = System.Windows.Media.Brushes.Purple ;
 
             return bullet;
         }
-        
-
     }
 }

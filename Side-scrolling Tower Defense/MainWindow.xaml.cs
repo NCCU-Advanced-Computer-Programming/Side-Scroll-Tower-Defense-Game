@@ -28,9 +28,9 @@ namespace Side_scrolling_Tower_Defense
         AI ai ;
 
         List<Label> lbCD = new List<Label>();
-        const int kSECOND = 50;
-        int cdCounter = 0;
-
+        private const int kSECOND = 50;
+        private int cdCounter = 0;
+        private bool isStarted = false;
         #region 參數設定區
         /*-----------------Price--------------------*/
         private const int s1_price = 50;
@@ -74,23 +74,24 @@ namespace Side_scrolling_Tower_Defense
         }
         private void Reset()
         {
+            isStarted = true;
             player = new Player(lbMoney, lbMyTower_hp, lbMyTower, grid1);
             ai = new AI(lbEnemyTower_hp, lbEenemyTower, grid1);
             #region Setting Content
             btnUpgradeTower.Content = "升級塔\n$" + player.UPGRADEPRICE.ToString();
-            btnSoldier1.Content += "\n$" + s1_price.ToString();
-            btnSoldier2.Content += "\n$" + s2_price.ToString();
-            btnSoldier3.Content += "\n$" + s3_price.ToString();
-            btnSoldier4.Content += "\n$" + s4_price.ToString();
-            btnSoldier5.Content += "\n$" + s5_price.ToString();
-            btnSoldier6.Content += "\n$" + s6_price.ToString();
-            btnSoldier7.Content += "\n$" + s7_price.ToString();
-            btnUnlock1.Content += unlock_s2_price.ToString();
-            btnUnlock2.Content += unlock_s3_price.ToString();
-            btnUnlock3.Content += unlock_s4_price.ToString();
-            btnUnlock4.Content += unlock_s5_price.ToString();
-            btnUnlock5.Content += unlock_s6_price.ToString();
-            btnUnlock6.Content += unlock_s7_price.ToString();
+            btnSoldier1.Content = "Saber\n$" + s1_price.ToString();
+            btnSoldier2.Content = "Archer\n$" + s2_price.ToString();
+            btnSoldier3.Content = "Caster\n$" + s3_price.ToString();
+            btnSoldier4.Content = "Rider\n$" + s4_price.ToString();
+            btnSoldier5.Content = "Assassin\n$" + s5_price.ToString();
+            btnSoldier6.Content = "Lancer\n$" + s6_price.ToString();
+            btnSoldier7.Content = "Berserker\n$" + s7_price.ToString();
+            btnUnlock1.Content = "$" + unlock_s2_price.ToString();
+            btnUnlock2.Content = "$" + unlock_s3_price.ToString();
+            btnUnlock3.Content = "$" + unlock_s4_price.ToString();
+            btnUnlock4.Content = "$" + unlock_s5_price.ToString();
+            btnUnlock5.Content = "$" + unlock_s6_price.ToString();
+            btnUnlock6.Content = "$"+unlock_s7_price.ToString();
             #endregion
 
             timer = new DispatcherTimer();
@@ -110,13 +111,15 @@ namespace Side_scrolling_Tower_Defense
 
             if (player.myTower.CRASHED)
             {
-                MessageBox.Show("YOU LOSE !!!!!!");
+                isStarted = false;
                 timer.Stop();
+                MessageBox.Show("YOU LOSE !!!!!!");
             }
             if (ai.aiTower.CRASHED)
             {
-                MessageBox.Show("YOU WIN !!!!!!");
+                isStarted = false;
                 timer.Stop();
+                MessageBox.Show("YOU WIN !!!!!!");
             }
             if ((++cdCounter % kSECOND) == 0)
                 checkCD();
@@ -511,7 +514,20 @@ namespace Side_scrolling_Tower_Defense
             }
             timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
         }
-        
+        private void btnReturnToMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (isStarted)
+            {
+                if (MessageBox.Show("遊戲還在進行，確定要返回主選單嗎?", "確認", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    isStarted = false;
+                    gridBG.Visibility = System.Windows.Visibility.Visible;
+                }
+            }
+            else
+                gridBG.Visibility = System.Windows.Visibility.Visible;
+
+        }           
         #region MenuBtn Click
         private void startGame_Click(object sender, RoutedEventArgs e)
         {
@@ -527,6 +543,9 @@ namespace Side_scrolling_Tower_Defense
         {
 
         }        
+ 
         #endregion
+
+
     }
 }

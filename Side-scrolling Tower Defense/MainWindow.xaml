@@ -27,11 +27,12 @@
             <Label x:Name="lbMyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="871,42,0,0" VerticalAlignment="Top" Width="72" Height="26"/>
             <Label x:Name="lbEnemyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="41,41,0,0" VerticalAlignment="Top" Width="95" Height="26"/>
             <DockPanel x:Name="dock1" HorizontalAlignment="Left" Height="38" LastChildFill="False" Margin="522,16,0,0" VerticalAlignment="Top" Width="142" Background="#FFE2DBDB"/>
-            <Label Content="Test" HorizontalAlignment="Right" Margin="0,0,923,160" VerticalAlignment="Bottom" Background="#FF64208B" RenderTransformOrigin="0.5,0.5" Width="35"/>
+            <Label Content="Test" HorizontalAlignment="Right" Margin="0,0,923,160" VerticalAlignment="Bottom" Background="#FF9E3ED4" RenderTransformOrigin="0.5,0.5" Width="35"/>
 
         </Grid>
         <Grid x:Name="gridControlBar" Background="#FFC3C3C3" Margin="0,247,0,0">
-            <Button x:Name="btnSpeedUp" Content="&gt;" HorizontalAlignment="Left" Margin="19,48,0,0" VerticalAlignment="Top" Width="38" FontWeight="Bold" FontSize="16" Click="btnSpeedUp_Click"/>
+            <Button x:Name="btnSpeedUp" Content="&gt;" HorizontalAlignment="Left" Margin="19,48,0,0" VerticalAlignment="Top" Width="38" FontWeight="Bold" FontSize="16" Click="btnSpeedUp_Click" Height="27"/>
+            <Button x:Name="btnReturnToMenu" Content="Menu" HorizontalAlignment="Left" Margin="19,15,0,0" VerticalAlignment="Top" Width="38" Height="27" Click="btnReturnToMenu_Click"/>
             <Button x:Name="skill1" HorizontalAlignment="Left" Margin="71,21,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Stop enemy for 10s&#xA;$3000" Click="skill1_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
                 <Image Source="Images/skill1.PNG" Stretch="Fill"/>
             </Button>
