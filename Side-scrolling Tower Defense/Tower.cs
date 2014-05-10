@@ -18,8 +18,7 @@ namespace Side_scrolling_Tower_Defense
         private int _attackspeed;
         private int counter=0;
         private bool isCrash = false;
-        Label lbTowerHP;//在畫面上顯示的血量
-        Label lbTower;//在畫面上顯示的塔
+        Label lbTowerHP;
         
         
         #region get & set
@@ -61,7 +60,7 @@ namespace Side_scrolling_Tower_Defense
         #endregion
 
         /*method*/
-        public Tower(int _hp, int _atk, int _range, int _towerLevel, bool isPlayer, Label _lbHP, Label _lbTower)
+        public Tower(int _hp, int _atk, int _range, int _towerLevel, bool isPlayer, Label _lbHP)
         {
             maxHP = _hp;
             hp = _hp;
@@ -70,15 +69,13 @@ namespace Side_scrolling_Tower_Defense
             towerLevel = _towerLevel;
             _attackspeed = 100;//單位是10毫秒
             lbTowerHP = _lbHP;
-            lbTower = _lbTower;
 
             if (isPlayer)
-                _axis = lbTower.Margin.Right + lbTower.Width;
+                _axis = 50;
             else
-                _axis = lbTower.Margin.Right;
+                _axis = 860;
 
-            //lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
-            lbTowerHP.Content = POSITION.ToString();
+            lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
         }
         public void Attack(List<Soldier> enemyS)
         {

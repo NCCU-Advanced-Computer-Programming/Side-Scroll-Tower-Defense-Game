@@ -9,8 +9,8 @@ namespace Side_scrolling_Tower_Defense
     class Saber : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        public Saber(bool isEnemy, int overPower)
-            : base(100*overPower, 10*overPower, 1, 0.5*overPower, isEnemy, 100)
+        public Saber(bool isEnemy)
+            : base(100, 10, 1, 5, isEnemy, 0)
         {
 
         }
@@ -34,8 +34,8 @@ namespace Side_scrolling_Tower_Defense
     class Archer : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        public Archer(bool isEnemy, int overPower)
-            : base(60 * overPower, 6 * overPower, 20, 0.3 * overPower, isEnemy, 0)
+        public Archer(bool isEnemy)
+            : base(60, 6, 20, 3, isEnemy, 0)
         {
 
         }
@@ -50,8 +50,8 @@ namespace Side_scrolling_Tower_Defense
     class Caster : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        public Caster(bool isEnemy, int overPower)
-            : base(40 * overPower, 15 * overPower, 10, 0.4 * overPower, isEnemy, 0)
+        public Caster(bool isEnemy)
+            : base(40, 15, 10, 4, isEnemy, 0)
         {
 
         }
@@ -66,8 +66,8 @@ namespace Side_scrolling_Tower_Defense
     class Berserker : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        public Berserker(bool isEnemy, int overPower)
-            : base(200 * overPower, 20 * overPower, 1, 0.1 * overPower, isEnemy, 0)
+        public Berserker(bool isEnemy)
+            : base(200, 20, 1, 1, isEnemy, 0)
         {
 
         }
@@ -82,8 +82,8 @@ namespace Side_scrolling_Tower_Defense
     class Rider : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        public Rider(bool isEnemy, int overPower)
-            : base(100 * overPower, 7 * overPower, 2, 1 * overPower, isEnemy, 0)
+        public Rider(bool isEnemy)
+            : base(100, 7, 2, 10, isEnemy, 0)
         {
 
         }
@@ -99,8 +99,8 @@ namespace Side_scrolling_Tower_Defense
     class Lancer : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        public Lancer(bool isEnemy, int overPower)
-            : base(120 * overPower, 8 * overPower, 5, 0.5 * overPower, isEnemy, 0)
+        public Lancer(bool isEnemy)
+            : base(120, 8, 5, 5, isEnemy,0)
         {
 
         }
@@ -114,8 +114,8 @@ namespace Side_scrolling_Tower_Defense
     class Assassin : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        public Assassin(bool isEnemy, int overPower)
-            : base(30 * overPower, 40 * overPower, 1, 1 * overPower, isEnemy, 0)
+        public Assassin(bool isEnemy)
+            : base(30, 40, 1, 10, isEnemy,0)
         {
 
         }
