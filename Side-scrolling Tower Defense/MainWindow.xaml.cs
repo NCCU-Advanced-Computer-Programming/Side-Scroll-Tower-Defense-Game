@@ -71,8 +71,8 @@ namespace Side_scrolling_Tower_Defense
         }
         private void Reset()
         {
-            player = new Player(lbMoney, lbMyTower_hp);
-            ai = new AI(lbEnemyTower_hp);
+            player = new Player(lbMoney, lbMyTower_hp, lbMyTower);
+            ai = new AI(lbEnemyTower_hp, lbEenemyTower);
             btnUpgradeTower.Content = "升級塔\n$" + player.UPGRADEPRICE.ToString();
 
             timer = new DispatcherTimer();
@@ -189,7 +189,6 @@ namespace Side_scrolling_Tower_Defense
                 LabelBlocking(skill3, 0);
 
         }
-
         private void checkSkill()
         {
             dock1.Children.Clear();
@@ -297,6 +296,21 @@ namespace Side_scrolling_Tower_Defense
             }
             LabelBlocking(btnSoldier4, 12);
         }
+        private void btnSoldier5_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSoldier6_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSoldier7_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         #endregion
 
         #region 解鎖士兵的 btnClick function
@@ -333,6 +347,21 @@ namespace Side_scrolling_Tower_Defense
                 gridControlBar.Children.Remove(btnUnlock3);
             }
         }
+        private void btnUnlock4_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnUnlock5_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnUnlock6_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         #endregion
 
         #region 玩家即時技 btnClick function
@@ -382,7 +411,6 @@ namespace Side_scrolling_Tower_Defense
             };
             parent.Children.Add(image);
         }
-
         private void btnUpgradeTower_Click(object sender, RoutedEventArgs e)
         {
             if (player.MONEY > player.UPGRADEPRICE)
@@ -412,19 +440,22 @@ namespace Side_scrolling_Tower_Defense
             }
             timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
         }
-
+        
+        #region MenuBtn Click
         private void startGame_Click(object sender, RoutedEventArgs e)
         {
             Reset();
             gridBG.Visibility = Visibility.Hidden;
         }
-
         private void about_Click(object sender, RoutedEventArgs e)
         {
             Window1 about = new Window1();
             about.Show();
         }
+        private void howTo_Click(object sender, RoutedEventArgs e)
+        {
 
-
+        }        
+        #endregion
     }
 }

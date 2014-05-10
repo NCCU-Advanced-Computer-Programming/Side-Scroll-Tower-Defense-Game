@@ -100,14 +100,13 @@ namespace Side_scrolling_Tower_Defense
         public Label Show(int height, int width, System.Windows.Media.SolidColorBrush Color)
         {
             if(isEnemy)
-                Image.Margin = new System.Windows.Thickness(0,0,850,15); //AI士兵出生位置
+                Image.Margin = new System.Windows.Thickness(0,0,890,10); //AI士兵出生位置
             else
-                Image.Margin = new System.Windows.Thickness(850,0,0,15); //Player士兵出生位置
+                Image.Margin = new System.Windows.Thickness(890,0,0,10); //Player士兵出生位置
             Image.Height = height;
             Image.Width = width;
             Image.Background = Color;
             Image.VerticalAlignment = VerticalAlignment.Bottom;
- //           Image.Opacity = 0.7;
             Image.BorderBrush = System.Windows.Media.Brushes.Black;
             Image.BorderThickness = new Thickness(1, 1, 1, 1);
 
@@ -179,14 +178,14 @@ namespace Side_scrolling_Tower_Defense
                 if (isEnemy)
                 {
                     Image.Margin = new Thickness(Image.Margin.Left + SPEED, Image.Margin.Top, Image.Margin.Right - SPEED, Image.Margin.Bottom);
-                    POSITION = Image.Margin.Right + Image.Width / 2; //POSITION = 方塊中點位置(右邊緣 + 寬度的一半)
-                   // Image.Content = POSITION.ToString();
+                    POSITION = Image.Margin.Right;
+                   //Image.Content = POSITION.ToString();
                 }
                 else
                 {
                     Image.Margin = new Thickness(Image.Margin.Left - SPEED, Image.Margin.Top, Image.Margin.Right + SPEED, Image.Margin.Bottom);
-                    POSITION = Image.Margin.Right + Image.Width / 2; //POSITION = 方塊中點位置(右邊緣 + 寬度的一半)
-              //      Image.Content = POSITION.ToString();
+                    POSITION = Image.Margin.Right + Image.Width ; //POSITION = 方塊中點位置(右邊緣 + 寬度的一半)
+                  //  Image.Content = POSITION.ToString();
                 }
             }
             Image.Content = HP.ToString();//顯示血量

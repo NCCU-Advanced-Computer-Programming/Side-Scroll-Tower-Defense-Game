@@ -29,13 +29,13 @@ namespace Side_scrolling_Tower_Defense
         }
         #endregion
 
-        public Player(Label _lbmoney, Label _lbTowerHP)
+        public Player(Label _lbmoney, Label _lbTowerHP, Label _lbTower)
         {
             _money = 10000;      // 初始資金
             _towerUpgradePrice = 100; //塔升級費用
             moneyGainSpeed = 1;
             lbMoney = _lbmoney;
-            myTower = new Tower(1000, 50, 250, 1, true, _lbTowerHP);
+            myTower = new Tower(1000, 50, 250, 1, true, _lbTowerHP, _lbTower);
         }
         public void MoneyGain()
         {
@@ -46,25 +46,41 @@ namespace Side_scrolling_Tower_Defense
             }
         }
         public void GenerateSolider(Panel grid1, int type, int overPower, int cost){
-            if(type == 1)//一般兵種
+            if(type == 1)
             {
-                soldier.Add(new Soldier(100 * overPower, 15 * overPower, 50, 0.7 * overPower, false, cost));
+               // soldier.Add(new Soldier(100 * overPower, 15 * overPower, 50, 0.7 * overPower, false, cost));
+                soldier.Add(new Saber(false, overPower));
                 grid1.Children.Add(soldier[soldier.Count-1].Show(50, 50, System.Windows.Media.Brushes.Gold));
             }
-            else if(type==2)//高攻 血少 慢
+            else if(type==2)
             {
-                soldier.Add(new Soldier(70 * overPower, 30 * overPower, 50, 0.4 * overPower, false, cost));
-                grid1.Children.Add(soldier[soldier.Count-1].Show(60, 50, System.Windows.Media.Brushes.Red));
+                soldier.Add(new Archer(false, overPower));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(60, 50, System.Windows.Media.Brushes.Red));
             }
-            else if (type == 3)//血厚 攻低 慢
+            else if (type == 3)
             {
-                soldier.Add(new Soldier(200 * overPower, 10 * overPower, 50, 0.2 * overPower, false, cost));
-                grid1.Children.Add(soldier[soldier.Count-1].Show(80, 50, System.Windows.Media.Brushes.PaleGreen));
+                soldier.Add(new Caster(false, overPower));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(70, 50, System.Windows.Media.Brushes.PaleGreen));
             }
-            else if (type == 4) //高攻 血厚 速普通
+            else if (type == 4)
             {
-                soldier.Add(new Soldier(200 * overPower, 25 * overPower, 50, 0.5 * overPower, false, cost));
-                grid1.Children.Add(soldier[soldier.Count-1].Show(40, 50, System.Windows.Media.Brushes.Navy));
+                soldier.Add(new Rider(false, overPower));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(80, 50, System.Windows.Media.Brushes.Navy));
+            }
+            else if (type == 5)
+            {
+                soldier.Add(new Assassin(false, overPower));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(90, 50, System.Windows.Media.Brushes.Navy));
+            }
+            else if (type == 6)
+            {
+                soldier.Add(new Lancer(false, overPower));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(100, 50, System.Windows.Media.Brushes.Navy));
+            }
+            else if (type == 7)
+            {
+                soldier.Add(new Berserker(false, overPower));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(110, 50, System.Windows.Media.Brushes.Navy));
             }
             else
             {
