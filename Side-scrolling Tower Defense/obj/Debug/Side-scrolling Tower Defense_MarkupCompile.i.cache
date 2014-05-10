@@ -4,26 +4,15 @@
 winexe
 C#
 .cs
-<<<<<<< HEAD
 C:\Users\Xanadu\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\
-=======
-P:\Programming Source\Project_1\Side-scrolling Tower Defense\obj\Debug\
->>>>>>> b6be4f493c51d7e90139ac26d7e2ffbe7b0ee57a
 Side_scrolling_Tower_Defense
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
 C:\Users\Xanadu\Documents\GitHub\Project_1\Side-scrolling Tower Defense\App.xaml
 2462529049
 
 161072736772
-=======
-P:\Programming Source\Project_1\Side-scrolling Tower Defense\App.xaml
-2462529049
-
-16941125450
->>>>>>> b6be4f493c51d7e90139ac26d7e2ffbe7b0ee57a
 18-1023619875
 MainWindow.xaml;Window1.xaml;
 
