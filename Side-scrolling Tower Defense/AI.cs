@@ -17,7 +17,7 @@ namespace Side_scrolling_Tower_Defense
 
         public AI(Label _lbTowerHp, Label _lbTower)
         {
-            aiTower = new Tower(1000, 50, 250, 1, false, _lbTowerHp, _lbTower);
+            aiTower = new Tower(1000, 50, 250, 1, false, _lbTowerHp);
         }
         public void Intelligence(List<Soldier> enemyS, Grid grid1, Label lb, Tower enemyTower)
         { //智慧產兵 XDDD 目前只會rand產兵
