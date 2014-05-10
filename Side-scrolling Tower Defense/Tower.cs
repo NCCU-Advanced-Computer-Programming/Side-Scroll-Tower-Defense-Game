@@ -199,14 +199,16 @@ namespace Side_scrolling_Tower_Defense
             if (item == 't')
                 towerLevel++;
         }
-        public void Skill()
+
+        /*範圍技大招 傳入對方士兵陣列*/
+        public void Skill(List<Soldier> EnemyS)
         {
-//            int i = 0;
-      //      while (enemySoldier[i] != NULL)
-       //     {
-        //        if(enemySoldier[i].POSITION <= this.range)
-       //             enemySoldier[i].HP -= this.ATK; // or die?
-       //     }
+            for (int i = 0; i < EnemyS.Count; i++)
+            {
+                if (EnemyS[i].Poisition - this.range <= 100 ){/*caculate the abs value of distance*/
+                    Enemy[target].HP -= this.atk;
+                }
+            }
         }
 
         
