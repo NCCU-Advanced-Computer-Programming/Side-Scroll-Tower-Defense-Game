@@ -130,4 +130,19 @@
   <data name="skill3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\skill3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="占用遊戲說明圖" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\占用遊戲說明圖.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="品" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\品.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="白" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\白.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="蘇" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\蘇.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="許" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\許.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

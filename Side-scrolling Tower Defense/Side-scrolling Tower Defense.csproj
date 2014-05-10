@@ -121,19 +121,19 @@
     <Resource Include="Images\bg.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="許.jpg" />
+    <None Include="Images\占用遊戲說明圖.JPG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="品.jpg" />
+    <None Include="Images\白.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="蘇.jpg" />
+    <None Include="Images\品.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="白.jpg" />
+    <None Include="Images\許.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="占用遊戲說明圖.JPG" />
+    <None Include="Images\蘇.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
