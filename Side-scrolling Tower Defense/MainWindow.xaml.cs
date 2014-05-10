@@ -65,14 +65,12 @@ namespace Side_scrolling_Tower_Defense
         private int skillCounter3 = 0;
   //      private int skillCounter4 = 0;
         /*-----------------Counter--------------------*/
-        private int[] coldDownTime = { 1, 2, 3, 1, 5, 6, 7, 80, 3, 100 };//順序: 兵種1~7 CD, 技能1~3 CD      
+        private int[] coldDownTime = { 1, 2, 3, 1, 5, 6, 7, 0, 3, 100 };//順序: 兵種1~7 CD, 技能1~3 CD      
         #endregion
 
         public MainWindow()
         {
             InitializeComponent();
-            
-
         }
         private void Reset()
         {

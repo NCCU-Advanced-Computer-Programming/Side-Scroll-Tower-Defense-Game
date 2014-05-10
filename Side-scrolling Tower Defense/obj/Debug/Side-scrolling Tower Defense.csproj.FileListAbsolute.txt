@@ -116,3 +116,4 @@ P:\Programming Source\backup\Side-scrolling Tower Defense\obj\Debug\Side_scrolli
 P:\Programming Source\backup\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csproj.GenerateResource.Cache
 C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Window1.baml
 C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Window1.g.cs
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csprojResolveAssemblyReference.cache

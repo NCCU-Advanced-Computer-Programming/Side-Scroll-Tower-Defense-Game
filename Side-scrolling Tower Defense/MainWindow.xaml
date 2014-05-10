@@ -27,16 +27,7 @@
             <Label x:Name="lbMyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="871,42,0,0" VerticalAlignment="Top" Width="72" Height="26"/>
             <Label x:Name="lbEnemyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="41,41,0,0" VerticalAlignment="Top" Width="95" Height="26"/>
             <DockPanel x:Name="dock1" HorizontalAlignment="Left" Height="38" LastChildFill="False" Margin="522,16,0,0" VerticalAlignment="Top" Width="142" Background="#FFE2DBDB"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="491,69,0,0" VerticalAlignment="Top" Background="#FF64208B" RenderTransformOrigin="0.5,0.5">
-                <Label.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="90"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Label.RenderTransform>
-            </Label>
+            <Label Content="Test" HorizontalAlignment="Right" Margin="0,0,923,160" VerticalAlignment="Bottom" Background="#FF64208B" RenderTransformOrigin="0.5,0.5" Width="35"/>
 
         </Grid>
         <Grid x:Name="gridControlBar" Background="#FFC3C3C3" Margin="0,247,0,0">

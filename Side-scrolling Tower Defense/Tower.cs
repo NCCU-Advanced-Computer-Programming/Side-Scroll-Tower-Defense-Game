@@ -24,7 +24,7 @@ namespace Side_scrolling_Tower_Defense
         Label lbTower;//在畫面上顯示的塔
         Label bullet;
         Grid grid;//主畫面(顯示子彈用
-        double movePerStepX = 15; //單位時間移動的 X 軸值, 定值
+        double movePerStepX = 25; //單位時間移動的 X 軸值, 定值
         double movePerStepY = 0; //即時計算每單位時間移動的 Y 軸值
         int startTime = 0; //每發子彈的開槍時機
         double angle = 0;//子彈角度
@@ -84,9 +84,9 @@ namespace Side_scrolling_Tower_Defense
             grid = _grid;
 
             if (isEnemy)
-                _axis = lbTower.Margin.Right;
+                _axis = 886;//lbTower.Margin.Right;
             else
-                _axis = lbTower.Margin.Right + lbTower.Width ;
+                _axis = 108;//lbTower.Margin.Right + lbTower.Width;
 
             lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
         }
@@ -108,32 +108,38 @@ namespace Side_scrolling_Tower_Defense
             {
                 if (startTime == 0)
                 {
-                    startTime = (int)((nearest) / movePerStepX + 5); 
+                    startTime = (int)((nearest) / movePerStepX) + 3 ;
+                    //if (startTime == 0)
+                    //{
+                    //    startTime = _attackspeed - (int)(nearest / 3 + 5);
+                    //    movePerStepX = 5;
+                    //}
+                    //else
+                    //{
                     startTime = _attackspeed - startTime;
+                    //movePerStepX = 20;
+                    //}
+
+                    movePerStepY = (lbTower.Height - (enemyS[target].Image.Height / 2)) / (_attackspeed - startTime);
                 }
 
                 bool isShooted = false;
                 if (bullet == null && counter == startTime)
                 {
                     grid.Children.Add(BulletShow()); //把子彈放進Grid
-                    //if(!isEnemy)
-                    //    angle = Math.Atan2(-nearest, (lbTower.Height - enemyS[target].Image.Height / 2))*57; //設定角度
-                    //else
-                    //    angle = Math.Atan2(nearest, (lbTower.Height - enemyS[target].Image.Height / 2)) * 57; //設定角度
+                    angle = Math.Atan2((lbTower.Height - enemyS[target].Image.Height / 2), nearest + 40) * 57; //設定角度
 
-                    //RotateTransform transform = transform = new RotateTransform(angle); ;
-                    ////if(!isEnemy)
-                    ////     transform = new RotateTransform(-angle);
-                    ////else
-                    ////    transform = new RotateTransform(angle);
+                    RotateTransform transform = transform = new RotateTransform(angle); ;
+                    if (!isEnemy)
+                        transform = new RotateTransform(-angle);
+                    else
+                        transform = new RotateTransform(angle);
 
-                    //bullet.RenderTransform = transform;
+                    bullet.RenderTransform = transform;
                 }
                 if (counter > startTime)
                 {
                     isShooted = true;
-                    //movePerStepX = 5;
-                    movePerStepY = (lbTower.Height - enemyS[target].Image.Height / 2) / (_attackspeed - startTime); 
                 }
 
                 if ((++counter % _attackspeed) == 0) //控制攻速
@@ -144,33 +150,15 @@ namespace Side_scrolling_Tower_Defense
                     grid.Children.Remove(bullet);
                     bullet = null;
                     startTime = 0;
-
                 }
                 else
                 {
                     if (bullet != null && isShooted)
                     {
                         if (isEnemy)
-                        {
                             bullet.Margin = new System.Windows.Thickness(0, 0,bullet.Margin.Right - movePerStepX,  bullet.Margin.Bottom - movePerStepY);
-                            //if (bullet.Margin.Right < nearest)
-                            //{
-                            //    grid.Children.Remove(bullet);
-                            //    bullet = null;
-                            //    startTime = 0;
-                            //}
-                        }
                         else
-                        {
                             bullet.Margin = new System.Windows.Thickness(0, 0, bullet.Margin.Right + movePerStepX, bullet.Margin.Bottom - movePerStepY);
-                            //if (bullet.Margin.Right - this.POSITION > nearest)
-                            //{
-                            //    grid.Children.Remove(bullet);
-                            //    bullet = null;
-                            //    startTime = 0;
-                            //}
-
-                        }
                     }
                 }
             }
@@ -224,9 +212,13 @@ namespace Side_scrolling_Tower_Defense
         private Label BulletShow()
         {
             bullet = new Label();
-            bullet.Width = 30;
-            bullet.Height = 5;
-            bullet.Margin = new System.Windows.Thickness( 0, 0,lbTower.Margin.Right, lbTower.Height + 10);
+            bullet.Width = 40;
+            bullet.Height = 3;
+            if(isEnemy)
+                bullet.Margin = new System.Windows.Thickness(0, 0, 923, lbTower.Height + 10);
+            else
+                bullet.Margin = new System.Windows.Thickness(0, 0, 36, lbTower.Height + 10);
+
             bullet.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             bullet.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
             bullet.Background = System.Windows.Media.Brushes.Gold;
