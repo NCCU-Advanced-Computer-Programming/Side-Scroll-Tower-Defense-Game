@@ -15,11 +15,11 @@ namespace Side_scrolling_Tower_Defense
  //       private bool counterAttcak_flag = false;
 
 
-        public AI(Label _lbTowerHp, Label _lbTower, Grid grid)
+        public AI( Grid grid)
         {
-            aiTower = new Tower(1000, 50, 250, 1, false, _lbTowerHp, _lbTower, grid);
+            aiTower = new Tower(1000, 50, 250, 1, false, grid);
         }
-        public void Intelligence(List<Soldier> enemyS, Grid grid1, Label lb, Tower enemyTower)
+        public void Intelligence(List<Soldier> enemyS, Grid grid1, Tower enemyTower)
         { //智慧產兵 XDDD 目前只會rand產兵
             Random rand = new Random();
             int playerTotalPower = enemyS.Sum(s => s.ATK); //取得玩家總戰力
@@ -54,7 +54,7 @@ namespace Side_scrolling_Tower_Defense
                 //aiTower等級不能比玩家高多於3等
                 if (rand.Next(1000) <= 2 && aiTower.TowerLevel <= enemyTower.TowerLevel + 3)
                 {
-                    UpgradeTower(lb);
+                    UpgradeTower();
                 }
             }
             MaintainSolidersPosition(enemyS, enemyTower);
@@ -103,15 +103,12 @@ namespace Side_scrolling_Tower_Defense
             }
 
         }
-        public void UpgradeTower(Label lb)
+        public void UpgradeTower()
         {
             aiTower.Upgrade('t', aiTower.TowerLevel);
             aiTower.Upgrade('h', aiTower.MAXHP + 1);
             aiTower.Upgrade('a', aiTower.ATK + 2);
             aiTower.Upgrade('r', aiTower.RANGE + 3);
-
-            //顯示
-            lb.Content = "level:" + aiTower.TowerLevel.ToString() + '\n' + "hp:" + aiTower.HP.ToString() + '\n' + "range:" + aiTower.RANGE.ToString() + '\n' + "atk:" + aiTower.ATK.ToString();
         }
         public void MaintainSolidersPosition(List<Soldier> enemyS, Tower enemyTower)
         {

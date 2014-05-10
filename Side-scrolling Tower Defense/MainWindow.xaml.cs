@@ -31,6 +31,7 @@ namespace Side_scrolling_Tower_Defense
         private const int kSECOND = 50;
         private int cdCounter = 0;
         private bool isStarted = false;
+        DockPanel dock1 = new DockPanel();
         #region 參數設定區
         /*-----------------Price--------------------*/
         private const int s1_price = 50;
@@ -74,10 +75,35 @@ namespace Side_scrolling_Tower_Defense
         }
         private void Reset()
         {
+            #region 重設主畫面(grid1), 控制板(gridContorlBar)的所有物體
+            grid1.Children.Clear();
+            //Resetting dockpanel, 顯示 BUFF
+            dock1.Margin = new Thickness(522, 16, 334, 193);
+            dock1.Background = Brushes.LightGray;
+            grid1.Children.Add(dock1);
+
+            //Resetting all btn
+            btnUnlock1.Visibility = System.Windows.Visibility.Visible;
+            btnUnlock2.Visibility = System.Windows.Visibility.Visible;
+            btnUnlock3.Visibility = System.Windows.Visibility.Visible;
+            btnUnlock4.Visibility = System.Windows.Visibility.Visible;
+            btnUnlock5.Visibility = System.Windows.Visibility.Visible;
+            btnUnlock6.Visibility = System.Windows.Visibility.Visible;
+
+            btnSoldier2.IsEnabled = false;
+            btnSoldier3.IsEnabled = false;
+            btnSoldier4.IsEnabled = false;
+            btnSoldier5.IsEnabled = false;
+            btnSoldier6.IsEnabled = false;
+            btnSoldier7.IsEnabled = false;
+            #endregion
+
             isStarted = true;
-            player = new Player(lbMoney, lbMyTower_hp, lbMyTower, grid1);
-            ai = new AI(lbEnemyTower_hp, lbEenemyTower, grid1);
+            player = new Player(grid1);
+            ai = new AI(grid1);
+
             #region Setting Content
+            btnSpeedUp.Content = ">>";
             btnUpgradeTower.Content = "升級塔\n$" + player.UPGRADEPRICE.ToString();
             btnSoldier1.Content = "Saber\n$" + s1_price.ToString();
             btnSoldier2.Content = "Archer\n$" + s2_price.ToString();
@@ -94,6 +120,7 @@ namespace Side_scrolling_Tower_Defense
             btnUnlock6.Content = "$"+unlock_s7_price.ToString();
             #endregion
 
+            _timeInterval = 20;
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
             timer.Tick += timer_Tick;
@@ -103,7 +130,6 @@ namespace Side_scrolling_Tower_Defense
         private void timer_Tick(object sender, EventArgs e)
         {
             player.MoneyGain();
-            lbMoney.Content ="$ "+ player.MONEY.ToString();
             
             player.MaintainSolidersPosition(ai.soldier, ai.aiTower);//移動Player的兵
             player.myTower.Attack(ai.soldier);//塔要隨時判斷是否有攻擊對象
@@ -247,7 +273,7 @@ namespace Side_scrolling_Tower_Defense
             }
             else
             {
-                ai.Intelligence(player.soldier, grid1, lbEenemyTower, player.myTower);//AI智慧操作
+                ai.Intelligence(player.soldier, grid1, player.myTower);//AI智慧操作
                 ai.aiTower.Attack(player.soldier);//塔要隨時判斷是否有攻擊對象
             }
 
@@ -274,7 +300,6 @@ namespace Side_scrolling_Tower_Defense
                 {
                     buff3CountDown--;
                     skillCounter3 = 0;
-                //    tmp.Content = buff3CountDown.ToString();
                     if (buff3CountDown <= 0)
                     {
                         skill3_isEnable = false;
@@ -296,8 +321,7 @@ namespace Side_scrolling_Tower_Defense
             if (player.MONEY > s1_price)   //錢夠才能產兵
             {
                 player.GenerateSolider(grid1, 1, overPower, s1_price);
-                player.MONEY -= s1_price;//第一種兵 $50
-                lbMoney.Content = "$ " + player.MONEY.ToString();
+                player.EarnMoney(-s1_price);
             }
             LabelBlocking(btnSoldier1, coldDownTime[0]);
         }
@@ -306,8 +330,7 @@ namespace Side_scrolling_Tower_Defense
             if (player.MONEY > s2_price)   //錢夠才能產兵
             {
                 player.GenerateSolider(grid1, 2, overPower, s2_price);
-                player.MONEY -= s2_price;
-                lbMoney.Content = "$ " + player.MONEY.ToString();
+                player.EarnMoney(-s2_price);
             }
             LabelBlocking(btnSoldier2, coldDownTime[1]);
         }
@@ -317,8 +340,7 @@ namespace Side_scrolling_Tower_Defense
             if (player.MONEY > s3_price)   //錢夠才能產兵
             {
                 player.GenerateSolider(grid1, 3, overPower, s3_price);
-                player.MONEY -= s3_price;
-                lbMoney.Content = "$ " + player.MONEY.ToString();
+                player.EarnMoney(-s3_price);
             }
             LabelBlocking(btnSoldier3, coldDownTime[2]);
         }
@@ -328,8 +350,7 @@ namespace Side_scrolling_Tower_Defense
             if (player.MONEY > s4_price)   //錢夠才能產兵
             {
                 player.GenerateSolider(grid1, 4, overPower, s4_price);
-                player.MONEY -= s4_price;
-                lbMoney.Content = "$ " + player.MONEY.ToString();
+                player.EarnMoney(-s4_price);
             }
             LabelBlocking(btnSoldier4, coldDownTime[3]);
         }
@@ -338,8 +359,7 @@ namespace Side_scrolling_Tower_Defense
             if (player.MONEY > s5_price)   //錢夠才能產兵
             {
                 player.GenerateSolider(grid1, 5, overPower, s5_price);
-                player.MONEY -= s5_price;
-                lbMoney.Content = "$ " + player.MONEY.ToString();
+                player.EarnMoney(-s5_price);
             }
             LabelBlocking(btnSoldier5, coldDownTime[4]);
         }
@@ -349,8 +369,7 @@ namespace Side_scrolling_Tower_Defense
             if (player.MONEY > s6_price)   //錢夠才能產兵
             {
                 player.GenerateSolider(grid1, 6, overPower, s6_price);
-                player.MONEY -= s6_price;
-                lbMoney.Content = "$ " + player.MONEY.ToString();
+                player.EarnMoney(-s6_price);
             }
             LabelBlocking(btnSoldier6, coldDownTime[5]);
         }
@@ -360,8 +379,7 @@ namespace Side_scrolling_Tower_Defense
             if (player.MONEY > s7_price)   //錢夠才能產兵
             {
                 player.GenerateSolider(grid1, 7, overPower, s7_price);
-                player.MONEY -= s7_price;
-                lbMoney.Content = "$ " + player.MONEY.ToString();
+                player.EarnMoney(-s7_price);
             }
             LabelBlocking(btnSoldier7, coldDownTime[6]);
         }
@@ -371,68 +389,49 @@ namespace Side_scrolling_Tower_Defense
         #region 解鎖士兵的 btnClick function
         private void btnUnlock1_Click(object sender, RoutedEventArgs e)
         {
-            if (player.MONEY >= unlock_s2_price)
-            {
-                player.MONEY -= unlock_s2_price;
-                btnSoldier2.IsEnabled = true;
-              //  btnUnlock1.Visibility = Visibility.Hidden;
-                btnUnlock1.IsEnabled = false;
-                gridControlBar.Children.Remove(btnUnlock1);
-            }
+            player.MONEY -= unlock_s2_price;
+            btnSoldier2.IsEnabled = true;
+            btnUnlock1.Visibility = Visibility.Hidden;
+            btnUnlock1.IsEnabled = false;
         }
 
         private void btnUnlock2_Click(object sender, RoutedEventArgs e)
         {
-            if (player.MONEY >= unlock_s3_price)
-            {
-                player.MONEY -= unlock_s3_price;
-                btnSoldier3.IsEnabled = true;
-                btnUnlock2.IsEnabled = false;
-                gridControlBar.Children.Remove(btnUnlock2);
-            }
+            player.MONEY -= unlock_s3_price;
+            btnSoldier3.IsEnabled = true;
+            btnUnlock2.Visibility = System.Windows.Visibility.Hidden;
+            btnUnlock2.IsEnabled = false;
         }
 
         private void btnUnlock3_Click(object sender, RoutedEventArgs e)
         {
-            if (player.MONEY >= unlock_s4_price)
-            {
-                player.MONEY -= unlock_s4_price;
-                btnSoldier4.IsEnabled = true;
-                btnUnlock3.IsEnabled = false;
-                gridControlBar.Children.Remove(btnUnlock3);
-            }
+            player.MONEY -= unlock_s4_price;
+            btnSoldier4.IsEnabled = true;
+            btnUnlock3.Visibility = System.Windows.Visibility.Hidden;
+            btnUnlock3.IsEnabled = false;
         }
         private void btnUnlock4_Click(object sender, RoutedEventArgs e)
         {
-            if (player.MONEY >= unlock_s5_price)
-            {
-                player.MONEY -= unlock_s5_price;
-                btnSoldier5.IsEnabled = true;
-                btnUnlock4.IsEnabled = false;
-                gridControlBar.Children.Remove(btnUnlock4);
-            }
+            player.MONEY -= unlock_s5_price;
+            btnSoldier5.IsEnabled = true;
+            btnUnlock4.Visibility = System.Windows.Visibility.Hidden;
+            btnUnlock4.IsEnabled = false;
         }
 
         private void btnUnlock5_Click(object sender, RoutedEventArgs e)
         {
-            if (player.MONEY >= unlock_s6_price)
-            {
-                player.MONEY -= unlock_s6_price;
-                btnSoldier6.IsEnabled = true;
-                btnUnlock5.IsEnabled = false;
-                gridControlBar.Children.Remove(btnUnlock5);
-            }
+            player.MONEY -= unlock_s6_price;
+            btnSoldier6.IsEnabled = true;
+            btnUnlock5.Visibility = System.Windows.Visibility.Hidden;
+            btnUnlock5.IsEnabled = false;
         }
 
         private void btnUnlock6_Click(object sender, RoutedEventArgs e)
         {
-            if (player.MONEY >= unlock_s7_price)
-            {
-                player.MONEY -= unlock_s7_price;
-                btnSoldier7.IsEnabled = true;
-                btnUnlock6.IsEnabled = false;
-                gridControlBar.Children.Remove(btnUnlock6);
-            }
+            player.MONEY -= unlock_s7_price;
+            btnSoldier7.IsEnabled = true;
+            btnUnlock6.Visibility = System.Windows.Visibility.Hidden;
+            btnUnlock6.IsEnabled = false;
         }
 
         #endregion
@@ -444,8 +443,6 @@ namespace Side_scrolling_Tower_Defense
             skill1_isEnable = true;
             buff1CountDown = 10;
             LabelBlocking(skill1, coldDownTime[7]);
-
-    
         }
 
         private void skill2_Click(object sender, RoutedEventArgs e)
@@ -455,7 +452,6 @@ namespace Side_scrolling_Tower_Defense
             buff2CountDown = 10;
             LabelBlocking(skill2, coldDownTime[8]);
             player.myTower.RANGE += 1500;
-         
         }
 
         private void skill3_Click(object sender, RoutedEventArgs e)
@@ -471,7 +467,6 @@ namespace Side_scrolling_Tower_Defense
                 s.SPEED *= 2;
                 s.HP *= 2;
             }
-
         }
         #endregion
 
@@ -489,30 +484,35 @@ namespace Side_scrolling_Tower_Defense
         {
             if (player.MONEY > player.UPGRADEPRICE)
             {
-                player.UpgradeTower(lbMyTower);
+                player.UpgradeTower();
                 btnUpgradeTower.Content = "升級塔\n$" + player.UPGRADEPRICE.ToString();
             }
         }
         private void btnSpeedUp_Click(object sender, RoutedEventArgs e)
         {
-            if (btnSpeedUp.Content.ToString() == ">")
+            if (btnSpeedUp.Content.ToString() == ">>")
             {
                 _timeInterval = 10;
-                btnSpeedUp.Content = ">>";
-                timer.Start();
-            }
-            else if(btnSpeedUp.Content.ToString() == ">>")
-            {
-                timer.Stop();
+                timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
                 btnSpeedUp.Content = "||";
+            }
+            else if(btnSpeedUp.Content.ToString() == "||")
+            {
+                timer.IsEnabled=false;
+                btnSpeedUp.Content = ">";
+            }
+            else if (btnSpeedUp.Content.ToString() == ">")
+            {
+                _timeInterval = 20;
+                timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
+                btnSpeedUp.Content = ">>";
+                timer.IsEnabled = true ;
             }
             else
             {
-                _timeInterval = 20;
-                btnSpeedUp.Content = ">";
-                timer.Start();
+                MessageBox.Show("Error with SpeedUp btn");
             }
-            timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
+
         }
         private void btnReturnToMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -528,6 +528,7 @@ namespace Side_scrolling_Tower_Defense
                 gridBG.Visibility = System.Windows.Visibility.Visible;
 
         }           
+   
         #region MenuBtn Click
         private void startGame_Click(object sender, RoutedEventArgs e)
         {

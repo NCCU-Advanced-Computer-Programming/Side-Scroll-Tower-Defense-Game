@@ -17,17 +17,13 @@
                     </ImageBrush.RelativeTransform>
                 </ImageBrush>
             </Grid.Background>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="0*"/>
-            </Grid.RowDefinitions>
-            <Label x:Name="lbMyTower" Content="我的塔" Margin="886,87,36,10" Height="150" Width="72" Background="#FF697AEA" FontSize="10"/>
-            <Label x:Name="lbEenemyTower" Content="壞蛋的塔" Margin="36,87,886,10" Height="150" Width="72" Background="#FFEA2915" FontSize="10"/>
-            <Label x:Name="lbMoney" Content="Label" HorizontalAlignment="Left" Height="36" Margin="740,16,0,0" VerticalAlignment="Top" Width="126"/>
-            <Label x:Name="lbMyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="871,42,0,0" VerticalAlignment="Top" Width="72" Height="26"/>
-            <Label x:Name="lbEnemyTower_hp" Content="Label" HorizontalAlignment="Left" Margin="41,41,0,0" VerticalAlignment="Top" Width="95" Height="26"/>
-            <DockPanel x:Name="dock1" HorizontalAlignment="Left" Height="38" LastChildFill="False" Margin="522,16,0,0" VerticalAlignment="Top" Width="142" Background="#FFE2DBDB"/>
-            <Label Content="Test" HorizontalAlignment="Right" Margin="0,0,923,160" VerticalAlignment="Bottom" Background="#FF9E3ED4" RenderTransformOrigin="0.5,0.5" Width="35"/>
+            <Label Content="我的塔" Background="#FF697AEA" FontSize="10" Margin="0,0,36,10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" Width="72" Height="150" VerticalAlignment="Bottom"/>
+            <Label Content="壞蛋的塔" Margin="0,0,886,10" Height="150" Width="72" Background="#FFEA2915" FontSize="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+            <Label Content="$ player Money" Height="36" Margin="832,16,36,195" Width="126"/>
+            <Label Content="HP/maxHP"  Margin="868,56,36,165" Height="26" HorizontalContentAlignment="Right" />
+            <Label Content="HP/maxHP"  Margin="36,56,868,165" Height="26" />
+            <DockPanel Height="38" LastChildFill="False" Margin="522,16,334,193" Background="#FFE2DBDB"/>
+            <Label x:Name="test" Content="定位" HorizontalAlignment="Right" Margin="0,0,923,10" VerticalAlignment="Bottom" Background="#FF9E3ED4" RenderTransformOrigin="0.5,0.5" Width="35"/>
 
         </Grid>
         <Grid x:Name="gridControlBar" Background="#FFC3C3C3" Margin="0,247,0,0">

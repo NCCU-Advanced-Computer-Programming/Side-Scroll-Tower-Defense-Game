@@ -21,7 +21,7 @@ namespace Side_scrolling_Tower_Defense
         private bool isCrash = false;
         private bool isEnemy = false;
         Label lbTowerHP;//在畫面上顯示的血量
-        Label lbTower;//在畫面上顯示的塔
+        Label lbTower;  //在畫面上顯示的塔
         Label bullet;
         Grid grid;//主畫面(顯示子彈用
         double movePerStepX = 25; //單位時間移動的 X 軸值, 定值
@@ -70,7 +70,7 @@ namespace Side_scrolling_Tower_Defense
         #endregion
 
         /*method*/
-        public Tower(int _hp, int _atk, int _range, int _towerLevel, bool _isPlayer, Label _lbHP, Label _lbTower, Grid _grid)
+        public Tower(int _hp, int _atk, int _range, int _towerLevel, bool _isPlayer, Grid _grid)
         {
             maxHP = _hp;
             hp = _hp;
@@ -79,9 +79,12 @@ namespace Side_scrolling_Tower_Defense
             towerLevel = _towerLevel;
             _attackspeed = 100;//單位是10毫秒
             isEnemy = !_isPlayer;
-            lbTowerHP = _lbHP;
-            lbTower = _lbTower;
+  //          lbTowerHP = _lbHP;
+  //          lbTower = _lbTower;
             grid = _grid;
+            LabelSetting();
+            grid.Children.Add(lbTower);
+            grid.Children.Add(lbTowerHP);
 
             if (isEnemy)
                 _axis = 886;//lbTower.Margin.Right;
@@ -198,17 +201,19 @@ namespace Side_scrolling_Tower_Defense
                 range = quantity;
             if (item == 't')
                 towerLevel++;
+
+            lbTower.Content = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
         }
 
         /*範圍技大招 傳入對方士兵陣列*/
         public void Skill(List<Soldier> EnemyS)
         {
-            for (int i = 0; i < EnemyS.Count; i++)
-            {
-                if (EnemyS[i].Poisition - this.range <= 100 ){/*caculate the abs value of distance*/
-                    Enemy[target].HP -= this.atk;
-                }
-            }
+            //for (int i = 0; i < EnemyS.Count; i++)
+            //{
+            //    if (EnemyS[i].Poisition - this.range <= 100 ){/*caculate the abs value of distance*/
+            //        Enemy[target].HP -= this.atk;
+            //    }
+            //}
         }
 
         
@@ -227,6 +232,35 @@ namespace Side_scrolling_Tower_Defense
             bullet.Background = System.Windows.Media.Brushes.Purple ;
 
             return bullet;
+        }
+        public void LabelSetting()
+        {
+            lbTower = new Label();
+            lbTowerHP = new Label();
+            lbTower.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+            lbTower.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+            if (isEnemy)
+            {
+
+                lbTower.Margin = new System.Windows.Thickness(0, 0, 886, 10);
+                lbTower.Background = System.Windows.Media.Brushes.Red;
+
+                lbTowerHP.Margin = new System.Windows.Thickness(36, 56, 868, 165);
+            }
+            else
+            {
+                lbTower.Margin = new System.Windows.Thickness(0, 0, 36, 10);
+                lbTower.Background = System.Windows.Media.Brushes.SkyBlue;
+
+                lbTowerHP.Margin = new System.Windows.Thickness(868, 56, 36, 165);
+                lbTowerHP.HorizontalContentAlignment =  System.Windows.HorizontalAlignment.Right;
+            }
+            lbTower.Height = 150;
+            lbTower.Width = 70;
+            lbTower.FontSize = 10;
+            lbTower.BorderBrush = System.Windows.Media.Brushes.Black;
+            lbTower.BorderThickness = new System.Windows.Thickness(1, 1, 1, 1);
+
         }
     }
 }

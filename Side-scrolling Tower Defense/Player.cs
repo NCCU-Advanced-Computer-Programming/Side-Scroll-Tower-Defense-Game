@@ -29,20 +29,23 @@ namespace Side_scrolling_Tower_Defense
         }
         #endregion
 
-        public Player(Label _lbmoney, Label _lbTowerHP, Label _lbTower, Grid grid1)
+        public Player( Grid grid1)
         {
             _money = 10000;      // 初始資金
             _towerUpgradePrice = 100; //塔升級費用
             moneyGainSpeed = 1;
-            lbMoney = _lbmoney;
-            myTower = new Tower(1000, 50, 250, 1, true, _lbTowerHP, _lbTower, grid1);
+            myTower = new Tower(1000, 50, 250, 1, true, grid1);
+            lbMoney = new Label();
+            lbMoney.Margin = new Thickness(832, 16, 36, 195);
+            grid1.Children.Add(lbMoney);
         }
         public void MoneyGain()
         {
             if ((++moneyGainCounter % moneyGainSpeed) == 0)
             {
                 _money++;
-                moneyGainCounter = 0;        
+                moneyGainCounter = 0;
+                lbMoney.Content = "$ " + MONEY.ToString();
             }
         }
         public void GenerateSolider(Panel grid1, int type, int overPower, int cost){
@@ -92,7 +95,7 @@ namespace Side_scrolling_Tower_Defense
             _money += moneyAdd;
             lbMoney.Content = "$"+_money.ToString();
         }
-		public void UpgradeTower(Label lb){
+		public void UpgradeTower(){
             //玩家花錢升級塔，塔等級提升，下級所需金費增加(2倍)
             _money -= _towerUpgradePrice;
 
@@ -104,7 +107,7 @@ namespace Side_scrolling_Tower_Defense
             myTower.Upgrade('r', myTower.RANGE+ 3);
             
             //顯示
-            lb.Content = "level:" + myTower.TowerLevel.ToString() + '\n' + "hp:" + myTower.HP.ToString() + '\n' + "range:" + myTower.RANGE.ToString() + '\n' + "atk:" + myTower.ATK.ToString();
+       //     lb.Content = "level:" + myTower.TowerLevel.ToString() + '\n' + "hp:" + myTower.HP.ToString() + '\n' + "range:" + myTower.RANGE.ToString() + '\n' + "atk:" + myTower.ATK.ToString();
         }
         public void MaintainSolidersPosition(List<Soldier> enemyS, Tower enemyTower)
         {
