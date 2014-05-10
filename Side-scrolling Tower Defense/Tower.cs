@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 namespace Side_scrolling_Tower_Defense
 {
     class Tower
@@ -18,8 +19,16 @@ namespace Side_scrolling_Tower_Defense
         private int _attackspeed;
         private int counter=0;
         private bool isCrash = false;
+        private bool isEnemy = false;
         Label lbTowerHP;//在畫面上顯示的血量
         Label lbTower;//在畫面上顯示的塔
+        Label bullet;
+        Grid grid;//主畫面(顯示子彈用
+        double movePerStepX = 15; //單位時間移動的 X 軸值, 定值
+        double movePerStepY = 0; //即時計算每單位時間移動的 Y 軸值
+        int startTime = 0; //每發子彈的開槍時機
+        double angle = 0;//子彈角度
+
         
         
         #region get & set
@@ -61,7 +70,7 @@ namespace Side_scrolling_Tower_Defense
         #endregion
 
         /*method*/
-        public Tower(int _hp, int _atk, int _range, int _towerLevel, bool isPlayer, Label _lbHP, Label _lbTower)
+        public Tower(int _hp, int _atk, int _range, int _towerLevel, bool _isPlayer, Label _lbHP, Label _lbTower, Grid _grid)
         {
             maxHP = _hp;
             hp = _hp;
@@ -69,16 +78,17 @@ namespace Side_scrolling_Tower_Defense
             range = _range;
             towerLevel = _towerLevel;
             _attackspeed = 100;//單位是10毫秒
+            isEnemy = !_isPlayer;
             lbTowerHP = _lbHP;
             lbTower = _lbTower;
+            grid = _grid;
 
-            if (isPlayer)
-                _axis = lbTower.Margin.Right + lbTower.Width;
-            else
+            if (isEnemy)
                 _axis = lbTower.Margin.Right;
+            else
+                _axis = lbTower.Margin.Right + lbTower.Width ;
 
-            //lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
-            lbTowerHP.Content = POSITION.ToString();
+            lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
         }
         public void Attack(List<Soldier> enemyS)
         {
@@ -87,20 +97,88 @@ namespace Side_scrolling_Tower_Defense
             for (int i = 0; i < enemyS.Count; i++)
             {
                 double distance = Math.Abs(enemyS[i].POSITION - this.POSITION);
-                if (nearest > distance && distance >= 0)
+                if (nearest > distance )
                 {
                     nearest = distance;
                     target = i;
                 }
             }
+
             if (nearest <= range)
             {
-                if ((++counter % _attackspeed) == 0)
+                if (startTime == 0)
+                {
+                    startTime = (int)((nearest) / movePerStepX + 5); 
+                    startTime = _attackspeed - startTime;
+                }
+
+                bool isShooted = false;
+                if (bullet == null && counter == startTime)
+                {
+                    grid.Children.Add(BulletShow()); //把子彈放進Grid
+                    //if(!isEnemy)
+                    //    angle = Math.Atan2(-nearest, (lbTower.Height - enemyS[target].Image.Height / 2))*57; //設定角度
+                    //else
+                    //    angle = Math.Atan2(nearest, (lbTower.Height - enemyS[target].Image.Height / 2)) * 57; //設定角度
+
+                    //RotateTransform transform = transform = new RotateTransform(angle); ;
+                    ////if(!isEnemy)
+                    ////     transform = new RotateTransform(-angle);
+                    ////else
+                    ////    transform = new RotateTransform(angle);
+
+                    //bullet.RenderTransform = transform;
+                }
+                if (counter > startTime)
+                {
+                    isShooted = true;
+                    //movePerStepX = 5;
+                    movePerStepY = (lbTower.Height - enemyS[target].Image.Height / 2) / (_attackspeed - startTime); 
+                }
+
+                if ((++counter % _attackspeed) == 0) //控制攻速
                 {
                     counter = 0;
                     enemyS[target].HP -= this.ATK;
                     enemyS[target].LifeCheck();
+                    grid.Children.Remove(bullet);
+                    bullet = null;
+                    startTime = 0;
+
                 }
+                else
+                {
+                    if (bullet != null && isShooted)
+                    {
+                        if (isEnemy)
+                        {
+                            bullet.Margin = new System.Windows.Thickness(0, 0,bullet.Margin.Right - movePerStepX,  bullet.Margin.Bottom - movePerStepY);
+                            //if (bullet.Margin.Right < nearest)
+                            //{
+                            //    grid.Children.Remove(bullet);
+                            //    bullet = null;
+                            //    startTime = 0;
+                            //}
+                        }
+                        else
+                        {
+                            bullet.Margin = new System.Windows.Thickness(0, 0, bullet.Margin.Right + movePerStepX, bullet.Margin.Bottom - movePerStepY);
+                            //if (bullet.Margin.Right - this.POSITION > nearest)
+                            //{
+                            //    grid.Children.Remove(bullet);
+                            //    bullet = null;
+                            //    startTime = 0;
+                            //}
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                grid.Children.Remove(bullet); 
+                bullet = null;
+                startTime = 0;
             }
         }
         public void GetHurt(int quaintity)
@@ -142,13 +220,20 @@ namespace Side_scrolling_Tower_Defense
        //     }
         }
 
-        /*
-        public Label ReturnLable()
+        
+        private Label BulletShow()
         {
-            Label ImageTower = new Label();
-            return ImageTower;
+            bullet = new Label();
+            bullet.Width = 30;
+            bullet.Height = 5;
+            bullet.Margin = new System.Windows.Thickness( 0, 0,lbTower.Margin.Right, lbTower.Height + 10);
+            bullet.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+            bullet.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+            bullet.Background = System.Windows.Media.Brushes.Gold;
+
+            return bullet;
         }
-        */
+        
 
     }
 }

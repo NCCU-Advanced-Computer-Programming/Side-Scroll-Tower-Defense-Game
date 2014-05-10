@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -35,10 +36,16 @@ namespace Side_scrolling_Tower_Defense
         private const int s1_price = 50;
         private const int s2_price = 100;
         private const int s3_price = 300;
-        private const int s4_price = 500;
+        private const int s4_price = 111;
+        private const int s5_price = 500;
+        private const int s6_price = 502;
+        private const int s7_price = 530;
         private const int unlock_s2_price = 1000;
         private const int unlock_s3_price = 2000;
         private const int unlock_s4_price = 3000;
+        private const int unlock_s5_price = 3001;
+        private const int unlock_s6_price = 3002;
+        private const int unlock_s7_price = 3003;
         private const int skill1_price = 3000;
         private const int skill2_price = 3000;
         private const int skill3_price = 3000;
@@ -56,11 +63,9 @@ namespace Side_scrolling_Tower_Defense
         private int skillCounter1 = 0;
         private int skillCounter2 = 0;
         private int skillCounter3 = 0;
-        private int skillCounter4 = 0;
-     
+  //      private int skillCounter4 = 0;
         /*-----------------Counter--------------------*/
-
-       
+        private int[] coldDownTime = { 1, 2, 3, 1, 5, 6, 7, 80, 3, 100 };//順序: 兵種1~7 CD, 技能1~3 CD      
         #endregion
 
         public MainWindow()
@@ -71,9 +76,24 @@ namespace Side_scrolling_Tower_Defense
         }
         private void Reset()
         {
-            player = new Player(lbMoney, lbMyTower_hp, lbMyTower);
-            ai = new AI(lbEnemyTower_hp, lbEenemyTower);
+            player = new Player(lbMoney, lbMyTower_hp, lbMyTower, grid1);
+            ai = new AI(lbEnemyTower_hp, lbEenemyTower, grid1);
+            #region Setting Content
             btnUpgradeTower.Content = "升級塔\n$" + player.UPGRADEPRICE.ToString();
+            btnSoldier1.Content += "\n$" + s1_price.ToString();
+            btnSoldier2.Content += "\n$" + s2_price.ToString();
+            btnSoldier3.Content += "\n$" + s3_price.ToString();
+            btnSoldier4.Content += "\n$" + s4_price.ToString();
+            btnSoldier5.Content += "\n$" + s5_price.ToString();
+            btnSoldier6.Content += "\n$" + s6_price.ToString();
+            btnSoldier7.Content += "\n$" + s7_price.ToString();
+            btnUnlock1.Content += unlock_s2_price.ToString();
+            btnUnlock2.Content += unlock_s3_price.ToString();
+            btnUnlock3.Content += unlock_s4_price.ToString();
+            btnUnlock4.Content += unlock_s5_price.ToString();
+            btnUnlock5.Content += unlock_s6_price.ToString();
+            btnUnlock6.Content += unlock_s7_price.ToString();
+            #endregion
 
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
@@ -136,6 +156,7 @@ namespace Side_scrolling_Tower_Defense
         }
         private void checkCD()
         {
+
             for (int i = 0; i < lbCD.Count; i++ )
             {
                 if (lbCD[i] != null && lbCD[i].Content.ToString() != "")
@@ -164,7 +185,10 @@ namespace Side_scrolling_Tower_Defense
                     gridControlBar.Children.Remove(lbCD[i]);
                     lbCD.RemoveAt(i);
                 }
-            }
+            }  
+            if (player.MONEY < player.UPGRADEPRICE)
+                LabelBlocking(btnUpgradeTower, 0);
+
             if (player.MONEY < s1_price && btnSoldier1.IsEnabled)
                 LabelBlocking(btnSoldier1, 0);
             if (player.MONEY < s2_price && btnSoldier2.IsEnabled)
@@ -173,14 +197,26 @@ namespace Side_scrolling_Tower_Defense
                 LabelBlocking(btnSoldier3, 0);
             if (player.MONEY < s4_price && btnSoldier4.IsEnabled)
                 LabelBlocking(btnSoldier4, 0);
+            if (player.MONEY < s5_price && btnSoldier5.IsEnabled)
+                LabelBlocking(btnSoldier5, 0);
+            if (player.MONEY < s6_price && btnSoldier6.IsEnabled)
+                LabelBlocking(btnSoldier6, 0);
+            if (player.MONEY < s7_price && btnSoldier7.IsEnabled)
+                LabelBlocking(btnSoldier7, 0);
+
             if (player.MONEY < unlock_s2_price && btnUnlock1.IsEnabled)
                 LabelBlocking(btnUnlock1, 0);
             if (player.MONEY < unlock_s3_price && btnUnlock2.IsEnabled)
                 LabelBlocking(btnUnlock2, 0);
             if (player.MONEY < unlock_s4_price && btnUnlock3.IsEnabled)
                 LabelBlocking(btnUnlock3, 0);
-            if (player.MONEY < player.UPGRADEPRICE)
-                LabelBlocking(btnUpgradeTower, 0);
+            if (player.MONEY < unlock_s5_price && btnUnlock4.IsEnabled)
+                LabelBlocking(btnUnlock4, 0);
+            if (player.MONEY < unlock_s6_price && btnUnlock5.IsEnabled)
+                LabelBlocking(btnUnlock5, 0);
+            if (player.MONEY < unlock_s7_price && btnUnlock6.IsEnabled)
+                LabelBlocking(btnUnlock6, 0);
+
             if (player.MONEY < skill1_price)
                 LabelBlocking(skill1, 0);
             if (player.MONEY < skill2_price)
@@ -262,7 +298,7 @@ namespace Side_scrolling_Tower_Defense
                 player.MONEY -= s1_price;//第一種兵 $50
                 lbMoney.Content = "$ " + player.MONEY.ToString();
             }
-            LabelBlocking(btnSoldier1, 2);
+            LabelBlocking(btnSoldier1, coldDownTime[0]);
         }
         private void btnSoldier2_Click(object sender, RoutedEventArgs e)
         {
@@ -272,7 +308,7 @@ namespace Side_scrolling_Tower_Defense
                 player.MONEY -= s2_price;
                 lbMoney.Content = "$ " + player.MONEY.ToString();
             }
-            LabelBlocking(btnSoldier2, 5);
+            LabelBlocking(btnSoldier2, coldDownTime[1]);
         }
 
         private void btnSoldier3_Click(object sender, RoutedEventArgs e)
@@ -283,7 +319,7 @@ namespace Side_scrolling_Tower_Defense
                 player.MONEY -= s3_price;
                 lbMoney.Content = "$ " + player.MONEY.ToString();
             }
-            LabelBlocking(btnSoldier3, 12);
+            LabelBlocking(btnSoldier3, coldDownTime[2]);
         }
 
         private void btnSoldier4_Click(object sender, RoutedEventArgs e)
@@ -294,21 +330,39 @@ namespace Side_scrolling_Tower_Defense
                 player.MONEY -= s4_price;
                 lbMoney.Content = "$ " + player.MONEY.ToString();
             }
-            LabelBlocking(btnSoldier4, 12);
+            LabelBlocking(btnSoldier4, coldDownTime[3]);
         }
         private void btnSoldier5_Click(object sender, RoutedEventArgs e)
         {
-
+            if (player.MONEY > s5_price)   //錢夠才能產兵
+            {
+                player.GenerateSolider(grid1, 5, overPower, s5_price);
+                player.MONEY -= s5_price;
+                lbMoney.Content = "$ " + player.MONEY.ToString();
+            }
+            LabelBlocking(btnSoldier5, coldDownTime[4]);
         }
 
         private void btnSoldier6_Click(object sender, RoutedEventArgs e)
         {
-
+            if (player.MONEY > s6_price)   //錢夠才能產兵
+            {
+                player.GenerateSolider(grid1, 6, overPower, s6_price);
+                player.MONEY -= s6_price;
+                lbMoney.Content = "$ " + player.MONEY.ToString();
+            }
+            LabelBlocking(btnSoldier6, coldDownTime[5]);
         }
 
         private void btnSoldier7_Click(object sender, RoutedEventArgs e)
         {
-
+            if (player.MONEY > s7_price)   //錢夠才能產兵
+            {
+                player.GenerateSolider(grid1, 7, overPower, s7_price);
+                player.MONEY -= s7_price;
+                lbMoney.Content = "$ " + player.MONEY.ToString();
+            }
+            LabelBlocking(btnSoldier7, coldDownTime[6]);
         }
 
         #endregion
@@ -349,17 +403,35 @@ namespace Side_scrolling_Tower_Defense
         }
         private void btnUnlock4_Click(object sender, RoutedEventArgs e)
         {
-
+            if (player.MONEY >= unlock_s5_price)
+            {
+                player.MONEY -= unlock_s5_price;
+                btnSoldier5.IsEnabled = true;
+                btnUnlock4.IsEnabled = false;
+                gridControlBar.Children.Remove(btnUnlock4);
+            }
         }
 
         private void btnUnlock5_Click(object sender, RoutedEventArgs e)
         {
-
+            if (player.MONEY >= unlock_s6_price)
+            {
+                player.MONEY -= unlock_s6_price;
+                btnSoldier6.IsEnabled = true;
+                btnUnlock5.IsEnabled = false;
+                gridControlBar.Children.Remove(btnUnlock5);
+            }
         }
 
         private void btnUnlock6_Click(object sender, RoutedEventArgs e)
         {
-
+            if (player.MONEY >= unlock_s7_price)
+            {
+                player.MONEY -= unlock_s7_price;
+                btnSoldier7.IsEnabled = true;
+                btnUnlock6.IsEnabled = false;
+                gridControlBar.Children.Remove(btnUnlock6);
+            }
         }
 
         #endregion
@@ -370,7 +442,7 @@ namespace Side_scrolling_Tower_Defense
             player.EarnMoney(-skill1_price); //扣錢
             skill1_isEnable = true;
             buff1CountDown = 10;
-            LabelBlocking(skill1, 60);
+            LabelBlocking(skill1, coldDownTime[7]);
 
     
         }
@@ -380,7 +452,7 @@ namespace Side_scrolling_Tower_Defense
             player.EarnMoney(-skill2_price); //扣錢
             skill2_isEnable = true;
             buff2CountDown = 10;
-            LabelBlocking(skill2, 70);
+            LabelBlocking(skill2, coldDownTime[8]);
             player.myTower.RANGE += 1500;
          
         }
@@ -390,7 +462,7 @@ namespace Side_scrolling_Tower_Defense
             player.EarnMoney(-skill3_price); //扣錢
             skill3_isEnable = true;
             buff3CountDown = 10;
-            LabelBlocking(skill3, 80);
+            LabelBlocking(skill3, coldDownTime[9]);
             overPower = 2;
             foreach (Soldier s in player.soldier)
             {
@@ -401,6 +473,7 @@ namespace Side_scrolling_Tower_Defense
 
         }
         #endregion
+
         private void AddImage(DockPanel parent, string imageSource)
         {
             Label image = new Label();
