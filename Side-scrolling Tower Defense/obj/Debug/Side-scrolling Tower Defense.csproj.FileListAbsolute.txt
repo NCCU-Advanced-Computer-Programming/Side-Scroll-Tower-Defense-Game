@@ -48,7 +48,6 @@ C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\o
 C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.pdb
 C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe
 C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.pdb
-C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\MainWindow.baml
 C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\MainWindow.g.cs
 C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\App.g.cs

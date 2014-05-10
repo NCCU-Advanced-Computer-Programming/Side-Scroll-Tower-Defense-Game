@@ -29,13 +29,13 @@ namespace Side_scrolling_Tower_Defense
         }
         #endregion
 
-        public Player(Label _lbmoney, Label _lbTowerHP, Label _lbTower)
+        public Player(Label _lbmoney, Label _lbTowerHP, Label _lbTower, Grid grid1)
         {
             _money = 10000;      // 初始資金
             _towerUpgradePrice = 100; //塔升級費用
             moneyGainSpeed = 1;
             lbMoney = _lbmoney;
-            myTower = new Tower(1000, 50, 250, 1, true, _lbTowerHP, _lbTower);
+            myTower = new Tower(1000, 50, 250, 1, true, _lbTowerHP, _lbTower, grid1);
         }
         public void MoneyGain()
         {

@@ -12,12 +12,12 @@ namespace Side_scrolling_Tower_Defense
     {
         public Tower aiTower;
         public List<Soldier> soldier = new List<Soldier>();
-        private bool counterAttcak_flag = false;
+ //       private bool counterAttcak_flag = false;
 
 
-        public AI(Label _lbTowerHp, Label _lbTower)
+        public AI(Label _lbTowerHp, Label _lbTower, Grid grid)
         {
-            aiTower = new Tower(1000, 50, 250, 1, false, _lbTowerHp, _lbTower);
+            aiTower = new Tower(1000, 50, 250, 1, false, _lbTowerHp, _lbTower, grid);
         }
         public void Intelligence(List<Soldier> enemyS, Grid grid1, Label lb, Tower enemyTower)
         { //智慧產兵 XDDD 目前只會rand產兵
