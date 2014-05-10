@@ -5,19 +5,33 @@
     <Grid>
         <TabControl>
             <TabItem Header="關於遊戲">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Image Source="占用遊戲說明圖.JPG" Stretch="Fill"/>
+                </Grid>
             </TabItem>
             <TabItem Header="許書軒">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Image Source="許.jpg" Stretch="Fill" Margin="0,0,267,0"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="216,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="242" Width="252" FontSize="18"><Run Text=""/><LineBreak/><Run Language="zh-tw" Text="姓名 : 許書軒"/><LineBreak/><Run Language="zh-tw"/><LineBreak/><Run Language="zh-tw" Text="工作 : AI設計與各種神奇整合"/><LineBreak/><Run Language="zh-tw"/><LineBreak/><Run Language="zh-tw" Text="座右銘 : Coding 就是你不懂code時 ， 坐在code前面一直欣賞他 ， code就會告訴你怎麼Coding"/></TextBlock>
+                </Grid>
             </TabItem>
             <TabItem Header="陳品嘉" Margin="-2,-2,-2,-1">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Image Source="品.jpg" Stretch="Fill" HorizontalAlignment="Left" Width="206"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="211,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="242" Width="257" FontSize="18"><Run/><LineBreak/><Run/><LineBreak/><Run Language="zh-tw" Text="姓名 : 陳品嘉"/><LineBreak/><Run Language="zh-tw" Text=""/><LineBreak/><Run Language="zh-tw" Text="工作 : 兵種製作與技術指導"/><LineBreak/><Run Language="zh-tw"/><LineBreak/><Run Language="zh-tw" Text="座右銘 : 別迷戀哥 哥只是山頂上的傳說"/><LineBreak/></TextBlock>
+                </Grid>
             </TabItem>
             <TabItem Header="白紋愷" Margin="-2,-2,-2,-1">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Image Source="白.jpg" Stretch="Fill" Margin="0,0,273,0"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="205,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="242" Width="263" FontSize="18"><Run Language="zh-tw" Text=""/><LineBreak/><Run Language="zh-tw"/><LineBreak/><Run Language="zh-tw" Text="姓名 : 白紋愷"/><LineBreak/><Run Language="zh-tw"/><LineBreak/><Run Language="zh-tw" Text="工作 : 美工、提出沒用的意見與拖稿"/><LineBreak/><Run Language="zh-tw"/><LineBreak/><Run Language="zh-tw" Text="座右銘 : 阿～～ 我好廢喔ＱＱＱＱ照片裡貓王怎麼這麼帥"/></TextBlock>
+                </Grid>
             </TabItem>
             <TabItem Header="蘇宗彥" Margin="-2,-2,-2,-1">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Image Source="蘇.jpg" Stretch="Fill" Margin="0,0,273,-66"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="210,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="242" Width="258" FontSize="18"><Run Text=""/><LineBreak/><Run/><LineBreak/><Run Language="zh-tw" Text="姓名 : 蘇宗彥"/><LineBreak/><Run Language="zh-tw"/><LineBreak/><Run Language="zh-tw" Text="工作 : 主塔設計與技術指導"/><LineBreak/><Run Language="zh-tw" Text=""/><LineBreak/><Run Language="zh-tw" Text="座右銘 : 我長這樣憑什麼我是蛇蛇"/></TextBlock>
+                </Grid>
             </TabItem>
         </TabControl>
 
