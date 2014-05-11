@@ -96,6 +96,13 @@ namespace Side_scrolling_Tower_Defense
             btnSoldier5.IsEnabled = false;
             btnSoldier6.IsEnabled = false;
             btnSoldier7.IsEnabled = false;
+
+            btnUnlock1.IsEnabled = true;
+            btnUnlock2.IsEnabled = true;
+            btnUnlock3.IsEnabled = true;
+            btnUnlock4.IsEnabled = true;
+            btnUnlock5.IsEnabled = true;
+            btnUnlock6.IsEnabled = true;
             #endregion
 
             isStarted = true;
