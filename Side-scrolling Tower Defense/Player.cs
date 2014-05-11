@@ -115,7 +115,7 @@ namespace Side_scrolling_Tower_Defense
             {
                 // 每個士兵該往前的往前，該打的打
                 soldier[i].Move(enemyS, enemyTower);
-                //Checking life
+                // Checking life
                 if (soldier[i].HP <= 0)
                 {
                     soldier.RemoveAt(i);

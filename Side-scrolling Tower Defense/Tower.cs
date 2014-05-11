@@ -134,7 +134,8 @@ namespace Side_scrolling_Tower_Defense
                 {
                     counter = 0;
                     enemyS[target].HP -= this.ATK;
-                    enemyS[target].LifeCheck();
+                    if (enemyS[target].LifeCheck() == null)
+                        enemyS.RemoveAt(target);
                     grid.Children.Remove(bullet);
                     bullet = null;
                     startTime = 0;

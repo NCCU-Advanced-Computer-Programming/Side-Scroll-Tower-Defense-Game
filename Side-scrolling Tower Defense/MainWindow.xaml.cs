@@ -272,7 +272,6 @@ namespace Side_scrolling_Tower_Defense
                     {
                         skill1_isEnable = false;
                     }
-                    
                 }
             }
             else
