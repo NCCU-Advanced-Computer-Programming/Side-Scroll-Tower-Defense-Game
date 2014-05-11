@@ -125,6 +125,7 @@ namespace Side_scrolling_Tower_Defense
             timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
             timer.Tick += timer_Tick;
             timer.Start();
+
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -254,21 +255,24 @@ namespace Side_scrolling_Tower_Defense
         }
         private void checkSkill()
         {
+            const int kFlashingInterval = 5;
             dock1.Children.Clear();
             if (skill1_isEnable) //判斷技能--時間暫停
             {
-                AddImage(dock1, "Images/skill1.PNG");
+                Label tmplb = AddImage(dock1, "Images/skill1.PNG");
+                if (buff1CountDown <= 3 && (skillCounter1% 10) < kFlashingInterval)
+                {
+                    tmplb.Visibility = Visibility.Hidden;
+                }
                 if ((++skillCounter1 % kSECOND) == 0)
                 {
                     buff1CountDown--;
                     skillCounter1 = 0;
-                   //tmp.Content = buff1CountDown.ToString();
                     if (buff1CountDown <= 0)
                     {
                         skill1_isEnable = false;
-                       // Label name = (Label)this.dock1.FindName("image1");
-                       // this.dock1.Children.Remove((Label)this.FindName("image1");
                     }
+                    
                 }
             }
             else
@@ -279,12 +283,14 @@ namespace Side_scrolling_Tower_Defense
 
             if (skill2_isEnable) //判斷技能--無限射程
             {
-                AddImage(dock1, "Images/skill2.PNG");
-                if ((++skillCounter2 % kSECOND) == 0)
+                Label tmplb = AddImage(dock1, "Images/skill2.PNG");
+                if (buff2CountDown <= 2 && (skillCounter2 % 10) < kFlashingInterval)
+                {
+                    tmplb.Visibility = Visibility.Hidden;
+                } if ((++skillCounter2 % kSECOND) == 0)
                 {
                     buff2CountDown--;
                     skillCounter2 = 0;
-            //        tmp.Content = buff2CountDown.ToString();
                     if (buff2CountDown <= 0)
                     {
                         skill2_isEnable = false;
@@ -295,7 +301,11 @@ namespace Side_scrolling_Tower_Defense
 
             if (skill3_isEnable) //判斷技能--狂戰士
             {
-                AddImage(dock1, "Images/skill3.PNG");
+                Label tmplb = AddImage(dock1, "Images/skill3.PNG");
+                if (buff3CountDown <= 2 && (skillCounter2 % 10) < kFlashingInterval)
+                {
+                    tmplb.Visibility = Visibility.Hidden;
+                } 
                 if ((++skillCounter3 % kSECOND) == 0)
                 {
                     buff3CountDown--;
@@ -470,7 +480,7 @@ namespace Side_scrolling_Tower_Defense
         }
         #endregion
 
-        private void AddImage(DockPanel parent, string imageSource)
+        private Label AddImage(DockPanel parent, string imageSource)
         {
             Label image = new Label();
             image.Content = new Image
@@ -479,6 +489,7 @@ namespace Side_scrolling_Tower_Defense
                 VerticalAlignment = VerticalAlignment.Center
             };
             parent.Children.Add(image);
+            return image;
         }
         private void btnUpgradeTower_Click(object sender, RoutedEventArgs e)
         {
@@ -521,6 +532,8 @@ namespace Side_scrolling_Tower_Defense
                 if (MessageBox.Show("遊戲還在進行，確定要返回主選單嗎?", "確認", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     isStarted = false;
+                    timer.Stop();
+                    timer = null;
                     gridBG.Visibility = System.Windows.Visibility.Visible;
                 }
             }
