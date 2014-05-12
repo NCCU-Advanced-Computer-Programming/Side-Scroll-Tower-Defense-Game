@@ -51,7 +51,8 @@
             <Button x:Name="btnUnlock4" Content="$" HorizontalAlignment="Left" Height="19" Margin="570,52,0,0" VerticalAlignment="Top" Width="79" Focusable="False" Click="btnUnlock4_Click"/>
             <Button x:Name="btnUnlock5" Content="$" HorizontalAlignment="Left" Height="19" Margin="654,52,0,0" VerticalAlignment="Top" Width="79" Click="btnUnlock5_Click" Focusable="False"/>
             <Button x:Name="btnUnlock6" Content="$" HorizontalAlignment="Left" Height="19" Margin="738,52,0,0" VerticalAlignment="Top" Width="79" Click="btnUnlock6_Click" Focusable="False"/>
-            <Button x:Name="btnUpgradeTower" Content="升級塔" HorizontalAlignment="Left" Height="54" Margin="869,21,0,0" VerticalAlignment="Top" Width="80" Click="btnUpgradeTower_Click" Focusable="False"/>
+            <Button x:Name="btnUpgradeTower" Content="升級塔" HorizontalAlignment="Left" Height="54" Margin="888,28,0,0" VerticalAlignment="Top" Width="80" Click="btnUpgradeTower_Click" Focusable="False"/>
+            <Button x:Name="btnTowerSkill" Content="TowerSkill" HorizontalAlignment="Left" Margin="888,5,0,0" VerticalAlignment="Top" Width="80" Click="btnTowerSkill_Click"/>
         </Grid>
         <Grid x:Name="gridBG" Background="White" d:IsHidden="True">
             <StackPanel x:Name="stackMenu" HorizontalAlignment="Left" Height="125" Margin="59,107,0,0" VerticalAlignment="Top" Width="204">

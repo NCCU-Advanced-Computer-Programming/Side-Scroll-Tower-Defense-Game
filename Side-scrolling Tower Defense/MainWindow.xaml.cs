@@ -23,12 +23,12 @@ namespace Side_scrolling_Tower_Defense
     public partial class MainWindow : Window
     {
         DispatcherTimer timer;
-        int _timeInterval = 20;
+        int _timeInterval ;
         Player player ;
         AI ai ;
 
         List<Label> lbCD = new List<Label>();
-        private const int kSECOND = 50;
+        private const int kSECOND = 40;
         private int cdCounter = 0;
         private bool isStarted = false;
         DockPanel dock1 = new DockPanel();
@@ -56,6 +56,7 @@ namespace Side_scrolling_Tower_Defense
         private bool skill1_isEnable = false;// 敵方暫停 10秒
         private bool skill2_isEnable = false;// 我方塔攻擊距離無限 10秒
         private bool skill3_isEnable = false;// 我方兵 血、攻、移動速度 提升2倍 10秒
+        private bool TowerSkill = false;// 一段時間內塔攻速神快
         /*-----------------Flag--------------------*/
         /*-----------------Counter--------------------*/
         private int buff1CountDown = 10;
@@ -64,6 +65,7 @@ namespace Side_scrolling_Tower_Defense
         private int skillCounter1 = 0;
         private int skillCounter2 = 0;
         private int skillCounter3 = 0;
+        private int TowerSkillCounter = 0;
   //      private int skillCounter4 = 0;
         /*-----------------Counter--------------------*/
         private int[] coldDownTime = { 1, 2, 3, 1, 5, 6, 7, 0, 3, 100 };//順序: 兵種1~7 CD, 技能1~3 CD      
@@ -127,7 +129,7 @@ namespace Side_scrolling_Tower_Defense
             btnUnlock6.Content = "$"+unlock_s7_price.ToString();
             #endregion
 
-            _timeInterval = 20;
+            _timeInterval = 25;
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
             timer.Tick += timer_Tick;
@@ -329,6 +331,19 @@ namespace Side_scrolling_Tower_Defense
                     }
                 }
             }
+            if (TowerSkill)
+            {
+                if (++TowerSkillCounter % kSECOND == 0)
+                {
+                    if (TowerSkillCounter == kSECOND * 1000)
+                    {
+                    TowerSkill = false;
+                    //TowerSkillCounter++;
+                    player.myTower.Skill(false);
+
+                    }   
+                }
+            }
         }
 
         #region 產兵的 btnClick function
@@ -505,6 +520,12 @@ namespace Side_scrolling_Tower_Defense
                 btnUpgradeTower.Content = "升級塔\n$" + player.UPGRADEPRICE.ToString();
             }
         }
+        private void btnTowerSkill_Click(object sender, RoutedEventArgs e)
+        {
+            player.myTower.Skill( true);
+            TowerSkill = true;
+            LabelBlocking(btnTowerSkill, 30);
+        }
         private void btnSpeedUp_Click(object sender, RoutedEventArgs e)
         {
             if (btnSpeedUp.Content.ToString() == ">>")
@@ -520,7 +541,7 @@ namespace Side_scrolling_Tower_Defense
             }
             else if (btnSpeedUp.Content.ToString() == ">")
             {
-                _timeInterval = 20;
+                _timeInterval = 25;
                 timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
                 btnSpeedUp.Content = ">>";
                 timer.IsEnabled = true ;
@@ -565,6 +586,7 @@ namespace Side_scrolling_Tower_Defense
         }        
  
         #endregion
+
 
 
     }
