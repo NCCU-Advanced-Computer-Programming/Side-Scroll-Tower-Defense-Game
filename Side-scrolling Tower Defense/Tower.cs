@@ -209,12 +209,28 @@ namespace Side_scrolling_Tower_Defense
         /*範圍技大招 傳入對方士兵陣列*/
         public void Skill(List<Soldier> EnemyS)
         {
-            //for (int i = 0; i < EnemyS.Count; i++)
-            //{
-            //    if (EnemyS[i].Poisition - this.range <= 100 ){/*caculate the abs value of distance*/
-            //        Enemy[target].HP -= this.atk;
-            //    }
-            //}
+            if (!this.isEnemy)/*玩家塔*/
+            {
+                for (int i = 0; i < EnemyS.Count; i++)
+                {
+                    if (EnemyS[i].Poisition < this.range)
+                    {/*caculate the abs value of distance*/
+                        Enemy[target].HP = 0;
+                    }
+                }
+
+            }
+            else if (this.isEnemy)/*AI塔*/
+            {
+                for (int i = 0; i < EnemyS.Count; i++)
+                {
+                    if (1000 - EnemyS[i].Poisition < this.range)
+                    {/*caculate the abs value of distance*/
+                        Enemy[target].HP = 0;
+                    }
+                }
+            }
+            
         }
 
         
