@@ -111,7 +111,6 @@ namespace Side_scrolling_Tower_Defense
             {
                 if (startTime == 0)
                 {
-                    movePerStepX = 1000 / _attackspeed*3;
                     startTime = _attackspeed -(int)(((nearest) / movePerStepX) + 3) ;
                     movePerStepY = (lbTower.Height - (enemyS[target].Image.Height / 2)) / (_attackspeed - startTime);
                 }
@@ -208,43 +207,33 @@ namespace Side_scrolling_Tower_Defense
         }
 
         /*範圍技大招 傳入對方士兵陣列*/
-        public void Skill(bool isActive)
+        public void Skill(List<Soldier> EnemyS)
         {
-            if (isActive)
+            if (!this.isEnemy)/*玩家塔*/
             {
-                _attackspeed = 10;
+                for (int i = 0; i < EnemyS.Count; i++)
+                {
+                    if (EnemyS[i].POSITION < this.range)
+                    {/*caculate the abs value of distance*/
+                        EnemyS[i].HP -= 50;
+                        if (EnemyS[i].LifeCheck() == null)
+                            EnemyS.RemoveAt(i);
+                    }
+                }
 
             }
-            else
+            else if (this.isEnemy)/*AI塔*/
             {
-                _attackspeed = 100;
-
+                for (int i = 0; i < EnemyS.Count; i++)
+                {
+                    if (1000 - EnemyS[i].POSITION < this.range)
+                    {/*caculate the abs value of distance*/
+                        EnemyS[i].HP -= 50;
+                        if (EnemyS[i].LifeCheck() == null)
+                            EnemyS.RemoveAt(i);
+                    }
+                }
             }
-            //if (!this.isEnemy)/*玩家塔*/
-            //{
-            //    for (int i = 0; i < EnemyS.Count; i++)
-            //    {
-            //        if (EnemyS[i].POSITION < this.range)
-            //        {/*caculate the abs value of distance*/
-            //            EnemyS[i].HP -= 50;
-            //            if (EnemyS[i].LifeCheck() == null)
-            //                EnemyS.RemoveAt(i);
-            //        }
-            //    }
-
-            //}
-            //else if (this.isEnemy)/*AI塔*/
-            //{
-            //    for (int i = 0; i < EnemyS.Count; i++)
-            //    {
-            //        if (1000 - EnemyS[i].POSITION < this.range)
-            //        {/*caculate the abs value of distance*/
-            //            EnemyS[i].HP -= 50;
-            //            if (EnemyS[i].LifeCheck() == null)
-            //                EnemyS.RemoveAt(i);
-            //        }
-            //    }
-            //}
             
         }
 

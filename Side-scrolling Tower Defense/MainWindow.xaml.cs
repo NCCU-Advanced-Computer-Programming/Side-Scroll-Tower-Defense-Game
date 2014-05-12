@@ -56,7 +56,6 @@ namespace Side_scrolling_Tower_Defense
         private bool skill1_isEnable = false;// 敵方暫停 10秒
         private bool skill2_isEnable = false;// 我方塔攻擊距離無限 10秒
         private bool skill3_isEnable = false;// 我方兵 血、攻、移動速度 提升2倍 10秒
-        private bool TowerSkill = false;// 一段時間內塔攻速神快
         /*-----------------Flag--------------------*/
         /*-----------------Counter--------------------*/
         private int buff1CountDown = 10;
@@ -65,7 +64,6 @@ namespace Side_scrolling_Tower_Defense
         private int skillCounter1 = 0;
         private int skillCounter2 = 0;
         private int skillCounter3 = 0;
-        private int TowerSkillCounter = 0;
   //      private int skillCounter4 = 0;
         /*-----------------Counter--------------------*/
         private int[] coldDownTime = { 1, 2, 3, 1, 5, 6, 7, 0, 3, 100 };//順序: 兵種1~7 CD, 技能1~3 CD      
@@ -331,19 +329,6 @@ namespace Side_scrolling_Tower_Defense
                     }
                 }
             }
-            if (TowerSkill)
-            {
-                if (++TowerSkillCounter % kSECOND == 0)
-                {
-                    if (TowerSkillCounter == kSECOND * 1000)
-                    {
-                    TowerSkill = false;
-                    //TowerSkillCounter++;
-                    player.myTower.Skill(false);
-
-                    }   
-                }
-            }
         }
 
         #region 產兵的 btnClick function
@@ -522,8 +507,7 @@ namespace Side_scrolling_Tower_Defense
         }
         private void btnTowerSkill_Click(object sender, RoutedEventArgs e)
         {
-            player.myTower.Skill( true);
-            TowerSkill = true;
+            player.myTower.Skill(ai.soldier);
             LabelBlocking(btnTowerSkill, 30);
         }
         private void btnSpeedUp_Click(object sender, RoutedEventArgs e)
