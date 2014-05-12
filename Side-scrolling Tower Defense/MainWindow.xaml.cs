@@ -77,12 +77,21 @@ namespace Side_scrolling_Tower_Defense
         {
             #region 重設主畫面(grid1), 控制板(gridContorlBar)的所有物體
             grid1.Children.Clear();
+
+            foreach (Label lb in lbCD)
+                gridControlBar.Children.Remove(lb);
+            lbCD.Clear();
+            
             //Resetting dockpanel, 顯示 BUFF
-            dock1.Margin = new Thickness(522, 16, 334, 193);
+            dock1.Margin = new Thickness(698,0,0,192);
+            dock1.Width = 105;
+            dock1.Height = 35;
+            dock1.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+            dock1.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
             dock1.Background = Brushes.LightGray;
             grid1.Children.Add(dock1);
 
-            //Resetting all btn
+            //Resetting all btn 
             btnUnlock1.Visibility = System.Windows.Visibility.Visible;
             btnUnlock2.Visibility = System.Windows.Visibility.Visible;
             btnUnlock3.Visibility = System.Windows.Visibility.Visible;
@@ -103,6 +112,14 @@ namespace Side_scrolling_Tower_Defense
             btnUnlock4.IsEnabled = true;
             btnUnlock5.IsEnabled = true;
             btnUnlock6.IsEnabled = true;
+
+            skill1_isEnable = false;
+            skill2_isEnable = false;
+            skill3_isEnable = false;
+
+            skillCounter1 = 0;
+            skillCounter2 = 0;
+            skillCounter3 = 0;
             #endregion
 
             isStarted = true;

@@ -234,7 +234,6 @@ namespace Side_scrolling_Tower_Defense
                     }
                 }
             }
-            
         }
 
         
@@ -258,6 +257,7 @@ namespace Side_scrolling_Tower_Defense
         {
             lbTower = new Label();
             lbTowerHP = new Label();
+            
             lbTower.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             lbTower.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
             if (isEnemy)
@@ -266,19 +266,21 @@ namespace Side_scrolling_Tower_Defense
                 lbTower.Margin = new System.Windows.Thickness(0, 0, 886, 10);
                 lbTower.Background = System.Windows.Media.Brushes.Red;
 
-                lbTowerHP.Margin = new System.Windows.Thickness(36, 56, 868, 165);
+                lbTowerHP.Margin = new System.Windows.Thickness(36, 100, 868, 192);
             }
             else
             {
                 lbTower.Margin = new System.Windows.Thickness(0, 0, 36, 10);
                 lbTower.Background = System.Windows.Media.Brushes.SkyBlue;
 
-                lbTowerHP.Margin = new System.Windows.Thickness(868, 56, 36, 165);
+                lbTowerHP.Margin = new System.Windows.Thickness(868, 100, 36, 192);
                 lbTowerHP.HorizontalContentAlignment =  System.Windows.HorizontalAlignment.Right;
             }
             lbTower.Height = 150;
             lbTower.Width = 70;
             lbTower.FontSize = 10;
+            lbTowerHP.BorderBrush = Brushes.Black;
+            lbTowerHP.BorderThickness = new System.Windows.Thickness(1, 1, 1, 1);  
             lbTower.BorderBrush = System.Windows.Media.Brushes.Black;
             lbTower.BorderThickness = new System.Windows.Thickness(1, 1, 1, 1);
 
