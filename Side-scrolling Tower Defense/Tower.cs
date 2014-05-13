@@ -113,17 +113,17 @@ namespace Side_scrolling_Tower_Defense
             {
                 if (startTime == 0)
                 {
-                    if (nearest / movePerStepX >= 5)
+                    if (nearest / movePerStepX > 2)
                     {
                         movePerStepX = 25;
-                        startTime = _attackspeed - (int)(nearest / movePerStepX);
+                        startTime = _attackspeed - (int)((nearest + this.lbTower.Width) / movePerStepX);
                         movePerStepY = (lbTower.Height - (enemyS[target].Image.Height / 2)) / (_attackspeed - startTime);
 
                     }
                     else //太近了
                     {
-                        movePerStepX = (nearest+50) / 5 ;
-                        startTime = _attackspeed - 5;
+                        movePerStepX = (nearest+this.lbTower.Width) / 5 ;
+                        startTime = _attackspeed - 10;
                         movePerStepY = (lbTower.Height - (enemyS[target].Image.Height / 2)) / (_attackspeed - startTime);
 
                     }
@@ -133,7 +133,7 @@ namespace Side_scrolling_Tower_Defense
                 if (bullet == null && counter == startTime)
                 {
                     grid.Children.Add(BulletShow()); //把子彈放進Grid
-                    angle = Math.Atan2((lbTower.Height - enemyS[target].Image.Height / 2), nearest + 40) * 57; //設定角度
+                    angle = Math.Atan2((lbTower.Height - enemyS[target].Image.Height / 2), nearest + 40) * 57; //設定角度，弧度角轉角度
                     RotateTransform transform = transform = new RotateTransform(angle); ;
                     if (!isEnemy)
                         transform = new RotateTransform(-angle);

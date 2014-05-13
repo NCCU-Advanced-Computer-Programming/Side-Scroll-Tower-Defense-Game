@@ -38,7 +38,7 @@ namespace Side_scrolling_Tower_Defense
         private Label bullet;
         private Grid grid;
         public Archer(bool isEnemy, int overPower, Grid _grid)
-            : base(600 * overPower, 10 * overPower, 150, 0.7 * overPower, isEnemy, 0)
+            : base(600 * overPower, 10 * overPower, 150, 0.7 * overPower, isEnemy, 100)
         {
             grid = _grid;
         }
@@ -197,7 +197,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Caster(bool isEnemy, int overPower)
-            : base(40 * overPower, 15 * overPower, 10, 0.4 * overPower, isEnemy, 0)
+            : base(40 * overPower, 15 * overPower, 10, 0.4 * overPower, isEnemy, 100)
         {
 
         }
@@ -213,7 +213,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Berserker(bool isEnemy, int overPower)
-            : base(200 * overPower, 20 * overPower, 1, 0.1 * overPower, isEnemy, 0)
+            : base(2000 * overPower, 20 * overPower, 1, 0.1 * overPower, isEnemy, 1000)
         {
 
         }
@@ -229,7 +229,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Rider(bool isEnemy, int overPower)
-            : base(100 * overPower, 7 * overPower, 2, 1 * overPower, isEnemy, 0)
+            : base(100 * overPower, 7 * overPower, 2, 1 * overPower, isEnemy, 100)
         {
 
         }
@@ -246,7 +246,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Lancer(bool isEnemy, int overPower)
-            : base(120 * overPower, 8 * overPower, 5, 0.5 * overPower, isEnemy, 0)
+            : base(120 * overPower, 8 * overPower, 5, 0.5 * overPower, isEnemy, 100)
         {
 
         }
@@ -261,7 +261,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Assassin(bool isEnemy, int overPower)
-            : base(30 * overPower, 40 * overPower, 1, 1 * overPower, isEnemy, 0)
+            : base(30 * overPower, 40 * overPower, 1, 1 * overPower, isEnemy, 100)
         {
 
         }

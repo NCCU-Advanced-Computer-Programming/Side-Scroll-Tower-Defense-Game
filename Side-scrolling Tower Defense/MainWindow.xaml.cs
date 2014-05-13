@@ -590,6 +590,15 @@ namespace Side_scrolling_Tower_Defense
  
         #endregion
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (isStarted)
+            {
+                MessageBox.Show("不准中離!!");
+                e.Cancel = true;
+            }
+        }
+
 
 
     }
