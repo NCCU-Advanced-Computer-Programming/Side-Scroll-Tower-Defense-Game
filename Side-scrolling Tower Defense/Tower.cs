@@ -21,6 +21,7 @@ namespace Side_scrolling_Tower_Defense
         private bool isCrash = false;
         private bool isEnemy = false;
         Label lbTowerHP;//在畫面上顯示的血量
+        Label lbHP_BG;
         Label lbTower;  //在畫面上顯示的塔
         Label bullet;
         Grid grid;//主畫面(顯示子彈用
@@ -84,6 +85,7 @@ namespace Side_scrolling_Tower_Defense
             grid = _grid;
             LabelSetting();
             grid.Children.Add(lbTower);
+            _gridTopBar.Children.Add(lbHP_BG);
             _gridTopBar.Children.Add(lbTowerHP);
 
             if (isEnemy)
@@ -91,7 +93,7 @@ namespace Side_scrolling_Tower_Defense
             else
                 _axis = 108;//lbTower.Margin.Right + lbTower.Width;
 
-            lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
+       //     lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
         }
         public void Attack(List<Soldier> enemyS)
         {
@@ -120,7 +122,7 @@ namespace Side_scrolling_Tower_Defense
                     }
                     else //太近了
                     {
-                        movePerStepX = (nearest+50) / 5 + 1;
+                        movePerStepX = (nearest+50) / 5 ;
                         startTime = _attackspeed - 5;
                         movePerStepY = (lbTower.Height - (enemyS[target].Image.Height / 2)) / (_attackspeed - startTime);
 
@@ -189,7 +191,11 @@ namespace Side_scrolling_Tower_Defense
         public void GetHurt(int quaintity)
         {
             hp -= quaintity;
-            lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
+            int remainHP_Width =(int)(200 * ((double)hp / (double)maxHP));
+            if (remainHP_Width < 0)
+                remainHP_Width = 0;
+            lbTowerHP.Width = remainHP_Width;
+  //          lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
             if (hp <= 0)
                 Crash();
         }
@@ -206,7 +212,7 @@ namespace Side_scrolling_Tower_Defense
             {
                 maxHP = quantity;
                 hp = quantity;
-                lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
+          //      lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
             }
             if (item == 'a')
                 atk = quantity;
@@ -269,37 +275,47 @@ namespace Side_scrolling_Tower_Defense
         {
             lbTower = new Label();
             lbTowerHP = new Label();
+            lbHP_BG = new Label();
 
             lbTower.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             lbTower.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
             lbTowerHP.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             lbTowerHP.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+            lbHP_BG.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+            lbHP_BG.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
             if (isEnemy)
             {
 
                 lbTower.Margin = new System.Windows.Thickness(0, 0, 886, 10);
                 lbTower.Background = System.Windows.Media.Brushes.Red;
 
-                lbTowerHP.Margin = new System.Windows.Thickness(35, 0, 0, 6);
+               lbHP_BG.Margin = new System.Windows.Thickness(35, 0, 0, 10);
+                lbTowerHP.Margin = new System.Windows.Thickness(35, 0, 0, 10);
             }
             else
             {
                 lbTower.Margin = new System.Windows.Thickness(0, 0, 36, 10);
                 lbTower.Background = System.Windows.Media.Brushes.SkyBlue;
 
-                lbTowerHP.Margin = new System.Windows.Thickness(869, 0, 0, 6);
-                lbTowerHP.HorizontalContentAlignment =  System.Windows.HorizontalAlignment.Right;
+                lbHP_BG.Margin = new System.Windows.Thickness(757, 0, 0, 10);
+                lbTowerHP.Margin = new System.Windows.Thickness(757, 0, 0, 10);
+                //                lbTowerHP.HorizontalContentAlignment =  System.Windows.HorizontalAlignment.Right;
             }
             lbTower.Height = 150;
             lbTower.Width = 70;
             lbTower.FontSize = 10;
-            lbTowerHP.Width = 100;
+            lbTowerHP.Width = 200;
             lbTowerHP.Height = 25;
+            lbTowerHP.Background = Brushes.Red;
             lbTowerHP.BorderBrush = Brushes.Black;
-            lbTowerHP.BorderThickness = new System.Windows.Thickness(1, 1, 1, 1);  
+            lbTowerHP.BorderThickness = new System.Windows.Thickness(2, 2, 2, 2);  
             lbTower.BorderBrush = System.Windows.Media.Brushes.Black;
             lbTower.BorderThickness = new System.Windows.Thickness(1, 1, 1, 1);
 
+   //         lbHP_BG. = lbTowerHP;
+            lbHP_BG.Width = 200;
+            lbHP_BG.Height = 25;
+            lbHP_BG.Background = Brushes.Black;
         }
     }
 }

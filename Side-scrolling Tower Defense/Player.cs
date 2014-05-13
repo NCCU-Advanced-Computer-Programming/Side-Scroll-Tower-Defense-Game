@@ -36,14 +36,15 @@ namespace Side_scrolling_Tower_Defense
             moneyGainSpeed = 1;
             myTower = new Tower(1000, 50, 250, 1, true, grid1, _gridTopBar);
             lbMoney = new Label();
-            lbMoney.Margin = new Thickness(727, 0, 0, 6);
+            lbMoney.Margin = new Thickness(838, 0, 0, 220);
             lbMoney.VerticalAlignment = VerticalAlignment.Bottom;
             lbMoney.HorizontalAlignment = HorizontalAlignment.Left;
             lbMoney.Width = 120;
-            lbMoney.Height = 35;
+            lbMoney.Height = 25;
+            lbMoney.HorizontalContentAlignment = HorizontalAlignment.Right;
             lbMoney.BorderBrush = System.Windows.Media.Brushes.Black;
             lbMoney.BorderThickness = new System.Windows.Thickness(1, 1, 1, 1);  
-            _gridTopBar.Children.Add(lbMoney);
+            grid1.Children.Add(lbMoney);
         }
         public void MoneyGain()
         {

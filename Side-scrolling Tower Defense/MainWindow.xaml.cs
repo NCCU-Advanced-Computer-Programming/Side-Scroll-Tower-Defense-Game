@@ -84,11 +84,11 @@ namespace Side_scrolling_Tower_Defense
             lbCD.Clear();
             
             //Resetting dockpanel, 顯示 BUFF
-            dock1.Margin = new Thickness(510, 0, 0, 6);
+            dock1.Margin = new Thickness(0,0,0,0);
             dock1.Width = 105;
             dock1.Height = 35;
-            dock1.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
-            dock1.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+            dock1.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+            dock1.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
             dock1.Background = Brushes.LightGray;
             gridTopBar.Children.Add(dock1);
 
