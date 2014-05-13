@@ -33,7 +33,7 @@ namespace Side_scrolling_Tower_Defense
         {
             _money = 10000;      // 初始資金
             _towerUpgradePrice = 100; //塔升級費用
-            moneyGainSpeed = 1;
+            moneyGainSpeed = 10;
             myTower = new Tower(1000, 50, 250, 1, true, grid1, _gridTopBar);
             lbMoney = new Label();
             lbMoney.Margin = new Thickness(838, 0, 0, 220);

@@ -148,8 +148,7 @@ namespace Side_scrolling_Tower_Defense
                 {
                     counter = 0;
                     enemyS[target].HP -= this.ATK;
-                    if (enemyS[target].LifeCheck() == null)
-                        enemyS.RemoveAt(target);
+                    enemyS[target].LifeCheck();
                     grid.Children.Remove(bullet);
                     bullet = null;
                     startTime = 0;
@@ -212,7 +211,6 @@ namespace Side_scrolling_Tower_Defense
             {
                 maxHP = quantity;
                 hp = quantity;
-          //      lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
             }
             if (item == 'a')
                 atk = quantity;
@@ -234,8 +232,7 @@ namespace Side_scrolling_Tower_Defense
                     if (EnemyS[i].POSITION < 350)
                     {/*caculate the abs value of distance*/
                         EnemyS[i].HP =0;
-                        if (EnemyS[i].LifeCheck() == null)
-                            EnemyS.RemoveAt(i);
+                        EnemyS[i].LifeCheck();
                     }
                 }
 
@@ -247,8 +244,7 @@ namespace Side_scrolling_Tower_Defense
                     if (1000 - EnemyS[i].POSITION < 350)
                     {/*caculate the abs value of distance*/
                         EnemyS[i].HP =0;
-                        if (EnemyS[i].LifeCheck() == null)
-                            EnemyS.RemoveAt(i);
+                        EnemyS[i].LifeCheck();
                     }
                 }
             }

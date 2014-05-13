@@ -38,7 +38,7 @@ namespace Side_scrolling_Tower_Defense
         private Label bullet;
         private Grid grid;
         public Archer(bool isEnemy, int overPower, Grid _grid)
-            : base(600 * overPower, 10 * overPower, 150, 0.7 * overPower, isEnemy, 100)
+            : base(600 * overPower, 10 * overPower, 150, 0.7 * overPower, isEnemy, 10000)
         {
             grid = _grid;
         }
@@ -71,8 +71,7 @@ namespace Side_scrolling_Tower_Defense
                 {
                     counter = 0;
                     Enemy[target].HP -= this.ATK;
-                    if (Enemy[target].LifeCheck() == null)
-                        Enemy.RemoveAt(target);
+                    Enemy[target].LifeCheck();
                     grid.Children.Remove(bullet);
                     bullet = null;
                 }
@@ -176,7 +175,7 @@ namespace Side_scrolling_Tower_Defense
             if (HP <= 0)
             {
                 if (bullet != null)
-                    bullet.Visibility = System.Windows.Visibility.Hidden;
+                    grid.Children.Remove(bullet);
                 Image.Visibility = System.Windows.Visibility.Hidden;
                 return null;
             }

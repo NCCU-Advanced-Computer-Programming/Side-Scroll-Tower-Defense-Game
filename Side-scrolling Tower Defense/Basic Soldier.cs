@@ -149,8 +149,8 @@ namespace Side_scrolling_Tower_Defense
                     counter = 0;
                     Enemy[target].HP -= this.ATK;
                     Enemy[target].Image.Content = Enemy[target].HP.ToString();
-                    if(Enemy[target].LifeCheck()==null)
-                        Enemy.RemoveAt(target);
+                    Enemy[target].LifeCheck();
+
                 }
                 return true;
             }
