@@ -70,7 +70,7 @@ namespace Side_scrolling_Tower_Defense
         #endregion
 
         /*method*/
-        public Tower(int _hp, int _atk, int _range, int _towerLevel, bool _isPlayer, Grid _grid)
+        public Tower(int _hp, int _atk, int _range, int _towerLevel, bool _isPlayer, Grid _grid, Grid _gridTopBar)
         {
             maxHP = _hp;
             hp = _hp;
@@ -84,7 +84,7 @@ namespace Side_scrolling_Tower_Defense
             grid = _grid;
             LabelSetting();
             grid.Children.Add(lbTower);
-            grid.Children.Add(lbTowerHP);
+            _gridTopBar.Children.Add(lbTowerHP);
 
             if (isEnemy)
                 _axis = 886;//lbTower.Margin.Right;
@@ -111,8 +111,20 @@ namespace Side_scrolling_Tower_Defense
             {
                 if (startTime == 0)
                 {
-                    startTime = _attackspeed -(int)(((nearest) / movePerStepX) + 3) ;
-                    movePerStepY = (lbTower.Height - (enemyS[target].Image.Height / 2)) / (_attackspeed - startTime);
+                    if (nearest / movePerStepX >= 5)
+                    {
+                        movePerStepX = 25;
+                        startTime = _attackspeed - (int)(nearest / movePerStepX);
+                        movePerStepY = (lbTower.Height - (enemyS[target].Image.Height / 2)) / (_attackspeed - startTime);
+
+                    }
+                    else //太近了
+                    {
+                        movePerStepX = (nearest+50) / 5 + 1;
+                        startTime = _attackspeed - 5;
+                        movePerStepY = (lbTower.Height - (enemyS[target].Image.Height / 2)) / (_attackspeed - startTime);
+
+                    }
                 }
 
                 bool isShooted = false; //如果已開槍，則在未打到目標前 isShooted == true
@@ -257,28 +269,32 @@ namespace Side_scrolling_Tower_Defense
         {
             lbTower = new Label();
             lbTowerHP = new Label();
-            
+
             lbTower.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             lbTower.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+            lbTowerHP.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+            lbTowerHP.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
             if (isEnemy)
             {
 
                 lbTower.Margin = new System.Windows.Thickness(0, 0, 886, 10);
                 lbTower.Background = System.Windows.Media.Brushes.Red;
 
-                lbTowerHP.Margin = new System.Windows.Thickness(36, 100, 868, 192);
+                lbTowerHP.Margin = new System.Windows.Thickness(35, 0, 0, 6);
             }
             else
             {
                 lbTower.Margin = new System.Windows.Thickness(0, 0, 36, 10);
                 lbTower.Background = System.Windows.Media.Brushes.SkyBlue;
 
-                lbTowerHP.Margin = new System.Windows.Thickness(868, 100, 36, 192);
+                lbTowerHP.Margin = new System.Windows.Thickness(869, 0, 0, 6);
                 lbTowerHP.HorizontalContentAlignment =  System.Windows.HorizontalAlignment.Right;
             }
             lbTower.Height = 150;
             lbTower.Width = 70;
             lbTower.FontSize = 10;
+            lbTowerHP.Width = 100;
+            lbTowerHP.Height = 25;
             lbTowerHP.BorderBrush = Brushes.Black;
             lbTowerHP.BorderThickness = new System.Windows.Thickness(1, 1, 1, 1);  
             lbTower.BorderBrush = System.Windows.Media.Brushes.Black;

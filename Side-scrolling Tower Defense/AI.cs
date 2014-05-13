@@ -15,9 +15,9 @@ namespace Side_scrolling_Tower_Defense
  //       private bool counterAttcak_flag = false;
 
 
-        public AI( Grid grid)
+        public AI( Grid grid, Grid _gridTopBar)
         {
-            aiTower = new Tower(1000, 50, 250, 1, false, grid);
+            aiTower = new Tower(1000, 50, 250, 1, false, grid, _gridTopBar);
         }
         public void Intelligence(List<Soldier> enemyS, Grid grid1, Tower enemyTower)
         { //智慧產兵 XDDD 目前只會rand產兵

@@ -4,7 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Side_scrolling_Tower_Defense.MainWindow"
         Title="MainWindow" Height="452.799" Width="1000" ResizeMode="NoResize">
     <Grid>
-        <Grid x:Name="grid1" AllowDrop="True" VerticalAlignment="Top" Height="318">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="108"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="grid1" AllowDrop="True" VerticalAlignment="Top" Height="268" Grid.Row="1" Grid.RowSpan="2">
             <Grid.Background>
                 <ImageBrush ImageSource="Images/bg.png">
                     <ImageBrush.RelativeTransform>
@@ -19,14 +24,10 @@
             </Grid.Background>
             <Label Content="我的塔" Background="#FF697AEA" FontSize="10" Margin="0,0,36,10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" Width="72" Height="150" VerticalAlignment="Bottom"/>
             <Label Content="壞蛋的塔" Margin="0,0,886,10" Height="150" Width="72" Background="#FFEA2915" FontSize="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
-            <Label Content="$ player Money" Height="35" Width="120" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="838,0,0,223"/>
-            <Label Content="HP/maxHP"  Margin="868,100,36,192" Height="26" HorizontalContentAlignment="Right" BorderBrush="#FF0F0909" BorderThickness="1" />
-            <Label Content="HP/maxHP"  Margin="36,100,868,192" Height="26" BorderBrush="Black" BorderThickness="1" />
-            <DockPanel Height="34" LastChildFill="False" Margin="698,0,0,192" Background="#FFE2DBDB" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="110"/>
             <Label x:Name="test" Content="定位" HorizontalAlignment="Right" Margin="0,0,923,10" VerticalAlignment="Bottom" Background="#FF9E3ED4" RenderTransformOrigin="0.5,0.5" Width="35"/>
 
         </Grid>
-        <Grid x:Name="gridControlBar" Background="#FFC3C3C3" Margin="0,318,0,0">
+        <Grid x:Name="gridControlBar" Background="#FFC3C3C3" Margin="0,1,0,0" Grid.Row="2">
             <Button x:Name="btnSpeedUp" Content="&gt;" HorizontalAlignment="Left" Margin="19,48,0,0" VerticalAlignment="Top" Width="38" FontWeight="Bold" FontSize="16" Click="btnSpeedUp_Click" Height="27"/>
             <Button x:Name="btnReturnToMenu" Content="Menu" HorizontalAlignment="Left" Margin="19,15,0,0" VerticalAlignment="Top" Width="38" Height="27" Click="btnReturnToMenu_Click"/>
             <Button x:Name="skill1" HorizontalAlignment="Left" Margin="71,21,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Stop enemy for 10s&#xA;$3000" Click="skill1_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
@@ -54,7 +55,13 @@
             <Button x:Name="btnUpgradeTower" Content="升級塔" HorizontalAlignment="Left" Height="54" Margin="888,33,0,0" VerticalAlignment="Top" Width="80" Click="btnUpgradeTower_Click" Focusable="False"/>
             <Button x:Name="btnTowerSkill" Content="TowerSkill" HorizontalAlignment="Left" Margin="888,6,0,0" VerticalAlignment="Top" Width="80" Click="btnTowerSkill_Click"/>
         </Grid>
-        <Grid x:Name="gridBG" Background="White" d:IsHidden="True">
+        <Grid x:Name="gridTopBar" Background="#FFC5BCBC">
+            <Label Content="$ player Money" Height="26" Width="120" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="727,0,0,12" RenderTransformOrigin="0.4,0.5"/>
+            <Label Content="HP/maxHP"  Margin="869,0,0,12" Height="26" HorizontalContentAlignment="Right" BorderBrush="#FF0F0909" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+            <Label Content="HP/maxHP"  Margin="35,0,0,12" Height="26" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+            <DockPanel Height="34" LastChildFill="False" Margin="567,0,0,6" Background="#FFE2DBDB" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="110"/>
+        </Grid>
+        <Grid x:Name="gridBG" Background="White" d:IsHidden="True" Grid.RowSpan="3">
             <StackPanel x:Name="stackMenu" HorizontalAlignment="Left" Height="125" Margin="59,107,0,0" VerticalAlignment="Top" Width="204">
                 <Button x:Name="startGame" Content="Start New Game" Height="35" Click="startGame_Click"/>
                 <Button x:Name="howTo" Content="How to Play" Height="35" Click="howTo_Click"/>
