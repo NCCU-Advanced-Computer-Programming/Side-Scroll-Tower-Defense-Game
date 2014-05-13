@@ -12,17 +12,21 @@ namespace Side_scrolling_Tower_Defense
     {
         public Tower aiTower;
         public List<Soldier> soldier = new List<Soldier>();
+        private Player player;
+        private Grid grid;
  //       private bool counterAttcak_flag = false;
 
 
-        public AI( Grid grid, Grid _gridTopBar)
+        public AI( Grid _grid, Grid _gridTopBar, Player _player)
         {
-            aiTower = new Tower(1000, 50, 250, 1, false, grid, _gridTopBar);
+            aiTower = new Tower(1000, 50, 250, 1, false, _grid, _gridTopBar);
+            player = _player;
+            grid = _grid;
         }
-        public void Intelligence(List<Soldier> enemyS, Grid grid1, Tower enemyTower)
+        public void Intelligence()
         { //智慧產兵 XDDD 目前只會rand產兵
             Random rand = new Random();
-            int playerTotalPower = enemyS.Sum(s => s.ATK); //取得玩家總戰力
+            int playerTotalPower = player.soldier.Sum(s => s.ATK); //取得玩家總戰力
             int aiTotalPower = soldier.Sum(s => s.ATK);
 /*
             if (aiTower.HP <= aiTower.MAXHP / 2 && aiTotalPower <= playerTotalPower && !counterAttcak_flag) //AI快掛時會暴走
@@ -44,20 +48,20 @@ namespace Side_scrolling_Tower_Defense
                     counterAttcak_flag = true;
                 }
             }
-            else*/ if (rand.Next(500) <= playerTotalPower + 100) //五萬分之敵軍戰力產兵機率
+            else*/ if (rand.Next(50000) <= playerTotalPower + 100) //五萬分之敵軍戰力產兵機率
             {
                 int tmp = rand.Next(6);
-                    GenerateSolider(grid1, tmp+1, 500); 
+                    GenerateSolider(grid, tmp+1, 500); 
             }
             else
             {
                 //aiTower等級不能比玩家高多於3等
-                if (rand.Next(1000) <= 2 && aiTower.TowerLevel <= enemyTower.TowerLevel + 3)
+                if (rand.Next(1000) <= 2 && aiTower.TowerLevel <= player.myTower.TowerLevel + 3)
                 {
                     UpgradeTower();
                 }
             }
-            MaintainSolidersPosition(enemyS, enemyTower);
+            MaintainSolidersPosition(player.soldier, player.myTower);
         }
         public void GenerateSolider(Panel grid1, int type, int cost)
         {
@@ -69,7 +73,7 @@ namespace Side_scrolling_Tower_Defense
             }
             else if(type==2)
             {
-                soldier.Add(new Archer(true, 1));
+                soldier.Add(new Archer(true, 1, grid));
                 grid1.Children.Add(soldier[soldier.Count - 1].Show(60, 50, System.Windows.Media.Brushes.Red));
             }
             else if (type == 3)

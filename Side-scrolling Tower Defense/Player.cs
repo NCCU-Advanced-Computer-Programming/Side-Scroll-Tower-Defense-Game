@@ -55,7 +55,7 @@ namespace Side_scrolling_Tower_Defense
                 lbMoney.Content = "$ " + MONEY.ToString();
             }
         }
-        public void GenerateSolider(Panel grid1, int type, int overPower, int cost){
+        public void GenerateSolider(Grid grid1, int type, int overPower, int cost){
             if(type == 1)
             {
                // soldier.Add(new Soldier(100 * overPower, 15 * overPower, 50, 0.7 * overPower, false, cost));
@@ -64,7 +64,7 @@ namespace Side_scrolling_Tower_Defense
             }
             else if(type==2)
             {
-                soldier.Add(new Archer(false, overPower));
+                soldier.Add(new Archer(false, overPower, grid1));
                 grid1.Children.Add(soldier[soldier.Count - 1].Show(60, 50, System.Windows.Media.Brushes.Red));
             }
             else if (type == 3)

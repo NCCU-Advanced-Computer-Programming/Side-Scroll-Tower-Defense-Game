@@ -23,7 +23,7 @@ namespace Side_scrolling_Tower_Defense
         public bool isEnemy = false;
         public Label Image;
 
-        private int counter = 0;//控制是否攻擊，每呼叫一次counter++  counter % AS==0 就攻擊
+        protected int counter = 0;//控制是否攻擊，每呼叫一次counter++  counter % AS==0 就攻擊
 
         #region get & set
         public int HP
@@ -128,7 +128,7 @@ namespace Side_scrolling_Tower_Defense
         }
 
         //單體攻擊敵方士兵_2
-        public bool Attack(List<Soldier> Enemy)
+        public virtual bool Attack(List<Soldier> Enemy)
         {
             int target = Int32.MaxValue;
             double nearest = double.MaxValue;
@@ -158,7 +158,7 @@ namespace Side_scrolling_Tower_Defense
         }
  
         //攻擊敵方塔
-        public bool Attack(Tower Enemy)
+        public virtual bool Attack(Tower Enemy)
         {
             if (Math.Abs(Enemy.POSITION - this.POSITION) <= this.RANGE)
             {
@@ -194,7 +194,7 @@ namespace Side_scrolling_Tower_Defense
         }
 
         //Die()
-        public Soldier LifeCheck()
+        public virtual Soldier LifeCheck()
         {
             //C#使用記憶體自動回收
             if (HP <= 0)

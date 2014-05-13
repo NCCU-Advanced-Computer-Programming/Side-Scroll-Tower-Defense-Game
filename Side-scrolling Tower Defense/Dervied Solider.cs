@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Side_scrolling_Tower_Defense
 {
@@ -34,10 +35,155 @@ namespace Side_scrolling_Tower_Defense
     class Archer : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        public Archer(bool isEnemy, int overPower)
-            : base(60 * overPower, 6 * overPower, 20, 0.3 * overPower, isEnemy, 0)
+        private Label bullet;
+        private Grid grid;
+        public Archer(bool isEnemy, int overPower, Grid _grid)
+            : base(600 * overPower, 10 * overPower, 150, 0.7 * overPower, isEnemy, 0)
         {
+            grid = _grid;
+        }
+        public override bool Attack(List<Soldier> Enemy)
+        {
+            int target = Int32.MaxValue;
+            double nearest = double.MaxValue;
+            int movePerStepX = this.RANGE / 10;
+            for (int i = 0; i < Enemy.Count; i++)
+            {
+                double distance = Math.Abs(Enemy[i].POSITION - this.POSITION);
+                if (nearest > distance)
+                {
+                    nearest = distance;
+                    target = i;
+                }
+            }
 
+            if (nearest <= this.RANGE)
+            {
+                bool isShooted = false; //如果已開槍，則在未打到目標前 isShooted == true
+                if (bullet == null && counter == this.APS-10)
+                {
+                    grid.Children.Add(BulletShow()); //把子彈放進Grid
+                }
+                if (counter >= this.APS-10)
+                    isShooted = true;
+
+                if ((++counter % this.APS) == 0) //控制攻速
+                {
+                    counter = 0;
+                    Enemy[target].HP -= this.ATK;
+                    if (Enemy[target].LifeCheck() == null)
+                        Enemy.RemoveAt(target);
+                    grid.Children.Remove(bullet);
+                    bullet = null;
+                }
+                else
+                {
+                    if (bullet != null && isShooted)
+                    {
+                        if (isEnemy)
+                        {
+                            bullet.Margin = new System.Windows.Thickness(0, 0, bullet.Margin.Right - movePerStepX, bullet.Margin.Bottom );
+                            if (bullet.Margin.Right + movePerStepX < Enemy[target].POSITION)
+                            {
+                                grid.Children.Remove(bullet);
+                                bullet = null;
+                                counter = this.APS - 1; //摸到就直接等同攻擊到
+                            }
+                        }
+                        else
+                        {
+                            bullet.Margin = new System.Windows.Thickness(0, 0, bullet.Margin.Right + movePerStepX, bullet.Margin.Bottom );
+                            if (bullet.Margin.Right - movePerStepX > Enemy[target].POSITION)
+                            {
+                                grid.Children.Remove(bullet);
+                                bullet = null;
+                                counter = this.APS - 1; //摸到就直接等同攻擊到
+                            }
+                        }
+                    }
+                }
+                return true;
+            }
+            else
+            {
+                //grid.Children.Remove(bullet);
+                //bullet = null;
+                return false;
+            }
+
+        }
+        public override bool Attack(Tower Enemy)
+        {
+            
+            int movePerStepX = this.RANGE / 10;
+            if (Math.Abs(Enemy.POSITION - this.POSITION) <= this.RANGE)
+            {
+                bool isShooted = false; //如果已開槍，則在未打到目標前 isShooted == true
+                if (bullet == null && counter == this.APS-15)
+                {
+                    grid.Children.Add(BulletShow()); //把子彈放進Grid
+                }
+                if (counter >= this.APS-15)
+                    isShooted = true;
+
+                if ((++counter % this.APS) == 0) //控制攻速
+                {
+                    counter = 0;
+                    Enemy.GetHurt(this.ATK);
+                    grid.Children.Remove(bullet);
+                    bullet = null;
+                }
+                else
+                {
+                    if (bullet != null && isShooted)
+                    {
+                        if (isEnemy)
+                        {
+                            bullet.Margin = new System.Windows.Thickness(0, 0, bullet.Margin.Right - movePerStepX, bullet.Margin.Bottom );
+                        }
+                        else
+                        {
+                            bullet.Margin = new System.Windows.Thickness(0, 0, bullet.Margin.Right + 10, bullet.Margin.Bottom );
+                        }
+                    }
+                }
+                return true;
+            }
+            else
+            {
+                grid.Children.Remove(bullet);
+                bullet = null;
+                return false;
+            }
+
+        }
+        private Label BulletShow()
+        {
+            bullet = new Label();
+            bullet.Width = 40;
+            bullet.Height = 3;
+            bullet.Margin = new System.Windows.Thickness(0, 0, this.Image.Margin.Right, this.Image.Margin.Bottom + this.Image.Height / 2);
+
+            bullet.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+            bullet.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+            bullet.Background = System.Windows.Media.Brushes.Purple;
+
+            return bullet;
+        }
+        public override Soldier LifeCheck()
+        {
+            //C#使用記憶體自動回收
+            if (HP <= 0)
+            {
+                if (bullet != null)
+                    bullet.Visibility = System.Windows.Visibility.Hidden;
+                Image.Visibility = System.Windows.Visibility.Hidden;
+                return null;
+            }
+            else
+            {
+                return this;
+            }
         }
 
         public new void Skill()

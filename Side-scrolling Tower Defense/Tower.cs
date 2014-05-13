@@ -231,9 +231,9 @@ namespace Side_scrolling_Tower_Defense
             {
                 for (int i = 0; i < EnemyS.Count; i++)
                 {
-                    if (EnemyS[i].POSITION < this.range)
+                    if (EnemyS[i].POSITION < 350)
                     {/*caculate the abs value of distance*/
-                        EnemyS[i].HP -= 50;
+                        EnemyS[i].HP =0;
                         if (EnemyS[i].LifeCheck() == null)
                             EnemyS.RemoveAt(i);
                     }
@@ -244,9 +244,9 @@ namespace Side_scrolling_Tower_Defense
             {
                 for (int i = 0; i < EnemyS.Count; i++)
                 {
-                    if (1000 - EnemyS[i].POSITION < this.range)
+                    if (1000 - EnemyS[i].POSITION < 350)
                     {/*caculate the abs value of distance*/
-                        EnemyS[i].HP -= 50;
+                        EnemyS[i].HP =0;
                         if (EnemyS[i].LifeCheck() == null)
                             EnemyS.RemoveAt(i);
                     }

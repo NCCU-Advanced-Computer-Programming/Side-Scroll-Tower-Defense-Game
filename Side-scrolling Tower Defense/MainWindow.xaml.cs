@@ -125,7 +125,7 @@ namespace Side_scrolling_Tower_Defense
 
             isStarted = true;
             player = new Player(grid1, gridTopBar);
-            ai = new AI(grid1, gridTopBar);
+            ai = new AI(grid1, gridTopBar, player);
 
             #region Setting Content
             btnSpeedUp.Content = ">>";
@@ -187,6 +187,7 @@ namespace Side_scrolling_Tower_Defense
             tmp.Margin = new Thickness(btn.Margin.Left, btn.Margin.Top, btn.Margin.Right, btn.Margin.Bottom);
             tmp.Background = System.Windows.Media.Brushes.Black;
             tmp.Foreground = System.Windows.Media.Brushes.White;
+            tmp.FontWeight = FontWeights.Bold;
             tmp.VerticalAlignment = VerticalAlignment.Top;
             tmp.HorizontalAlignment = HorizontalAlignment.Left;
             tmp.Opacity = 0.7;
@@ -301,7 +302,7 @@ namespace Side_scrolling_Tower_Defense
             }
             else
             {
-                ai.Intelligence(player.soldier, grid1, player.myTower);//AI智慧操作
+                ai.Intelligence();//AI智慧操作
                 ai.aiTower.Attack(player.soldier);//塔要隨時判斷是否有攻擊對象
             }
 
