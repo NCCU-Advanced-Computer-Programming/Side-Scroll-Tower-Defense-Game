@@ -50,8 +50,8 @@ namespace Side_scrolling_Tower_Defense
             }
             else*/ if (rand.Next(50000) <= playerTotalPower + 100) //五萬分之敵軍戰力產兵機率
             {
-                int tmp = rand.Next(6);
-                    GenerateSolider(grid, tmp+1, 500); 
+          //      int tmp = rand.Next(6);
+                    GenerateSolider(grid, 2, 500); 
             }
             else
             {

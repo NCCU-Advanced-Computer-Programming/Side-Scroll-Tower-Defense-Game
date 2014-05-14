@@ -156,9 +156,9 @@ namespace Side_scrolling_Tower_Defense
         private void timer_Tick(object sender, EventArgs e)
         {
             player.MoneyGain();
-            
-            player.MaintainSolidersPosition(ai.soldier, ai.aiTower);//移動Player的兵
+
             player.myTower.Attack(ai.soldier);//塔要隨時判斷是否有攻擊對象
+            player.MaintainSolidersPosition(ai.soldier, ai.aiTower);//移動Player的兵
             checkSkill();
 
             if (player.myTower.CRASHED)
@@ -302,8 +302,8 @@ namespace Side_scrolling_Tower_Defense
             }
             else
             {
-                ai.Intelligence();//AI智慧操作
                 ai.aiTower.Attack(player.soldier);//塔要隨時判斷是否有攻擊對象
+                ai.Intelligence();//AI智慧操作
             }
 
             if (skill2_isEnable) //判斷技能--無限射程

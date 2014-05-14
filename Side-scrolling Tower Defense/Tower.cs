@@ -211,6 +211,11 @@ namespace Side_scrolling_Tower_Defense
             {
                 maxHP = quantity;
                 hp = quantity;
+                int remainHP_Width = (int)(200 * ((double)hp / (double)maxHP));
+                if (remainHP_Width < 0)
+                    remainHP_Width = 0;
+                lbTowerHP.Width = remainHP_Width;
+
             }
             if (item == 'a')
                 atk = quantity;
