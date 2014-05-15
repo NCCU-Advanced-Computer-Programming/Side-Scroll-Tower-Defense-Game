@@ -131,3 +131,24 @@ C:\Users\R5\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Wi
 C:\Users\R5\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Window1.g.cs
 C:\Users\R5\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe.manifest
 C:\Users\R5\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.application
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe.config
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.pdb
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\MainWindow.baml
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Window1.baml
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\MainWindow.g.cs
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Window1.g.cs
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\App.g.cs
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense_MarkupCompile.cache
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.g.resources
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side_scrolling_Tower_Defense.Properties.Resources.resources
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csproj.GenerateResource.Cache
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe.manifest
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.application
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.pdb
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\bin\Debug\WpfAnimatedGif.dll
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\bin\Debug\WpfAnimatedGif.xml
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe.manifest
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.application
+C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csprojResolveAssemblyReference.cache

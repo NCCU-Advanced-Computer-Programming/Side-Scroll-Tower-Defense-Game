@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 //using System.Windows.Forms;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+using WpfAnimatedGif;
 
 namespace Side_scrolling_Tower_Defense
 {
@@ -21,7 +24,7 @@ namespace Side_scrolling_Tower_Defense
         private int _attackspeed;
         private int _price;
         public bool isEnemy = false;
-        public Label Image;
+        public GifImage Image;
 
         protected int counter = 0;//控制是否攻擊，每呼叫一次counter++  counter % AS==0 就攻擊
 
@@ -74,7 +77,7 @@ namespace Side_scrolling_Tower_Defense
             APS = 100;
             POSITION = 0;
             PRICE = 0;
-            Image = new Label();
+            Image = new GifImage();
         }
 
         public Soldier(int hp, int atk, int range, double speed, bool enemy, int price)
@@ -86,7 +89,7 @@ namespace Side_scrolling_Tower_Defense
             isEnemy = enemy;
             APS = 100;
             PRICE = price;
-            Image = new Label();
+            Image = new GifImage();
 
             if (isEnemy)
                 POSITION = 1000;
@@ -97,7 +100,7 @@ namespace Side_scrolling_Tower_Defense
         //Method
 
         /*--暫且用Label代替圖片，本區塊設定label樣式--*/
-        public Label Show(int height, int width, System.Windows.Media.SolidColorBrush Color)
+        public GifImage Show(int height, int width, string imageSource)
         {
             if(isEnemy)
                 Image.Margin = new System.Windows.Thickness(0,0,958-width,10); //AI士兵出生位置
@@ -105,12 +108,18 @@ namespace Side_scrolling_Tower_Defense
                 Image.Margin = new System.Windows.Thickness(0,0,36,10); //Player士兵出生位置
             Image.Height = height;
             Image.Width = width;
-            Image.Background = Color;
+            string imageAbsolutePath = Directory.GetCurrentDirectory();
+            imageAbsolutePath = imageAbsolutePath.Replace("\\", "/");
+            imageAbsolutePath = imageAbsolutePath + imageSource;
+            //MessageBox.Show(imageAbsolutePath);
+            var _image = new BitmapImage();
+            _image.BeginInit();
+            _image.UriSource = new Uri(imageAbsolutePath, UriKind.Absolute);
+            _image.EndInit();
+            ImageBehavior.SetAnimatedSource(Image, _image);
+
             Image.VerticalAlignment = VerticalAlignment.Bottom;
             Image.HorizontalAlignment = HorizontalAlignment.Right;
-            Image.BorderBrush = System.Windows.Media.Brushes.Black;
-            Image.BorderThickness = new Thickness(1, 1, 1, 1);
-
             return Image;
         }
 
@@ -148,7 +157,7 @@ namespace Side_scrolling_Tower_Defense
                 {
                     counter = 0;
                     Enemy[target].HP -= this.ATK;
-                    Enemy[target].Image.Content = Enemy[target].HP.ToString();
+                    Enemy[target].Image.ToolTip = Enemy[target].HP.ToString();
                     Enemy[target].LifeCheck();
 
                 }
@@ -189,7 +198,8 @@ namespace Side_scrolling_Tower_Defense
                   //  Image.Content = POSITION.ToString();
                 }
             }
-            Image.Content = HP.ToString();//顯示血量
+            Image.ToolTip = HP.ToString();
+            // Image.Content = HP.ToString();//顯示血量
             //Image.Content = POSITION + " \n" + HP;
         }
 

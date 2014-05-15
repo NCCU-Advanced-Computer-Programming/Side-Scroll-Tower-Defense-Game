@@ -93,6 +93,7 @@ namespace Side_scrolling_Tower_Defense
                 _axis = 886;//lbTower.Margin.Right;
             else
                 _axis = 108;//lbTower.Margin.Right + lbTower.Width;
+            lbTower.ToolTip = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
 
        //     lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
         }
@@ -225,7 +226,7 @@ namespace Side_scrolling_Tower_Defense
             if (item == 't')
                 towerLevel++;
 
-        //    lbTower.Content = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
+            lbTower.ToolTip = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
         }
 
         /*範圍技大招 傳入對方士兵陣列*/

@@ -93,6 +93,7 @@
     <Compile Include="AI.cs" />
     <Compile Include="Basic Soldier.cs" />
     <Compile Include="Dervied Solider.cs" />
+    <Compile Include="GifImage.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Tower.cs" />
     <Compile Include="Ultimate Solider.cs" />

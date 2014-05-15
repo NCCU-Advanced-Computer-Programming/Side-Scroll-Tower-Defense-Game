@@ -48,7 +48,7 @@ namespace Side_scrolling_Tower_Defense
                     counterAttcak_flag = true;
                 }
             }
-            else*/ if (rand.Next(500000) <= playerTotalPower + 100) //五萬分之敵軍戰力產兵機率
+            else*/ if (rand.Next(150000) <= playerTotalPower + 100) //五萬分之敵軍戰力產兵機率
             {
           //      int tmp = rand.Next(6);
                     GenerateSolider(grid, 2, 500); 
@@ -69,37 +69,37 @@ namespace Side_scrolling_Tower_Defense
             {
                // soldier.Add(new Soldier(100 * 1, 15 * 1, 50, 0.7 * 1, false, cost));
                 soldier.Add(new Saber(true, 1));
-                grid1.Children.Add(soldier[soldier.Count-1].Show(50, 50, System.Windows.Media.Brushes.Gold));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(50, 50, "/Images/tower_test2.gif"));
             }
             else if(type==2)
             {
                 soldier.Add(new Archer(true, 1, grid));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(60, 50, System.Windows.Media.Brushes.Red));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(60, 50, "/Images/tower_test2.gif"));
             }
             else if (type == 3)
             {
                 soldier.Add(new Caster(true, 1));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(70, 50, System.Windows.Media.Brushes.PaleGreen));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(70, 50, "/Images/tower_test2.gif"));
             }
             else if (type == 4)
             {
                 soldier.Add(new Rider(true, 1));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(80, 50, System.Windows.Media.Brushes.Navy));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(80, 50, "/Images/tower_test2.gif"));
             }
             else if (type == 5)
             {
                 soldier.Add(new Assassin(true, 1));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(90, 50, System.Windows.Media.Brushes.Navy));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(90, 50, "/Images/tower_test2.gif"));
             }
             else if (type == 6)
             {
                 soldier.Add(new Lancer(true, 1));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(100, 50, System.Windows.Media.Brushes.Navy));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(100, 50, "/Images/tower_test2.gif"));
             }
             else if (type == 7)
             {
                 soldier.Add(new Berserker(true, 1));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(110, 50, System.Windows.Media.Brushes.Navy));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(110, 50, "/Images/tower_test2.gif"));
             }
             else
             {

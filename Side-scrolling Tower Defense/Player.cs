@@ -60,37 +60,37 @@ namespace Side_scrolling_Tower_Defense
             {
                // soldier.Add(new Soldier(100 * overPower, 15 * overPower, 50, 0.7 * overPower, false, cost));
                 soldier.Add(new Saber(false, overPower));
-                grid1.Children.Add(soldier[soldier.Count-1].Show(50, 50, System.Windows.Media.Brushes.Gold));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(50, 50, "/Images/tower_test2.gif"));
             }
             else if(type==2)
             {
                 soldier.Add(new Archer(false, overPower, grid1));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(60, 50, System.Windows.Media.Brushes.Red));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(60, 50, "/Images/tower_test2.gif"));
             }
             else if (type == 3)
             {
                 soldier.Add(new Caster(false, overPower));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(70, 50, System.Windows.Media.Brushes.PaleGreen));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(70, 50, "/Images/tower_test2.gif"));
             }
             else if (type == 4)
             {
                 soldier.Add(new Rider(false, overPower));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(80, 50, System.Windows.Media.Brushes.Navy));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(80, 50, "/Images/tower_test2.gif"));
             }
             else if (type == 5)
             {
                 soldier.Add(new Assassin(false, overPower));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(90, 50, System.Windows.Media.Brushes.Navy));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(90, 50, "/Images/tower_test2.gif"));
             }
             else if (type == 6)
             {
                 soldier.Add(new Lancer(false, overPower));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(100, 50, System.Windows.Media.Brushes.Navy));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(100, 50, "/Images/tower_test2.gif"));
             }
             else if (type == 7)
             {
                 soldier.Add(new Berserker(false, overPower));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(110, 50, System.Windows.Media.Brushes.Navy));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(110, 50, "/Images/tower_test2.gif"));
             }
             else
             {
