@@ -128,11 +128,12 @@ namespace Side_scrolling_Tower_Defense
                     soldier.RemoveAt(i);
                 }
             }
-            foreach (Soldier s in enemyS)//敵人如果有死就加錢
+            for (int i = 0; i < enemyS.Count; i++)
             {
-                if (s.HP <= 0)
+                if (enemyS[i].HP <= 0)
                 {
-                    EarnMoney(s.PRICE);
+                    EarnMoney(enemyS[i].PRICE);
+                    enemyS.RemoveAt(i);
                 }
             }
         }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 namespace Side_scrolling_Tower_Defense
 {
     class Tower
@@ -224,7 +225,7 @@ namespace Side_scrolling_Tower_Defense
             if (item == 't')
                 towerLevel++;
 
-            lbTower.Content = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
+        //    lbTower.Content = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
         }
 
         /*範圍技大招 傳入對方士兵陣列*/
@@ -262,9 +263,9 @@ namespace Side_scrolling_Tower_Defense
             bullet.Width = 40;
             bullet.Height = 3;
             if(isEnemy)
-                bullet.Margin = new System.Windows.Thickness(0, 0, 923, lbTower.Height + 10);
+                bullet.Margin = new System.Windows.Thickness(0, 0, 923, lbTower.Height-20);
             else
-                bullet.Margin = new System.Windows.Thickness(0, 0, 36, lbTower.Height + 10);
+                bullet.Margin = new System.Windows.Thickness(0, 0, 36, lbTower.Height -20);
 
             bullet.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             bullet.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
@@ -287,23 +288,34 @@ namespace Side_scrolling_Tower_Defense
             if (isEnemy)
             {
 
-                lbTower.Margin = new System.Windows.Thickness(0, 0, 886, 10);
-                lbTower.Background = System.Windows.Media.Brushes.Red;
+                lbTower.Margin = new System.Windows.Thickness(0, 0, 886, 0);
+              //  lbTower.Background = System.Windows.Media.Brushes.Red;
+                lbTower.Content = new Image
+                {
+                    Source = new BitmapImage(new Uri("Images/tower_test2.gif", UriKind.Relative)),
+                    VerticalAlignment = System.Windows.VerticalAlignment.Center,
+                    Stretch = Stretch.Fill
+                };
+
 
                lbHP_BG.Margin = new System.Windows.Thickness(35, 0, 0, 10);
                 lbTowerHP.Margin = new System.Windows.Thickness(35, 0, 0, 10);
             }
             else
             {
-                lbTower.Margin = new System.Windows.Thickness(0, 0, 36, 10);
-                lbTower.Background = System.Windows.Media.Brushes.SkyBlue;
+                lbTower.Margin = new System.Windows.Thickness(0, 0, 36, 0);
+                lbTower.Content = new Image
+                {
+                    Source = new BitmapImage(new Uri("Images/tower_test2.gif", UriKind.Relative)),
+                    VerticalAlignment = System.Windows.VerticalAlignment.Center, Stretch = Stretch.Fill
+                };
 
                 lbHP_BG.Margin = new System.Windows.Thickness(757, 0, 0, 10);
                 lbTowerHP.Margin = new System.Windows.Thickness(757, 0, 0, 10);
                 //                lbTowerHP.HorizontalContentAlignment =  System.Windows.HorizontalAlignment.Right;
             }
-            lbTower.Height = 150;
-            lbTower.Width = 70;
+            lbTower.Height = 180;
+            lbTower.Width = 120;
             lbTower.FontSize = 10;
             lbTowerHP.Width = 200;
             lbTowerHP.Height = 25;
@@ -311,7 +323,7 @@ namespace Side_scrolling_Tower_Defense
             lbTowerHP.BorderBrush = Brushes.Black;
             lbTowerHP.BorderThickness = new System.Windows.Thickness(2, 2, 2, 2);  
             lbTower.BorderBrush = System.Windows.Media.Brushes.Black;
-            lbTower.BorderThickness = new System.Windows.Thickness(1, 1, 1, 1);
+           // lbTower.BorderThickness = new System.Windows.Thickness(1, 1, 1, 1);
 
    //         lbHP_BG. = lbTowerHP;
             lbHP_BG.Width = 200;
