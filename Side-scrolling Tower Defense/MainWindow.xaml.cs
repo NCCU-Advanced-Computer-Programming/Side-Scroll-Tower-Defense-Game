@@ -67,7 +67,7 @@ namespace Side_scrolling_Tower_Defense
         private int skillCounter3 = 0;
   //      private int skillCounter4 = 0;
         /*-----------------Counter--------------------*/
-        private int[] coldDownTime = { 1, 2, 3, 1, 5, 6, 7, 0, 3, 100 };//順序: 兵種1~7 CD, 技能1~3 CD      
+        private int[] coldDownTime = { 1, 2, 3, 1, 5, 6, 7, 15, 30, 100 };//順序: 兵種1~7 CD, 技能1~3 CD      
         #endregion
 
         public MainWindow()
@@ -138,12 +138,19 @@ namespace Side_scrolling_Tower_Defense
             btnSoldier5.Content = "Assassin\n$" + s5_price.ToString();
             btnSoldier6.Content = "Lancer\n$" + s6_price.ToString();
             btnSoldier7.Content = "Berserker\n$" + s7_price.ToString();
+            btnSoldier1.ToolTip = "Saber     $" + s1_price.ToString();
+            btnSoldier2.ToolTip = "Archer    $" + s2_price.ToString();
+            btnSoldier3.ToolTip = "Caster    $" + s3_price.ToString();
+            btnSoldier4.ToolTip = "Rider     $" + s4_price.ToString();
+            btnSoldier5.ToolTip = "Assassin  $" + s5_price.ToString();
+            btnSoldier6.ToolTip = "Lancer    $" + s6_price.ToString();
+            btnSoldier7.ToolTip = "Berserker $" + s7_price.ToString();
             btnUnlock1.Content = "$" + unlock_s2_price.ToString();
             btnUnlock2.Content = "$" + unlock_s3_price.ToString();
             btnUnlock3.Content = "$" + unlock_s4_price.ToString();
             btnUnlock4.Content = "$" + unlock_s5_price.ToString();
             btnUnlock5.Content = "$" + unlock_s6_price.ToString();
-            btnUnlock6.Content = "$"+unlock_s7_price.ToString();
+            btnUnlock6.Content = "$" + unlock_s7_price.ToString(); 
             #endregion
 
             _timeInterval = 25;

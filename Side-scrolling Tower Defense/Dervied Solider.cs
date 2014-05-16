@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+using WpfAnimatedGif;
 
 namespace Side_scrolling_Tower_Defense
 {
@@ -101,6 +103,20 @@ namespace Side_scrolling_Tower_Defense
                         }
                     }
                 }
+                if (!isAttack) //判斷是否需要換gif圖
+                {
+                    if (imgSourceAttack == null)
+                        imgSourceAttack = imgSourceMove.Replace("test2", "test");
+                    //MessageBox.Show(imgSourceAttack);
+
+                    var _image = new BitmapImage();
+                    _image.BeginInit();
+                    _image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
+                    _image.EndInit();
+                    ImageBehavior.SetAnimatedSource(Image, _image);
+                    isAttack = true;
+                }
+
                 return true;
             }
             else
@@ -146,6 +162,20 @@ namespace Side_scrolling_Tower_Defense
                         }
                     }
                 }
+                if (!isAttack) //判斷是否需要換gif圖
+                {
+                    if (imgSourceAttack == null)
+                        imgSourceAttack = imgSourceMove.Replace("test2", "test");
+                    //MessageBox.Show(imgSourceAttack);
+
+                    var _image = new BitmapImage();
+                    _image.BeginInit();
+                    _image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
+                    _image.EndInit();
+                    ImageBehavior.SetAnimatedSource(Image, _image);
+                    isAttack = true;
+                }
+
                 return true;
             }
             else

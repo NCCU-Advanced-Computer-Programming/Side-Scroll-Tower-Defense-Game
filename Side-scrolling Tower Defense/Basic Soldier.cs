@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-//using System.Windows.Forms;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using WpfAnimatedGif;
@@ -25,9 +24,9 @@ namespace Side_scrolling_Tower_Defense
         private int _price;
         public bool isEnemy = false;
         public GifImage Image;
-        private string imgSourceMove;
-        private string imgSourceAttack;
-        private bool isAttack = false;
+        protected string imgSourceMove;   //移動的gif完整路徑
+        protected string imgSourceAttack; //攻擊的gif完整路徑
+        protected bool isAttack = false;　//判斷是否需要換gif圖
 
         protected int counter = 0;//控制是否攻擊，每呼叫一次counter++  counter % AS==0 就攻擊
 
@@ -102,7 +101,6 @@ namespace Side_scrolling_Tower_Defense
 
         //Method
 
-        /*--暫且用Label代替圖片，本區塊設定label樣式--*/
         public GifImage Show(int height, int width, string imageSource)
         {
             if(isEnemy)
@@ -135,6 +133,19 @@ namespace Side_scrolling_Tower_Defense
             {
                 Enemy.HP -= ATK;
                 Enemy.LifeCheck();
+                if (!isAttack) //判斷是否需要換gif圖
+                {
+                    if (imgSourceAttack == null)
+                        imgSourceAttack = imgSourceMove.Replace("test2", "test");
+                    //MessageBox.Show(imgSourceAttack);
+
+                    var _image = new BitmapImage();
+                    _image.BeginInit();
+                    _image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
+                    _image.EndInit();
+                    ImageBehavior.SetAnimatedSource(Image, _image);
+                    isAttack = true;
+                }
                 return true;
             }
             return false;
@@ -169,7 +180,7 @@ namespace Side_scrolling_Tower_Defense
                 if (!isAttack)
                 {
                     if (imgSourceAttack == null)
-                        imgSourceAttack = imgSourceMove.Replace("2", "");
+                        imgSourceAttack = imgSourceMove.Replace("test2", "test");
                     //MessageBox.Show(imgSourceAttack);
 
                     var _image = new BitmapImage();
@@ -177,8 +188,8 @@ namespace Side_scrolling_Tower_Defense
                     _image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
                     _image.EndInit();
                     ImageBehavior.SetAnimatedSource(Image, _image);
+                    isAttack = true;
                 }
-                isAttack = true;
                 return true;
             }
             return false;
@@ -194,6 +205,20 @@ namespace Side_scrolling_Tower_Defense
                     Enemy.GetHurt(ATK);
                     counter = 0;
                 }
+                if (!isAttack) //判斷是否需要換gif圖
+                {
+                    if (imgSourceAttack == null)
+                        imgSourceAttack = imgSourceMove.Replace("test2", "test");
+                    //MessageBox.Show(imgSourceAttack);
+
+                    var _image = new BitmapImage();
+                    _image.BeginInit();
+                    _image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
+                    _image.EndInit();
+                    ImageBehavior.SetAnimatedSource(Image, _image);
+                    isAttack = true;
+                }
+
                 return true;
             }
             return false;
@@ -203,7 +228,7 @@ namespace Side_scrolling_Tower_Defense
         {
             if (!Attack(enemyS) && !Attack(enemyTower))
             {
-                if (isAttack)
+                if (isAttack) //判斷是否要換gif
                 {
                     var _image = new BitmapImage();
                     _image.BeginInit();

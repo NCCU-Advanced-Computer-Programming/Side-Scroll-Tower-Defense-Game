@@ -26,13 +26,13 @@
         <Grid x:Name="gridControlBar" Background="#FFC3C3C3" Margin="0,1,0,0" Grid.Row="2">
             <Button x:Name="btnSpeedUp" Content="&gt;" HorizontalAlignment="Left" Margin="19,48,0,0" VerticalAlignment="Top" Width="38" FontWeight="Bold" FontSize="16" Click="btnSpeedUp_Click" Height="27" Focusable="False"/>
             <Button x:Name="btnReturnToMenu" Content="Menu" HorizontalAlignment="Left" Margin="19,15,0,0" VerticalAlignment="Top" Width="38" Height="27" Click="btnReturnToMenu_Click" Focusable="False"/>
-            <Button x:Name="skill1" HorizontalAlignment="Left" Margin="71,21,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Stop enemy for 10s&#xA;$3000" Click="skill1_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Button x:Name="skill1" HorizontalAlignment="Left" Margin="93,8,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Stop enemy for 10s&#xA;$3000" Click="skill1_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
                 <Image Source="Images/skill1.PNG" Stretch="Fill"/>
             </Button>
-            <Button x:Name="skill2"  HorizontalAlignment="Left" Margin="120,21,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Tower range unlimit for 10s&#xA;$3000" Click="skill2_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Button x:Name="skill2"  HorizontalAlignment="Left" Margin="142,8,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Tower range unlimit for 10s&#xA;$3000" Click="skill2_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
                 <Image Source="Images/skill2.PNG" Stretch="Fill"/>
             </Button>
-            <Button x:Name="skill3"  HorizontalAlignment="Left" Margin="169,21,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Enhance soldier for 10s&#xA;$3000" Click="skill3_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Button x:Name="skill3"  HorizontalAlignment="Left" Margin="93,52,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="Enhance soldier for 10s&#xA;$3000" Click="skill3_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
                 <Image Source="Images/skill3.PNG" Stretch="Fill"/>
             </Button>
             <Button x:Name="btnSoldier1" Content="Saber" Height="54" Margin="231,21,0,0" VerticalAlignment="Top" Click="btnSoldier1_Click" HorizontalAlignment="Left" Width="81" Focusable="False"/>
@@ -49,7 +49,7 @@
             <Button x:Name="btnUnlock5" Content="$" HorizontalAlignment="Left" Height="19" Margin="654,52,0,0" VerticalAlignment="Top" Width="79" Click="btnUnlock5_Click" Focusable="False"/>
             <Button x:Name="btnUnlock6" Content="$" HorizontalAlignment="Left" Height="19" Margin="738,52,0,0" VerticalAlignment="Top" Width="79" Click="btnUnlock6_Click" Focusable="False"/>
             <Button x:Name="btnUpgradeTower" Content="升級塔" HorizontalAlignment="Left" Height="36" Margin="836,39,0,0" VerticalAlignment="Top" Width="121" Click="btnUpgradeTower_Click" Focusable="False"/>
-            <Button x:Name="btnTowerSkill" Content="TowerSkill" HorizontalAlignment="Left" Margin="836,10,0,0" VerticalAlignment="Top" Width="121" Click="btnTowerSkill_Click" Height="24" Focusable="False"/>
+            <Button x:Name="btnTowerSkill" Content="TowerSkill" HorizontalAlignment="Left" Margin="142,54,0,0" VerticalAlignment="Top" Width="43" Click="btnTowerSkill_Click" Height="37" Focusable="False"/>
         </Grid>
         <Grid x:Name="gridTopBar" Background="#FFC5BCBC">
             <Label Content="HP/maxHP"  Margin="757,0,0,10" Height="25" HorizontalContentAlignment="Right" BorderBrush="#FF0F0909" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Background="#FFFB0505" />

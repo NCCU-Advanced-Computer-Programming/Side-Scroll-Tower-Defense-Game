@@ -196,7 +196,7 @@ namespace Side_scrolling_Tower_Defense
             if (remainHP_Width < 0)
                 remainHP_Width = 0;
             lbTowerHP.Width = remainHP_Width;
-  //          lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
+            lbTower.ToolTip = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
             if (hp <= 0)
                 Crash();
         }
@@ -236,11 +236,11 @@ namespace Side_scrolling_Tower_Defense
             {
                 for (int i = 0; i < EnemyS.Count; i++)
                 {
-                    if (EnemyS[i].POSITION < 350)
-                    {/*caculate the abs value of distance*/
+                    //if (EnemyS[i].POSITION < 350)
+                    //{/*caculate the abs value of distance*/
                         EnemyS[i].HP =0;
                         EnemyS[i].LifeCheck();
-                    }
+                    //}
                 }
 
             }
@@ -248,11 +248,11 @@ namespace Side_scrolling_Tower_Defense
             {
                 for (int i = 0; i < EnemyS.Count; i++)
                 {
-                    if (1000 - EnemyS[i].POSITION < 350)
-                    {/*caculate the abs value of distance*/
+                    //if (1000 - EnemyS[i].POSITION < 350)
+                    //{/*caculate the abs value of distance*/
                         EnemyS[i].HP =0;
                         EnemyS[i].LifeCheck();
-                    }
+                    //}
                 }
             }
         }
