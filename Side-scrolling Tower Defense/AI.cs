@@ -48,7 +48,7 @@ namespace Side_scrolling_Tower_Defense
                     counterAttcak_flag = true;
                 }
             }
-            else*/ if (rand.Next(150000) <= playerTotalPower + 100) //五萬分之敵軍戰力產兵機率
+            else*/ if (rand.Next(10000) <= playerTotalPower + 100) //五萬分之敵軍戰力產兵機率
             {
           //      int tmp = rand.Next(6);
                     GenerateSolider(grid, 2, 500); 

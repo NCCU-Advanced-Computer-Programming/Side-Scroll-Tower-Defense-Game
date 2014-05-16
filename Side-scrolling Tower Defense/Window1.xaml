@@ -6,7 +6,12 @@
         <TabControl>
             <TabItem Header="關於遊戲">
                 <Grid Background="#FFE5E5E5">
-                    <Image Source="pack://siteoforigin:,,,/Images/占用遊戲說明圖.JPG" Stretch="Fill"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="210*"/>
+                        <ColumnDefinition Width="368*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="pack://siteoforigin:,,,/Images/占用遊戲說明圖.JPG" Stretch="UniformToFill"/>
+                    <TextBlock Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="264" Margin="10,10,0,0" FontSize="14"><Run Text="遊戲名稱"/><Run Language="zh-tw" Text="：橫向超經典守塔防禦遊戲"/><LineBreak/><Run/><LineBreak/><Run Language="zh-tw" Text="程式撰寫：許書軒、陳品嘉、蘇宗彥"/><LineBreak/><Run Language="zh-tw"/><LineBreak/><Run Language="zh-tw" Text="美術指導：白紋愷"/><LineBreak/><Run Language="zh-tw"/><LineBreak/><Run Language="zh-tw" Text="使用工具及外部資源："/><LineBreak/><Run Language="zh-tw" Text="　　-Microsoft Visual Studio 2013 "/><LineBreak/><Run Language="zh-tw" Text="　　-WpfAnimatedGif library ( from CodePlex )"/><LineBreak/><Run Language="zh-tw" Text="　　-GifImage.cs ( from GitHub )"/><LineBreak/><Run Language="zh-tw" Text=" "/></TextBlock>
                 </Grid>
             </TabItem>
             <TabItem Header="許書軒">

@@ -103,6 +103,16 @@ namespace Side_scrolling_Tower_Defense.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
+        internal static System.Drawing.Bitmap skill4 {
+            get {
+                object obj = ResourceManager.GetObject("skill4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
         internal static System.Drawing.Bitmap tower_test {
             get {
                 object obj = ResourceManager.GetObject("tower_test", resourceCulture);

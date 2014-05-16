@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
+using WpfAnimatedGif;
+
 namespace Side_scrolling_Tower_Defense
 {
     class Tower
@@ -30,6 +37,9 @@ namespace Side_scrolling_Tower_Defense
         double movePerStepY = 0; //即時計算每單位時間移動的 Y 軸值
         int startTime = 0; //每發子彈的開槍時機
         double angle = 0;//子彈角度
+        GifImage beam; //Tower Skill Anime
+        private string gifSource = Directory.GetCurrentDirectory().Replace("\\", "/")+"/Images/Skill4_Anime.gif"; 
+
 
         
         
@@ -232,29 +242,34 @@ namespace Side_scrolling_Tower_Defense
         /*範圍技大招 傳入對方士兵陣列*/
         public void Skill(List<Soldier> EnemyS)
         {
+            SkillAnimate();
             if (!this.isEnemy)/*玩家塔*/
             {
                 for (int i = 0; i < EnemyS.Count; i++)
                 {
-                    //if (EnemyS[i].POSITION < 350)
-                    //{/*caculate the abs value of distance*/
-                        EnemyS[i].HP =0;
-                        EnemyS[i].LifeCheck();
-                    //}
+                    EnemyS[i].HP = 0;
+                    EnemyS[i].LifeCheck();
                 }
 
             }
-            else if (this.isEnemy)/*AI塔*/
-            {
-                for (int i = 0; i < EnemyS.Count; i++)
-                {
-                    //if (1000 - EnemyS[i].POSITION < 350)
-                    //{/*caculate the abs value of distance*/
-                        EnemyS[i].HP =0;
-                        EnemyS[i].LifeCheck();
-                    //}
-                }
-            }
+        }
+        private void SkillAnimate()
+        {
+            if (beam != null)
+                grid.Children.Remove(beam);
+            
+
+            beam = new GifImage();
+            beam.HorizontalAlignment = HorizontalAlignment.Right;
+            beam.VerticalAlignment = VerticalAlignment.Bottom;
+            beam.Margin = new Thickness(0, 0, 120, 10);
+            var _image = new BitmapImage();
+            _image.BeginInit();
+            _image.UriSource = new Uri(gifSource, UriKind.Absolute);
+            _image.EndInit();
+            ImageBehavior.SetAnimatedSource(beam, _image);
+            ImageBehavior.SetRepeatBehavior(beam, new RepeatBehavior(1));
+            grid.Children.Add(beam);
         }
 
         

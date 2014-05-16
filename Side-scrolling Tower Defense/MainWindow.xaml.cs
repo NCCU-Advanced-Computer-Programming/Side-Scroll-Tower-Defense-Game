@@ -51,6 +51,7 @@ namespace Side_scrolling_Tower_Defense
         private const int skill1_price = 3000;
         private const int skill2_price = 3000;
         private const int skill3_price = 3000;
+        private const int skill4_price = 3000;
         private int overPower = 1;       //技能3--狂戰士倍率
         /*-----------------Price--------------------*/
         /*-----------------Flag--------------------*/
@@ -511,6 +512,13 @@ namespace Side_scrolling_Tower_Defense
                 s.HP *= 2;
             }
         }
+        private void skill4_Click(object sender, RoutedEventArgs e)
+        {//秒殺全場敵人
+            player.EarnMoney(-skill4_price); //扣錢
+            player.myTower.Skill(ai.soldier);
+            LabelBlocking(skill4, 5);
+        }
+
         #endregion
 
         private Label AddImage(DockPanel parent, string imageSource)
@@ -531,11 +539,6 @@ namespace Side_scrolling_Tower_Defense
                 player.UpgradeTower();
                 btnUpgradeTower.Content = "升級塔\n$" + player.UPGRADEPRICE.ToString();
             }
-        }
-        private void btnTowerSkill_Click(object sender, RoutedEventArgs e)
-        {
-            player.myTower.Skill(ai.soldier);
-            LabelBlocking(btnTowerSkill, 30);
         }
         private void btnSpeedUp_Click(object sender, RoutedEventArgs e)
         {
@@ -600,12 +603,13 @@ namespace Side_scrolling_Tower_Defense
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (isStarted)
-            {
-                MessageBox.Show("不准中離!!");
-                e.Cancel = true;
-            }
+            //if (isStarted)
+            //{
+            //    MessageBox.Show("不准中離!!");
+            //    e.Cancel = true;
+            //}
         }
+
 
 
 
