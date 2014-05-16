@@ -25,6 +25,9 @@ namespace Side_scrolling_Tower_Defense
         private int _price;
         public bool isEnemy = false;
         public GifImage Image;
+        private string imgSourceMove;
+        private string imgSourceAttack;
+        private bool isAttack = false;
 
         protected int counter = 0;//控制是否攻擊，每呼叫一次counter++  counter % AS==0 就攻擊
 
@@ -108,13 +111,14 @@ namespace Side_scrolling_Tower_Defense
                 Image.Margin = new System.Windows.Thickness(0,0,36,10); //Player士兵出生位置
             Image.Height = height;
             Image.Width = width;
-            string imageAbsolutePath = Directory.GetCurrentDirectory();
-            imageAbsolutePath = imageAbsolutePath.Replace("\\", "/");
-            imageAbsolutePath = imageAbsolutePath + imageSource;
+
+            imgSourceMove = Directory.GetCurrentDirectory();
+            imgSourceMove = imgSourceMove.Replace("\\", "/");
+            imgSourceMove = imgSourceMove + imageSource;
             //MessageBox.Show(imageAbsolutePath);
             var _image = new BitmapImage();
             _image.BeginInit();
-            _image.UriSource = new Uri(imageAbsolutePath, UriKind.Absolute);
+            _image.UriSource = new Uri(imgSourceMove, UriKind.Absolute);
             _image.EndInit();
             ImageBehavior.SetAnimatedSource(Image, _image);
 
@@ -161,6 +165,20 @@ namespace Side_scrolling_Tower_Defense
                     Enemy[target].LifeCheck();
 
                 }
+                
+                if (!isAttack)
+                {
+                    if (imgSourceAttack == null)
+                        imgSourceAttack = imgSourceMove.Replace("2", "");
+                    //MessageBox.Show(imgSourceAttack);
+
+                    var _image = new BitmapImage();
+                    _image.BeginInit();
+                    _image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
+                    _image.EndInit();
+                    ImageBehavior.SetAnimatedSource(Image, _image);
+                }
+                isAttack = true;
                 return true;
             }
             return false;
@@ -185,6 +203,15 @@ namespace Side_scrolling_Tower_Defense
         {
             if (!Attack(enemyS) && !Attack(enemyTower))
             {
+                if (isAttack)
+                {
+                    var _image = new BitmapImage();
+                    _image.BeginInit();
+                    _image.UriSource = new Uri(imgSourceMove, UriKind.Absolute);
+                    _image.EndInit();
+                    ImageBehavior.SetAnimatedSource(Image, _image);
+                }
+                
                 if (isEnemy)
                 {
                     Image.Margin = new Thickness(Image.Margin.Left + SPEED, Image.Margin.Top, Image.Margin.Right - SPEED, Image.Margin.Bottom);
@@ -197,6 +224,7 @@ namespace Side_scrolling_Tower_Defense
                     POSITION = Image.Margin.Right + Image.Width ; //POSITION = 方塊中點位置(右邊緣 + 寬度的一半)
                   //  Image.Content = POSITION.ToString();
                 }
+                isAttack = false;
             }
             Image.ToolTip = HP.ToString();
             // Image.Content = HP.ToString();//顯示血量

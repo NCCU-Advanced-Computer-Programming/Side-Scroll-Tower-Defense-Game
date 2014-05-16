@@ -152,3 +152,9 @@ C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\bin\Debug\WpfA
 C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe.manifest
 C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.application
 C:\Users\SSARCANDY\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csprojResolveAssemblyReference.cache
+C:\Users\Xanadu\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe.manifest
+C:\Users\Xanadu\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.application
+C:\Users\Xanadu\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\WpfAnimatedGif.dll
+C:\Users\Xanadu\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\WpfAnimatedGif.xml
+C:\Users\Xanadu\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe.manifest
+C:\Users\Xanadu\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.application
