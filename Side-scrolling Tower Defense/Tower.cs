@@ -91,8 +91,6 @@ namespace Side_scrolling_Tower_Defense
             towerLevel = _towerLevel;
             _attackspeed = 100;//單位是10毫秒
             isEnemy = !_isPlayer;
-  //          lbTowerHP = _lbHP;
-  //          lbTower = _lbTower;
             grid = _grid;
             LabelSetting();
             grid.Children.Add(lbTower);
@@ -105,7 +103,6 @@ namespace Side_scrolling_Tower_Defense
                 _axis = 108;//lbTower.Margin.Right + lbTower.Width;
             lbTower.ToolTip = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
 
-       //     lbTowerHP.Content = hp.ToString() + "/" + maxHP.ToString();
         }
         public void Attack(List<Soldier> enemyS)
         {
@@ -250,18 +247,17 @@ namespace Side_scrolling_Tower_Defense
                     EnemyS[i].HP = 0;
                     EnemyS[i].LifeCheck();
                 }
-
             }
         }
         private void SkillAnimate()
         {
             if (beam != null)
                 grid.Children.Remove(beam);
-            
 
             beam = new GifImage();
             beam.HorizontalAlignment = HorizontalAlignment.Right;
             beam.VerticalAlignment = VerticalAlignment.Bottom;
+            beam.Width = 780;
             beam.Margin = new Thickness(0, 0, 120, 10);
             var _image = new BitmapImage();
             _image.BeginInit();

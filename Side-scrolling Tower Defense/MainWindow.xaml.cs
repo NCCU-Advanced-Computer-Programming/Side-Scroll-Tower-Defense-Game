@@ -610,8 +610,5 @@ namespace Side_scrolling_Tower_Defense
             //}
         }
 
-
-
-
     }
 }
