@@ -48,10 +48,10 @@ namespace Side_scrolling_Tower_Defense
                     counterAttcak_flag = true;
                 }
             }
-            else*/ if (rand.Next(10000) <= playerTotalPower + 100) //五萬分之敵軍戰力產兵機率
+            else*/ if (rand.Next(100000) <= playerTotalPower + 100) //五萬分之敵軍戰力產兵機率
             {
-          //      int tmp = rand.Next(6);
-                    GenerateSolider(grid, 2, 500); 
+                int tmp = rand.Next(4);
+                    GenerateSolider(grid, tmp+1, 500); 
             }
             else
             {
@@ -69,22 +69,22 @@ namespace Side_scrolling_Tower_Defense
             {
                // soldier.Add(new Soldier(100 * 1, 15 * 1, 50, 0.7 * 1, false, cost));
                 soldier.Add(new Saber(true, 1));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(50, 50, "/Images/tower_test2.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(130, 82, "/Images/eSoldier1Move.gif"));
             }
             else if(type==2)
             {
                 soldier.Add(new Archer(true, 1, grid));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(60, 50, "/Images/tower_test2.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(125, 57, "/Images/eSoldier4Move.gif"));
             }
             else if (type == 3)
             {
                 soldier.Add(new Caster(true, 1));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(70, 50, "/Images/tower_test2.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(90, 73, "/Images/eSoldier2Move.gif"));
             }
             else if (type == 4)
             {
                 soldier.Add(new Rider(true, 1));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(80, 50, "/Images/tower_test2.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(80, 50, "/Images/eSoldier3Move.gif"));
             }
             else if (type == 5)
             {

@@ -131,14 +131,15 @@ namespace Side_scrolling_Tower_Defense
             _image.UriSource = new Uri(imgSourceMove, UriKind.Absolute);
             _image.EndInit();
             ImageBehavior.SetAnimatedSource(Image, _image);
-            Image.Height = height;
+            Image.Height = height-15;
+          //  Image.
 
             //Label hpBG = new Label();
             //hpBG.Width = width;
             //hpBG.Height = 5;
             //hpBG.Background = System.Windows.Media.Brushes.Black;
             hp = new Label();
-            hp.Width = width;
+            hp.Width = width-20;
             hp.Height = 5;
             //hp.Margin = hpBG.Margin;
             hp.Background = System.Windows.Media.Brushes.Red;
@@ -162,7 +163,7 @@ namespace Side_scrolling_Tower_Defense
                 if (!isAttack) //判斷是否需要換gif圖
                 {
                     if (imgSourceAttack == null)
-                        imgSourceAttack = imgSourceMove.Replace("test2", "test");
+                        imgSourceAttack = imgSourceMove.Replace("Move", "Attack");
                     //MessageBox.Show(imgSourceAttack);
 
                     var _image = new BitmapImage();
@@ -197,15 +198,13 @@ namespace Side_scrolling_Tower_Defense
                 if ((++counter % APS) == 0)
                 {
                     counter = 0;
-                    Enemy[target].HP -= this.ATK;
-                    Enemy[target].Image.ToolTip = Enemy[target].HP.ToString();
-                    Enemy[target].LifeCheck();
+                    Enemy[target].GetHurt(ATK);
                 }
                 
                 if (!isAttack)
                 {
                     if (imgSourceAttack == null)
-                        imgSourceAttack = imgSourceMove.Replace("test2", "test");
+                        imgSourceAttack = imgSourceMove.Replace("Move", "Attack");
                     //MessageBox.Show(imgSourceAttack);
 
                     var _image = new BitmapImage();
@@ -213,6 +212,10 @@ namespace Side_scrolling_Tower_Defense
                     _image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
                     _image.EndInit();
                     ImageBehavior.SetAnimatedSource(Image, _image);
+                    Image.Height = Image.ActualHeight;
+
+                    //Image.Width = Image.ActualWidth;
+                    //Image.Height = Image.ActualHeight;
                     isAttack = true;
                 }
                 return true;
@@ -260,6 +263,8 @@ namespace Side_scrolling_Tower_Defense
                     _image.UriSource = new Uri(imgSourceMove, UriKind.Absolute);
                     _image.EndInit();
                     ImageBehavior.SetAnimatedSource(Image, _image);
+                    //Image.Width = Image.ActualWidth;
+                    //Image.Height = Image.ActualHeight;
                 }
                 
                 if (isEnemy)

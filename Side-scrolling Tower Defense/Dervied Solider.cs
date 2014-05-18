@@ -106,15 +106,15 @@ namespace Side_scrolling_Tower_Defense
                 }
                 if (!isAttack) //判斷是否需要換gif圖
                 {
-                    if (imgSourceAttack == null)
-                        imgSourceAttack = imgSourceMove.Replace("test2", "test");
-                    //MessageBox.Show(imgSourceAttack);
+                    //if (imgSourceAttack == null)
+                    //    imgSourceAttack = imgSourceMove.Replace("Move", "Attack");
+                    ////MessageBox.Show(imgSourceAttack);
 
-                    var _image = new BitmapImage();
-                    _image.BeginInit();
-                    _image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
-                    _image.EndInit();
-                    ImageBehavior.SetAnimatedSource(Image, _image);
+                    //var _image = new BitmapImage();
+                    //_image.BeginInit();
+                    //_image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
+                    //_image.EndInit();
+                    //ImageBehavior.SetAnimatedSource(Image, _image);
                     isAttack = true;
                 }
 
@@ -165,15 +165,15 @@ namespace Side_scrolling_Tower_Defense
                 }
                 if (!isAttack) //判斷是否需要換gif圖
                 {
-                    if (imgSourceAttack == null)
-                        imgSourceAttack = imgSourceMove.Replace("test2", "test");
-                    //MessageBox.Show(imgSourceAttack);
+                    //if (imgSourceAttack == null)
+                    //    imgSourceAttack = imgSourceMove.Replace("Move", "Attack");
+                    ////MessageBox.Show(imgSourceAttack);
 
-                    var _image = new BitmapImage();
-                    _image.BeginInit();
-                    _image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
-                    _image.EndInit();
-                    ImageBehavior.SetAnimatedSource(Image, _image);
+                    //var _image = new BitmapImage();
+                    //_image.BeginInit();
+                    //_image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
+                    //_image.EndInit();
+                    //ImageBehavior.SetAnimatedSource(Image, _image);
                     isAttack = true;
                 }
 

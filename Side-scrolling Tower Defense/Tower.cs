@@ -147,7 +147,7 @@ namespace Side_scrolling_Tower_Defense
                 {
                     grid.Children.Add(BulletShow()); //把子彈放進Grid
                     angle = Math.Atan2((lbTower.Height - enemyS[target].Image.Height / 2), nearest + 40) * 57; //設定角度，弧度角轉角度
-                    RotateTransform transform = transform = new RotateTransform(angle); ;
+                    RotateTransform transform = new RotateTransform(angle); 
                     if (!isEnemy)
                         transform = new RotateTransform(-angle);
                     else
