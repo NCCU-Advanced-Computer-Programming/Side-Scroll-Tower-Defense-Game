@@ -117,7 +117,6 @@ namespace Side_scrolling_Tower_Defense
                 spImg.Margin = new System.Windows.Thickness(0,0,958-width,10); //AI士兵出生位置
             else
                 spImg.Margin = new System.Windows.Thickness(0,0,36,10); //Player士兵出生位置
-            //spImg.Height = height;
             spImg.Width = width;
             spImg.VerticalAlignment = VerticalAlignment.Bottom;
             spImg.HorizontalAlignment = HorizontalAlignment.Right;
@@ -132,21 +131,14 @@ namespace Side_scrolling_Tower_Defense
             _image.EndInit();
             ImageBehavior.SetAnimatedSource(Image, _image);
             Image.Height = height-20;
-          //  Image.
 
-            //Label hpBG = new Label();
-            //hpBG.Width = width;
-            //hpBG.Height = 5;
-            //hpBG.Background = System.Windows.Media.Brushes.Black;
             hp = new Label();
             hp.Width = width;
             hp.Height = 5;
-            //hp.Margin = hpBG.Margin;
             hp.Background = System.Windows.Media.Brushes.Red;
             hp.BorderThickness = new Thickness(1);
             hp.BorderBrush = System.Windows.Media.Brushes.Black;
 
-            //spImg.Children.Add(hpBG);
             spImg.Children.Add(hp);
             spImg.Children.Add(Image);
 
@@ -271,19 +263,14 @@ namespace Side_scrolling_Tower_Defense
                 {
                     spImg.Margin = new Thickness(spImg.Margin.Left + SPEED, spImg.Margin.Top, spImg.Margin.Right - SPEED, spImg.Margin.Bottom);
                     POSITION = spImg.Margin.Right;
-                   //spImg.Content = POSITION.ToString();
                 }
                 else
                 {
                     spImg.Margin = new Thickness(spImg.Margin.Left - SPEED, spImg.Margin.Top, spImg.Margin.Right + SPEED, spImg.Margin.Bottom);
-                    POSITION = spImg.Margin.Right + spImg.Width ; //POSITION = 方塊中點位置(右邊緣 + 寬度的一半)
-                  //  spImg.Content = POSITION.ToString();
+                    POSITION = spImg.Margin.Right + spImg.Width ; 
                 }
                 isAttack = false;
             }
-            //Image.ToolTip = HP.ToString();
-            // Image.Content = HP.ToString();//顯示血量
-            //Image.Content = POSITION + " \n" + HP;
         }
 
         public void GetHurt(int q)

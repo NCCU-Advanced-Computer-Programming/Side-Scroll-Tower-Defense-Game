@@ -27,8 +27,6 @@ namespace Side_scrolling_Tower_Defense
         int _timeInterval ;
         Player player ;
         AI ai ;
-        //ToolTip[] tp = new ToolTip[12];
-    //    ToolTip tp = new ToolTip(); 
 
         List<Label> lbCD = new List<Label>();
         private const int kSECOND = 40;
