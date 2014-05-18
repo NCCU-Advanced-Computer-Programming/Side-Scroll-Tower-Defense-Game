@@ -72,8 +72,9 @@ namespace Side_scrolling_Tower_Defense
                 if ((++counter % this.APS) == 0) //控制攻速
                 {
                     counter = 0;
-                    Enemy[target].HP -= this.ATK;
-                    Enemy[target].LifeCheck();
+                    Enemy[target].GetHurt(this.ATK);
+                    //Enemy[target].HP -= this.ATK;
+                    //Enemy[target].LifeCheck();
                     grid.Children.Remove(bullet);
                     bullet = null;
                 }
@@ -191,7 +192,7 @@ namespace Side_scrolling_Tower_Defense
             bullet = new Label();
             bullet.Width = 40;
             bullet.Height = 3;
-            bullet.Margin = new System.Windows.Thickness(0, 0, this.Image.Margin.Right, this.Image.Margin.Bottom + this.Image.Height / 2);
+            bullet.Margin = new System.Windows.Thickness(0, 0, this.spImg.Margin.Right, this.spImg.Margin.Bottom + this.Image.Height / 2);
 
             bullet.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             bullet.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
@@ -206,7 +207,7 @@ namespace Side_scrolling_Tower_Defense
             {
                 if (bullet != null)
                     grid.Children.Remove(bullet);
-                Image.Visibility = System.Windows.Visibility.Hidden;
+                spImg.Visibility = System.Windows.Visibility.Hidden;
                 return null;
             }
             else

@@ -109,9 +109,9 @@ namespace Side_scrolling_Tower_Defense
             //個別數值提升
             _towerUpgradePrice = _towerUpgradePrice * 2;
             myTower.Upgrade('t', myTower.TowerLevel);
-            myTower.Upgrade('h', myTower.MAXHP +1);
-            myTower.Upgrade('a', myTower.ATK + 2);
-            myTower.Upgrade('r', myTower.RANGE+ 3);
+            myTower.Upgrade('h', myTower.MAXHP +100);
+            myTower.Upgrade('a', myTower.ATK + 10);
+            myTower.Upgrade('r', myTower.RANGE+ 10);
             
             //顯示
        //     lb.Content = "level:" + myTower.TowerLevel.ToString() + '\n' + "hp:" + myTower.HP.ToString() + '\n' + "range:" + myTower.RANGE.ToString() + '\n' + "atk:" + myTower.ATK.ToString();

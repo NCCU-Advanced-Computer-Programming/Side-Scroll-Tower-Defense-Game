@@ -16,6 +16,7 @@ namespace Side_scrolling_Tower_Defense
         
         //Property
         private int _hp;
+        private int _maxHp;
         private int _atk;
         private int _range;
         private double _speed;
@@ -23,7 +24,9 @@ namespace Side_scrolling_Tower_Defense
         private int _attackspeed;
         private int _price;
         public bool isEnemy = false;
+        public StackPanel spImg;
         public GifImage Image;
+        public Label hp;
         protected string imgSourceMove;   //移動的gif完整路徑
         protected string imgSourceAttack; //攻擊的gif完整路徑
         protected bool isAttack = false;　//判斷是否需要換gif圖
@@ -35,6 +38,11 @@ namespace Side_scrolling_Tower_Defense
         {
             get { return _hp; }
             set { _hp = value; }
+        }
+        public int MAX_HP
+        {
+            get { return _maxHp; }
+            set { _maxHp = value; }
         }
         public int ATK
         {
@@ -73,6 +81,7 @@ namespace Side_scrolling_Tower_Defense
         {
             //hp=? , atk=? , range = ? , speed =? 
             HP = 100;
+            MAX_HP = 100;
             ATK = 1;
             RANGE = 1;
             SPEED = 1;
@@ -80,11 +89,13 @@ namespace Side_scrolling_Tower_Defense
             POSITION = 0;
             PRICE = 0;
             Image = new GifImage();
+            spImg = new StackPanel();
         }
 
         public Soldier(int hp, int atk, int range, double speed, bool enemy, int price)
         {
             HP = hp;
+            MAX_HP = hp;
             ATK = atk;
             RANGE = range;
             SPEED = speed;
@@ -92,23 +103,24 @@ namespace Side_scrolling_Tower_Defense
             APS = 100;
             PRICE = price;
             Image = new GifImage();
+            spImg = new StackPanel();
 
             if (isEnemy)
                 POSITION = 1000;
             else
                 POSITION = 0;
-        }
+       }
 
-        //Method
-
-        public GifImage Show(int height, int width, string imageSource)
+        public StackPanel Show(int height, int width, string imageSource)
         {
             if(isEnemy)
-                Image.Margin = new System.Windows.Thickness(0,0,958-width,10); //AI士兵出生位置
+                spImg.Margin = new System.Windows.Thickness(0,0,958-width,10); //AI士兵出生位置
             else
-                Image.Margin = new System.Windows.Thickness(0,0,36,10); //Player士兵出生位置
-            Image.Height = height;
-            Image.Width = width;
+                spImg.Margin = new System.Windows.Thickness(0,0,36,10); //Player士兵出生位置
+            //spImg.Height = height;
+            spImg.Width = width;
+            spImg.VerticalAlignment = VerticalAlignment.Bottom;
+            spImg.HorizontalAlignment = HorizontalAlignment.Right;
 
             imgSourceMove = Directory.GetCurrentDirectory();
             imgSourceMove = imgSourceMove.Replace("\\", "/");
@@ -119,10 +131,25 @@ namespace Side_scrolling_Tower_Defense
             _image.UriSource = new Uri(imgSourceMove, UriKind.Absolute);
             _image.EndInit();
             ImageBehavior.SetAnimatedSource(Image, _image);
+            Image.Height = height;
 
-            Image.VerticalAlignment = VerticalAlignment.Bottom;
-            Image.HorizontalAlignment = HorizontalAlignment.Right;
-            return Image;
+            //Label hpBG = new Label();
+            //hpBG.Width = width;
+            //hpBG.Height = 5;
+            //hpBG.Background = System.Windows.Media.Brushes.Black;
+            hp = new Label();
+            hp.Width = width;
+            hp.Height = 5;
+            //hp.Margin = hpBG.Margin;
+            hp.Background = System.Windows.Media.Brushes.Red;
+            hp.BorderThickness = new Thickness(1);
+            hp.BorderBrush = System.Windows.Media.Brushes.Black;
+
+            //spImg.Children.Add(hpBG);
+            spImg.Children.Add(hp);
+            spImg.Children.Add(Image);
+
+            return spImg;
         }
 
         //單體攻擊敵方士兵_1
@@ -131,8 +158,7 @@ namespace Side_scrolling_Tower_Defense
             //兩個兵陣營不相同 && 兩兵間距離小於攻擊範圍
             if ((Enemy.isEnemy!=this.isEnemy) && Math.Abs(Enemy.POSITION - this.POSITION) <= this.RANGE)
             {
-                Enemy.HP -= ATK;
-                Enemy.LifeCheck();
+                Enemy.GetHurt(ATK);
                 if (!isAttack) //判斷是否需要換gif圖
                 {
                     if (imgSourceAttack == null)
@@ -174,7 +200,6 @@ namespace Side_scrolling_Tower_Defense
                     Enemy[target].HP -= this.ATK;
                     Enemy[target].Image.ToolTip = Enemy[target].HP.ToString();
                     Enemy[target].LifeCheck();
-
                 }
                 
                 if (!isAttack)
@@ -239,30 +264,39 @@ namespace Side_scrolling_Tower_Defense
                 
                 if (isEnemy)
                 {
-                    Image.Margin = new Thickness(Image.Margin.Left + SPEED, Image.Margin.Top, Image.Margin.Right - SPEED, Image.Margin.Bottom);
-                    POSITION = Image.Margin.Right;
-                   //Image.Content = POSITION.ToString();
+                    spImg.Margin = new Thickness(spImg.Margin.Left + SPEED, spImg.Margin.Top, spImg.Margin.Right - SPEED, spImg.Margin.Bottom);
+                    POSITION = spImg.Margin.Right;
+                   //spImg.Content = POSITION.ToString();
                 }
                 else
                 {
-                    Image.Margin = new Thickness(Image.Margin.Left - SPEED, Image.Margin.Top, Image.Margin.Right + SPEED, Image.Margin.Bottom);
-                    POSITION = Image.Margin.Right + Image.Width ; //POSITION = 方塊中點位置(右邊緣 + 寬度的一半)
-                  //  Image.Content = POSITION.ToString();
+                    spImg.Margin = new Thickness(spImg.Margin.Left - SPEED, spImg.Margin.Top, spImg.Margin.Right + SPEED, spImg.Margin.Bottom);
+                    POSITION = spImg.Margin.Right + spImg.Width ; //POSITION = 方塊中點位置(右邊緣 + 寬度的一半)
+                  //  spImg.Content = POSITION.ToString();
                 }
                 isAttack = false;
             }
-            Image.ToolTip = HP.ToString();
+            //Image.ToolTip = HP.ToString();
             // Image.Content = HP.ToString();//顯示血量
             //Image.Content = POSITION + " \n" + HP;
         }
 
+        public void GetHurt(int q)
+        {
+            this.HP -= q;
+            this.LifeCheck();
+            if (spImg.Width * (double)((double)HP / (double)MAX_HP) > 0)
+                this.hp.Width = spImg.Width * (double)((double)HP / (double)MAX_HP);
+            else
+                this.hp.Width = 0;
+        }
         //Die()
         public virtual Soldier LifeCheck()
         {
             //C#使用記憶體自動回收
             if (HP <= 0)
             {
-                Image.Visibility = Visibility.Hidden;
+                spImg.Visibility = Visibility.Hidden;
                 return null;
             }
             else

@@ -28,6 +28,7 @@ namespace Side_scrolling_Tower_Defense
         private int counter=0;
         private bool isCrash = false;
         private bool isEnemy = false;
+        ToolTip tp = new ToolTip();
         Label lbTowerHP;//在畫面上顯示的血量
         Label lbHP_BG;
         Label lbTower;  //在畫面上顯示的塔
@@ -101,8 +102,11 @@ namespace Side_scrolling_Tower_Defense
                 _axis = 886;//lbTower.Margin.Right;
             else
                 _axis = 108;//lbTower.Margin.Right + lbTower.Width;
-            lbTower.ToolTip = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
-
+            tp.Content = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
+            tp.Background = Brushes.LightSteelBlue;
+            tp.BorderBrush = Brushes.Black;
+            tp.BorderThickness = new Thickness(2);
+            lbTower.ToolTip = tp;
         }
         public void Attack(List<Soldier> enemyS)
         {
@@ -156,8 +160,7 @@ namespace Side_scrolling_Tower_Defense
                 if ((++counter % _attackspeed) == 0) //控制攻速
                 {
                     counter = 0;
-                    enemyS[target].HP -= this.ATK;
-                    enemyS[target].LifeCheck();
+                    enemyS[target].GetHurt(this.ATK); 
                     grid.Children.Remove(bullet);
                     bullet = null;
                     startTime = 0;
@@ -203,7 +206,8 @@ namespace Side_scrolling_Tower_Defense
             if (remainHP_Width < 0)
                 remainHP_Width = 0;
             lbTowerHP.Width = remainHP_Width;
-            lbTower.ToolTip = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
+            tp.Content = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
+            lbTower.ToolTip = tp;
             if (hp <= 0)
                 Crash();
         }
@@ -233,7 +237,8 @@ namespace Side_scrolling_Tower_Defense
             if (item == 't')
                 towerLevel++;
 
-            lbTower.ToolTip = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
+            tp.Content = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
+            lbTower.ToolTip = tp;
         }
 
         /*範圍技大招 傳入對方士兵陣列*/
@@ -243,10 +248,7 @@ namespace Side_scrolling_Tower_Defense
             if (!this.isEnemy)/*玩家塔*/
             {
                 for (int i = 0; i < EnemyS.Count; i++)
-                {
-                    EnemyS[i].HP = 0;
-                    EnemyS[i].LifeCheck();
-                }
+                    EnemyS[i].GetHurt(1000);
             }
         }
         private void SkillAnimate()
@@ -301,7 +303,6 @@ namespace Side_scrolling_Tower_Defense
             {
 
                 lbTower.Margin = new System.Windows.Thickness(0, 0, 886, 0);
-              //  lbTower.Background = System.Windows.Media.Brushes.Red;
                 lbTower.Content = new Image
                 {
                     Source = new BitmapImage(new Uri("Images/tower_test2.gif", UriKind.Relative)),
@@ -324,7 +325,6 @@ namespace Side_scrolling_Tower_Defense
 
                 lbHP_BG.Margin = new System.Windows.Thickness(757, 0, 0, 10);
                 lbTowerHP.Margin = new System.Windows.Thickness(757, 0, 0, 10);
-                //                lbTowerHP.HorizontalContentAlignment =  System.Windows.HorizontalAlignment.Right;
             }
             lbTower.Height = 180;
             lbTower.Width = 120;
@@ -335,9 +335,7 @@ namespace Side_scrolling_Tower_Defense
             lbTowerHP.BorderBrush = Brushes.Black;
             lbTowerHP.BorderThickness = new System.Windows.Thickness(2, 2, 2, 2);  
             lbTower.BorderBrush = System.Windows.Media.Brushes.Black;
-           // lbTower.BorderThickness = new System.Windows.Thickness(1, 1, 1, 1);
 
-   //         lbHP_BG. = lbTowerHP;
             lbHP_BG.Width = 200;
             lbHP_BG.Height = 25;
             lbHP_BG.Background = Brushes.Black;

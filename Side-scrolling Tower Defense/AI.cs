@@ -110,9 +110,9 @@ namespace Side_scrolling_Tower_Defense
         public void UpgradeTower()
         {
             aiTower.Upgrade('t', aiTower.TowerLevel);
-            aiTower.Upgrade('h', aiTower.MAXHP + 1);
-            aiTower.Upgrade('a', aiTower.ATK + 2);
-            aiTower.Upgrade('r', aiTower.RANGE + 3);
+            aiTower.Upgrade('h', aiTower.MAXHP + 100);
+            aiTower.Upgrade('a', aiTower.ATK + 10);
+            aiTower.Upgrade('r', aiTower.RANGE + 10);
         }
         public void MaintainSolidersPosition(List<Soldier> enemyS, Tower enemyTower)
         {
