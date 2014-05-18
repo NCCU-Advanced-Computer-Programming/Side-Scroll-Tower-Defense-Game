@@ -131,7 +131,7 @@ namespace Side_scrolling_Tower_Defense
             _image.UriSource = new Uri(imgSourceMove, UriKind.Absolute);
             _image.EndInit();
             ImageBehavior.SetAnimatedSource(Image, _image);
-            Image.Height = height-15;
+            Image.Height = height-20;
           //  Image.
 
             //Label hpBG = new Label();
@@ -139,7 +139,7 @@ namespace Side_scrolling_Tower_Defense
             //hpBG.Height = 5;
             //hpBG.Background = System.Windows.Media.Brushes.Black;
             hp = new Label();
-            hp.Width = width-20;
+            hp.Width = width;
             hp.Height = 5;
             //hp.Margin = hpBG.Margin;
             hp.Background = System.Windows.Media.Brushes.Red;

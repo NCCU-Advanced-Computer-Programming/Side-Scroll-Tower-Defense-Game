@@ -76,24 +76,27 @@ namespace Side_scrolling_Tower_Defense
         public MainWindow()
         {
             InitializeComponent();
-            //tp.Content = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
+            InitializeToolTip();
         }
+        private void InitializeToolTip()
+        {
+            player = new Player(grid1, gridTopBar);
+            foreach (Button btn in gridControlBar.Children)
+            {
+                ToolTip tp = new System.Windows.Controls.ToolTip();
+                tp.Background = Brushes.LightSteelBlue;
+                tp.BorderBrush = Brushes.Black;
+                tp.BorderThickness = new Thickness(2);
+                //if (btn.ToolTip) //確保沒有被assign過
+                    tp.Content = btn.ToolTip;
+                if (btn.Name == "btnUpgradeTower")
+                    tp.Content = "下一級:\nHP:" + (player.myTower.HP + 100).ToString() + '\n' + "Range:" + (player.myTower.RANGE + 10).ToString() + '\n' + "Damage:" + (player.myTower.ATK + 10).ToString();
+                if (btn.Name.ToString().Contains("Unlock"))
+                    tp.Content = "解鎖兵種";
+                btn.ToolTip = tp;
+            }
 
-        //private void InitialBtn()
-        //{
-        //    //Saber saber = new Saber(false, 1);
-        //    //Archer archer = new Archer(false, 1, grid1);
-        //    //Caster caster = new Caster(false, 1);
-        //    //Rider rider = new Rider(false, 1);
-        //    //Assassin assiassin = new Assassin(false, 1);
-        //    //Lancer lancer = new Lancer(false, 1);
-        //    //Berserker berserker = new Berserker(false, 1);
-
-        //    for (int i = 0; i < gridControlBar.Children.Count; i++)
-        //    {
-        //        tp[i]
-        //    }
-        //}
+        }
         private void Reset()
         {
             #region 重設主畫面(grid1), 控制板(gridContorlBar)的所有物體
@@ -149,29 +152,7 @@ namespace Side_scrolling_Tower_Defense
             ai = new AI(grid1, gridTopBar, player);
 
             #region Setting Content
-            //for (int i = 0; i < 12; i++)
-            //{
-            //    tp[i] = new System.Windows.Controls.ToolTip();
-            //    tp[i].Background = Brushes.LightSteelBlue;
-            //    tp[i].BorderBrush = Brushes.Black;
-            //    tp[i].BorderThickness = new Thickness(2);
-            //}
-            foreach (Button btn in gridControlBar.Children)
-            {
-                //btn.ToolTip = "hi";
-                ToolTip tp = new System.Windows.Controls.ToolTip();
-                tp = new System.Windows.Controls.ToolTip();
-                tp.Background = Brushes.LightSteelBlue;
-                tp.BorderBrush = Brushes.Black;
-                tp.BorderThickness = new Thickness(2);
-                tp.Content = btn.ToolTip;
-                if(btn.Name =="btnUpgradeTower")
-                    tp.Content = "下一級:\nHP:" + (player.myTower.HP + 100).ToString() + '\n' + "Range:" + (player.myTower.RANGE + 10).ToString() + '\n' + "Damage:" + (player.myTower.ATK + 10).ToString();
-                if (btn.Name.ToString().Contains("Unlock"))
-                    tp.Content = "解鎖兵種";
-                btn.ToolTip = tp;
-            }
-            btnSpeedUp.Content = ">>";
+         btnSpeedUp.Content = ">>";
             btnUpgradeTower.Content = "升級塔\n$" + player.UPGRADEPRICE.ToString();
             btnSoldier1.Content = "Saber\n$" + s1_price.ToString();
             btnSoldier2.Content = "Archer\n$" + s2_price.ToString();
@@ -180,21 +161,6 @@ namespace Side_scrolling_Tower_Defense
             btnSoldier5.Content = "Assassin\n$" + s5_price.ToString();
             btnSoldier6.Content = "Lancer\n$" + s6_price.ToString();
             btnSoldier7.Content = "Berserker\n$" + s7_price.ToString();
-
-            //tp[0].Content = btnSoldier1.ToolTip;// = "Saber     $" + s1_price.ToString();
-            //tp[1].Content = btnSoldier2.ToolTip;// = "Archer    $" + s2_price.ToString();
-            //tp[2].Content = btnSoldier3.ToolTip; //= "Caster    $" + s3_price.ToString();
-            //tp[3].Content = btnSoldier4.ToolTip; //= "Rider     $" + s4_price.ToString();
-            //tp[4].Content = btnSoldier5.ToolTip; //= "Assassin  $" + s5_price.ToString();
-            //tp[5].Content = btnSoldier6.ToolTip;//= "Lancer    $" + s6_price.ToString();
-            //tp[6].Content = btnSoldier7.ToolTip;//= "Berserker $" + s7_price.ToString();
-            //btnSoldier1.ToolTip = tp[0];// = "Saber     $" + s1_price.ToString();
-            //btnSoldier2.ToolTip = tp[1];// = "Archer    $" + s2_price.ToString();
-            //btnSoldier3.ToolTip = tp[2]; //= "Caster    $" + s3_price.ToString();
-            //btnSoldier4.ToolTip = tp[3]; //= "Rider     $" + s4_price.ToString();
-            //btnSoldier5.ToolTip = tp[4]; //= "Assassin  $" + s5_price.ToString();
-            //btnSoldier6.ToolTip = tp[5];//= "Lancer    $" + s6_price.ToString();
-            //btnSoldier7.ToolTip = tp[6];//= "Berserker $" + s7_price.ToString();
             
             btnUnlock1.Content = "$" + unlock_s2_price.ToString();
             btnUnlock2.Content = "$" + unlock_s3_price.ToString();
@@ -336,6 +302,8 @@ namespace Side_scrolling_Tower_Defense
                 LabelBlocking(skill2, 0);
             if (player.MONEY < skill3_price)
                 LabelBlocking(skill3, 0);
+            if (player.MONEY < skill4_price)
+                LabelBlocking(skill4, 0);
 
         }
         private void checkSkill()
