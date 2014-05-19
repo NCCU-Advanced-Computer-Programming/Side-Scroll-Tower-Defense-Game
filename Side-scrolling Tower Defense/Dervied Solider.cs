@@ -37,7 +37,7 @@ namespace Side_scrolling_Tower_Defense
     class Archer : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        private GifImage bullet;
+        private Label bullet;
         private Grid grid;
         public Archer(bool isEnemy, int overPower, Grid _grid)
             : base(200 * overPower, 15 * overPower, 150, 0.5 * overPower, isEnemy, 1000)
@@ -201,27 +201,22 @@ namespace Side_scrolling_Tower_Defense
             }
 
         }
-        private GifImage BulletShow()
+        private Label BulletShow()
         {
-            bullet = new GifImage();
-            bullet.Width = 20;
-            bullet.Height = 20;
+            bullet = new Label();
+            bullet.Width = 25;
+            bullet.Height = 25;
             bullet.Margin = new System.Windows.Thickness(0, 0, this.spImg.Margin.Right, this.spImg.Margin.Bottom + this.Image.Height / 2-10);
             string imgSource;
-                imgSource = System.IO.Directory.GetCurrentDirectory().Replace("\\", "/") + "/Images/cannon.PNG";
-            //else
-            //    imgSource = System.IO.Directory.GetCurrentDirectory().Replace("\\", "/") + "/Images/cannon.PNG";
-
-            var _image = new BitmapImage();
-            _image.BeginInit();
-            _image.UriSource = new Uri(imgSource, UriKind.Absolute);
-            _image.EndInit();
-            ImageBehavior.SetAnimatedSource(bullet, _image);
-        //   bullet.Width = Image.ActualWidth - 10;
-
+            imgSource = System.IO.Directory.GetCurrentDirectory().Replace("\\", "/") + "/Images/cannon.PNG";
+            bullet.Content = new Image
+            {
+                Source = new BitmapImage(new Uri(imgSource, UriKind.Absolute)),
+                VerticalAlignment = System.Windows.VerticalAlignment.Center,
+                Stretch= System.Windows.Media.Stretch.UniformToFill
+            };
             bullet.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             bullet.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
-            //bullet.Background = System.Windows.Media.Brushes.Purple;
 
             return bullet;
         }
