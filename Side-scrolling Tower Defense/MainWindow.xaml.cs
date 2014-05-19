@@ -42,12 +42,12 @@ namespace Side_scrolling_Tower_Defense
         private const int s5_price = 500;
         private const int s6_price = 502;
         private const int s7_price = 530;
-        private const int unlock_s2_price = 1000;
-        private const int unlock_s3_price = 2000;
-        private const int unlock_s4_price = 3000;
-        private const int unlock_s5_price = 3001;
-        private const int unlock_s6_price = 3002;
-        private const int unlock_s7_price = 3003;
+        private const int unlock_s2_price = 500;
+        private const int unlock_s3_price = 500;
+        private const int unlock_s4_price = 700;
+        private const int unlock_s5_price = 1001;
+        private const int unlock_s6_price = 1002;
+        private const int unlock_s7_price = 1003;
         private const int skill1_price = 3000;
         private const int skill2_price = 3000;
         private const int skill3_price = 3000;
@@ -68,7 +68,7 @@ namespace Side_scrolling_Tower_Defense
         private int skillCounter3 = 0;
   //      private int skillCounter4 = 0;
         /*-----------------Counter--------------------*/
-        private int[] coldDownTime = { 1, 2, 3, 1, 5, 6, 7, 15, 30, 100 };//順序: 兵種1~7 CD, 技能1~3 CD      
+        private int[] coldDownTime = { 3, 5, 5, 10, 15, 20, 30, 60, 20, 100, 60 };//順序: 兵種1~7 CD, 技能1~4 CD      
         #endregion
 
         public MainWindow()
@@ -85,8 +85,7 @@ namespace Side_scrolling_Tower_Defense
                 tp.Background = Brushes.LightSteelBlue;
                 tp.BorderBrush = Brushes.Black;
                 tp.BorderThickness = new Thickness(2);
-                //if (btn.ToolTip) //確保沒有被assign過
-                    tp.Content = btn.ToolTip;
+                tp.Content = btn.ToolTip;
                 if (btn.Name == "btnUpgradeTower")
                     tp.Content = "下一級:\nHP:" + (player.myTower.HP + 100).ToString() + '\n' + "Range:" + (player.myTower.RANGE + 10).ToString() + '\n' + "Damage:" + (player.myTower.ATK + 10).ToString();
                 if (btn.Name.ToString().Contains("Unlock"))
@@ -95,7 +94,7 @@ namespace Side_scrolling_Tower_Defense
             }
 
         }
-        private void Reset()
+        private void Reset(int difficulty)
         {
             #region 重設主畫面(grid1), 控制板(gridContorlBar)的所有物體
             grid1.Children.Clear();
@@ -106,13 +105,13 @@ namespace Side_scrolling_Tower_Defense
             lbCD.Clear();
             
             //Resetting dockpanel, 顯示 BUFF
-            dock1.Margin = new Thickness(0,0,0,0);
             dock1.Width = 105;
             dock1.Height = 35;
-            dock1.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-            dock1.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            dock1.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+            dock1.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+            dock1.Margin = new Thickness(700,25,0,0);
             dock1.Background = Brushes.LightGray;
-            gridTopBar.Children.Add(dock1);
+            grid1.Children.Add(dock1);
 
             //Resetting all btn 
             btnUnlock1.Visibility = System.Windows.Visibility.Visible;
@@ -147,7 +146,7 @@ namespace Side_scrolling_Tower_Defense
 
             isStarted = true;
             player = new Player(grid1, gridTopBar);
-            ai = new AI(grid1, gridTopBar, player);
+            ai = new AI(grid1, gridTopBar, player, difficulty);
 
             #region Setting Content
          btnSpeedUp.Content = ">>";
@@ -224,6 +223,7 @@ namespace Side_scrolling_Tower_Defense
             tmp.HorizontalAlignment = HorizontalAlignment.Left;
             tmp.Opacity = 0.7;
             tmp.Visibility = Visibility.Visible;
+            tmp.ToolTip = btn.ToolTip;
 
             if (CDtime != 0)
                 tmp.Content = CDtime.ToString();
@@ -331,6 +331,12 @@ namespace Side_scrolling_Tower_Defense
                     if (buff1CountDown <= 0)
                     {
                         skill1_isEnable = false;
+                        foreach (Soldier s in ai.soldier)
+                        {
+                            var controller = ImageBehavior.GetAnimationController(s.Image);
+                            controller.Play();
+                        }
+
                     }
                 }
             }
@@ -389,7 +395,7 @@ namespace Side_scrolling_Tower_Defense
         {
             if (player.MONEY > s1_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 1, overPower, s1_price);
+                player.GenerateSolider(grid1, 1, overPower);
                 player.EarnMoney(-s1_price);
             }
             LabelBlocking(btnSoldier1, coldDownTime[0]);
@@ -398,27 +404,25 @@ namespace Side_scrolling_Tower_Defense
         {
             if (player.MONEY > s2_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 2, overPower, s2_price);
+                player.GenerateSolider(grid1, 2, overPower);
                 player.EarnMoney(-s2_price);
             }
             LabelBlocking(btnSoldier2, coldDownTime[1]);
         }
-
         private void btnSoldier3_Click(object sender, RoutedEventArgs e)
         {
             if (player.MONEY > s3_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 3, overPower, s3_price);
+                player.GenerateSolider(grid1, 3, overPower);
                 player.EarnMoney(-s3_price);
             }
             LabelBlocking(btnSoldier3, coldDownTime[2]);
         }
-
         private void btnSoldier4_Click(object sender, RoutedEventArgs e)
         {
             if (player.MONEY > s4_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 4, overPower, s4_price);
+                player.GenerateSolider(grid1, 4, overPower);
                 player.EarnMoney(-s4_price);
             }
             LabelBlocking(btnSoldier4, coldDownTime[3]);
@@ -427,32 +431,29 @@ namespace Side_scrolling_Tower_Defense
         {
             if (player.MONEY > s5_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 5, overPower, s5_price);
+                player.GenerateSolider(grid1, 5, overPower);
                 player.EarnMoney(-s5_price);
             }
             LabelBlocking(btnSoldier5, coldDownTime[4]);
         }
-
         private void btnSoldier6_Click(object sender, RoutedEventArgs e)
         {
             if (player.MONEY > s6_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 6, overPower, s6_price);
+                player.GenerateSolider(grid1, 6, overPower);
                 player.EarnMoney(-s6_price);
             }
             LabelBlocking(btnSoldier6, coldDownTime[5]);
         }
-
         private void btnSoldier7_Click(object sender, RoutedEventArgs e)
         {
             if (player.MONEY > s7_price)   //錢夠才能產兵
             {
-                player.GenerateSolider(grid1, 7, overPower, s7_price);
+                player.GenerateSolider(grid1, 7, overPower);
                 player.EarnMoney(-s7_price);
             }
             LabelBlocking(btnSoldier7, coldDownTime[6]);
         }
-
         #endregion
 
         #region 解鎖士兵的 btnClick function
@@ -511,9 +512,15 @@ namespace Side_scrolling_Tower_Defense
             player.EarnMoney(-skill1_price); //扣錢
             skill1_isEnable = true;
             buff1CountDown = 10;
+            foreach (Soldier s in ai.soldier)
+            {
+            var controller = ImageBehavior.GetAnimationController(s.Image);
+            controller.Pause();
+      //          ImageBehavior.SetRepeatBehavior(s.Image, new RepeatBehavior(1));
+                //s.Image.StopAnimation();
+            }
             LabelBlocking(skill1, coldDownTime[7]);
         }
-
         private void skill2_Click(object sender, RoutedEventArgs e)
         {// 塔攻擊距離無限 10秒
             player.EarnMoney(-skill2_price); //扣錢
@@ -522,7 +529,6 @@ namespace Side_scrolling_Tower_Defense
             LabelBlocking(skill2, coldDownTime[8]);
             player.myTower.RANGE += 1500;
         }
-
         private void skill3_Click(object sender, RoutedEventArgs e)
         {// 我方兵 血、攻、移動速度 提升2倍 10秒
             player.EarnMoney(-skill3_price); //扣錢
@@ -541,7 +547,7 @@ namespace Side_scrolling_Tower_Defense
         {//秒殺全場敵人
             player.EarnMoney(-skill4_price); //扣錢
             player.myTower.Skill(ai.soldier);
-            LabelBlocking(skill4, 5);
+            LabelBlocking(skill4, coldDownTime[10]);
         }
 
         #endregion
@@ -584,10 +590,30 @@ namespace Side_scrolling_Tower_Defense
             else if(btnSpeedUp.Content.ToString() == "||")
             {
                 timer.IsEnabled=false;
+                foreach (Soldier s in ai.soldier)
+                {
+                    var controller = ImageBehavior.GetAnimationController(s.Image);
+                    controller.Pause();
+                }
+                foreach (Soldier s in player.soldier)
+                {
+                    var controller = ImageBehavior.GetAnimationController(s.Image);
+                    controller.Pause();
+                }
                 btnSpeedUp.Content = ">";
             }
             else if (btnSpeedUp.Content.ToString() == ">")
             {
+                foreach (Soldier s in ai.soldier)
+                {
+                    var controller = ImageBehavior.GetAnimationController(s.Image);
+                    controller.Play();
+                }
+                foreach (Soldier s in player.soldier)
+                {
+                    var controller = ImageBehavior.GetAnimationController(s.Image);
+                    controller.Play();
+                }
                 _timeInterval = 25;
                 timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
                 btnSpeedUp.Content = ">>";
@@ -619,8 +645,12 @@ namespace Side_scrolling_Tower_Defense
         #region MenuBtn Click
         private void startGame_Click(object sender, RoutedEventArgs e)
         {
-            Reset();
-            gridBG.Visibility = Visibility.Hidden;
+          //  stackMenu.Opacity = 0.6;
+            stackMenu.IsEnabled = false;
+            spDiffcultly.IsEnabled = true;
+            spDiffcultly.Visibility = System.Windows.Visibility.Visible;
+            //Reset();
+            //gridBG.Visibility = Visibility.Hidden;
         }
         private void about_Click(object sender, RoutedEventArgs e)
         {
@@ -643,5 +673,76 @@ namespace Side_scrolling_Tower_Defense
             //}
         }
 
+        private void gridBG_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            stackMenu.IsEnabled =true;
+            spDiffcultly.IsEnabled = false;
+            spDiffcultly.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        #region 難度選擇
+        private void btnEasy_Click(object sender, RoutedEventArgs e)
+        {
+            Reset(1);
+            gridBG.Visibility = System.Windows.Visibility.Hidden;
+            Label d = new Label();
+            d.Content = "簡　單";
+            d.FontSize = 18;
+            d.FontWeight = FontWeights.Bold;
+            d.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
+            d.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            d.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+            d.Margin = new Thickness(0, 0, 0, 0);
+            gridTopBar.Children.Add(d);
+
+        }
+
+        private void btnNormal_Click(object sender, RoutedEventArgs e)
+        {
+            Reset(2);
+            gridBG.Visibility = System.Windows.Visibility.Hidden;
+            Label d = new Label();
+            d.Content = "中　等";
+            d.FontSize = 18;
+            d.FontWeight = FontWeights.Bold;
+            d.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
+            d.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            d.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+            d.Margin = new Thickness(0, 0, 0, 0);
+            gridTopBar.Children.Add(d);
+
+        }
+
+        private void btnHard_Click(object sender, RoutedEventArgs e)
+        {
+            Reset(3);
+            gridBG.Visibility = System.Windows.Visibility.Hidden;
+            Label d = new Label();
+            d.Content = "困　難";
+            d.FontSize = 18;
+            d.FontWeight = FontWeights.Bold;
+            d.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
+            d.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            d.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+            d.Margin = new Thickness(0, 0, 0, 0);
+            gridTopBar.Children.Add(d);
+        }
+
+        private void btnSuperHard_Click(object sender, RoutedEventArgs e)
+        {
+            Reset(4);
+            gridBG.Visibility = System.Windows.Visibility.Hidden;
+
+            Label d = new Label();
+            d.Content = "ＢＡＳＡＲＡ";
+            d.FontSize = 18;
+            d.FontWeight = FontWeights.Bold;
+            d.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
+            d.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            d.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+            d.Margin = new Thickness(0, 0, 0, 0);
+            gridTopBar.Children.Add(d);
+        }
+        #endregion
     }
 }

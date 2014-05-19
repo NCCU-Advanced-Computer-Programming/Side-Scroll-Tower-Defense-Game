@@ -307,13 +307,6 @@ namespace Side_scrolling_Tower_Defense
             {
 
                 ImgTower.Margin = new System.Windows.Thickness(0, 0, 886, 0);
-                //ImgTower.Content = new Image
-                //{
-                //    Source = new BitmapImage(new Uri("Images/tower_test2.gif", UriKind.Relative)),
-                //    VerticalAlignment = System.Windows.VerticalAlignment.Center,
-                //    Stretch = Stretch.Fill
-                //};
-             //   string imgSource = Directory.GetCurrentDirectory().Replace("\\", "/") + "Images/tower_test2.gif";
                 var _image = new BitmapImage();
                 _image.BeginInit();
                 _image.UriSource = new Uri(imgSource, UriKind.Absolute);

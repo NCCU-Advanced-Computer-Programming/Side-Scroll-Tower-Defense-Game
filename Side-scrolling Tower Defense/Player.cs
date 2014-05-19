@@ -31,7 +31,7 @@ namespace Side_scrolling_Tower_Defense
 
         public Player( Grid grid1, Grid _gridTopBar)
         {
-            _money = 10000;      // 初始資金
+            _money = 3000;      // 初始資金
             _towerUpgradePrice = 100; //塔升級費用
             moneyGainSpeed = 10;
             myTower = new Tower(1000, 50, 250, 1, true, grid1, _gridTopBar);
@@ -55,7 +55,7 @@ namespace Side_scrolling_Tower_Defense
                 lbMoney.Content = "$ " + MONEY.ToString();
             }
         }
-        public void GenerateSolider(Grid grid1, int type, int overPower, int cost){
+        public void GenerateSolider(Grid grid1, int type, int overPower){
             if(type == 1)
             {
                // soldier.Add(new Soldier(100 * overPower, 15 * overPower, 50, 0.7 * overPower, false, cost));
@@ -106,6 +106,8 @@ namespace Side_scrolling_Tower_Defense
             //玩家花錢升級塔，塔等級提升，下級所需金費增加(2倍)
             _money -= _towerUpgradePrice;
 
+            if (moneyGainSpeed > 1) //升等加快生錢速度
+                moneyGainSpeed--;
             //個別數值提升
             _towerUpgradePrice = _towerUpgradePrice * 2;
             myTower.Upgrade('t', myTower.TowerLevel);

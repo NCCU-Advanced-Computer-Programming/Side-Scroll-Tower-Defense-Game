@@ -13,7 +13,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Saber(bool isEnemy, int overPower)
-            : base(100*overPower, 10*overPower, 1, 0.5*overPower, isEnemy, 100)
+            : base(70*overPower, 10*overPower, 1, 0.5*overPower, isEnemy, 100)
         {
 
         }
@@ -40,7 +40,7 @@ namespace Side_scrolling_Tower_Defense
         private GifImage bullet;
         private Grid grid;
         public Archer(bool isEnemy, int overPower, Grid _grid)
-            : base(600 * overPower, 10 * overPower, 150, 0.7 * overPower, isEnemy, 10000)
+            : base(200 * overPower, 15 * overPower, 150, 0.5 * overPower, isEnemy, 1000)
         {
             grid = _grid;
             if (isEnemy)
@@ -252,7 +252,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Caster(bool isEnemy, int overPower)
-            : base(40 * overPower, 15 * overPower, 10, 0.4 * overPower, isEnemy, 100)
+            : base(150 * overPower, 35 * overPower, 10, 0.4 * overPower, isEnemy, 100)
         {
 
         }
@@ -268,7 +268,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Berserker(bool isEnemy, int overPower)
-            : base(2000 * overPower, 20 * overPower, 1, 0.1 * overPower, isEnemy, 1000)
+            : base(1000 * overPower, 20 * overPower, 1, 0.1 * overPower, isEnemy, 1000)
         {
 
         }
@@ -284,7 +284,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Rider(bool isEnemy, int overPower)
-            : base(100 * overPower, 7 * overPower, 2, 1 * overPower, isEnemy, 100)
+            : base(300 * overPower, 7 * overPower, 2, 0.8 * overPower, isEnemy, 100)
         {
 
         }
@@ -293,15 +293,13 @@ namespace Side_scrolling_Tower_Defense
         {
             //王之軍勢（Ionioi Hetairoi）大幅增加所有友方之能力值 並增加擊退屬性  CD時間?
         }
-
-
     }
 
     class Lancer : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Lancer(bool isEnemy, int overPower)
-            : base(120 * overPower, 8 * overPower, 5, 0.5 * overPower, isEnemy, 100)
+            : base(200 * overPower, 8 * overPower, 5, 0.5 * overPower, isEnemy, 100)
         {
 
         }
@@ -316,7 +314,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Assassin(bool isEnemy, int overPower)
-            : base(30 * overPower, 40 * overPower, 1, 1 * overPower, isEnemy, 100)
+            : base(100 * overPower, 40 * overPower, 1, 0.7 * overPower, isEnemy, 100)
         {
 
         }
