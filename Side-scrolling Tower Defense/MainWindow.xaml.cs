@@ -661,7 +661,12 @@ namespace Side_scrolling_Tower_Defense
                 }
             }
             else
+            {
                 gridBG.Visibility = System.Windows.Visibility.Visible;
+                gridBG.Visibility = System.Windows.Visibility.Visible;
+                stackMenu.IsEnabled = true;
+                spDiffcultly.Visibility = System.Windows.Visibility.Hidden;
+            }
 
         }           
    

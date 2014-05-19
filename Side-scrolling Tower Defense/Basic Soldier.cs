@@ -155,7 +155,7 @@ namespace Side_scrolling_Tower_Defense
             //兩個兵陣營不相同 && 兩兵間距離小於攻擊範圍
             if ((Enemy.isEnemy!=this.isEnemy) && Math.Abs(Enemy.POSITION - this.POSITION) <= this.RANGE)
             {
-                Enemy.GetHurt(ATK);
+                Enemy.GetHurt(ATK, null);
                 if (!isAttack) //判斷是否需要換gif圖
                 {
                     if (imgSourceAttack == null)
@@ -194,7 +194,7 @@ namespace Side_scrolling_Tower_Defense
                 if ((++counter % APS) == 0)
                 {
                     counter = 0;
-                    Enemy[target].GetHurt(ATK);
+                    Enemy[target].GetHurt(ATK, null);
                 }
                 
                 if (!isAttack)
@@ -280,10 +280,11 @@ namespace Side_scrolling_Tower_Defense
             }
         }
 
-        public void GetHurt(int q)
+        public void GetHurt(int q, Grid g)
         {
             this.HP -= q;
-            this.LifeCheck();
+            if (g != null)
+                g.Children.Remove(this.LifeCheck());
             if (_hpWidth * (double)((double)HP / (double)MAX_HP) > 0)
                 this.hp.Width = _hpWidth * (double)((double)HP / (double)MAX_HP);
             else

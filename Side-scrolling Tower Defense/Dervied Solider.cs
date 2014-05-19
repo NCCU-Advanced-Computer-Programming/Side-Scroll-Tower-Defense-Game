@@ -80,7 +80,7 @@ namespace Side_scrolling_Tower_Defense
                 if ((++counter % this.APS) == 0) //控制攻速
                 {
                     counter = 0;
-                    Enemy[target].GetHurt(this.ATK);
+                    Enemy[target].GetHurt(this.ATK, null);
                     //Enemy[target].HP -= this.ATK;
                     //Enemy[target].LifeCheck();
                     grid.Children.Remove(bullet);

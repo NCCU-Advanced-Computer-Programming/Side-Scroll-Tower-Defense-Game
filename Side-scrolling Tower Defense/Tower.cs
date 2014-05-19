@@ -160,9 +160,13 @@ namespace Side_scrolling_Tower_Defense
                 if ((++counter % _attackspeed) == 0) //控制攻速
                 {
                     counter = 0;
-                    enemyS[target].HP-=this.ATK;
-                    if (enemyS[target].HP <= 0)
-                        grid.Children.Remove(enemyS[target].LifeCheck());
+                    if (enemyS[target].HP - this.ATK <= 0)
+                    {
+                        enemyS[target].HP -= this.ATK;
+                        enemyS[target].spImg.Visibility = Visibility.Hidden;
+                    }
+                    else
+                        enemyS[target].GetHurt(this.ATK, grid);
                     grid.Children.Remove(bullet);
                     bullet = null;
                     startTime = 0;
@@ -251,9 +255,13 @@ namespace Side_scrolling_Tower_Defense
             {
                 for (int i = 0; i < EnemyS.Count; i++)
                 {
-                    EnemyS[i].HP -= 1000;
-                    if (EnemyS[i].HP <= 0)
-                        grid.Children.Remove(EnemyS[i].LifeCheck());
+                    if (EnemyS[i].HP - 1000 <= 0)
+                    {
+                        EnemyS[i].HP -= 1000;
+                        EnemyS[i].spImg.Visibility = Visibility.Hidden;
+                    }
+                    else
+                        EnemyS[i].GetHurt(this.ATK, grid);
                 }
             }
         }
