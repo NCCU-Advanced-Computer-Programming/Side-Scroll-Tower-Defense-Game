@@ -28,7 +28,8 @@ namespace Side_scrolling_Tower_Defense
         Player player ;
         AI ai ;
 
-        List<Label> lbCD = new List<Label>();
+             Label countImage = new Label();/////////////////////////////////////////////////////////////
+       List<Label> lbCD = new List<Label>();
         private const int kSECOND = 40;
         private int cdCounter = 0;
         private bool isStarted = false;
@@ -68,7 +69,7 @@ namespace Side_scrolling_Tower_Defense
         private int skillCounter3 = 0;
   //      private int skillCounter4 = 0;
         /*-----------------Counter--------------------*/
-        private int[] coldDownTime = { 3, 5, 5, 10, 15, 20, 30, 60, 20, 100, 60 };//順序: 兵種1~7 CD, 技能1~4 CD      
+        private int[] coldDownTime = { 3, 4, 5, 10, 15, 20, 30, 60, 20, 100, 60 };//順序: 兵種1~7 CD, 技能1~4 CD      
         #endregion
 
         public MainWindow()
@@ -144,6 +145,14 @@ namespace Side_scrolling_Tower_Defense
             skillCounter3 = 0;
             #endregion
 
+            //-------------------------Test--------------------------
+            grid1.Children.Add(countImage);
+            countImage.Margin = new Thickness(0, 30, 0, 0);
+            countImage.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+            countImage.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            countImage.Content = grid1.Children.Count.ToString();
+            //-------------------------Test--------------------------
+
             isStarted = true;
             player = new Player(grid1, gridTopBar);
             ai = new AI(grid1, gridTopBar, player, difficulty);
@@ -186,23 +195,35 @@ namespace Side_scrolling_Tower_Defense
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            countImage.Content = grid1.Children.Count.ToString();
+
+
+
+
             player.MoneyGain();
 
             player.myTower.Attack(ai.soldier);//塔要隨時判斷是否有攻擊對象
             player.MaintainSolidersPosition(ai.soldier, ai.aiTower);//移動Player的兵
             checkSkill();
 
-            if (player.myTower.CRASHED)
+            if (player.myTower.CRASHED || ai.aiTower.CRASHED)
             {
                 isStarted = false;
+                foreach (Soldier s in ai.soldier)
+                {
+                    var controller = ImageBehavior.GetAnimationController(s.Image);
+                    controller.Pause();
+                }
+                foreach (Soldier s in player.soldier)
+                {
+                    var controller = ImageBehavior.GetAnimationController(s.Image);
+                    controller.Pause();
+                }
                 timer.Stop();
-                MessageBox.Show("YOU LOSE !!!!!!");
-            }
-            if (ai.aiTower.CRASHED)
-            {
-                isStarted = false;
-                timer.Stop();
-                MessageBox.Show("YOU WIN !!!!!!");
+                if (player.myTower.CRASHED)
+                    MessageBox.Show("YOU LOSE !!!!!!");
+                else
+                    MessageBox.Show("YOU WIN !!!!!!");
             }
             if ((++cdCounter % kSECOND) == 0)
                 checkCD();
@@ -635,6 +656,8 @@ namespace Side_scrolling_Tower_Defense
                     timer.Stop();
                     timer = null;
                     gridBG.Visibility = System.Windows.Visibility.Visible;
+                    stackMenu.IsEnabled = true;
+                    spDiffcultly.Visibility = System.Windows.Visibility.Hidden;
                 }
             }
             else

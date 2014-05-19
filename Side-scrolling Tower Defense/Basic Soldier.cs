@@ -290,17 +290,18 @@ namespace Side_scrolling_Tower_Defense
                 this.hp.Width = 0;
         }
         //Die()
-        public virtual Soldier LifeCheck()
+        public virtual StackPanel LifeCheck()
         {
             //C#使用記憶體自動回收
             if (HP <= 0)
             {
                 spImg.Visibility = Visibility.Hidden;
-                return null;
+                
+                return spImg;
             }
             else
             {
-                return this;
+                return null;
             }       
         }
 

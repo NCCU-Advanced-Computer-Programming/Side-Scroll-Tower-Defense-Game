@@ -15,6 +15,7 @@ namespace Side_scrolling_Tower_Defense
         private int moneyGainCounter = 0;
 		private int _towerUpgradePrice;
 
+        private Grid grid;
         public Label lbMoney;
         public Tower myTower;
         public List<Soldier> soldier = new List<Soldier>();   
@@ -31,7 +32,8 @@ namespace Side_scrolling_Tower_Defense
 
         public Player( Grid grid1, Grid _gridTopBar)
         {
-            _money = 3000;      // 初始資金
+            grid = grid1;
+            _money = 5000;      // 初始資金
             _towerUpgradePrice = 100; //塔升級費用
             moneyGainSpeed = 10;
             myTower = new Tower(1000, 50, 250, 1, true, grid1, _gridTopBar);
@@ -127,6 +129,7 @@ namespace Side_scrolling_Tower_Defense
                 // Checking life
                 if (soldier[i].HP <= 0)
                 {
+                    grid.Children.Remove(soldier[i].LifeCheck());
                     soldier.RemoveAt(i);
                 }
             }
@@ -135,6 +138,7 @@ namespace Side_scrolling_Tower_Defense
                 if (enemyS[i].HP <= 0)
                 {
                     EarnMoney(enemyS[i].PRICE);
+                    grid.Children.Remove( enemyS[i].LifeCheck());
                     enemyS.RemoveAt(i);
                 }
             }

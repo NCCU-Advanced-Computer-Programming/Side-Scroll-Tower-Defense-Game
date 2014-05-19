@@ -160,7 +160,9 @@ namespace Side_scrolling_Tower_Defense
                 if ((++counter % _attackspeed) == 0) //控制攻速
                 {
                     counter = 0;
-                    enemyS[target].GetHurt(this.ATK); 
+                    enemyS[target].HP-=this.ATK;
+                    if (enemyS[target].HP <= 0)
+                        grid.Children.Remove(enemyS[target].LifeCheck());
                     grid.Children.Remove(bullet);
                     bullet = null;
                     startTime = 0;
@@ -248,7 +250,11 @@ namespace Side_scrolling_Tower_Defense
             if (!this.isEnemy)/*玩家塔*/
             {
                 for (int i = 0; i < EnemyS.Count; i++)
-                    EnemyS[i].GetHurt(1000);
+                {
+                    EnemyS[i].HP -= 1000;
+                    if (EnemyS[i].HP <= 0)
+                        grid.Children.Remove(EnemyS[i].LifeCheck());
+                }
             }
         }
         private void SkillAnimate()

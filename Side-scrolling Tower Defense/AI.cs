@@ -148,12 +148,12 @@ namespace Side_scrolling_Tower_Defense
         {
             for (int i = 0; i <soldier.Count; i++)
             {
-                // 每個士兵該往前的往前，該打的打
+                //// 每個士兵該往前的往前，該打的打
+                //if (soldier[i].HP <= 0)
+                //{
+                //    soldier.RemoveAt(i);
+                //}
                 soldier[i].Move(enemyS, enemyTower);
-                if (soldier[i].HP <= 0)
-                {
-                    soldier.RemoveAt(i);
-                }
             }
         }
     }

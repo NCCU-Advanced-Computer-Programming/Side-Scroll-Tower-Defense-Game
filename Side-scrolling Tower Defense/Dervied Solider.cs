@@ -220,7 +220,7 @@ namespace Side_scrolling_Tower_Defense
 
             return bullet;
         }
-        public override Soldier LifeCheck()
+        public override StackPanel LifeCheck()
         {
             //C#使用記憶體自動回收
             if (HP <= 0)
@@ -228,11 +228,12 @@ namespace Side_scrolling_Tower_Defense
                 if (bullet != null)
                     grid.Children.Remove(bullet);
                 spImg.Visibility = System.Windows.Visibility.Hidden;
+                grid.Children.Remove(spImg);
                 return null;
             }
             else
             {
-                return this;
+                return null;
             }
         }
 
