@@ -17,6 +17,7 @@ namespace Side_scrolling_Tower_Defense
         //Property
         private int _hp;
         private int _maxHp;
+        private double _hpWidth;
         private int _atk;
         private int _range;
         private double _speed;
@@ -120,6 +121,7 @@ namespace Side_scrolling_Tower_Defense
             spImg.Width = width;
             spImg.VerticalAlignment = VerticalAlignment.Bottom;
             spImg.HorizontalAlignment = HorizontalAlignment.Right;
+           // spImg.Background = System.Windows.Media.Brushes.Black;
 
             imgSourceMove = Directory.GetCurrentDirectory();
             imgSourceMove = imgSourceMove.Replace("\\", "/");
@@ -130,10 +132,12 @@ namespace Side_scrolling_Tower_Defense
             _image.UriSource = new Uri(imgSourceMove, UriKind.Absolute);
             _image.EndInit();
             ImageBehavior.SetAnimatedSource(Image, _image);
-            Image.Height = height-20;
+            Image.Height = height;
+            Image.VerticalAlignment = VerticalAlignment.Bottom;
 
+            _hpWidth = width;
             hp = new Label();
-            hp.Width = width;
+            hp.Width = _hpWidth;
             hp.Height = 5;
             hp.Background = System.Windows.Media.Brushes.Red;
             hp.BorderThickness = new Thickness(1);
@@ -204,10 +208,11 @@ namespace Side_scrolling_Tower_Defense
                     _image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
                     _image.EndInit();
                     ImageBehavior.SetAnimatedSource(Image, _image);
-                    Image.Height = Image.ActualHeight;
-
-                    //Image.Width = Image.ActualWidth;
                     //Image.Height = Image.ActualHeight;
+
+                    Image.Width = Image.ActualWidth + 15;
+                    spImg.Width = Image.Width;
+                   // Image.Height = Image.ActualHeight;
                     isAttack = true;
                 }
                 return true;
@@ -228,7 +233,7 @@ namespace Side_scrolling_Tower_Defense
                 if (!isAttack) //判斷是否需要換gif圖
                 {
                     if (imgSourceAttack == null)
-                        imgSourceAttack = imgSourceMove.Replace("test2", "test");
+                        imgSourceAttack = imgSourceMove.Replace("Move", "Attack");
                     //MessageBox.Show(imgSourceAttack);
 
                     var _image = new BitmapImage();
@@ -236,6 +241,8 @@ namespace Side_scrolling_Tower_Defense
                     _image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
                     _image.EndInit();
                     ImageBehavior.SetAnimatedSource(Image, _image);
+                    Image.Width = Image.ActualWidth + 15;
+                    spImg.Width = Image.Width;
                     isAttack = true;
                 }
 
@@ -255,8 +262,8 @@ namespace Side_scrolling_Tower_Defense
                     _image.UriSource = new Uri(imgSourceMove, UriKind.Absolute);
                     _image.EndInit();
                     ImageBehavior.SetAnimatedSource(Image, _image);
-                    //Image.Width = Image.ActualWidth;
-                    //Image.Height = Image.ActualHeight;
+                    Image.Width = Image.ActualWidth - 15;
+                    spImg.Width = Image.Width;
                 }
                 
                 if (isEnemy)
@@ -277,8 +284,8 @@ namespace Side_scrolling_Tower_Defense
         {
             this.HP -= q;
             this.LifeCheck();
-            if (spImg.Width * (double)((double)HP / (double)MAX_HP) > 0)
-                this.hp.Width = spImg.Width * (double)((double)HP / (double)MAX_HP);
+            if (_hpWidth * (double)((double)HP / (double)MAX_HP) > 0)
+                this.hp.Width = _hpWidth * (double)((double)HP / (double)MAX_HP);
             else
                 this.hp.Width = 0;
         }

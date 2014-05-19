@@ -48,10 +48,10 @@ namespace Side_scrolling_Tower_Defense
                     counterAttcak_flag = true;
                 }
             }
-            else*/ if (rand.Next(100000) <= playerTotalPower + 100) //五萬分之敵軍戰力產兵機率
+            else*/ if (rand.Next(100000) <= playerTotalPower + 100) 
             {
-                int tmp = rand.Next(4);
-                    GenerateSolider(grid, tmp+1, 500); 
+                int tmp = rand.Next(5);
+                    GenerateSolider(grid,5, 500); 
             }
             else
             {
@@ -67,29 +67,28 @@ namespace Side_scrolling_Tower_Defense
         {
             if(type == 1)
             {
-               // soldier.Add(new Soldier(100 * 1, 15 * 1, 50, 0.7 * 1, false, cost));
                 soldier.Add(new Saber(true, 1));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(130, 82, "/Images/eSoldier1Move.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(85, 70, "/Images/eSoldier1Move.gif"));
             }
             else if(type==2)
             {
                 soldier.Add(new Archer(true, 1, grid));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(125, 57, "/Images/eSoldier4Move.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(65, 55, "/Images/eSoldier5Move.gif"));
             }
             else if (type == 3)
             {
                 soldier.Add(new Caster(true, 1));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(90, 73, "/Images/eSoldier2Move.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(70, 60, "/Images/eSoldier2Move.gif"));
             }
             else if (type == 4)
             {
                 soldier.Add(new Rider(true, 1));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(80, 50, "/Images/eSoldier3Move.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(80, 75, "/Images/eSoldier3Move.gif"));
             }
             else if (type == 5)
             {
                 soldier.Add(new Assassin(true, 1));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(90, 50, "/Images/tower_test2.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(90, 50, "/Images/eSoldier4Move.gif"));
             }
             else if (type == 6)
             {
@@ -123,7 +122,6 @@ namespace Side_scrolling_Tower_Defense
                 if (soldier[i].HP <= 0)
                 {
                     soldier.RemoveAt(i);
-
                 }
             }
         }

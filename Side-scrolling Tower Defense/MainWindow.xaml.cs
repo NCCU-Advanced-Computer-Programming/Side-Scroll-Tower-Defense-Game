@@ -152,6 +152,15 @@ namespace Side_scrolling_Tower_Defense
             #region Setting Content
          btnSpeedUp.Content = ">>";
             btnUpgradeTower.Content = "升級塔\n$" + player.UPGRADEPRICE.ToString();
+            ToolTip tp = new System.Windows.Controls.ToolTip();
+            tp = new System.Windows.Controls.ToolTip();
+            tp.Background = Brushes.LightSteelBlue;
+            tp.BorderBrush = Brushes.Black;
+            tp.BorderThickness = new Thickness(2);
+            tp.Content = btnUpgradeTower.ToolTip.ToString();
+            tp.Content = "下一級:\nHP:" + (player.myTower.HP + 100).ToString() + '\n' + "Range:" + (player.myTower.RANGE + 10).ToString() + '\n' + "Damage:" + (player.myTower.ATK + 10).ToString();
+            btnUpgradeTower.ToolTip = tp;
+
             btnSoldier1.Content = "Saber\n$" + s1_price.ToString();
             btnSoldier2.Content = "Archer\n$" + s2_price.ToString();
             btnSoldier3.Content = "Caster\n$" + s3_price.ToString();

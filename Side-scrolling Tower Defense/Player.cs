@@ -60,12 +60,12 @@ namespace Side_scrolling_Tower_Defense
             {
                // soldier.Add(new Soldier(100 * overPower, 15 * overPower, 50, 0.7 * overPower, false, cost));
                 soldier.Add(new Saber(false, overPower));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(80, 75, "/Images/soldier1Move.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(80, 55, "/Images/soldier1Move.gif"));
             }
             else if(type==2)
             {
                 soldier.Add(new Archer(false, overPower, grid1));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(60, 70, "/Images/soldier4Move.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(75, 65, "/Images/soldier4Move.gif"));
             }
             else if (type == 3)
             {
@@ -75,12 +75,12 @@ namespace Side_scrolling_Tower_Defense
             else if (type == 4)
             {
                 soldier.Add(new Rider(false, overPower));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(80, 70, "/Images/soldier2Move.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(80, 60, "/Images/soldier2Move.gif"));
             }
             else if (type == 5)
             {
                 soldier.Add(new Assassin(false, overPower));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(90, 50, "/Images/soldier5Move.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(90, 60, "/Images/soldier5Move.gif"));
             }
             else if (type == 6)
             {

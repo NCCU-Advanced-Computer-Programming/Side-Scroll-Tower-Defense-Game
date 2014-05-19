@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Side-scrolling Tower Defense.exe.manifest" size="4214">
+    <dependentAssembly dependencyType="install" codebase="Side-scrolling Tower Defense.exe.manifest" size="4693">
       <assemblyIdentity name="Side-scrolling Tower Defense.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>tux6R773Yth57md50PU/XhCxHjaHssCYJUlRrpsZ7r0=</dsig:DigestValue>
+        <dsig:DigestValue>kbNOduP9KUhaZoyCIISjgxBR8S8UlmN+qLNi2UF6/G4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

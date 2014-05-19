@@ -10,8 +10,8 @@
                         <ColumnDefinition Width="210*"/>
                         <ColumnDefinition Width="368*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="pack://siteoforigin:,,,/Images/占用遊戲說明圖.JPG" Stretch="UniformToFill"/>
-                    <TextBlock Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="264" Margin="10,10,0,0" FontSize="14"><Run Text="遊戲名稱"/><Run Language="zh-tw" Text="：橫向超經典守塔防禦遊戲"/><LineBreak/><Run/><LineBreak/><Run Language="zh-tw" Text="程式撰寫：許書軒、陳品嘉、蘇宗彥"/><LineBreak/><Run Language="zh-tw"/><LineBreak/><Run Language="zh-tw" Text="美術指導：白紋愷"/><LineBreak/><Run Language="zh-tw"/><LineBreak/><Run Language="zh-tw" Text="使用工具及外部資源："/><LineBreak/><Run Language="zh-tw" Text="　　-Microsoft Visual Studio 2013 "/><LineBreak/><Run Language="zh-tw" Text="　　-WpfAnimatedGif library ( from CodePlex )"/><LineBreak/><Run Language="zh-tw" Text="　　-GifImage.cs ( from GitHub )"/><LineBreak/><Run Language="zh-tw" Text=" "/></TextBlock>
+                    <Image Source="Images/tower_test2.gif" Stretch="UniformToFill" Margin="0,0,10,0"/>
+                    <TextBlock Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="264" Margin="10,10,0,0" FontSize="14"><Run Text="遊戲名稱"/><Run Language="zh-tw" Text="：橫向超經典守塔防禦遊戲"/><LineBreak/><Run/><LineBreak/><Run Language="zh-tw" Text="程式撰寫：許書軒、陳品嘉、蘇宗彥"/><LineBreak/><Run Language="zh-tw"/><LineBreak/><Run Language="zh-tw" Text="美術指導：白紋愷"/><LineBreak/><Run Language="zh-tw"/><LineBreak/><Run Language="zh-tw" Text="使用工具及外部資源："/><LineBreak/><Run Language="zh-tw" Text="　　-Microsoft Visual Studio 2013 "/><LineBreak/><Run Language="zh-tw" Text="　　-WpfAnimatedGif library ( from CodePlex )"/><LineBreak/><Run Language="zh-tw" Text="　　-GifImage.cs                        ( from GitHub )"/><LineBreak/><Run Language="zh-tw" Text="　　-Pictures                               ( from Google )"/><LineBreak/><Run Language="zh-tw" Text=" "/></TextBlock>
                 </Grid>
             </TabItem>
             <TabItem Header="許書軒">
@@ -50,7 +50,7 @@
                         <ColumnDefinition Width="210*"/>
                         <ColumnDefinition Width="367*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="pack://siteoforigin:,,,/Images/蘇.jpg" Stretch="Fill"/>
+                    <Image Source="pack://siteoforigin:,,,/Images/蘇.jpg" Stretch="UniformToFill"/>
                     <TextBlock TextWrapping="Wrap" FontSize="18" Grid.Column="1"><Run Text=""/><LineBreak/><Run/><LineBreak/><Run Language="zh-tw" Text="姓名 : 蘇宗彥"/><LineBreak/><Run Language="zh-tw" Text="系級 : 資訊科學系二年級"/><LineBreak/><Run Language="zh-tw" Text="學號 : 101703029"/><LineBreak/><Run Language="zh-tw"/><LineBreak/><Run Language="zh-tw" Text="工作 : 主塔設計與技術指導"/><LineBreak/><Run Language="zh-tw" Text=""/><LineBreak/><Run Language="zh-tw" Text="座右銘 : 我長這樣憑什麼我是蛇蛇"/></TextBlock>
                 </Grid>
             </TabItem>

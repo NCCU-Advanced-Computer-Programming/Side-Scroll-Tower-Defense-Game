@@ -37,12 +37,20 @@ namespace Side_scrolling_Tower_Defense
     class Archer : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        private Label bullet;
+        private GifImage bullet;
         private Grid grid;
         public Archer(bool isEnemy, int overPower, Grid _grid)
             : base(600 * overPower, 10 * overPower, 150, 0.7 * overPower, isEnemy, 10000)
         {
             grid = _grid;
+            if (isEnemy)
+            {
+                this.APS = 100;
+            }
+            else
+            {
+                this.APS = 80;
+            }
         }
         public override bool Attack(List<Soldier> Enemy)
         {
@@ -94,7 +102,7 @@ namespace Side_scrolling_Tower_Defense
                         }
                         else
                         {
-                            bullet.Margin = new System.Windows.Thickness(0, 0, bullet.Margin.Right + movePerStepX, bullet.Margin.Bottom );
+                            bullet.Margin = new System.Windows.Thickness(0, 0, bullet.Margin.Right + movePerStepX, bullet.Margin.Bottom);
                             if (bullet.Margin.Right - movePerStepX > Enemy[target].POSITION)
                             {
                                 grid.Children.Remove(bullet);
@@ -106,15 +114,18 @@ namespace Side_scrolling_Tower_Defense
                 }
                 if (!isAttack) //判斷是否需要換gif圖
                 {
-                    //if (imgSourceAttack == null)
-                    //    imgSourceAttack = imgSourceMove.Replace("Move", "Attack");
-                    ////MessageBox.Show(imgSourceAttack);
+                    if (imgSourceAttack == null)
+                        imgSourceAttack = imgSourceMove.Replace("Move", "Attack");
+                    //MessageBox.Show(imgSourceAttack);
 
-                    //var _image = new BitmapImage();
-                    //_image.BeginInit();
-                    //_image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
-                    //_image.EndInit();
-                    //ImageBehavior.SetAnimatedSource(Image, _image);
+                    var _image = new BitmapImage();
+                    _image.BeginInit();
+                    _image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
+                    _image.EndInit();
+                    ImageBehavior.SetAnimatedSource(Image, _image);
+                    Image.Width = Image.ActualWidth + 15;
+                    spImg.Width = Image.Width;
+
                     isAttack = true;
                 }
 
@@ -131,7 +142,7 @@ namespace Side_scrolling_Tower_Defense
         public override bool Attack(Tower Enemy)
         {
             
-            int movePerStepX = this.RANGE / 10;
+            int movePerStepX = this.RANGE / 10 ;
             if (Math.Abs(Enemy.POSITION - this.POSITION) <= this.RANGE)
             {
                 bool isShooted = false; //如果已開槍，則在未打到目標前 isShooted == true
@@ -159,21 +170,24 @@ namespace Side_scrolling_Tower_Defense
                         }
                         else
                         {
-                            bullet.Margin = new System.Windows.Thickness(0, 0, bullet.Margin.Right + 10, bullet.Margin.Bottom );
+                            bullet.Margin = new System.Windows.Thickness(0, 0, bullet.Margin.Right + movePerStepX, bullet.Margin.Bottom );
                         }
                     }
                 }
                 if (!isAttack) //判斷是否需要換gif圖
                 {
-                    //if (imgSourceAttack == null)
-                    //    imgSourceAttack = imgSourceMove.Replace("Move", "Attack");
-                    ////MessageBox.Show(imgSourceAttack);
+                    if (imgSourceAttack == null)
+                        imgSourceAttack = imgSourceMove.Replace("Move", "Attack");
+                    //MessageBox.Show(imgSourceAttack);
 
-                    //var _image = new BitmapImage();
-                    //_image.BeginInit();
-                    //_image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
-                    //_image.EndInit();
-                    //ImageBehavior.SetAnimatedSource(Image, _image);
+                    var _image = new BitmapImage();
+                    _image.BeginInit();
+                    _image.UriSource = new Uri(imgSourceAttack, UriKind.Absolute);
+                    _image.EndInit();
+                    ImageBehavior.SetAnimatedSource(Image, _image);
+                    Image.Width = Image.ActualWidth + 15;
+                    spImg.Width = Image.Width;
+
                     isAttack = true;
                 }
 
@@ -187,16 +201,27 @@ namespace Side_scrolling_Tower_Defense
             }
 
         }
-        private Label BulletShow()
+        private GifImage BulletShow()
         {
-            bullet = new Label();
-            bullet.Width = 40;
-            bullet.Height = 3;
-            bullet.Margin = new System.Windows.Thickness(0, 0, this.spImg.Margin.Right, this.spImg.Margin.Bottom + this.Image.Height / 2);
+            bullet = new GifImage();
+            bullet.Width = 20;
+            bullet.Height = 20;
+            bullet.Margin = new System.Windows.Thickness(0, 0, this.spImg.Margin.Right, this.spImg.Margin.Bottom + this.Image.Height / 2-10);
+            string imgSource;
+                imgSource = System.IO.Directory.GetCurrentDirectory().Replace("\\", "/") + "/Images/cannon.PNG";
+            //else
+            //    imgSource = System.IO.Directory.GetCurrentDirectory().Replace("\\", "/") + "/Images/cannon.PNG";
+
+            var _image = new BitmapImage();
+            _image.BeginInit();
+            _image.UriSource = new Uri(imgSource, UriKind.Absolute);
+            _image.EndInit();
+            ImageBehavior.SetAnimatedSource(bullet, _image);
+        //   bullet.Width = Image.ActualWidth - 10;
 
             bullet.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             bullet.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
-            bullet.Background = System.Windows.Media.Brushes.Purple;
+            //bullet.Background = System.Windows.Media.Brushes.Purple;
 
             return bullet;
         }

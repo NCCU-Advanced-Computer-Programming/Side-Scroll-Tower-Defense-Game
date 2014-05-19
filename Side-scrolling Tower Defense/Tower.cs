@@ -31,7 +31,7 @@ namespace Side_scrolling_Tower_Defense
         ToolTip tp = new ToolTip();
         Label lbTowerHP;//在畫面上顯示的血量
         Label lbHP_BG;
-        Label lbTower;  //在畫面上顯示的塔
+        GifImage ImgTower;  //在畫面上顯示的塔
         Label bullet;
         Grid grid;//主畫面(顯示子彈用
         double movePerStepX = 25; //單位時間移動的 X 軸值, 定值
@@ -94,7 +94,7 @@ namespace Side_scrolling_Tower_Defense
             isEnemy = !_isPlayer;
             grid = _grid;
             LabelSetting();
-            grid.Children.Add(lbTower);
+            grid.Children.Add(ImgTower);
             _gridTopBar.Children.Add(lbHP_BG);
             _gridTopBar.Children.Add(lbTowerHP);
 
@@ -106,7 +106,7 @@ namespace Side_scrolling_Tower_Defense
             tp.Background = Brushes.LightSteelBlue;
             tp.BorderBrush = Brushes.Black;
             tp.BorderThickness = new Thickness(2);
-            lbTower.ToolTip = tp;
+            ImgTower.ToolTip = tp;
         }
         public void Attack(List<Soldier> enemyS)
         {
@@ -129,15 +129,15 @@ namespace Side_scrolling_Tower_Defense
                     if (nearest / movePerStepX > 2)
                     {
                         movePerStepX = 25;
-                        startTime = _attackspeed - (int)((nearest + this.lbTower.Width) / movePerStepX);
-                        movePerStepY = (lbTower.Height - (enemyS[target].Image.Height / 2)) / (_attackspeed - startTime);
+                        startTime = _attackspeed - (int)((nearest + this.ImgTower.Width) / movePerStepX);
+                        movePerStepY = (ImgTower.Height - (enemyS[target].Image.Height / 2)) / (_attackspeed - startTime);
 
                     }
                     else //太近了
                     {
-                        movePerStepX = (nearest+this.lbTower.Width) / 5 ;
+                        movePerStepX = (nearest+this.ImgTower.Width) / 5 ;
                         startTime = _attackspeed - 10;
-                        movePerStepY = (lbTower.Height - (enemyS[target].Image.Height / 2)) / (_attackspeed - startTime);
+                        movePerStepY = (ImgTower.Height - (enemyS[target].Image.Height / 2)) / (_attackspeed - startTime);
 
                     }
                 }
@@ -146,7 +146,7 @@ namespace Side_scrolling_Tower_Defense
                 if (bullet == null && counter == startTime)
                 {
                     grid.Children.Add(BulletShow()); //把子彈放進Grid
-                    angle = Math.Atan2((lbTower.Height - enemyS[target].Image.Height / 2), nearest + 40) * 57; //設定角度，弧度角轉角度
+                    angle = Math.Atan2((ImgTower.Height - enemyS[target].Image.Height / 2), nearest + 40) * 57; //設定角度，弧度角轉角度
                     RotateTransform transform = new RotateTransform(angle); 
                     if (!isEnemy)
                         transform = new RotateTransform(-angle);
@@ -207,7 +207,7 @@ namespace Side_scrolling_Tower_Defense
                 remainHP_Width = 0;
             lbTowerHP.Width = remainHP_Width;
             tp.Content = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
-            lbTower.ToolTip = tp;
+            ImgTower.ToolTip = tp;
             if (hp <= 0)
                 Crash();
         }
@@ -238,7 +238,7 @@ namespace Side_scrolling_Tower_Defense
                 towerLevel++;
 
             tp.Content = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
-            lbTower.ToolTip = tp;
+            ImgTower.ToolTip = tp;
         }
 
         /*範圍技大招 傳入對方士兵陣列*/
@@ -277,9 +277,9 @@ namespace Side_scrolling_Tower_Defense
             bullet.Width = 40;
             bullet.Height = 3;
             if(isEnemy)
-                bullet.Margin = new System.Windows.Thickness(0, 0, 923, lbTower.Height-20);
+                bullet.Margin = new System.Windows.Thickness(0, 0, 923, ImgTower.Height-20);
             else
-                bullet.Margin = new System.Windows.Thickness(0, 0, 36, lbTower.Height -20);
+                bullet.Margin = new System.Windows.Thickness(0, 0, 36, ImgTower.Height -20);
 
             bullet.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             bullet.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
@@ -289,26 +289,36 @@ namespace Side_scrolling_Tower_Defense
         }
         public void LabelSetting()
         {
-            lbTower = new Label();
+            ImgTower = new GifImage();
             lbTowerHP = new Label();
             lbHP_BG = new Label();
 
-            lbTower.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
-            lbTower.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+            ImgTower.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+            ImgTower.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
             lbTowerHP.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             lbTowerHP.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
             lbHP_BG.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             lbHP_BG.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+
+            string imgSource = Directory.GetCurrentDirectory();
+            imgSource = imgSource.Replace("\\", "/");
+            imgSource+="/Images/tower_test2.gif";
             if (isEnemy)
             {
 
-                lbTower.Margin = new System.Windows.Thickness(0, 0, 886, 0);
-                lbTower.Content = new Image
-                {
-                    Source = new BitmapImage(new Uri("Images/tower_test2.gif", UriKind.Relative)),
-                    VerticalAlignment = System.Windows.VerticalAlignment.Center,
-                    Stretch = Stretch.Fill
-                };
+                ImgTower.Margin = new System.Windows.Thickness(0, 0, 886, 0);
+                //ImgTower.Content = new Image
+                //{
+                //    Source = new BitmapImage(new Uri("Images/tower_test2.gif", UriKind.Relative)),
+                //    VerticalAlignment = System.Windows.VerticalAlignment.Center,
+                //    Stretch = Stretch.Fill
+                //};
+             //   string imgSource = Directory.GetCurrentDirectory().Replace("\\", "/") + "Images/tower_test2.gif";
+                var _image = new BitmapImage();
+                _image.BeginInit();
+                _image.UriSource = new Uri(imgSource, UriKind.Absolute);
+                _image.EndInit();
+                ImageBehavior.SetAnimatedSource(ImgTower, _image);
 
 
                lbHP_BG.Margin = new System.Windows.Thickness(35, 0, 0, 10);
@@ -316,25 +326,36 @@ namespace Side_scrolling_Tower_Defense
             }
             else
             {
-                lbTower.Margin = new System.Windows.Thickness(0, 0, 36, 0);
-                lbTower.Content = new Image
-                {
-                    Source = new BitmapImage(new Uri("Images/tower_test2.gif", UriKind.Relative)),
-                    VerticalAlignment = System.Windows.VerticalAlignment.Center, Stretch = Stretch.Fill
-                };
+                ImgTower.Margin = new System.Windows.Thickness(0, 0, 36, 0);
+                //imgSourceMove = Directory.GetCurrentDirectory();
+                //imgSourceMove = imgSourceMove.Replace("\\", "/");
+                //imgSourceMove = imgSourceMove + imageSource;
+                //MessageBox.Show(imageAbsolutePath);
+              //  string imgSource = Directory.GetCurrentDirectory().Replace("\\", "/") + "Images/tower_test2.gif";
+                var _image = new BitmapImage();
+                _image.BeginInit();
+                _image.UriSource = new Uri(imgSource, UriKind.Absolute);
+                _image.EndInit();
+                ImageBehavior.SetAnimatedSource(ImgTower, _image);
+             //   ImgTower.Height = height;
+                //ImgTower.Content = new Image
+                //{
+                //    Source = new BitmapImage(new Uri("Images/tower_test2.gif", UriKind.Relative)),
+                //    VerticalAlignment = System.Windows.VerticalAlignment.Center, Stretch = Stretch.Fill
+                //};
 
                 lbHP_BG.Margin = new System.Windows.Thickness(757, 0, 0, 10);
                 lbTowerHP.Margin = new System.Windows.Thickness(757, 0, 0, 10);
             }
-            lbTower.Height = 180;
-            lbTower.Width = 120;
-            lbTower.FontSize = 10;
+            ImgTower.Height = 180;
+            ImgTower.Width = 120;
+            //ImgTower.FontSize = 10;
             lbTowerHP.Width = 200;
             lbTowerHP.Height = 25;
             lbTowerHP.Background = Brushes.Red;
             lbTowerHP.BorderBrush = Brushes.Black;
             lbTowerHP.BorderThickness = new System.Windows.Thickness(2, 2, 2, 2);  
-            lbTower.BorderBrush = System.Windows.Media.Brushes.Black;
+            //ImgTower.BorderBrush = System.Windows.Media.Brushes.Black;
 
             lbHP_BG.Width = 200;
             lbHP_BG.Height = 25;
