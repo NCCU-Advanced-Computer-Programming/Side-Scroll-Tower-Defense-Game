@@ -92,7 +92,6 @@ namespace Side_scrolling_Tower_Defense
             Image = new GifImage();
             spImg = new StackPanel();
         }
-
         public Soldier(int hp, int atk, int range, double speed, bool enemy, int price)
         {
             HP = hp;
@@ -111,7 +110,6 @@ namespace Side_scrolling_Tower_Defense
             else
                 POSITION = 0;
        }
-
         public StackPanel Show(int height, int width, string imageSource)
         {
             if(isEnemy)
@@ -149,7 +147,7 @@ namespace Side_scrolling_Tower_Defense
             return spImg;
         }
 
-        //單體攻擊敵方士兵_1
+        //攻擊敵方
         public bool Attack(Soldier Enemy)
         {
             //兩個兵陣營不相同 && 兩兵間距離小於攻擊範圍
@@ -173,8 +171,6 @@ namespace Side_scrolling_Tower_Defense
             }
             return false;
         }
-
-        //單體攻擊敵方士兵_2
         public virtual bool Attack(List<Soldier> Enemy)
         {
             int target = Int32.MaxValue;
@@ -219,8 +215,6 @@ namespace Side_scrolling_Tower_Defense
             }
             return false;
         }
- 
-        //攻擊敵方塔
         public virtual bool Attack(Tower Enemy)
         {
             if (Math.Abs(Enemy.POSITION - this.POSITION) <= this.RANGE)
@@ -279,7 +273,6 @@ namespace Side_scrolling_Tower_Defense
                 isAttack = false;
             }
         }
-
         public void GetHurt(int q, Grid g)
         {
             this.HP -= q;
@@ -290,7 +283,6 @@ namespace Side_scrolling_Tower_Defense
             else
                 this.hp.Width = 0;
         }
-        //Die()
         public virtual StackPanel LifeCheck()
         {
             //C#使用記憶體自動回收
@@ -305,7 +297,6 @@ namespace Side_scrolling_Tower_Defense
                 return null;
             }       
         }
-
         public virtual void Skill()
         {
 

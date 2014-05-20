@@ -11,10 +11,9 @@ namespace Side_scrolling_Tower_Defense
     class Player
     {
 		private int _money;
+        private int _towerUpgradePrice;
         private int moneyGainSpeed;
         private int moneyGainCounter = 0;
-		private int _towerUpgradePrice;
-
         private Grid grid;
         public Label lbMoney;
         public Tower myTower;
@@ -36,7 +35,7 @@ namespace Side_scrolling_Tower_Defense
             _money = 5000;      // 初始資金
             _towerUpgradePrice = 100; //塔升級費用
             moneyGainSpeed = 10;
-            myTower = new Tower(1000, 50, 250, 1, true, grid1, _gridTopBar);
+            myTower = new Tower(2000, 50, 250, 1, true, grid1, _gridTopBar);
             lbMoney = new Label();
             lbMoney.Margin = new Thickness(838, 0, 0, 220);
             lbMoney.VerticalAlignment = VerticalAlignment.Bottom;

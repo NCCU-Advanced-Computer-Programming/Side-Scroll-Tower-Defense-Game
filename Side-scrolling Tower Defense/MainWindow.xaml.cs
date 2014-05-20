@@ -88,7 +88,7 @@ namespace Side_scrolling_Tower_Defense
                 tp.BorderThickness = new Thickness(2);
                 tp.Content = btn.ToolTip;
                 if (btn.Name == "btnUpgradeTower")
-                    tp.Content = "下一級:\nHP:" + (player.myTower.HP + 100).ToString() + '\n' + "Range:" + (player.myTower.RANGE + 10).ToString() + '\n' + "Damage:" + (player.myTower.ATK + 10).ToString();
+                    tp.Content = "下一級:\n血　量:" + (player.myTower.HP + 100).ToString() + '\n' + "射　程:" + (player.myTower.RANGE + 10).ToString() + '\n' + "攻擊力:" + (player.myTower.ATK + 10).ToString();
                 if (btn.Name.ToString().Contains("Unlock"))
                     tp.Content = "解鎖兵種";
                 btn.ToolTip = tp;
@@ -166,7 +166,7 @@ namespace Side_scrolling_Tower_Defense
             tp.BorderBrush = Brushes.Black;
             tp.BorderThickness = new Thickness(2);
             tp.Content = btnUpgradeTower.ToolTip.ToString();
-            tp.Content = "下一級:\nHP:" + (player.myTower.HP + 100).ToString() + '\n' + "Range:" + (player.myTower.RANGE + 10).ToString() + '\n' + "Damage:" + (player.myTower.ATK + 10).ToString();
+            tp.Content = "下一級:\n血　量:" + (player.myTower.HP + 100).ToString() + '\n' + "射　程:" + (player.myTower.RANGE + 10).ToString() + '\n' + "攻擊力:" + (player.myTower.ATK + 10).ToString();
             btnUpgradeTower.ToolTip = tp;
 
             btnSoldier1.Content = "Saber\n$" + s1_price.ToString();
@@ -192,7 +192,6 @@ namespace Side_scrolling_Tower_Defense
             timer.Start();
 
         }
-
         private void timer_Tick(object sender, EventArgs e)
         {
             countImage.Content = grid1.Children.Count.ToString();
@@ -285,53 +284,225 @@ namespace Side_scrolling_Tower_Defense
         }
         private void checkPrice()
         {
-            for (int i = 0; i < lbCD.Count; i++)  //先把所有因為錢不夠而禁案的鈕解開，重新判斷
-            {
-                if (lbCD[i].Content.ToString() == "")
-                {
-                    gridControlBar.Children.Remove(lbCD[i]);
-                    lbCD.RemoveAt(i);
-                }
-            }  
             if (player.MONEY < player.UPGRADEPRICE)
                 LabelBlocking(btnUpgradeTower, 0);
+            else
+            {
+                foreach(Label l in lbCD)
+                    if(l.Margin == btnUpgradeTower.Margin && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
 
             if (player.MONEY < s1_price && btnSoldier1.IsEnabled)
                 LabelBlocking(btnSoldier1, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == btnSoldier1.Margin && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
             if (player.MONEY < s2_price && btnSoldier2.IsEnabled)
                 LabelBlocking(btnSoldier2, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == btnSoldier2.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
             if (player.MONEY < s3_price && btnSoldier3.IsEnabled)
                 LabelBlocking(btnSoldier3, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == btnSoldier3.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
             if (player.MONEY < s4_price && btnSoldier4.IsEnabled)
                 LabelBlocking(btnSoldier4, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == btnSoldier4.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
             if (player.MONEY < s5_price && btnSoldier5.IsEnabled)
                 LabelBlocking(btnSoldier5, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == btnSoldier5.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
             if (player.MONEY < s6_price && btnSoldier6.IsEnabled)
                 LabelBlocking(btnSoldier6, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == btnSoldier6.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
             if (player.MONEY < s7_price && btnSoldier7.IsEnabled)
                 LabelBlocking(btnSoldier7, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == btnSoldier7.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
 
             if (player.MONEY < unlock_s2_price && btnUnlock1.IsEnabled)
                 LabelBlocking(btnUnlock1, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == btnUnlock1.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
             if (player.MONEY < unlock_s3_price && btnUnlock2.IsEnabled)
                 LabelBlocking(btnUnlock2, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == btnUnlock2.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
             if (player.MONEY < unlock_s4_price && btnUnlock3.IsEnabled)
                 LabelBlocking(btnUnlock3, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == btnUnlock3.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
             if (player.MONEY < unlock_s5_price && btnUnlock4.IsEnabled)
                 LabelBlocking(btnUnlock4, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == btnUnlock4.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
             if (player.MONEY < unlock_s6_price && btnUnlock5.IsEnabled)
                 LabelBlocking(btnUnlock5, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == btnUnlock5.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
             if (player.MONEY < unlock_s7_price && btnUnlock6.IsEnabled)
                 LabelBlocking(btnUnlock6, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == btnUnlock6.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
 
             if (player.MONEY < skill1_price)
                 LabelBlocking(skill1, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == skill1.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
             if (player.MONEY < skill2_price)
                 LabelBlocking(skill2, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == skill2.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
             if (player.MONEY < skill3_price)
                 LabelBlocking(skill3, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == skill3.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                     }
+            }
             if (player.MONEY < skill4_price)
                 LabelBlocking(skill4, 0);
+            else
+            {
+                foreach (Label l in lbCD)
+                    if (l.Margin == skill4.Margin  && l.Content.ToString() == "")
+                    {
+                        gridControlBar.Children.Remove(l);
+                        lbCD.Remove(l);
+                        break;
+                    }
+            }
 
         }
         private void checkSkill()
@@ -596,7 +767,7 @@ namespace Side_scrolling_Tower_Defense
                 tp.BorderBrush = Brushes.Black;
                 tp.BorderThickness = new Thickness(2);
                 tp.Content = btnUpgradeTower.ToolTip.ToString();
-                tp.Content = "下一級:\nHP:" + (player.myTower.HP + 100).ToString() + '\n' + "Range:" + (player.myTower.RANGE + 10).ToString() + '\n' + "Damage:" + (player.myTower.ATK + 10).ToString();
+                tp.Content = "下一級:\n血　量:" + (player.myTower.HP + 100).ToString() + '\n' + "射　程:" + (player.myTower.RANGE + 10).ToString() + '\n' + "攻擊力:" + (player.myTower.ATK + 10).ToString();
                 btnUpgradeTower.ToolTip = tp;
             }
         }
@@ -700,7 +871,6 @@ namespace Side_scrolling_Tower_Defense
             //    e.Cancel = true;
             //}
         }
-
         private void gridBG_MouseDown(object sender, MouseButtonEventArgs e)
         {
             stackMenu.IsEnabled =true;
@@ -730,7 +900,7 @@ namespace Side_scrolling_Tower_Defense
             Reset(2);
             gridBG.Visibility = System.Windows.Visibility.Hidden;
             Label d = new Label();
-            d.Content = "中　等";
+            d.Content = "中　級";
             d.FontSize = 18;
             d.FontWeight = FontWeights.Bold;
             d.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
@@ -762,7 +932,7 @@ namespace Side_scrolling_Tower_Defense
             gridBG.Visibility = System.Windows.Visibility.Hidden;
 
             Label d = new Label();
-            d.Content = "ＢＡＳＡＲＡ";
+            d.Content = "絕望級";
             d.FontSize = 18;
             d.FontWeight = FontWeights.Bold;
             d.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;

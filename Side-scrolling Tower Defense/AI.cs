@@ -14,7 +14,6 @@ namespace Side_scrolling_Tower_Defense
         public List<Soldier> soldier = new List<Soldier>();
         private Player player;
         private Grid grid;
- //       private bool counterAttcak_flag = false;
         private int _op; // AIs' soldier OverPower
         private int _chanceToGenSoldier;
         private int _chanceToUpgradeTower;
@@ -24,7 +23,7 @@ namespace Side_scrolling_Tower_Defense
 
         public AI( Grid _grid, Grid _gridTopBar, Player _player, int difficulty)
         {
-            aiTower = new Tower(1000, 50, 250, 1, false, _grid, _gridTopBar);
+            aiTower = new Tower(2000, 50, 250, 1, false, _grid, _gridTopBar);
             player = _player;
             grid = _grid;
 
