@@ -46,13 +46,13 @@ namespace Side_scrolling_Tower_Defense
         private const int unlock_s2_price = 500;
         private const int unlock_s3_price = 500;
         private const int unlock_s4_price = 700;
-        private const int unlock_s5_price = 1001;
-        private const int unlock_s6_price = 1002;
-        private const int unlock_s7_price = 1003;
+        private const int unlock_s5_price = 1000;
+        private const int unlock_s6_price = 1000;
+        private const int unlock_s7_price = 1000;
         private const int skill1_price = 3000;
-        private const int skill2_price = 3000;
-        private const int skill3_price = 3000;
-        private const int skill4_price = 3000;
+        private const int skill2_price = 2000;
+        private const int skill3_price = 5000;
+        private const int skill4_price = 5000;
         private int overPower = 1;       //技能3--狂戰士倍率
         /*-----------------Price--------------------*/
         /*-----------------Flag--------------------*/
@@ -69,7 +69,7 @@ namespace Side_scrolling_Tower_Defense
         private int skillCounter3 = 0;
   //      private int skillCounter4 = 0;
         /*-----------------Counter--------------------*/
-        private int[] coldDownTime = { 3, 4, 5, 10, 15, 20, 30, 60, 20, 100, 60 };//順序: 兵種1~7 CD, 技能1~4 CD      
+        private int[] coldDownTime = { 5, 8, 10, 15, 20, 30, 40, 40, 20, 90, 60 };//順序: 兵種1~7 CD, 技能1~4 CD      
         #endregion
 
         public MainWindow()
@@ -226,8 +226,7 @@ namespace Side_scrolling_Tower_Defense
             }
             if ((++cdCounter % kSECOND) == 0)
                 checkCD();
-            else
-                checkPrice();/**/
+            checkPrice();/**/
         } 
         private void LabelBlocking(Button btn, int CDtime) //即時產生擋住 btn 的 label
         {

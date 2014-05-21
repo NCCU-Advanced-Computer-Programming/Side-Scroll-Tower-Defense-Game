@@ -30,22 +30,22 @@
             <Button x:Name="skill1" HorizontalAlignment="Left" Margin="93,8,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="停止敵方全體10秒&#xA;$3000" Click="skill1_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
                 <Image Source="Images/skill1.PNG" Stretch="Fill"/>
             </Button>
-            <Button x:Name="skill2"  HorizontalAlignment="Left" Margin="142,8,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="我方塔10秒內距離無限&#xA;$3000" Click="skill2_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Button x:Name="skill2"  HorizontalAlignment="Left" Margin="142,8,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="我方塔10秒內距離無限&#xA;$2000" Click="skill2_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
                 <Image Source="Images/skill2.PNG" Stretch="Fill"/>
             </Button>
-            <Button x:Name="skill3"  HorizontalAlignment="Left" Margin="93,52,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="我方士兵10秒內攻擊力、血量、速度提升兩倍&#xA;$3000" Click="skill3_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Button x:Name="skill3"  HorizontalAlignment="Left" Margin="93,52,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="我方士兵10秒內攻擊力、血量、速度提升兩倍&#xA;$5000" Click="skill3_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
                 <Image Source="Images/skill3.PNG" Stretch="Fill"/>
             </Button>
-            <Button x:Name="skill4" HorizontalAlignment="Left" Margin="142,52,0,0" VerticalAlignment="Top" Width="43" Height="39" Click="skill4_Click"  Focusable="False" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="1" ToolTip="擁有極高攻擊力的雷射砲&#xA;$3000">
+            <Button x:Name="skill4" HorizontalAlignment="Left" Margin="142,52,0,0" VerticalAlignment="Top" Width="43" Height="39" Click="skill4_Click"  Focusable="False" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="1" ToolTip="擁有極高攻擊力的雷射砲&#xA;$5000">
                 <Image Source="Images/skill4.PNG" Stretch="Fill"/>
             </Button>
-            <Button x:Name="btnSoldier1" Content="Saber" Height="54" Margin="231,21,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81" Click="btnSoldier1_Click"  Focusable="False" ToolTip="血　量: &#xA;攻擊力:&#xA;速　度:"/>
-            <Button x:Name="btnSoldier2" Content="Archer" Height="54" Margin="317,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="81" Click="btnSoldier2_Click" Focusable="False" ToolTip="血　量: &#xA;攻擊力:&#xA;速　度:"/>
-            <Button x:Name="btnSoldier3" Content="Caster" Height="54" Margin="403,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="81" Click="btnSoldier3_Click" Focusable="False" ToolTip="血　量: &#xA;攻擊力:&#xA;速　度:"/>
-            <Button x:Name="btnSoldier4" Content="Rider" Height="54" Margin="486,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="81" Click="btnSoldier4_Click" Focusable="False" ToolTip="血　量: &#xA;攻擊力:&#xA;速　度:"/>
-            <Button x:Name="btnSoldier5" Content="Assassin" Height="54" Margin="570,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="81" Click="btnSoldier5_Click" Focusable="False" ToolTip="血　量: &#xA;攻擊力:&#xA;速　度:"/>
-            <Button x:Name="btnSoldier6" Content="Lancer" Height="54" Margin="654,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="81" Click="btnSoldier6_Click" Focusable="False" ToolTip="血　量: &#xA;攻擊力:&#xA;速　度:"/>
-            <Button x:Name="btnSoldier7" Content="Berserker" Height="54" Margin="738,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="81" Click="btnSoldier7_Click" Focusable="False" ToolTip="血　量: &#xA;攻擊力:&#xA;速　度:"/>
+            <Button x:Name="btnSoldier1" Content="Saber" Height="54" Margin="231,21,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81" Click="btnSoldier1_Click"  Focusable="False" ToolTip="血　量: 150&#xA;攻擊力: 25&#xA;速　度: 4"/>
+            <Button x:Name="btnSoldier2" Content="Archer" Height="54" Margin="317,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="81" Click="btnSoldier2_Click" Focusable="False" ToolTip="血　量: 150&#xA;攻擊力: 30&#xA;速　度: 3"/>
+            <Button x:Name="btnSoldier3" Content="Caster" Height="54" Margin="403,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="81" Click="btnSoldier3_Click" Focusable="False" ToolTip="血　量: 250&#xA;攻擊力: 30&#xA;速　度: 5"/>
+            <Button x:Name="btnSoldier4" Content="Rider" Height="54" Margin="486,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="81" Click="btnSoldier4_Click" Focusable="False" ToolTip="血　量: 300&#xA;攻擊力: 25&#xA;速　度: 7"/>
+            <Button x:Name="btnSoldier5" Content="Assassin" Height="54" Margin="570,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="81" Click="btnSoldier5_Click" Focusable="False" ToolTip="血　量: 150&#xA;攻擊力: 45&#xA;速　度: 6"/>
+            <Button x:Name="btnSoldier6" Content="Lancer" Height="54" Margin="654,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="81" Click="btnSoldier6_Click" Focusable="False" ToolTip="血　量: 200&#xA;攻擊力: 35&#xA;速　度: 5"/>
+            <Button x:Name="btnSoldier7" Content="Berserker" Height="54" Margin="738,21,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="81" Click="btnSoldier7_Click" Focusable="False" ToolTip="血　量: 1000&#xA;攻擊力: 20&#xA;速　度: 1"/>
             <Button x:Name="btnUnlock1" Content="$" HorizontalAlignment="Left" Height="19" Margin="318,52,0,0" VerticalAlignment="Top" Width="79" Click="btnUnlock1_Click" Focusable="False"/>
             <Button x:Name="btnUnlock2" Content="$" HorizontalAlignment="Left" Height="19" Margin="404,52,0,0" VerticalAlignment="Top" Width="79" Click="btnUnlock2_Click" Focusable="False"/>
             <Button x:Name="btnUnlock3" Content="$" HorizontalAlignment="Left" Height="19" Margin="487,52,0,0" VerticalAlignment="Top" Width="79" Click="btnUnlock3_Click" Focusable="False"/>

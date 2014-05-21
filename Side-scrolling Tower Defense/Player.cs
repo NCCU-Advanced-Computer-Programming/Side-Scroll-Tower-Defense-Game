@@ -32,7 +32,7 @@ namespace Side_scrolling_Tower_Defense
         public Player( Grid grid1, Grid _gridTopBar)
         {
             grid = grid1;
-            _money = 5000;      // 初始資金
+            _money = 10000;      // 初始資金
             _towerUpgradePrice = 100; //塔升級費用
             moneyGainSpeed = 10;
             myTower = new Tower(2000, 50, 250, 1, true, grid1, _gridTopBar);
@@ -59,7 +59,6 @@ namespace Side_scrolling_Tower_Defense
         public void GenerateSolider(Grid grid1, int type, int overPower){
             if(type == 1)
             {
-               // soldier.Add(new Soldier(100 * overPower, 15 * overPower, 50, 0.7 * overPower, false, cost));
                 soldier.Add(new Saber(false, overPower));
                 grid1.Children.Add(soldier[soldier.Count - 1].Show(80, 55, "/Images/soldier1Move.gif"));
             }

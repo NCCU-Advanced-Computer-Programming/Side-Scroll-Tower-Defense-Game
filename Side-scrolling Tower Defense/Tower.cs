@@ -247,21 +247,20 @@ namespace Side_scrolling_Tower_Defense
             ImgTower.ToolTip = tp;
         }
         public void Skill(List<Soldier> EnemyS)
-        
-
         {/*範圍技大招 傳入對方士兵陣列*/
+            int skill_damage = 800;
             SkillAnimate();
             if (!this.isEnemy)/*玩家塔*/
             {
                 for (int i = 0; i < EnemyS.Count; i++)
                 {
-                    if (EnemyS[i].HP - 1000 <= 0)
+                    if (EnemyS[i].HP - skill_damage<= 0)
                     {
-                        EnemyS[i].HP -= 1000;
+                        EnemyS[i].HP -= skill_damage;
                         EnemyS[i].spImg.Visibility = Visibility.Hidden;
                     }
                     else
-                        EnemyS[i].GetHurt(1000, null);
+                        EnemyS[i].GetHurt(skill_damage, null);
                 }
             }
         }

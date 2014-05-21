@@ -12,11 +12,8 @@ namespace Side_scrolling_Tower_Defense
     class Saber : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        public Saber(bool isEnemy, int overPower)
-            : base(70*overPower, 10*overPower, 1, 0.5*overPower, isEnemy, 100)
-        {
-
-        }
+        public Saber(bool isEnemy, double overPower)
+            : base((int)(150 * overPower), (int)(25 * overPower), 10, (0.4 * overPower), isEnemy, 1000) { }
 
         public new void Skill()
         {
@@ -39,18 +36,19 @@ namespace Side_scrolling_Tower_Defense
         //hp=? , atk=? , range = ? , speed =? 
         private Label bullet;
         private Grid grid;
-        public Archer(bool isEnemy, int overPower, Grid _grid)
-            : base(200 * overPower, 15 * overPower, 150, 0.5 * overPower, isEnemy, 1000)
+        public Archer(bool isEnemy, double overPower, Grid _grid)
+            : base((int)(150 * overPower), (int)(30 * overPower), 100, (0.3 * overPower), isEnemy, 1000)
         {
-            grid = _grid;
-            if (isEnemy)
-            {
-                this.APS = 100;
-            }
-            else
-            {
-                this.APS = 80;
-            }
+                grid = _grid;
+                if (isEnemy)
+                {
+                    this.APS = 100;
+                }
+                else
+                {
+                    this.APS = 80;
+                }
+
         }
         public override bool Attack(List<Soldier> Enemy)
         {
@@ -195,6 +193,7 @@ namespace Side_scrolling_Tower_Defense
             }
             else
             {
+              //  if (bullet != null) 
                 grid.Children.Remove(bullet);
                 bullet = null;
                 return false;
@@ -247,8 +246,8 @@ namespace Side_scrolling_Tower_Defense
     class Caster : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        public Caster(bool isEnemy, int overPower)
-            : base(150 * overPower, 35 * overPower, 10, 0.4 * overPower, isEnemy, 100)
+        public Caster(bool isEnemy, double overPower)
+            : base((int)(250 * overPower), (int)(30 * overPower), 10, (0.5 * overPower), isEnemy, 1000)
         {
 
         }
@@ -263,11 +262,8 @@ namespace Side_scrolling_Tower_Defense
     class Berserker : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        public Berserker(bool isEnemy, int overPower)
-            : base(1000 * overPower, 20 * overPower, 1, 0.1 * overPower, isEnemy, 1000)
-        {
-
-        }
+        public Berserker(bool isEnemy, double overPower)
+            : base((int)(1000 * overPower), (int)(20 * overPower), 10, (0.1 * overPower), isEnemy, 10000){}
 
         public new void Skill()
         {
@@ -279,11 +275,8 @@ namespace Side_scrolling_Tower_Defense
     class Rider : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        public Rider(bool isEnemy, int overPower)
-            : base(300 * overPower, 7 * overPower, 2, 0.8 * overPower, isEnemy, 100)
-        {
-
-        }
+        public Rider(bool isEnemy, double overPower)
+            : base((int)(300 * overPower), (int)(25 * overPower), 10, (0.7 * overPower), isEnemy, 1000){}
 
         public new void Skill()
         {
@@ -294,11 +287,8 @@ namespace Side_scrolling_Tower_Defense
     class Lancer : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        public Lancer(bool isEnemy, int overPower)
-            : base(200 * overPower, 8 * overPower, 5, 0.5 * overPower, isEnemy, 100)
-        {
-
-        }
+        public Lancer(bool isEnemy, double overPower)
+            : base((int)(200 * overPower), (int)(35 * overPower), 10, (0.5 * overPower), isEnemy, 1000){}
 
         public new void Skill()
         {
@@ -309,11 +299,8 @@ namespace Side_scrolling_Tower_Defense
     class Assassin : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
-        public Assassin(bool isEnemy, int overPower)
-            : base(100 * overPower, 40 * overPower, 1, 0.7 * overPower, isEnemy, 100)
-        {
-
-        }
+        public Assassin(bool isEnemy, double overPower)
+            : base((int)(150 * overPower), (int)(45 * overPower), 10, (0.6 * overPower), isEnemy, 1000){}
 
         public new void Skill()
         {

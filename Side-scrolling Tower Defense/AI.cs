@@ -14,7 +14,7 @@ namespace Side_scrolling_Tower_Defense
         public List<Soldier> soldier = new List<Soldier>();
         private Player player;
         private Grid grid;
-        private int _op; // AIs' soldier OverPower
+        private double _op; // AIs' soldier OverPower
         private int _chanceToGenSoldier;
         private int _chanceToUpgradeTower;
         private int _towerLVlimit;
@@ -37,22 +37,22 @@ namespace Side_scrolling_Tower_Defense
                     _canCounterAttack = false;
                     break;
                 case 2:
-                    _op = 1;
+                    _op = 1.2;
                     _chanceToGenSoldier = 70000;
                     _chanceToUpgradeTower = 50000;
                     _towerLVlimit = 3;
                     _canCounterAttack = true;
                     break;
                 case 3:
-                    _op = 2;
-                    _chanceToGenSoldier = 50000;
+                    _op = 1.5;
+                    _chanceToGenSoldier = 70000;
                     _chanceToUpgradeTower = 10000;
                     _towerLVlimit = 5;
                     _canCounterAttack = true;
                     break;
                 case 4:
-                    _op = 3;
-                    _chanceToGenSoldier = 30000;
+                    _op = 2.5;
+                    _chanceToGenSoldier = 50000;
                     _chanceToUpgradeTower = 1000;
                     _towerLVlimit = 10;
                     _canCounterAttack = true;
@@ -63,37 +63,38 @@ namespace Side_scrolling_Tower_Defense
             }
         }
         public void Intelligence()
-        { //智慧產兵 XDDD 目前只會rand產兵
+        { 
             Random rand = new Random();
-            int playerTotalPower = player.soldier.Sum(s => s.ATK); //取得玩家總戰力
-            int aiTotalPower = soldier.Sum(s => s.ATK);
 
-            if (aiTower.HP <= aiTower.MAXHP / 2 && aiTotalPower <= playerTotalPower && !_canCounterAttack) //AI快掛時會暴走
+            if (aiTower.HP <= aiTower.MAXHP / 2 && soldier.Count<= player.soldier.Count && !_canCounterAttack) //AI快掛時會暴走
             {
-                if (rand.Next(_chanceToGenSoldier / 5) <= playerTotalPower + player.MONEY / 100) 
+                if (rand.Next(_chanceToGenSoldier / 5) <= player.soldier.Count*30 + player.MONEY / 200) 
                 {
                     int tmp = rand.Next(7);
                     GenerateSolider(grid, tmp + 1, _op); 
                 }
-                if (aiTotalPower > playerTotalPower)
+                if (soldier.Count > player.soldier.Count)
                 {
                     _canCounterAttack = false;
                 }
             }
-            else if (rand.Next(_chanceToGenSoldier) <= playerTotalPower + player.MONEY / 100) 
+            else if (rand.Next(_chanceToGenSoldier) <= player.soldier.Count * 30 + player.MONEY / 200) 
             {
-                int tmp = rand.Next(7);
-                    GenerateSolider(grid, tmp+1, _op); 
+                if (soldier.Count < 15) //限制場上兵量
+                {
+                    int tmp = rand.Next(7);
+                    GenerateSolider(grid, tmp + 1, _op); 
+                }
             }
             else
             {
                 //aiTower等級不能比玩家高多於3等
-                if (rand.Next(_chanceToUpgradeTower) <= 2 && aiTower.TowerLevel <= player.myTower.TowerLevel + _towerLVlimit)
+                if (rand.Next(_chanceToUpgradeTower) <= 5 && aiTower.TowerLevel <= player.myTower.TowerLevel + _towerLVlimit)
                     UpgradeTower();
             }
             MaintainSolidersPosition(player.soldier, player.myTower);
         }
-        public void GenerateSolider(Panel grid1, int type, int op)
+        public void GenerateSolider(Panel grid1, int type, double op)
         {
             if(type == 1)
             {

@@ -43,26 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Side-scrolling Tower Defense.exe" size="1562112">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Side-scrolling Tower Defense.exe" size="1561600">
       <assemblyIdentity name="Side-scrolling Tower Defense" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>qNhUBvgGgX1htueYDc++8QM+9AysJI6akjplfcaOAt4=</dsig:DigestValue>
+        <dsig:DigestValue>RXq3TzNsVR+PC/bEaIfJPF8VARcN8FtDA1toi8NqeYU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WpfAnimatedGif.dll" size="37888">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WpfAnimatedGif.dll" size="40448">
       <assemblyIdentity name="WpfAnimatedGif" version="1.4.4.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>bkhXIDrmY9m2CLJ9ZYbxX7+8U3PePtFrwHibDv6OgHk=</dsig:DigestValue>
+        <dsig:DigestValue>Wqem7u5ZhZvUIAfgT4K9ndes2rACGHmvP/gOI1ZvqDQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
