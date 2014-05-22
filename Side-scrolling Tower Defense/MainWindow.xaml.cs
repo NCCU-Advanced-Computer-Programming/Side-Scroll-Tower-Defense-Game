@@ -36,23 +36,23 @@ namespace Side_scrolling_Tower_Defense
         DockPanel dock1 = new DockPanel();
         #region 參數設定區
         /*-----------------Price--------------------*/
-        private const int s1_price = 50;
-        private const int s2_price = 100;
-        private const int s3_price = 300;
-        private const int s4_price = 111;
-        private const int s5_price = 500;
-        private const int s6_price = 502;
-        private const int s7_price = 530;
+        private const int s1_price = 100;
+        private const int s2_price = 150;
+        private const int s3_price = 200;
+        private const int s4_price = 300;
+        private const int s5_price = 400;
+        private const int s6_price = 500;
+        private const int s7_price = 600;
         private const int unlock_s2_price = 500;
         private const int unlock_s3_price = 500;
         private const int unlock_s4_price = 700;
         private const int unlock_s5_price = 1000;
-        private const int unlock_s6_price = 1000;
-        private const int unlock_s7_price = 1000;
-        private const int skill1_price = 3000;
-        private const int skill2_price = 2000;
-        private const int skill3_price = 5000;
-        private const int skill4_price = 5000;
+        private const int unlock_s6_price = 1500;
+        private const int unlock_s7_price = 2000;
+        //private const int skill1_price = 3000;
+        //private const int skill2_price = 2000;
+        //private const int skill3_price = 5000;
+        //private const int skill4_price = 5000;
         private int overPower = 1;       //技能3--狂戰士倍率
         /*-----------------Price--------------------*/
         /*-----------------Flag--------------------*/
@@ -69,7 +69,7 @@ namespace Side_scrolling_Tower_Defense
         private int skillCounter3 = 0;
   //      private int skillCounter4 = 0;
         /*-----------------Counter--------------------*/
-        private int[] coldDownTime = { 5, 8, 10, 15, 20, 30, 40, 40, 20, 90, 60 };//順序: 兵種1~7 CD, 技能1~4 CD      
+        private int[] coldDownTime = { 5, 8, 10, 15, 20, 30, 40, 40, 20, 70, 60 };//順序: 兵種1~7 CD, 技能1~4 CD      
         #endregion
 
         public MainWindow()
@@ -454,54 +454,6 @@ namespace Side_scrolling_Tower_Defense
                     }
             }
 
-            if (player.MONEY < skill1_price)
-                LabelBlocking(skill1, 0);
-            else
-            {
-                foreach (Label l in lbCD)
-                    if (l.Margin == skill1.Margin  && l.Content.ToString() == "")
-                    {
-                        gridControlBar.Children.Remove(l);
-                        lbCD.Remove(l);
-                        break;
-                    }
-            }
-            if (player.MONEY < skill2_price)
-                LabelBlocking(skill2, 0);
-            else
-            {
-                foreach (Label l in lbCD)
-                    if (l.Margin == skill2.Margin  && l.Content.ToString() == "")
-                    {
-                        gridControlBar.Children.Remove(l);
-                        lbCD.Remove(l);
-                        break;
-                    }
-            }
-            if (player.MONEY < skill3_price)
-                LabelBlocking(skill3, 0);
-            else
-            {
-                foreach (Label l in lbCD)
-                    if (l.Margin == skill3.Margin  && l.Content.ToString() == "")
-                    {
-                        gridControlBar.Children.Remove(l);
-                        lbCD.Remove(l);
-                        break;
-                     }
-            }
-            if (player.MONEY < skill4_price)
-                LabelBlocking(skill4, 0);
-            else
-            {
-                foreach (Label l in lbCD)
-                    if (l.Margin == skill4.Margin  && l.Content.ToString() == "")
-                    {
-                        gridControlBar.Children.Remove(l);
-                        lbCD.Remove(l);
-                        break;
-                    }
-            }
 
         }
         private void checkSkill()
@@ -543,13 +495,16 @@ namespace Side_scrolling_Tower_Defense
                 if (buff2CountDown <= 2 && (skillCounter2 % 10) < kFlashingInterval)
                 {
                     tmplb.Visibility = Visibility.Hidden;
-                } if ((++skillCounter2 % kSECOND) == 0)
+                } 
+                if ((++skillCounter2 % kSECOND) == 0)
                 {
                     buff2CountDown--;
                     skillCounter2 = 0;
                     if (buff2CountDown <= 0)
                     {
                         skill2_isEnable = false;
+                        //(ToolTip)(btnUpgradeTower.ToolTip).                tp.Content = "下一級:\n血　量:" + (player.myTower.HP + 100).ToString() + '\n' + "射　程:" + (player.myTower.RANGE + 10).ToString() + '\n' + "攻擊力:" + (player.myTower.ATK + 10).ToString();
+
                         player.myTower.RANGE -= 1500;
                     }
                 }
@@ -700,7 +655,7 @@ namespace Side_scrolling_Tower_Defense
         #region 玩家即時技 btnClick function
         private void skill1_Click(object sender, RoutedEventArgs e)
         {// 敵方暫停 10秒
-            player.EarnMoney(-skill1_price); //扣錢
+            //player.EarnMoney(-skill1_price); //扣錢
             skill1_isEnable = true;
             buff1CountDown = 10;
             foreach (Soldier s in ai.soldier)
@@ -714,7 +669,7 @@ namespace Side_scrolling_Tower_Defense
         }
         private void skill2_Click(object sender, RoutedEventArgs e)
         {// 塔攻擊距離無限 10秒
-            player.EarnMoney(-skill2_price); //扣錢
+            //player.EarnMoney(-skill2_price); //扣錢
             skill2_isEnable = true;
             buff2CountDown = 10;
             LabelBlocking(skill2, coldDownTime[8]);
@@ -722,7 +677,7 @@ namespace Side_scrolling_Tower_Defense
         }
         private void skill3_Click(object sender, RoutedEventArgs e)
         {// 我方兵 血、攻、移動速度 提升2倍 10秒
-            player.EarnMoney(-skill3_price); //扣錢
+            //player.EarnMoney(-skill3_price); //扣錢
             skill3_isEnable = true;
             buff3CountDown = 10;
             LabelBlocking(skill3, coldDownTime[9]);
@@ -736,7 +691,7 @@ namespace Side_scrolling_Tower_Defense
         }
         private void skill4_Click(object sender, RoutedEventArgs e)
         {//秒殺全場敵人
-            player.EarnMoney(-skill4_price); //扣錢
+            //player.EarnMoney(-skill4_price); //扣錢
             player.myTower.Skill(ai.soldier);
             LabelBlocking(skill4, coldDownTime[10]);
         }
@@ -766,7 +721,10 @@ namespace Side_scrolling_Tower_Defense
                 tp.BorderBrush = Brushes.Black;
                 tp.BorderThickness = new Thickness(2);
                 tp.Content = btnUpgradeTower.ToolTip.ToString();
-                tp.Content = "下一級:\n血　量:" + (player.myTower.HP + 100).ToString() + '\n' + "射　程:" + (player.myTower.RANGE + 10).ToString() + '\n' + "攻擊力:" + (player.myTower.ATK + 10).ToString();
+                if(skill2_isEnable)
+                    tp.Content = "下一級:\n血　量:" + (player.myTower.HP + 100).ToString() + '\n' + "射　程:" + (player.myTower.RANGE - 990).ToString() + '\n' + "攻擊力:" + (player.myTower.ATK + 10).ToString();
+                else
+                    tp.Content = "下一級:\n血　量:" + (player.myTower.HP + 100).ToString() + '\n' + "射　程:" + (player.myTower.RANGE + 10).ToString() + '\n' + "攻擊力:" + (player.myTower.ATK + 10).ToString();
                 btnUpgradeTower.ToolTip = tp;
             }
         }
@@ -852,8 +810,7 @@ namespace Side_scrolling_Tower_Defense
         }
         private void about_Click(object sender, RoutedEventArgs e)
         {
-            Window1 about = new Window1();
-            about.Show();
+            new Window1().ShowDialog();
         }
         private void howTo_Click(object sender, RoutedEventArgs e)
         {

@@ -19,6 +19,7 @@ namespace Side_scrolling_Tower_Defense
         private int _chanceToUpgradeTower;
         private int _towerLVlimit;
         private bool _canCounterAttack;
+        private int _soldierLimit;
 
 
         public AI( Grid _grid, Grid _gridTopBar, Player _player, int difficulty)
@@ -30,17 +31,19 @@ namespace Side_scrolling_Tower_Defense
             switch (difficulty)
             {
                 case 1:
-                    _op = 1;
+                    _op = 0.7;
                     _chanceToGenSoldier = 100000;
                     _chanceToUpgradeTower = 100000;
                     _towerLVlimit = 1;
+                    _soldierLimit = 10;
                     _canCounterAttack = false;
                     break;
                 case 2:
-                    _op = 1.2;
+                    _op = 1;
                     _chanceToGenSoldier = 70000;
                     _chanceToUpgradeTower = 50000;
                     _towerLVlimit = 3;
+                    _soldierLimit = 15;
                     _canCounterAttack = true;
                     break;
                 case 3:
@@ -48,13 +51,15 @@ namespace Side_scrolling_Tower_Defense
                     _chanceToGenSoldier = 70000;
                     _chanceToUpgradeTower = 10000;
                     _towerLVlimit = 5;
+                    _soldierLimit = 15;
                     _canCounterAttack = true;
                     break;
                 case 4:
-                    _op = 2.5;
+                    _op = 3;
                     _chanceToGenSoldier = 50000;
                     _chanceToUpgradeTower = 1000;
                     _towerLVlimit = 10;
+                    _soldierLimit = 20;
                     _canCounterAttack = true;
                     break;
                 default:
@@ -66,7 +71,7 @@ namespace Side_scrolling_Tower_Defense
         { 
             Random rand = new Random();
 
-            if (aiTower.HP <= aiTower.MAXHP / 2 && soldier.Count<= player.soldier.Count && !_canCounterAttack) //AI快掛時會暴走
+            if (aiTower.HP <= aiTower.MAXHP / 2 && soldier.Count <= player.soldier.Count && !_canCounterAttack) //AI快掛時會暴走
             {
                 if (rand.Next(_chanceToGenSoldier / 5) <= player.soldier.Count*30 + player.MONEY / 200) 
                 {
@@ -80,7 +85,7 @@ namespace Side_scrolling_Tower_Defense
             }
             else if (rand.Next(_chanceToGenSoldier) <= player.soldier.Count * 30 + player.MONEY / 200) 
             {
-                if (soldier.Count < 15) //限制場上兵量
+                if (soldier.Count < _soldierLimit) //限制場上兵量
                 {
                     int tmp = rand.Next(7);
                     GenerateSolider(grid, tmp + 1, _op); 

@@ -13,7 +13,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Saber(bool isEnemy, double overPower)
-            : base((int)(150 * overPower), (int)(25 * overPower), 10, (0.4 * overPower), isEnemy, 1000) { }
+            : base((int)(150 * overPower), (int)(25 * overPower), 10, (0.4 * overPower), isEnemy, 100) { }
 
         public new void Skill()
         {
@@ -37,7 +37,7 @@ namespace Side_scrolling_Tower_Defense
         private Label bullet;
         private Grid grid;
         public Archer(bool isEnemy, double overPower, Grid _grid)
-            : base((int)(150 * overPower), (int)(30 * overPower), 100, (0.3 * overPower), isEnemy, 1000)
+            : base((int)(250 * overPower), (int)(30 * overPower), 150, (0.3 * overPower), isEnemy, 150)
         {
                 grid = _grid;
                 if (isEnemy)
@@ -247,7 +247,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Caster(bool isEnemy, double overPower)
-            : base((int)(250 * overPower), (int)(30 * overPower), 10, (0.5 * overPower), isEnemy, 1000)
+            : base((int)(300 * overPower), (int)(30 * overPower), 10, (0.5 * overPower), isEnemy, 200)
         {
 
         }
@@ -258,25 +258,11 @@ namespace Side_scrolling_Tower_Defense
         }
 
     }
-
-    class Berserker : Soldier
-    {
-        //hp=? , atk=? , range = ? , speed =? 
-        public Berserker(bool isEnemy, double overPower)
-            : base((int)(1000 * overPower), (int)(20 * overPower), 10, (0.1 * overPower), isEnemy, 10000){}
-
-        public new void Skill()
-        {
-            //God Hands 全陣營友方暫時性無敵 持續時間?  CD時間?
-        }
-
-    }
-
     class Rider : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Rider(bool isEnemy, double overPower)
-            : base((int)(300 * overPower), (int)(25 * overPower), 10, (0.7 * overPower), isEnemy, 1000){}
+            : base((int)(350 * overPower), (int)(25 * overPower), 10, (0.7 * overPower), isEnemy, 300){}
 
         public new void Skill()
         {
@@ -284,23 +270,11 @@ namespace Side_scrolling_Tower_Defense
         }
     }
 
-    class Lancer : Soldier
-    {
-        //hp=? , atk=? , range = ? , speed =? 
-        public Lancer(bool isEnemy, double overPower)
-            : base((int)(200 * overPower), (int)(35 * overPower), 10, (0.5 * overPower), isEnemy, 1000){}
-
-        public new void Skill()
-        {
-            //必滅的黃薔薇（Gae Buidhe） 回復所有我方生命值(不含塔)與異常狀態
-        }
-    }
-
     class Assassin : Soldier
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Assassin(bool isEnemy, double overPower)
-            : base((int)(150 * overPower), (int)(45 * overPower), 10, (0.6 * overPower), isEnemy, 1000){}
+            : base((int)(400 * overPower), (int)(50 * overPower), 10, (0.6 * overPower), isEnemy, 400){}
 
         public new void Skill()
         {
@@ -309,6 +283,32 @@ namespace Side_scrolling_Tower_Defense
 
 
     }
+
+
+    class Lancer : Soldier
+    {
+        //hp=? , atk=? , range = ? , speed =? 
+        public Lancer(bool isEnemy, double overPower)
+            : base((int)(500 * overPower), (int)(40 * overPower), 10, (0.5 * overPower), isEnemy, 500){}
+
+        public new void Skill()
+        {
+            //必滅的黃薔薇（Gae Buidhe） 回復所有我方生命值(不含塔)與異常狀態
+        }
+    }
+    class Berserker : Soldier
+    {
+        //hp=? , atk=? , range = ? , speed =? 
+        public Berserker(bool isEnemy, double overPower)
+            : base((int)(1500 * overPower), (int)(10 * overPower), 10, (0.1 * overPower), isEnemy, 600){}
+
+        public new void Skill()
+        {
+            //God Hands 全陣營友方暫時性無敵 持續時間?  CD時間?
+        }
+
+    }
+
 
 
 }

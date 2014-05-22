@@ -32,7 +32,7 @@ namespace Side_scrolling_Tower_Defense
         public Player( Grid grid1, Grid _gridTopBar)
         {
             grid = grid1;
-            _money = 10000;      // 初始資金
+            _money = 5000;      // 初始資金
             _towerUpgradePrice = 100; //塔升級費用
             moneyGainSpeed = 10;
             myTower = new Tower(2000, 50, 250, 1, true, grid1, _gridTopBar);
