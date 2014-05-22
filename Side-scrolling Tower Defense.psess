@@ -26,7 +26,6 @@
     </PdhSettings>
   </Options>
   <ExcludeSmallFuncs>true</ExcludeSmallFuncs>
-  <InteractionProfilingEnabled>false</InteractionProfilingEnabled>
   <JScriptProfilingEnabled>false</JScriptProfilingEnabled>
   <PreinstrumentEvent>
     <InstrEventExclude>false</InstrEventExclude>
@@ -34,47 +33,4 @@
   <PostinstrumentEvent>
     <InstrEventExclude>false</InstrEventExclude>
   </PostinstrumentEvent>
-  <Binaries>
-    <ProjBinary>
-      <Path>Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe</Path>
-      <ArgumentTimestamp>01/01/0001 00:00:00</ArgumentTimestamp>
-      <Instrument>true</Instrument>
-      <Sample>true</Sample>
-      <ExternalWebsite>false</ExternalWebsite>
-      <InteractionProfilingEnabled>false</InteractionProfilingEnabled>
-      <IsLocalJavascript>false</IsLocalJavascript>
-      <IsWindowsStoreApp>false</IsWindowsStoreApp>
-      <IsWWA>false</IsWWA>
-      <LaunchProject>true</LaunchProject>
-      <OverrideProjectSettings>false</OverrideProjectSettings>
-      <LaunchMethod>Executable</LaunchMethod>
-      <ExecutablePath>Side-scrolling Tower Defense\bin\Debug\Side-scrolling Tower Defense.exe</ExecutablePath>
-      <StartupDirectory>Side-scrolling Tower Defense\bin\Debug\</StartupDirectory>
-      <Arguments>
-      </Arguments>
-      <NetAppHost>IIS</NetAppHost>
-      <NetBrowser>InternetExplorer</NetBrowser>
-      <ExcludeSmallFuncs>true</ExcludeSmallFuncs>
-      <JScriptProfilingEnabled>false</JScriptProfilingEnabled>
-      <PreinstrumentEvent>
-        <InstrEventExclude>false</InstrEventExclude>
-      </PreinstrumentEvent>
-      <PostinstrumentEvent>
-        <InstrEventExclude>false</InstrEventExclude>
-      </PostinstrumentEvent>
-      <ProjRef>{34304CCD-0C85-46AE-81B8-E93E27BB95D3}|Side-scrolling Tower Defense\Side-scrolling Tower Defense.csproj</ProjRef>
-      <ProjPath>Side-scrolling Tower Defense\Side-scrolling Tower Defense.csproj</ProjPath>
-      <ProjName>Side-scrolling Tower Defense</ProjName>
-    </ProjBinary>
-  </Binaries>
-  <Reports>
-    <Report>
-      <Path>Side-scrolling Tower Defense140520.vsp</Path>
-    </Report>
-  </Reports>
-  <Launches>
-    <ProjBinary>
-      <Path>:PB:{34304CCD-0C85-46AE-81B8-E93E27BB95D3}|Side-scrolling Tower Defense\Side-scrolling Tower Defense.csproj</Path>
-    </ProjBinary>
-  </Launches>
 </VSPerformanceSession>

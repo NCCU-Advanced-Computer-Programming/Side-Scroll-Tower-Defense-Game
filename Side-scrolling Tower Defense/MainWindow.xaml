@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"   
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Side_scrolling_Tower_Defense.MainWindow"
-        Title="橫向超經典守塔防禦遊戲" Height="452.799" Width="1000" ResizeMode="CanResizeWithGrip" Closing="Window_Closing">
+        Title="橫向超經典守塔防禦遊戲" Height="452.799" Width="1000" ResizeMode="CanMinimize" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>

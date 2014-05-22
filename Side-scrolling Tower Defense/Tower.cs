@@ -262,6 +262,14 @@ namespace Side_scrolling_Tower_Defense
 
             tp.Content = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
             ImgTower.ToolTip = tp;
+  
+            ToolTip tmp = new ToolTip();
+            tmp.Background = Brushes.LightSteelBlue;
+            tmp.BorderBrush = Brushes.Black;
+            tmp.BorderThickness = new Thickness(2);
+            tmp.Content = "HP:" + HP.ToString() + '/' + maxHP.ToString();
+            lbTowerHP.ToolTip = tmp;
+            lbHP_BG.ToolTip = tmp;
         }
         public void Skill(List<Soldier> EnemyS)
         {/*範圍技大招 傳入對方士兵陣列*/
