@@ -102,7 +102,7 @@ namespace Side_scrolling_Tower_Defense
                 _axis = 886;//lbTower.Margin.Right;
             else
                 _axis = 108;//lbTower.Margin.Right + lbTower.Width;
-            tp.Content = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
+            tp.Content = "等　級: " + TowerLevel.ToString() + "\n血　量: " + HP.ToString() + '\n' + "射　程: " + RANGE.ToString() + "\n攻擊力: " + ATK.ToString();
             tp.Background = Brushes.LightSteelBlue;
             tp.BorderBrush = Brushes.Black;
             tp.BorderThickness = new Thickness(2);
@@ -112,7 +112,7 @@ namespace Side_scrolling_Tower_Defense
             tmp.Background = Brushes.LightSteelBlue;
             tmp.BorderBrush = Brushes.Black;
             tmp.BorderThickness = new Thickness(2);
-            tmp.Content = "HP:" + HP.ToString() + '/' + maxHP.ToString();
+            tmp.Content = "血　量:" + HP.ToString() + '/' + maxHP.ToString();
             lbTowerHP.ToolTip = tmp;
             lbHP_BG.ToolTip = tmp;
 
@@ -221,14 +221,14 @@ namespace Side_scrolling_Tower_Defense
             if (remainHP_Width < 0)
                 remainHP_Width = 0;
             lbTowerHP.Width = remainHP_Width;
-            tp.Content = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '/' + maxHP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
+            tp.Content = "等　級: " + TowerLevel.ToString() + "\n血　量: " + HP.ToString() + '\n' + "射　程: " + RANGE.ToString() + "\n攻擊力: " + ATK.ToString();
             ImgTower.ToolTip = tp;
 
             ToolTip tmp = new ToolTip();
             tmp.Background = Brushes.LightSteelBlue;
             tmp.BorderBrush = Brushes.Black;
             tmp.BorderThickness = new Thickness(2);
-            tmp.Content = "HP:" + HP.ToString() + '/' + maxHP.ToString();
+            tmp.Content = "血　量:" + HP.ToString() + '/' + maxHP.ToString();
             lbTowerHP.ToolTip = tmp;
             lbHP_BG.ToolTip = tmp;
             if (hp <= 0)
@@ -260,14 +260,14 @@ namespace Side_scrolling_Tower_Defense
             if (item == 't')
                 towerLevel++;
 
-            tp.Content = "LV:" + TowerLevel.ToString() + '\n' + "HP:" + HP.ToString() + '\n' + "Range:" + RANGE.ToString() + '\n' + "Damage:" + ATK.ToString();
+            tp.Content = "等　級: " + TowerLevel.ToString() + "\n血　量: " + HP.ToString() + '\n' + "射　程: " + RANGE.ToString() + "\n攻擊力: " + ATK.ToString();
             ImgTower.ToolTip = tp;
   
             ToolTip tmp = new ToolTip();
             tmp.Background = Brushes.LightSteelBlue;
             tmp.BorderBrush = Brushes.Black;
             tmp.BorderThickness = new Thickness(2);
-            tmp.Content = "HP:" + HP.ToString() + '/' + maxHP.ToString();
+            tmp.Content = "血　量:" + HP.ToString() + '/' + maxHP.ToString();
             lbTowerHP.ToolTip = tmp;
             lbHP_BG.ToolTip = tmp;
         }

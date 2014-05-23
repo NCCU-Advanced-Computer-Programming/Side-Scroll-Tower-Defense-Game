@@ -69,7 +69,7 @@ namespace Side_scrolling_Tower_Defense
         private int skillCounter3 = 0;
   //      private int skillCounter4 = 0;
         /*-----------------Counter--------------------*/
-        private int[] coldDownTime = { 5, 8, 10, 15, 20, 30, 40, 40, 20, 70, 60 };//順序: 兵種1~7 CD, 技能1~4 CD      
+        private int[] coldDownTime = { 5, 8, 10, 15, 20, 30, 40, 40, 30, 70, 60 };//順序: 兵種1~7 CD, 技能1~4 CD      
         #endregion
 
         public MainWindow()
@@ -158,7 +158,7 @@ namespace Side_scrolling_Tower_Defense
             ai = new AI(grid1, gridTopBar, player, difficulty);
 
             #region Setting Content
-         btnSpeedUp.Content = ">>";
+            btnSpeedUp.Content = ">>";
             btnUpgradeTower.Content = "升級塔\n$" + player.UPGRADEPRICE.ToString();
             ToolTip tp = new System.Windows.Controls.ToolTip();
             tp = new System.Windows.Controls.ToolTip();
@@ -722,9 +722,9 @@ namespace Side_scrolling_Tower_Defense
                 tp.BorderThickness = new Thickness(2);
                 tp.Content = btnUpgradeTower.ToolTip.ToString();
                 if(skill2_isEnable)
-                    tp.Content = "下一級:\n血　量:" + (player.myTower.HP + 100).ToString() + '\n' + "射　程:" + (player.myTower.RANGE - 990).ToString() + '\n' + "攻擊力:" + (player.myTower.ATK + 10).ToString();
+                    tp.Content = "下一級:\n血　量: " + (player.myTower.HP + 100).ToString() + '\n' + "射　程: " + (player.myTower.RANGE - 990).ToString() + '\n' + "攻擊力: " + (player.myTower.ATK + 10).ToString();
                 else
-                    tp.Content = "下一級:\n血　量:" + (player.myTower.HP + 100).ToString() + '\n' + "射　程:" + (player.myTower.RANGE + 10).ToString() + '\n' + "攻擊力:" + (player.myTower.ATK + 10).ToString();
+                    tp.Content = "下一級:\n血　量: " + (player.myTower.HP + 100).ToString() + '\n' + "射　程: " + (player.myTower.RANGE + 10).ToString() + '\n' + "攻擊力: " + (player.myTower.ATK + 10).ToString();
                 btnUpgradeTower.ToolTip = tp;
             }
         }

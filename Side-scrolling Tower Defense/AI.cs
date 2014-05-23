@@ -48,7 +48,7 @@ namespace Side_scrolling_Tower_Defense
                     break;
                 case 3:
                     _op = 1.5;
-                    _chanceToGenSoldier = 70000;
+                    _chanceToGenSoldier = 50000;
                     _chanceToUpgradeTower = 10000;
                     _towerLVlimit = 5;
                     _soldierLimit = 15;
@@ -73,7 +73,7 @@ namespace Side_scrolling_Tower_Defense
 
             if (aiTower.HP <= aiTower.MAXHP / 2 && soldier.Count <= player.soldier.Count && !_canCounterAttack) //AI快掛時會暴走
             {
-                if (rand.Next(_chanceToGenSoldier / 5) <= player.soldier.Count*30 + player.MONEY / 200) 
+                if (rand.Next(_chanceToGenSoldier / 5) <= player.soldier.Count*30 + player.MONEY / 200 +200) 
                 {
                     int tmp = rand.Next(7);
                     GenerateSolider(grid, tmp + 1, _op); 
@@ -83,7 +83,7 @@ namespace Side_scrolling_Tower_Defense
                     _canCounterAttack = false;
                 }
             }
-            else if (rand.Next(_chanceToGenSoldier) <= player.soldier.Count * 30 + player.MONEY / 200) 
+            else if (rand.Next(_chanceToGenSoldier) <= player.soldier.Count * 30 + player.MONEY / 200 + 200) 
             {
                 if (soldier.Count < _soldierLimit) //限制場上兵量
                 {
@@ -153,11 +153,6 @@ namespace Side_scrolling_Tower_Defense
         {
             for (int i = 0; i <soldier.Count; i++)
             {
-                //// 每個士兵該往前的往前，該打的打
-                //if (soldier[i].HP <= 0)
-                //{
-                //    soldier.RemoveAt(i);
-                //}
                 soldier[i].Move(enemyS, enemyTower);
             }
         }
