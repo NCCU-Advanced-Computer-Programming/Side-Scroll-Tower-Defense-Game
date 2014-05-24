@@ -163,3 +163,4 @@ C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\b
 C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csprojResolveAssemblyReference.cache
 C:\Users\R5\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\WpfAnimatedGif.dll
 C:\Users\R5\Documents\GitHub\Project_1\Side-scrolling Tower Defense\bin\Debug\WpfAnimatedGif.xml
+C:\Users\Administrator\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csprojResolveAssemblyReference.cache

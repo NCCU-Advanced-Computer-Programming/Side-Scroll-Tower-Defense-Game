@@ -139,7 +139,7 @@ namespace Side_scrolling_Tower_Defense
             _hpWidth = width;
             hp = new Label();
             hp.Width = _hpWidth;
-            hp.Height = 5;
+            hp.Height = 4;
             hp.Background = System.Windows.Media.Brushes.Red;
             hp.BorderThickness = new Thickness(1);
             hp.BorderBrush = System.Windows.Media.Brushes.Black;

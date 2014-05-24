@@ -113,8 +113,9 @@ namespace Side_scrolling_Tower_Defense
             dock1.Height = 35;
             dock1.VerticalAlignment = System.Windows.VerticalAlignment.Top;
             dock1.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
-            dock1.Margin = new Thickness(700,25,0,0);
-            dock1.Background = Brushes.LightGray;
+            dock1.FlowDirection = System.Windows.FlowDirection.RightToLeft;
+            dock1.Margin = new Thickness(700,17,0,0);
+            //dock1.Background = Brushes.LightGray;
             grid1.Children.Add(dock1);
 
             //Resetting all btn 
