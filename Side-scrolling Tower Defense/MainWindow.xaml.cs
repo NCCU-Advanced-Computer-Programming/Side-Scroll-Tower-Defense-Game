@@ -25,15 +25,18 @@ namespace Side_scrolling_Tower_Defense
     {
         DispatcherTimer timer;
         int _timeInterval ;
+        int timeCounter = 0;
+        int time = 0;
         Player player ;
         AI ai ;
 
-             Label countImage = new Label();/////////////////////////////////////////////////////////////
+             Label totalTimeDisplay = new Label();/////////////////////////////////////////////////////////////
        List<Label> lbCD = new List<Label>();
         private const int kSECOND = 40;
         private int cdCounter = 0;
         private bool isStarted = false;
         DockPanel dock1 = new DockPanel();
+     // time
         #region 參數設定區
         /*-----------------Price--------------------*/
         private const int s1_price = 100;
@@ -145,13 +148,11 @@ namespace Side_scrolling_Tower_Defense
             skillCounter3 = 0;
             #endregion
 
-            //-------------------------Test--------------------------
-            grid1.Children.Add(countImage);
-            countImage.Margin = new Thickness(0, 30, 0, 0);
-            countImage.VerticalAlignment = System.Windows.VerticalAlignment.Top;
-            countImage.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
-            countImage.Content = grid1.Children.Count.ToString();
-            //-------------------------Test--------------------------
+            grid1.Children.Add(totalTimeDisplay);
+            totalTimeDisplay.Margin = new Thickness(0, 30, 0, 0);
+            totalTimeDisplay.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+            totalTimeDisplay.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            totalTimeDisplay.Content = "00:00";
 
             isStarted = true;
             player = new Player(grid1, gridTopBar);
@@ -186,6 +187,8 @@ namespace Side_scrolling_Tower_Defense
             #endregion
 
             _timeInterval = 25;
+            timeCounter = 0;
+            time = 0;
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(_timeInterval);
             timer.Tick += timer_Tick;
@@ -194,10 +197,12 @@ namespace Side_scrolling_Tower_Defense
         }
         private void timer_Tick(object sender, EventArgs e)
         {
-            countImage.Content = grid1.Children.Count.ToString();
-
-
-
+            if ((++timeCounter % kSECOND) == 0)
+            {
+                timeCounter = 0;
+                TimeSpan t = TimeSpan.FromSeconds(++time);
+                totalTimeDisplay.Content = string.Format("{0:D2}:{1:D2}", t.Minutes, t.Seconds);
+            }
 
             player.MoneyGain();
 
@@ -220,9 +225,10 @@ namespace Side_scrolling_Tower_Defense
                 }
                 timer.Stop();
                 if (player.myTower.CRASHED)
-                    MessageBox.Show("YOU LOSE !!!!!!");
+                    MessageBox.Show("歷經了 " + totalTimeDisplay.Content.ToString() + " 的苦戰，您還是被打爆了~!");
                 else
-                    MessageBox.Show("YOU WIN !!!!!!");
+                    MessageBox.Show("歷經了 " + totalTimeDisplay.Content.ToString() + " 的苦戰，您終於獲勝了~!");
+                btnReturnToMenu_Click(null,null);
             }
             if ((++cdCounter % kSECOND) == 0)
                 checkCD();
@@ -655,15 +661,12 @@ namespace Side_scrolling_Tower_Defense
         #region 玩家即時技 btnClick function
         private void skill1_Click(object sender, RoutedEventArgs e)
         {// 敵方暫停 10秒
-            //player.EarnMoney(-skill1_price); //扣錢
             skill1_isEnable = true;
             buff1CountDown = 10;
             foreach (Soldier s in ai.soldier)
             {
-            var controller = ImageBehavior.GetAnimationController(s.Image);
-            controller.Pause();
-      //          ImageBehavior.SetRepeatBehavior(s.Image, new RepeatBehavior(1));
-                //s.Image.StopAnimation();
+                var controller = ImageBehavior.GetAnimationController(s.Image);
+                controller.Pause();
             }
             LabelBlocking(skill1, coldDownTime[7]);
         }

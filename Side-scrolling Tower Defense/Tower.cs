@@ -308,7 +308,7 @@ namespace Side_scrolling_Tower_Defense
             if (isEnemy)
             {
 
-                ImgTower.Margin = new System.Windows.Thickness(0, 0, 886, 0);
+                ImgTower.Margin = new System.Windows.Thickness(0, 0, 886, 15);
                 var _image = new BitmapImage();
                 _image.BeginInit();
                 _image.UriSource = new Uri(imgSource, UriKind.Absolute);
@@ -316,12 +316,12 @@ namespace Side_scrolling_Tower_Defense
                 ImageBehavior.SetAnimatedSource(ImgTower, _image);
 
 
-               lbHP_BG.Margin = new System.Windows.Thickness(35, 0, 0, 10);
+                lbHP_BG.Margin = new System.Windows.Thickness(35, 0, 0, 10);
                 lbTowerHP.Margin = new System.Windows.Thickness(35, 0, 0, 10);
             }
             else
             {
-                ImgTower.Margin = new System.Windows.Thickness(0, 0, 36, 0);
+                ImgTower.Margin = new System.Windows.Thickness(0, 0, 36, 15);
                 var _image = new BitmapImage();
                 _image.BeginInit();
                 _image.UriSource = new Uri(imgSource, UriKind.Absolute);

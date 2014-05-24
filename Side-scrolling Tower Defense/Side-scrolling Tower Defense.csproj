@@ -153,12 +153,6 @@
     <Resource Include="Images\skill1.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\bg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\占用遊戲說明圖.JPG" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Images\白.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -191,9 +185,6 @@
     <None Include="bin\Debug\Images\tower_test.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\tower_test.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="bin\Debug\Images\tower_test2.gif" />
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +204,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Images\bg_inGame.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\bg_inGame.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
