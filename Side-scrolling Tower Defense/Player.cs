@@ -85,12 +85,12 @@ namespace Side_scrolling_Tower_Defense
             else if (type == 6)
             {
                 soldier.Add(new Lancer(false, overPower));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(100, 50, "/Images/tower_test1.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(100, 50, "/Images/soldier6Move.gif"));
             }
             else if (type == 7)
             {
                 soldier.Add(new Berserker(false, overPower));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(110, 50, "/Images/tower_test1.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(110, 50, "/Images/soldier7Move.gif"));
             }
             else
             {

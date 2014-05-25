@@ -31,7 +31,7 @@ namespace Side_scrolling_Tower_Defense
             switch (difficulty)
             {
                 case 1:
-                    _op = 0.7;
+                    _op = 0.6;
                     _chanceToGenSoldier = 100000;
                     _chanceToUpgradeTower = 100000;
                     _towerLVlimit = 1;
