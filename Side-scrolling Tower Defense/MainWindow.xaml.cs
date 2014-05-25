@@ -36,7 +36,6 @@ namespace Side_scrolling_Tower_Defense
         private int cdCounter = 0;
         private bool isStarted = false;
         DockPanel dock1 = new DockPanel();
-     // time
         #region 參數設定區
         /*-----------------Price--------------------*/
         private const int s1_price = 100;
@@ -171,13 +170,9 @@ namespace Side_scrolling_Tower_Defense
             tp.Content = "下一級:\n血　量:" + (player.myTower.HP + 100).ToString() + '\n' + "射　程:" + (player.myTower.RANGE + 10).ToString() + '\n' + "攻擊力:" + (player.myTower.ATK + 10).ToString();
             btnUpgradeTower.ToolTip = tp;
 
-            btnSoldier1.Content = "Saber\n$" + s1_price.ToString();
-            btnSoldier2.Content = "Archer\n$" + s2_price.ToString();
-            btnSoldier3.Content = "Caster\n$" + s3_price.ToString();
-            btnSoldier4.Content = "Rider\n$" + s4_price.ToString();
-            btnSoldier5.Content = "Assassin\n$" + s5_price.ToString();
-            btnSoldier6.Content = "Lancer\n$" + s6_price.ToString();
-            btnSoldier7.Content = "Berserker\n$" + s7_price.ToString();
+            foreach (Button btn in gridControlBar.Children)
+                if (btn.IsEnabled == false)
+                    btn.Opacity = 0.5;
             
             btnUnlock1.Content = "$" + unlock_s2_price.ToString();
             btnUnlock2.Content = "$" + unlock_s3_price.ToString();
@@ -290,6 +285,7 @@ namespace Side_scrolling_Tower_Defense
         }
         private void checkPrice()
         {
+
             if (player.MONEY < player.UPGRADEPRICE)
                 LabelBlocking(btnUpgradeTower, 0);
             else
@@ -614,45 +610,47 @@ namespace Side_scrolling_Tower_Defense
         {
             player.MONEY -= unlock_s2_price;
             btnSoldier2.IsEnabled = true;
+            btnSoldier2.Opacity = 1;
             btnUnlock1.Visibility = Visibility.Hidden;
             btnUnlock1.IsEnabled = false;
         }
-
         private void btnUnlock2_Click(object sender, RoutedEventArgs e)
         {
             player.MONEY -= unlock_s3_price;
             btnSoldier3.IsEnabled = true;
+            btnSoldier3.Opacity = 1;
             btnUnlock2.Visibility = System.Windows.Visibility.Hidden;
             btnUnlock2.IsEnabled = false;
         }
-
         private void btnUnlock3_Click(object sender, RoutedEventArgs e)
         {
             player.MONEY -= unlock_s4_price;
             btnSoldier4.IsEnabled = true;
+            btnSoldier4.Opacity = 1;
             btnUnlock3.Visibility = System.Windows.Visibility.Hidden;
             btnUnlock3.IsEnabled = false;
         }
         private void btnUnlock4_Click(object sender, RoutedEventArgs e)
         {
             player.MONEY -= unlock_s5_price;
+            btnSoldier5.Opacity = 1;
             btnSoldier5.IsEnabled = true;
             btnUnlock4.Visibility = System.Windows.Visibility.Hidden;
             btnUnlock4.IsEnabled = false;
         }
-
         private void btnUnlock5_Click(object sender, RoutedEventArgs e)
         {
             player.MONEY -= unlock_s6_price;
             btnSoldier6.IsEnabled = true;
+            btnSoldier6.Opacity = 1;
             btnUnlock5.Visibility = System.Windows.Visibility.Hidden;
             btnUnlock5.IsEnabled = false;
         }
-
         private void btnUnlock6_Click(object sender, RoutedEventArgs e)
         {
             player.MONEY -= unlock_s7_price;
             btnSoldier7.IsEnabled = true;
+            btnSoldier7.Opacity = 1;
             btnUnlock6.Visibility = System.Windows.Visibility.Hidden;
             btnUnlock6.IsEnabled = false;
         }
