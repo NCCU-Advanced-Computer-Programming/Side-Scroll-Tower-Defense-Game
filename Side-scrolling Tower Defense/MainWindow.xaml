@@ -3,14 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"   
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Side_scrolling_Tower_Defense.MainWindow"
-        Title="橫向超經典守塔防禦遊戲" Height="452.799" Width="1000" ResizeMode="CanMinimize" Closing="Window_Closing">
+        Title="橫向超經典守塔防禦遊戲" Height="452.799" Width="1000" ResizeMode="CanMinimize" Closing="Window_Closing" KeyDown="Window_KeyDown">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
             <RowDefinition Height="108"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="grid1" AllowDrop="True" VerticalAlignment="Bottom" Height="268" Grid.RowSpan="2" HorizontalAlignment="Left" Width="994" Margin="0,0,0,107" Grid.Row="1">
+        <Grid x:Name="grid1" AllowDrop="True" VerticalAlignment="Bottom" Height="268" Grid.RowSpan="2" HorizontalAlignment="Left" Width="994" Margin="0,0,0,107" Grid.Row="1" d:IsLocked="True">
             <Grid.Background>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Images/bg_inGame.jpg"/>
             </Grid.Background>
@@ -21,7 +21,7 @@
             <DockPanel Height="35" LastChildFill="False" Margin="717,10,0,0" Background="#FFE2DBDB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105"/>
 
         </Grid>
-        <Grid x:Name="gridControlBar" Background="#FF2C2206" Margin="0,1,0,0" Grid.Row="2">
+        <Grid x:Name="gridControlBar" Background="#FF2C2206" Margin="0,1,0,0" Grid.Row="2" d:IsLocked="True">
             <Button x:Name="btnSpeedUp" Content="&gt;" HorizontalAlignment="Left" Margin="19,48,0,0" VerticalAlignment="Top" Width="38" FontWeight="Bold" FontSize="16" Click="btnSpeedUp_Click" Height="27" Focusable="False" ToolTip="調整遊戲進行速度" Background="#FFB09F9F"/>
             <Button x:Name="btnReturnToMenu" Content="Menu" HorizontalAlignment="Left" Margin="19,15,0,0" VerticalAlignment="Top" Width="38" Height="27" Click="btnReturnToMenu_Click" Focusable="False" ToolTip="回主選單" Foreground="Black" Background="#FFB09F9F"/>
             <Button x:Name="skill1" HorizontalAlignment="Left" Margin="93,8,0,0" VerticalAlignment="Top" Width="43" Height="39" Focusable="False" ToolTip="時間凍結&#xA;CD: 40s&#xA;停止敵方全體10秒" Click="skill1_Click" BorderThickness="1" Background="{x:Null}" BorderBrush="{x:Null}">
@@ -65,22 +65,22 @@
             <Button x:Name="btnUnlock6" Content="$" HorizontalAlignment="Left" Height="26" Margin="744,41,0,0" VerticalAlignment="Top" Width="82" Click="btnUnlock6_Click" Focusable="False" Background="#FFB09F9F"/>
             <Button x:Name="btnUpgradeTower" Content="升級塔" HorizontalAlignment="Left" Height="54" Margin="879,21,0,0" VerticalAlignment="Top" Width="79" Click="btnUpgradeTower_Click" Focusable="False" Background="#FFB09F9F" BorderThickness="0"/>
         </Grid>
-        <Grid x:Name="gridTopBar" Background="#FFC5BCBC">
+        <Grid x:Name="gridTopBar" Background="#FFC5BCBC" d:IsLocked="True">
             <Label Content="HP/maxHP"  Margin="757,0,0,10" Height="25" HorizontalContentAlignment="Right" BorderBrush="#FF0F0909" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Background="#FFFB0505" />
             <Label Content="HP/maxHP"  Margin="35,0,0,10" Height="25" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Background="#FFF70F0F" />
             <Label Content="難度" HorizontalAlignment="Left" Margin="456,16,0,0" VerticalAlignment="Top" Width="107"/>
         </Grid>
-        <Grid x:Name="gridBG" Background="White" Grid.RowSpan="3" MouseDown="gridBG_MouseDown" d:IsHidden="True">
-            <StackPanel x:Name="stackMenu" HorizontalAlignment="Left" Height="125" Margin="59,107,0,0" VerticalAlignment="Top" Width="204" OpacityMask="Black">
-                <Button x:Name="startGame" Content="新遊戲(_N)" Height="35" Click="startGame_Click" Padding="5" FontSize="16" FontWeight="Bold"/>
-                <Button x:Name="howTo" Content="說　明(_H)" Height="35" Click="howTo_Click" Padding="5" FontSize="16" FontWeight="Bold"/>
-                <Button x:Name="about" Content="關　於(_A)" Height="35" Click="about_Click" Padding="5" FontSize="16" FontWeight="Bold"/>
+        <Grid x:Name="gridBG" Background="White" Grid.RowSpan="3" MouseDown="gridBG_MouseDown" >
+            <StackPanel x:Name="stackMenu" HorizontalAlignment="Left" Height="278" Margin="324,126,0,0" VerticalAlignment="Top" Width="131" OpacityMask="Black">
+                <Button x:Name="startGame" Content="新遊戲" Height="45" Click="startGame_Click" Padding="5" FontSize="16" FontWeight="Bold" Margin="0,10" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                <Button x:Name="howTo" Content="說　明" Height="49" Click="howTo_Click" Padding="5" FontSize="16" FontWeight="Bold" Margin="0,10" BorderBrush="{x:Null}" Background="{x:Null}"/>
+                <Button x:Name="about" Content="關　於" Height="49" Click="about_Click" Padding="5" FontSize="16" FontWeight="Bold" Margin="0,10" Background="{x:Null}" BorderBrush="{x:Null}"/>
             </StackPanel>
-            <StackPanel x:Name="spDiffcultly" HorizontalAlignment="Left" Height="142" Margin="263,107,0,0" VerticalAlignment="Top" Width="94" Visibility="Hidden">
-                <Button x:Name="btnEasy" Content="簡　單" Height="35" Click="btnEasy_Click" Padding="5" Focusable="False" FontSize="16" FontWeight="Bold"/>
-                <Button x:Name="btnNormal" Content="中　級" Height="35" Click="btnNormal_Click" Padding="5" Focusable="False" FontSize="16" FontWeight="Bold"/>
-                <Button x:Name="btnHard" Content="困　難" Height="35" Click="btnHard_Click" Padding="5" Focusable="False" FontSize="16" FontWeight="Bold"/>
-                <Button x:Name="btnSuperHard" Content="絕望級" Height="35" Click="btnSuperHard_Click" Padding="5" Focusable="False" FontSize="16" FontWeight="Bold"/>
+            <StackPanel x:Name="spDiffcultly" HorizontalAlignment="Left" Height="167" Margin="460,126,0,0" VerticalAlignment="Top" Width="94" Visibility="Hidden">
+                <Button x:Name="btnEasy" Content="簡　單" Height="35" Click="btnEasy_Click" Padding="5" Focusable="False" FontSize="16" FontWeight="Bold" Margin="0,3" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                <Button x:Name="btnNormal" Content="中　級" Height="35" Click="btnNormal_Click" Padding="5" Focusable="False" FontSize="16" FontWeight="Bold" Margin="0,3" BorderBrush="{x:Null}" Background="{x:Null}"/>
+                <Button x:Name="btnHard" Content="困　難" Height="35" Click="btnHard_Click" Padding="5" Focusable="False" FontSize="16" FontWeight="Bold" Margin="0,3" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                <Button x:Name="btnSuperHard" Content="絕望級" Height="35" Click="btnSuperHard_Click" Padding="5" Focusable="False" FontSize="16" FontWeight="Bold" Margin="0,3" BorderBrush="{x:Null}" Background="{x:Null}"/>
             </StackPanel>
         </Grid>
     </Grid>

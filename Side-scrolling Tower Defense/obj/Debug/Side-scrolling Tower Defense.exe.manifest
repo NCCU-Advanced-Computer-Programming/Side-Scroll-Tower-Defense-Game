@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Side-scrolling Tower Defense.exe" size="1483776">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Side-scrolling Tower Defense.exe" size="1484288">
       <assemblyIdentity name="Side-scrolling Tower Defense" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eXqlckw0SV9QXvraeLxLMxa3mOCpdvjOHy3RBWq6Fs8=</dsig:DigestValue>
+        <dsig:DigestValue>WCuKS5C2PLMOy0l+OZRUY0u7az8GPyhQhHSnoNyVP+U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
