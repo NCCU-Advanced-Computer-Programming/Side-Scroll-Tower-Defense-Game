@@ -897,6 +897,7 @@ namespace Side_scrolling_Tower_Defense
                     btnResume.FontWeight = FontWeights.Bold;
                     btnResume.Background = null;
                     btnResume.BorderBrush = null;
+                    btnResume.Foreground = Brushes.White;
                     btnResume.Click += btnResume_Click;
                     stackMenu.Children.Insert(0, btnResume);
                 }
@@ -951,9 +952,18 @@ namespace Side_scrolling_Tower_Defense
         private void startGame_Click(object sender, RoutedEventArgs e)
         {
           //  stackMenu.Opacity = 0.6;
-            stackMenu.IsEnabled = false;
-            spDiffcultly.IsEnabled = true;
-            spDiffcultly.Visibility = System.Windows.Visibility.Visible;
+            //stackMenu.IsEnabled = false;
+            if (!spDiffcultly.IsVisible)
+            {
+                spDiffcultly.IsEnabled = true;
+                spDiffcultly.Visibility = System.Windows.Visibility.Visible;
+            }
+
+            else 
+            {
+                spDiffcultly.Visibility = System.Windows.Visibility.Hidden;
+                spDiffcultly.IsEnabled = false;
+            }
             //Reset();
             //gridBG.Visibility = Visibility.Hidden;
         }
