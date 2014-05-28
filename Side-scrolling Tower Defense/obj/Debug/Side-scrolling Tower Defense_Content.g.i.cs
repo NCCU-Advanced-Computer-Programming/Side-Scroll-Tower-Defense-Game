@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/cover.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/lava_background.gif")]
 
 

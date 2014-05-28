@@ -184,3 +184,4 @@ P:\Program Source\Project_1\Side-scrolling Tower Defense\obj\Debug\Side_scrollin
 P:\Program Source\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.csproj.GenerateResource.Cache
 P:\Program Source\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe.manifest
 P:\Program Source\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.application
+C:\Users\SSARCANDY\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense_MarkupCompile.lref
