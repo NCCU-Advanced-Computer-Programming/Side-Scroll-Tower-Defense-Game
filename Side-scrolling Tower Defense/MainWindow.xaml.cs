@@ -889,7 +889,7 @@ namespace Side_scrolling_Tower_Defense
                 if (btnResume == null)
                 {
                     btnResume = new Button();
-                    btnResume.Content = "繼續";
+                    btnResume.Content = "繼　續";
                     btnResume.Height = 45;
                     btnResume.Padding = new Thickness(0,10,0,10);
                     btnResume.FontSize = 16;
