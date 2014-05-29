@@ -32,7 +32,7 @@ namespace Side_scrolling_Tower_Defense
             {
                 case 1:
                     _op = 0.6;
-                    _chanceToGenSoldier = 100000;
+                    _chanceToGenSoldier = 120000;
                     _chanceToUpgradeTower = 100000;
                     _towerLVlimit = 1;
                     _soldierLimit = 10;
@@ -40,7 +40,7 @@ namespace Side_scrolling_Tower_Defense
                     break;
                 case 2:
                     _op = 1;
-                    _chanceToGenSoldier = 70000;
+                    _chanceToGenSoldier = 85000;
                     _chanceToUpgradeTower = 50000;
                     _towerLVlimit = 3;
                     _soldierLimit = 15;
@@ -48,7 +48,7 @@ namespace Side_scrolling_Tower_Defense
                     break;
                 case 3:
                     _op = 1.5;
-                    _chanceToGenSoldier = 50000;
+                    _chanceToGenSoldier = 60000;
                     _chanceToUpgradeTower = 10000;
                     _towerLVlimit = 5;
                     _soldierLimit = 15;

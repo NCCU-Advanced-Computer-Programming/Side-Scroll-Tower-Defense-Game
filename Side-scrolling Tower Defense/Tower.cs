@@ -99,7 +99,7 @@ namespace Side_scrolling_Tower_Defense
             _gridTopBar.Children.Add(lbTowerHP);
 
             if (isEnemy)
-                _axis = 886;//lbTower.Margin.Right;
+                _axis = 986;//lbTower.Margin.Right;
             else
                 _axis = 108;//lbTower.Margin.Right + lbTower.Width;
             tp.Content = "等　級: " + TowerLevel.ToString() + "\n血　量: " + HP.ToString() + '\n' + "射　程: " + RANGE.ToString() + "\n攻擊力: " + ATK.ToString();
@@ -308,7 +308,7 @@ namespace Side_scrolling_Tower_Defense
             if (isEnemy)
             {
 
-                ImgTower.Margin = new System.Windows.Thickness(0, 0, 886, 15);
+                ImgTower.Margin = new System.Windows.Thickness(0, 0, 986, 15);
                 var _image = new BitmapImage();
                 _image.BeginInit();
                 _image.UriSource = new Uri(imgSource, UriKind.Absolute);
@@ -328,10 +328,10 @@ namespace Side_scrolling_Tower_Defense
                 _image.EndInit();
                 ImageBehavior.SetAnimatedSource(ImgTower, _image);
 
-                lbHP_BG.Margin = new System.Windows.Thickness(757, 0, 0, 10);
-                lbTowerHP.Margin = new System.Windows.Thickness(757, 0, 0, 10);
+                lbHP_BG.Margin = new System.Windows.Thickness(857, 0, 0, 10);
+                lbTowerHP.Margin = new System.Windows.Thickness(857, 0, 0, 10);
             }
-            ImgTower.Height = 180;
+            ImgTower.Height = 200;
             ImgTower.Width = 120;
             lbTowerHP.Width = 200;
             lbTowerHP.Height = 25;
@@ -351,7 +351,7 @@ namespace Side_scrolling_Tower_Defense
             beam = new GifImage();
             beam.HorizontalAlignment = HorizontalAlignment.Right;
             beam.VerticalAlignment = VerticalAlignment.Bottom;
-            beam.Width = 780;
+            beam.Width = 880;
             beam.Margin = new Thickness(0, 0, 120, 10);
             var _image = new BitmapImage();
             _image.BeginInit();
@@ -367,7 +367,7 @@ namespace Side_scrolling_Tower_Defense
             bullet.Width = 40;
             bullet.Height = 3;
             if(isEnemy)
-                bullet.Margin = new System.Windows.Thickness(0, 0, 923, ImgTower.Height-20);
+                bullet.Margin = new System.Windows.Thickness(0, 0, 1023, ImgTower.Height-20);
             else
                 bullet.Margin = new System.Windows.Thickness(0, 0, 36, ImgTower.Height -20);
 

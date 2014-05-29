@@ -109,17 +109,17 @@ namespace Side_scrolling_Tower_Defense
             spImg = new StackPanel();
 
             if (isEnemy)
-                POSITION = 1000;
+                POSITION = 1100;
             else
                 POSITION = 0;
        }
         public StackPanel Show(int height, int width, string imageSource)
         {
             if(isEnemy)
-                spImg.Margin = new System.Windows.Thickness(0,0,958-width,20); //AI士兵出生位置
+                spImg.Margin = new System.Windows.Thickness(0,0,1058-width,20); //AI士兵出生位置
             else
                 spImg.Margin = new System.Windows.Thickness(0,0,36,20); //Player士兵出生位置
-            spImg.Width = width;
+            spImg.Width = width*1.1;
             spImg.VerticalAlignment = VerticalAlignment.Bottom;
             spImg.HorizontalAlignment = HorizontalAlignment.Right;
            // spImg.Background = System.Windows.Media.Brushes.Black;

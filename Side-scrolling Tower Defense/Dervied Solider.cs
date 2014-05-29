@@ -37,7 +37,7 @@ namespace Side_scrolling_Tower_Defense
         private Label bullet;
         private Grid grid;
         public Archer(bool isEnemy, double overPower, Grid _grid)
-            : base((int)(250 * overPower), (int)(30 * overPower), 150, (0.3 * overPower), isEnemy, 150)
+            : base((int)(250 * overPower), (int)(30 * overPower), 150, (0.35 * overPower), isEnemy, 150)
         {
                 grid = _grid;
                 if (isEnemy)
@@ -300,7 +300,7 @@ namespace Side_scrolling_Tower_Defense
     {
         //hp=? , atk=? , range = ? , speed =? 
         public Berserker(bool isEnemy, double overPower)
-            : base((int)(1500 * overPower), (int)(10 * overPower), 10, (0.1 * overPower), isEnemy, 600){}
+            : base((int)(1500 * overPower), (int)(10 * overPower), 10, (0.2 * overPower), isEnemy, 600){}
 
         public new void Skill()
         {
