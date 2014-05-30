@@ -3,7 +3,7 @@
 
 PROJECT NAME: 
 
-              Side-Scroll Defence Tower Game
+              Side-Scroll Tower Defense Game
               
 TEAM MEMBER : 
 
