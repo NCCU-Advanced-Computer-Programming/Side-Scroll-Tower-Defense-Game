@@ -129,7 +129,7 @@ namespace Side_scrolling_Tower_Defense
             else if (type == 6)
             {
                 soldier.Add(new Lancer(true, op));
-                grid1.Children.Add(soldier[soldier.Count - 1].Show(100, 50, "/Images/tower_test1.gif"));
+                grid1.Children.Add(soldier[soldier.Count - 1].Show(85, 70, "/Images/eSoldier1Move.gif"));
             }
             else if (type == 7)
             {

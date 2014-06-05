@@ -206,3 +206,5 @@ C:\Users\R5\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scroll
 C:\Users\R5\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.exe.manifest
 C:\Users\R5\Desktop\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense.application
 C:\Users\R5\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Side-scrolling Tower Defense_MarkupCompile.lref
+C:\Users\R5\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Window2.baml
+C:\Users\R5\Documents\GitHub\Project_1\Side-scrolling Tower Defense\obj\Debug\Window2.g.cs

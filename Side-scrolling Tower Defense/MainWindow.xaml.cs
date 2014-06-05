@@ -973,7 +973,7 @@ namespace Side_scrolling_Tower_Defense
         }
         private void howTo_Click(object sender, RoutedEventArgs e)
         {
-
+            new Window2().ShowDialog();
         }        
  
         #endregion

@@ -104,6 +104,9 @@
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Window2.xaml.cs">
+      <DependentUpon>Window2.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -117,6 +120,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -151,18 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\skill1.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\白.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\品.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\許.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\蘇.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -237,6 +232,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\lava_background.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\bai.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\cheng-sou-shuan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\ping.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\hsu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\shu.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
