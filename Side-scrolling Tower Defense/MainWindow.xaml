@@ -89,7 +89,7 @@
                 <Button x:Name="btnHard" Content="困　難" Height="35" Click="btnHard_Click" Padding="5" Focusable="False" FontSize="16" FontWeight="Bold" Margin="0,3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White"/>
                 <Button x:Name="btnSuperHard" Content="絕望級" Height="35" Click="btnSuperHard_Click" Padding="5" Focusable="False" FontSize="16" FontWeight="Bold" Margin="0,3" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White"/>
             </StackPanel>
-            <Label Content="Version: 1.124" HorizontalAlignment="Left" Margin="992,0,0,0" VerticalAlignment="Top" Height="28" Width="102" FontWeight="Bold" Foreground="White" Background="{x:Null}" OpacityMask="#FF131313"/>
+            <Label Content="v1.125" HorizontalAlignment="Left" Margin="1029,2,0,0" VerticalAlignment="Top" Height="28" Width="52" FontWeight="Bold" Foreground="White" Background="{x:Null}" OpacityMask="#FF131313"/>
         </Grid>
     </Grid>
 </Window>
